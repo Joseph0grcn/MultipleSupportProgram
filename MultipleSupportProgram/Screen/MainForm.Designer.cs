@@ -111,6 +111,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.esitUserEkle = new System.Windows.Forms.TabPage();
+            this.btnEsitUserEkle = new System.Windows.Forms.Button();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
             this.grpBoxPatch.SuspendLayout();
@@ -130,6 +132,7 @@
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.esitUserEkle.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProcessHeaders
@@ -143,23 +146,23 @@
             this.tabControlProcessHeaders.Controls.Add(this.tpTablolar);
             this.tabControlProcessHeaders.Controls.Add(this.tpQuary);
             this.tabControlProcessHeaders.Controls.Add(this.tbSorgu);
+            this.tabControlProcessHeaders.Controls.Add(this.esitUserEkle);
             this.tabControlProcessHeaders.Enabled = false;
-            this.tabControlProcessHeaders.Location = new System.Drawing.Point(4, 322);
-            this.tabControlProcessHeaders.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControlProcessHeaders.Location = new System.Drawing.Point(3, 262);
+            this.tabControlProcessHeaders.Multiline = true;
             this.tabControlProcessHeaders.Name = "tabControlProcessHeaders";
             this.tabControlProcessHeaders.SelectedIndex = 0;
-            this.tabControlProcessHeaders.Size = new System.Drawing.Size(881, 431);
+            this.tabControlProcessHeaders.Size = new System.Drawing.Size(661, 350);
             this.tabControlProcessHeaders.TabIndex = 0;
             // 
             // tpBackup
             // 
             this.tpBackup.BackColor = System.Drawing.SystemColors.Control;
             this.tpBackup.Controls.Add(this.grpBoxPatch);
-            this.tpBackup.Location = new System.Drawing.Point(4, 25);
-            this.tpBackup.Margin = new System.Windows.Forms.Padding(4);
+            this.tpBackup.Location = new System.Drawing.Point(4, 40);
             this.tpBackup.Name = "tpBackup";
-            this.tpBackup.Padding = new System.Windows.Forms.Padding(4);
-            this.tpBackup.Size = new System.Drawing.Size(873, 402);
+            this.tpBackup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpBackup.Size = new System.Drawing.Size(653, 306);
             this.tpBackup.TabIndex = 0;
             this.tpBackup.Text = "Yedekle";
             // 
@@ -171,40 +174,36 @@
             this.grpBoxPatch.Controls.Add(this.btnBackupFileLocationSelect);
             this.grpBoxPatch.Controls.Add(this.txtBackupPath);
             this.grpBoxPatch.Controls.Add(this.label1);
-            this.grpBoxPatch.Location = new System.Drawing.Point(140, 119);
-            this.grpBoxPatch.Margin = new System.Windows.Forms.Padding(4);
+            this.grpBoxPatch.Location = new System.Drawing.Point(105, 97);
             this.grpBoxPatch.Name = "grpBoxPatch";
-            this.grpBoxPatch.Padding = new System.Windows.Forms.Padding(4);
-            this.grpBoxPatch.Size = new System.Drawing.Size(576, 160);
+            this.grpBoxPatch.Size = new System.Drawing.Size(432, 130);
             this.grpBoxPatch.TabIndex = 5;
             this.grpBoxPatch.TabStop = false;
             this.grpBoxPatch.Text = "Veritabanı Yedekleme";
             // 
             // cbxDbNameBackup
             // 
+            this.cbxDbNameBackup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDbNameBackup.FormattingEnabled = true;
-            this.cbxDbNameBackup.Location = new System.Drawing.Point(213, 34);
-            this.cbxDbNameBackup.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxDbNameBackup.Location = new System.Drawing.Point(160, 28);
             this.cbxDbNameBackup.Name = "cbxDbNameBackup";
-            this.cbxDbNameBackup.Size = new System.Drawing.Size(351, 24);
+            this.cbxDbNameBackup.Size = new System.Drawing.Size(264, 21);
             this.cbxDbNameBackup.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 38);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(66, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 16);
+            this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Veritabanı Adı :";
             // 
             // btnBackup
             // 
-            this.btnBackup.Location = new System.Drawing.Point(213, 101);
-            this.btnBackup.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBackup.Location = new System.Drawing.Point(160, 82);
             this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(352, 38);
+            this.btnBackup.Size = new System.Drawing.Size(264, 31);
             this.btnBackup.TabIndex = 4;
             this.btnBackup.Text = "Yedekle";
             this.btnBackup.UseVisualStyleBackColor = true;
@@ -212,10 +211,9 @@
             // 
             // btnBackupFileLocationSelect
             // 
-            this.btnBackupFileLocationSelect.Location = new System.Drawing.Point(480, 66);
-            this.btnBackupFileLocationSelect.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBackupFileLocationSelect.Location = new System.Drawing.Point(360, 54);
             this.btnBackupFileLocationSelect.Name = "btnBackupFileLocationSelect";
-            this.btnBackupFileLocationSelect.Size = new System.Drawing.Size(85, 27);
+            this.btnBackupFileLocationSelect.Size = new System.Drawing.Size(64, 22);
             this.btnBackupFileLocationSelect.TabIndex = 3;
             this.btnBackupFileLocationSelect.Text = "- - -";
             this.btnBackupFileLocationSelect.UseVisualStyleBackColor = true;
@@ -223,19 +221,17 @@
             // 
             // txtBackupPath
             // 
-            this.txtBackupPath.Location = new System.Drawing.Point(213, 68);
-            this.txtBackupPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBackupPath.Location = new System.Drawing.Point(160, 55);
             this.txtBackupPath.Name = "txtBackupPath";
-            this.txtBackupPath.Size = new System.Drawing.Size(257, 22);
+            this.txtBackupPath.Size = new System.Drawing.Size(194, 20);
             this.txtBackupPath.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 71);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 16);
+            this.label1.Size = new System.Drawing.Size(135, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Veritabanı Dosya Konumu :";
             // 
@@ -243,11 +239,10 @@
             // 
             this.tpRestore.BackColor = System.Drawing.SystemColors.Control;
             this.tpRestore.Controls.Add(this.groupBox1);
-            this.tpRestore.Location = new System.Drawing.Point(4, 25);
-            this.tpRestore.Margin = new System.Windows.Forms.Padding(4);
+            this.tpRestore.Location = new System.Drawing.Point(4, 22);
             this.tpRestore.Name = "tpRestore";
-            this.tpRestore.Padding = new System.Windows.Forms.Padding(4);
-            this.tpRestore.Size = new System.Drawing.Size(873, 402);
+            this.tpRestore.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpRestore.Size = new System.Drawing.Size(653, 324);
             this.tpRestore.TabIndex = 1;
             this.tpRestore.Text = "Geri Yükle";
             // 
@@ -259,40 +254,36 @@
             this.groupBox1.Controls.Add(this.btnRestoreFile);
             this.groupBox1.Controls.Add(this.txtRestorePath);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(140, 119);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(105, 97);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(576, 160);
+            this.groupBox1.Size = new System.Drawing.Size(432, 130);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Veritabanı Geri Yükleme";
             // 
             // cbxDbNameRestore
             // 
+            this.cbxDbNameRestore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDbNameRestore.FormattingEnabled = true;
-            this.cbxDbNameRestore.Location = new System.Drawing.Point(213, 34);
-            this.cbxDbNameRestore.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxDbNameRestore.Location = new System.Drawing.Point(160, 28);
             this.cbxDbNameRestore.Name = "cbxDbNameRestore";
-            this.cbxDbNameRestore.Size = new System.Drawing.Size(351, 24);
+            this.cbxDbNameRestore.Size = new System.Drawing.Size(264, 21);
             this.cbxDbNameRestore.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 38);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(66, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 16);
+            this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Veritabanı Adı :";
             // 
             // btnRestore
             // 
-            this.btnRestore.Location = new System.Drawing.Point(213, 101);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRestore.Location = new System.Drawing.Point(160, 82);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(352, 38);
+            this.btnRestore.Size = new System.Drawing.Size(264, 31);
             this.btnRestore.TabIndex = 4;
             this.btnRestore.Text = "Veritabanını Geri Yükle";
             this.btnRestore.UseVisualStyleBackColor = true;
@@ -300,10 +291,9 @@
             // 
             // btnRestoreFile
             // 
-            this.btnRestoreFile.Location = new System.Drawing.Point(480, 66);
-            this.btnRestoreFile.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRestoreFile.Location = new System.Drawing.Point(360, 54);
             this.btnRestoreFile.Name = "btnRestoreFile";
-            this.btnRestoreFile.Size = new System.Drawing.Size(85, 27);
+            this.btnRestoreFile.Size = new System.Drawing.Size(64, 22);
             this.btnRestoreFile.TabIndex = 3;
             this.btnRestoreFile.Text = "- - -";
             this.btnRestoreFile.UseVisualStyleBackColor = true;
@@ -311,19 +301,17 @@
             // 
             // txtRestorePath
             // 
-            this.txtRestorePath.Location = new System.Drawing.Point(213, 68);
-            this.txtRestorePath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRestorePath.Location = new System.Drawing.Point(160, 55);
             this.txtRestorePath.Name = "txtRestorePath";
-            this.txtRestorePath.Size = new System.Drawing.Size(257, 22);
+            this.txtRestorePath.Size = new System.Drawing.Size(194, 20);
             this.txtRestorePath.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(59, 71);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(44, 58);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 16);
+            this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Veritabanı Dosyası :";
             // 
@@ -332,11 +320,10 @@
             this.tpSQLFile.BackColor = System.Drawing.SystemColors.Control;
             this.tpSQLFile.Controls.Add(this.groupBox2);
             this.tpSQLFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tpSQLFile.Location = new System.Drawing.Point(4, 25);
-            this.tpSQLFile.Margin = new System.Windows.Forms.Padding(4);
+            this.tpSQLFile.Location = new System.Drawing.Point(4, 40);
             this.tpSQLFile.Name = "tpSQLFile";
-            this.tpSQLFile.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSQLFile.Size = new System.Drawing.Size(873, 402);
+            this.tpSQLFile.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSQLFile.Size = new System.Drawing.Size(653, 306);
             this.tpSQLFile.TabIndex = 2;
             this.tpSQLFile.Text = "SQL Dosyası Çalıştırma";
             // 
@@ -346,21 +333,18 @@
             this.groupBox2.Controls.Add(this.btnSQLFileSelect);
             this.groupBox2.Controls.Add(this.txtSQLFile);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(140, 119);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(105, 97);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(576, 160);
+            this.groupBox2.Size = new System.Drawing.Size(432, 130);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "SQL Dosyası Çalıştırma";
             // 
             // btnSQLRun
             // 
-            this.btnSQLRun.Location = new System.Drawing.Point(213, 81);
-            this.btnSQLRun.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSQLRun.Location = new System.Drawing.Point(160, 66);
             this.btnSQLRun.Name = "btnSQLRun";
-            this.btnSQLRun.Size = new System.Drawing.Size(352, 38);
+            this.btnSQLRun.Size = new System.Drawing.Size(264, 31);
             this.btnSQLRun.TabIndex = 4;
             this.btnSQLRun.Text = "SQL Dosyasını Çalıştır";
             this.btnSQLRun.UseVisualStyleBackColor = true;
@@ -368,10 +352,9 @@
             // 
             // btnSQLFileSelect
             // 
-            this.btnSQLFileSelect.Location = new System.Drawing.Point(480, 47);
-            this.btnSQLFileSelect.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSQLFileSelect.Location = new System.Drawing.Point(360, 38);
             this.btnSQLFileSelect.Name = "btnSQLFileSelect";
-            this.btnSQLFileSelect.Size = new System.Drawing.Size(85, 27);
+            this.btnSQLFileSelect.Size = new System.Drawing.Size(64, 22);
             this.btnSQLFileSelect.TabIndex = 3;
             this.btnSQLFileSelect.Text = "- - -";
             this.btnSQLFileSelect.UseVisualStyleBackColor = true;
@@ -379,19 +362,17 @@
             // 
             // txtSQLFile
             // 
-            this.txtSQLFile.Location = new System.Drawing.Point(213, 48);
-            this.txtSQLFile.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSQLFile.Location = new System.Drawing.Point(160, 39);
             this.txtSQLFile.Name = "txtSQLFile";
-            this.txtSQLFile.Size = new System.Drawing.Size(257, 22);
+            this.txtSQLFile.Size = new System.Drawing.Size(194, 20);
             this.txtSQLFile.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(93, 52);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(70, 42);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 16);
+            this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "SQL Dosyası :";
             // 
@@ -405,20 +386,20 @@
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.rdbPeriod);
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.dtpStart);
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.groupBox5);
-            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 25);
-            this.tpSPWinDatabasePhotoDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 40);
             this.tpSPWinDatabasePhotoDelete.Name = "tpSPWinDatabasePhotoDelete";
-            this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(873, 402);
+            this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(653, 306);
             this.tpSPWinDatabasePhotoDelete.TabIndex = 3;
             this.tpSPWinDatabasePhotoDelete.Text = "Veritabanından Fotoğraf Silme";
             // 
             // lblDateFinish
             // 
             this.lblDateFinish.AutoSize = true;
-            this.lblDateFinish.Location = new System.Drawing.Point(10, 316);
+            this.lblDateFinish.Location = new System.Drawing.Point(8, 257);
+            this.lblDateFinish.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateFinish.Name = "lblDateFinish";
-            this.lblDateFinish.Size = new System.Drawing.Size(69, 16);
+            this.lblDateFinish.Size = new System.Drawing.Size(55, 13);
             this.lblDateFinish.TabIndex = 17;
             this.lblDateFinish.Text = "Bitiş Tarihi";
             this.lblDateFinish.Visible = false;
@@ -426,18 +407,20 @@
             // lblDateStart
             // 
             this.lblDateStart.AutoSize = true;
-            this.lblDateStart.Location = new System.Drawing.Point(10, 288);
+            this.lblDateStart.Location = new System.Drawing.Point(8, 234);
+            this.lblDateStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateStart.Name = "lblDateStart";
-            this.lblDateStart.Size = new System.Drawing.Size(104, 16);
+            this.lblDateStart.Size = new System.Drawing.Size(82, 13);
             this.lblDateStart.TabIndex = 16;
             this.lblDateStart.Text = "Başlangıç Tarihi";
             this.lblDateStart.Visible = false;
             // 
             // dtpFinish
             // 
-            this.dtpFinish.Location = new System.Drawing.Point(120, 311);
+            this.dtpFinish.Location = new System.Drawing.Point(90, 253);
+            this.dtpFinish.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFinish.Name = "dtpFinish";
-            this.dtpFinish.Size = new System.Drawing.Size(148, 22);
+            this.dtpFinish.Size = new System.Drawing.Size(112, 20);
             this.dtpFinish.TabIndex = 15;
             this.dtpFinish.Value = new System.DateTime(2023, 7, 25, 23, 59, 59, 0);
             this.dtpFinish.Visible = false;
@@ -445,9 +428,10 @@
             // rdbAll
             // 
             this.rdbAll.AutoSize = true;
-            this.rdbAll.Location = new System.Drawing.Point(13, 214);
+            this.rdbAll.Location = new System.Drawing.Point(10, 174);
+            this.rdbAll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbAll.Name = "rdbAll";
-            this.rdbAll.Size = new System.Drawing.Size(92, 20);
+            this.rdbAll.Size = new System.Drawing.Size(76, 17);
             this.rdbAll.TabIndex = 14;
             this.rdbAll.Text = "Tümünü sil";
             this.rdbAll.UseVisualStyleBackColor = true;
@@ -456,9 +440,10 @@
             // rdbPeriod
             // 
             this.rdbPeriod.AutoSize = true;
-            this.rdbPeriod.Location = new System.Drawing.Point(13, 240);
+            this.rdbPeriod.Location = new System.Drawing.Point(10, 195);
+            this.rdbPeriod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbPeriod.Name = "rdbPeriod";
-            this.rdbPeriod.Size = new System.Drawing.Size(78, 20);
+            this.rdbPeriod.Size = new System.Drawing.Size(63, 17);
             this.rdbPeriod.TabIndex = 12;
             this.rdbPeriod.Text = "Aralık sil";
             this.rdbPeriod.UseVisualStyleBackColor = true;
@@ -466,9 +451,10 @@
             // 
             // dtpStart
             // 
-            this.dtpStart.Location = new System.Drawing.Point(120, 283);
+            this.dtpStart.Location = new System.Drawing.Point(90, 230);
+            this.dtpStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(148, 22);
+            this.dtpStart.Size = new System.Drawing.Size(112, 20);
             this.dtpStart.TabIndex = 10;
             this.dtpStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
             this.dtpStart.Visible = false;
@@ -479,11 +465,9 @@
             this.groupBox5.Controls.Add(this.rbInTheFolderPhoto);
             this.groupBox5.Controls.Add(this.rbOneAndTwoPhoto);
             this.groupBox5.Controls.Add(this.btnWeighPhotoDelete);
-            this.groupBox5.Location = new System.Drawing.Point(196, 89);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Location = new System.Drawing.Point(147, 72);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Size = new System.Drawing.Size(444, 187);
+            this.groupBox5.Size = new System.Drawing.Size(333, 152);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Tartım Fotoğraflarını Silme";
@@ -491,10 +475,9 @@
             // rbAllPhoto
             // 
             this.rbAllPhoto.AutoSize = true;
-            this.rbAllPhoto.Location = new System.Drawing.Point(49, 126);
-            this.rbAllPhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.rbAllPhoto.Location = new System.Drawing.Point(37, 102);
             this.rbAllPhoto.Name = "rbAllPhoto";
-            this.rbAllPhoto.Size = new System.Drawing.Size(64, 20);
+            this.rbAllPhoto.Size = new System.Drawing.Size(52, 17);
             this.rbAllPhoto.TabIndex = 10;
             this.rbAllPhoto.Text = "Hepsi";
             this.rbAllPhoto.UseVisualStyleBackColor = true;
@@ -502,10 +485,9 @@
             // rbInTheFolderPhoto
             // 
             this.rbInTheFolderPhoto.AutoSize = true;
-            this.rbInTheFolderPhoto.Location = new System.Drawing.Point(49, 97);
-            this.rbInTheFolderPhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.rbInTheFolderPhoto.Location = new System.Drawing.Point(37, 79);
             this.rbInTheFolderPhoto.Name = "rbInTheFolderPhoto";
-            this.rbInTheFolderPhoto.Size = new System.Drawing.Size(66, 20);
+            this.rbInTheFolderPhoto.Size = new System.Drawing.Size(54, 17);
             this.rbInTheFolderPhoto.TabIndex = 9;
             this.rbInTheFolderPhoto.Text = "Klasör";
             this.rbInTheFolderPhoto.UseVisualStyleBackColor = true;
@@ -513,20 +495,18 @@
             // rbOneAndTwoPhoto
             // 
             this.rbOneAndTwoPhoto.AutoSize = true;
-            this.rbOneAndTwoPhoto.Location = new System.Drawing.Point(49, 70);
-            this.rbOneAndTwoPhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.rbOneAndTwoPhoto.Location = new System.Drawing.Point(37, 57);
             this.rbOneAndTwoPhoto.Name = "rbOneAndTwoPhoto";
-            this.rbOneAndTwoPhoto.Size = new System.Drawing.Size(92, 20);
+            this.rbOneAndTwoPhoto.Size = new System.Drawing.Size(75, 17);
             this.rbOneAndTwoPhoto.TabIndex = 8;
             this.rbOneAndTwoPhoto.Text = "Veri tabanı";
             this.rbOneAndTwoPhoto.UseVisualStyleBackColor = true;
             // 
             // btnWeighPhotoDelete
             // 
-            this.btnWeighPhotoDelete.Location = new System.Drawing.Point(171, 142);
-            this.btnWeighPhotoDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWeighPhotoDelete.Location = new System.Drawing.Point(128, 115);
             this.btnWeighPhotoDelete.Name = "btnWeighPhotoDelete";
-            this.btnWeighPhotoDelete.Size = new System.Drawing.Size(259, 38);
+            this.btnWeighPhotoDelete.Size = new System.Drawing.Size(194, 31);
             this.btnWeighPhotoDelete.TabIndex = 4;
             this.btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
             this.btnWeighPhotoDelete.UseVisualStyleBackColor = true;
@@ -536,11 +516,10 @@
             // 
             this.tpDatabaseRepair.BackColor = System.Drawing.SystemColors.Control;
             this.tpDatabaseRepair.Controls.Add(this.groupBox6);
-            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 25);
-            this.tpDatabaseRepair.Margin = new System.Windows.Forms.Padding(4);
+            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 40);
             this.tpDatabaseRepair.Name = "tpDatabaseRepair";
-            this.tpDatabaseRepair.Padding = new System.Windows.Forms.Padding(4);
-            this.tpDatabaseRepair.Size = new System.Drawing.Size(873, 402);
+            this.tpDatabaseRepair.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpDatabaseRepair.Size = new System.Drawing.Size(653, 306);
             this.tpDatabaseRepair.TabIndex = 7;
             this.tpDatabaseRepair.Text = "Veritabanı Onarma";
             // 
@@ -553,11 +532,9 @@
             this.groupBox6.Controls.Add(this.button2);
             this.groupBox6.Controls.Add(this.textBox6);
             this.groupBox6.Controls.Add(this.label11);
-            this.groupBox6.Location = new System.Drawing.Point(207, 106);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Location = new System.Drawing.Point(155, 86);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(444, 187);
+            this.groupBox6.Size = new System.Drawing.Size(333, 152);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Veritabanı Dosya Boyutunu Küçültme";
@@ -566,47 +543,42 @@
             // cbxDbNameRepair
             // 
             this.cbxDbNameRepair.FormattingEnabled = true;
-            this.cbxDbNameRepair.Location = new System.Drawing.Point(171, 34);
-            this.cbxDbNameRepair.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxDbNameRepair.Location = new System.Drawing.Point(128, 28);
             this.cbxDbNameRepair.Name = "cbxDbNameRepair";
-            this.cbxDbNameRepair.Size = new System.Drawing.Size(257, 24);
+            this.cbxDbNameRepair.Size = new System.Drawing.Size(194, 21);
             this.cbxDbNameRepair.TabIndex = 10;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(171, 100);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox4.Location = new System.Drawing.Point(128, 81);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(257, 22);
+            this.textBox4.Size = new System.Drawing.Size(194, 20);
             this.textBox4.TabIndex = 8;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(96, 103);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(72, 84);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 16);
+            this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 7;
             this.label9.Text = "Boyut :";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(45, 38);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(34, 31);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 16);
+            this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 6;
             this.label10.Text = "Veritabanı Adı :";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(171, 132);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(128, 107);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(259, 38);
+            this.button2.Size = new System.Drawing.Size(194, 31);
             this.button2.TabIndex = 4;
             this.button2.Text = "Dosya Boyutunu Küçült";
             this.button2.UseVisualStyleBackColor = true;
@@ -614,20 +586,18 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(171, 68);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox6.Location = new System.Drawing.Point(128, 55);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(257, 22);
+            this.textBox6.Size = new System.Drawing.Size(194, 20);
             this.textBox6.TabIndex = 2;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(92, 71);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(69, 58);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 16);
+            this.label11.Size = new System.Drawing.Size(43, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Status :";
             // 
@@ -635,20 +605,18 @@
             // 
             this.tpSPWinScaleAndDBAConsolidation.BackColor = System.Drawing.SystemColors.Control;
             this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.btnMoveDbaToScale);
-            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 25);
-            this.tpSPWinScaleAndDBAConsolidation.Margin = new System.Windows.Forms.Padding(4);
+            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 40);
             this.tpSPWinScaleAndDBAConsolidation.Name = "tpSPWinScaleAndDBAConsolidation";
-            this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(873, 402);
+            this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(653, 306);
             this.tpSPWinScaleAndDBAConsolidation.TabIndex = 6;
             this.tpSPWinScaleAndDBAConsolidation.Text = "SPWin Scale ve DBA Birleştirme";
             // 
             // btnMoveDbaToScale
             // 
-            this.btnMoveDbaToScale.Location = new System.Drawing.Point(215, 153);
-            this.btnMoveDbaToScale.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMoveDbaToScale.Location = new System.Drawing.Point(161, 124);
             this.btnMoveDbaToScale.Name = "btnMoveDbaToScale";
-            this.btnMoveDbaToScale.Size = new System.Drawing.Size(384, 59);
+            this.btnMoveDbaToScale.Size = new System.Drawing.Size(288, 48);
             this.btnMoveDbaToScale.TabIndex = 0;
             this.btnMoveDbaToScale.Text = "Eski Versiyondaki DBA Verilerini Yeni Versiyona Taşı";
             this.btnMoveDbaToScale.UseVisualStyleBackColor = true;
@@ -660,10 +628,11 @@
             this.tpTablolar.Controls.Add(this.addCbxtable);
             this.tpTablolar.Controls.Add(this.btngoster);
             this.tpTablolar.Controls.Add(this.dataGV1);
-            this.tpTablolar.Location = new System.Drawing.Point(4, 25);
+            this.tpTablolar.Location = new System.Drawing.Point(4, 40);
+            this.tpTablolar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tpTablolar.Name = "tpTablolar";
-            this.tpTablolar.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTablolar.Size = new System.Drawing.Size(873, 402);
+            this.tpTablolar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpTablolar.Size = new System.Drawing.Size(653, 306);
             this.tpTablolar.TabIndex = 8;
             this.tpTablolar.Text = "Tablolar";
             this.tpTablolar.UseVisualStyleBackColor = true;
@@ -672,17 +641,19 @@
             // 
             this.checkedListBox1.CheckOnClick = true;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(6, 40);
+            this.checkedListBox1.Location = new System.Drawing.Point(4, 32);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(147, 293);
+            this.checkedListBox1.Size = new System.Drawing.Size(111, 229);
             this.checkedListBox1.TabIndex = 20;
             // 
             // addCbxtable
             // 
             this.addCbxtable.FormattingEnabled = true;
-            this.addCbxtable.Location = new System.Drawing.Point(6, 6);
+            this.addCbxtable.Location = new System.Drawing.Point(4, 5);
+            this.addCbxtable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addCbxtable.Name = "addCbxtable";
-            this.addCbxtable.Size = new System.Drawing.Size(147, 24);
+            this.addCbxtable.Size = new System.Drawing.Size(111, 21);
             this.addCbxtable.TabIndex = 11;
             this.addCbxtable.Text = "Tablolar";
             this.addCbxtable.SelectedValueChanged += new System.EventHandler(this.AddCbxtable_SelectedValueChanged);
@@ -691,9 +662,10 @@
             // btngoster
             // 
             this.btngoster.Enabled = false;
-            this.btngoster.Location = new System.Drawing.Point(6, 339);
+            this.btngoster.Location = new System.Drawing.Point(4, 275);
+            this.btngoster.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btngoster.Name = "btngoster";
-            this.btngoster.Size = new System.Drawing.Size(147, 54);
+            this.btngoster.Size = new System.Drawing.Size(110, 44);
             this.btngoster.TabIndex = 1;
             this.btngoster.Text = "göster";
             this.btngoster.UseVisualStyleBackColor = true;
@@ -705,12 +677,13 @@
             this.dataGV1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGV1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGV1.Location = new System.Drawing.Point(159, 3);
+            this.dataGV1.Location = new System.Drawing.Point(118, 2);
+            this.dataGV1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGV1.Name = "dataGV1";
             this.dataGV1.ReadOnly = true;
             this.dataGV1.RowHeadersWidth = 51;
             this.dataGV1.RowTemplate.Height = 24;
-            this.dataGV1.Size = new System.Drawing.Size(711, 396);
+            this.dataGV1.Size = new System.Drawing.Size(533, 302);
             this.dataGV1.TabIndex = 0;
             // 
             // tpQuary
@@ -723,10 +696,11 @@
             this.tpQuary.Controls.Add(this.btnQuaryClear);
             this.tpQuary.Controls.Add(this.btnQuarySave);
             this.tpQuary.Controls.Add(this.tbxQuary);
-            this.tpQuary.Location = new System.Drawing.Point(4, 25);
+            this.tpQuary.Location = new System.Drawing.Point(4, 40);
+            this.tpQuary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tpQuary.Name = "tpQuary";
-            this.tpQuary.Padding = new System.Windows.Forms.Padding(3);
-            this.tpQuary.Size = new System.Drawing.Size(873, 402);
+            this.tpQuary.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpQuary.Size = new System.Drawing.Size(653, 306);
             this.tpQuary.TabIndex = 9;
             this.tpQuary.Text = "Quary.sql";
             this.tpQuary.UseVisualStyleBackColor = true;
@@ -735,9 +709,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(175, 368);
+            this.label7.Location = new System.Drawing.Point(131, 299);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 20);
+            this.label7.Size = new System.Drawing.Size(103, 17);
             this.label7.TabIndex = 8;
             this.label7.Text = "Kayıt Konumu :";
             // 
@@ -745,33 +720,33 @@
             // 
             this.lblQuaryName.AutoSize = true;
             this.lblQuaryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblQuaryName.Location = new System.Drawing.Point(6, 6);
+            this.lblQuaryName.Location = new System.Drawing.Point(4, 5);
+            this.lblQuaryName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQuaryName.Name = "lblQuaryName";
-            this.lblQuaryName.Size = new System.Drawing.Size(153, 20);
+            this.lblQuaryName.Size = new System.Drawing.Size(127, 17);
             this.lblQuaryName.TabIndex = 7;
             this.lblQuaryName.Text = "Quary Dosya ismi :";
             // 
             // tbxQuaryName
             // 
-            this.tbxQuaryName.Location = new System.Drawing.Point(180, 6);
+            this.tbxQuaryName.Location = new System.Drawing.Point(135, 5);
+            this.tbxQuaryName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxQuaryName.Name = "tbxQuaryName";
-            this.tbxQuaryName.Size = new System.Drawing.Size(687, 22);
+            this.tbxQuaryName.Size = new System.Drawing.Size(516, 20);
             this.tbxQuaryName.TabIndex = 6;
             // 
             // tbxQuarySaveLoc
             // 
-            this.tbxQuarySaveLoc.Location = new System.Drawing.Point(313, 366);
-            this.tbxQuarySaveLoc.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxQuarySaveLoc.Location = new System.Drawing.Point(235, 297);
             this.tbxQuarySaveLoc.Name = "tbxQuarySaveLoc";
-            this.tbxQuarySaveLoc.Size = new System.Drawing.Size(299, 22);
+            this.tbxQuarySaveLoc.Size = new System.Drawing.Size(225, 20);
             this.tbxQuarySaveLoc.TabIndex = 5;
             // 
             // btnloc
             // 
-            this.btnloc.Location = new System.Drawing.Point(620, 357);
-            this.btnloc.Margin = new System.Windows.Forms.Padding(4);
+            this.btnloc.Location = new System.Drawing.Point(465, 290);
             this.btnloc.Name = "btnloc";
-            this.btnloc.Size = new System.Drawing.Size(120, 40);
+            this.btnloc.Size = new System.Drawing.Size(90, 32);
             this.btnloc.TabIndex = 4;
             this.btnloc.Text = "Konum Seçiniz";
             this.btnloc.UseVisualStyleBackColor = true;
@@ -779,9 +754,10 @@
             // 
             // btnQuaryClear
             // 
-            this.btnQuaryClear.Location = new System.Drawing.Point(6, 353);
+            this.btnQuaryClear.Location = new System.Drawing.Point(4, 287);
+            this.btnQuaryClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnQuaryClear.Name = "btnQuaryClear";
-            this.btnQuaryClear.Size = new System.Drawing.Size(120, 40);
+            this.btnQuaryClear.Size = new System.Drawing.Size(90, 32);
             this.btnQuaryClear.TabIndex = 3;
             this.btnQuaryClear.Text = "Temizle";
             this.btnQuaryClear.UseVisualStyleBackColor = true;
@@ -789,9 +765,10 @@
             // 
             // btnQuarySave
             // 
-            this.btnQuarySave.Location = new System.Drawing.Point(747, 356);
+            this.btnQuarySave.Location = new System.Drawing.Point(560, 289);
+            this.btnQuarySave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnQuarySave.Name = "btnQuarySave";
-            this.btnQuarySave.Size = new System.Drawing.Size(120, 40);
+            this.btnQuarySave.Size = new System.Drawing.Size(90, 32);
             this.btnQuarySave.TabIndex = 2;
             this.btnQuarySave.Text = "Quary Kaydet";
             this.btnQuarySave.UseVisualStyleBackColor = true;
@@ -799,19 +776,21 @@
             // 
             // tbxQuary
             // 
-            this.tbxQuary.Location = new System.Drawing.Point(6, 34);
+            this.tbxQuary.Location = new System.Drawing.Point(4, 28);
+            this.tbxQuary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxQuary.Name = "tbxQuary";
-            this.tbxQuary.Size = new System.Drawing.Size(861, 316);
+            this.tbxQuary.Size = new System.Drawing.Size(647, 258);
             this.tbxQuary.TabIndex = 1;
             this.tbxQuary.Text = "";
             // 
             // tbSorgu
             // 
             this.tbSorgu.Controls.Add(this.panel1);
-            this.tbSorgu.Location = new System.Drawing.Point(4, 25);
+            this.tbSorgu.Location = new System.Drawing.Point(4, 40);
+            this.tbSorgu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbSorgu.Name = "tbSorgu";
-            this.tbSorgu.Padding = new System.Windows.Forms.Padding(3);
-            this.tbSorgu.Size = new System.Drawing.Size(873, 402);
+            this.tbSorgu.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSorgu.Size = new System.Drawing.Size(653, 306);
             this.tbSorgu.TabIndex = 10;
             this.tbSorgu.Text = "Sorgu";
             this.tbSorgu.UseVisualStyleBackColor = true;
@@ -822,23 +801,26 @@
             this.panel1.Controls.Add(this.btnTemizle);
             this.panel1.Controls.Add(this.btnSorgula);
             this.panel1.Controls.Add(this.rtbSorgula);
-            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Location = new System.Drawing.Point(4, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(861, 390);
+            this.panel1.Size = new System.Drawing.Size(646, 317);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(3, 80);
+            this.panel2.Location = new System.Drawing.Point(2, 65);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(852, 307);
+            this.panel2.Size = new System.Drawing.Size(639, 249);
             this.panel2.TabIndex = 4;
             // 
             // btnTemizle
             // 
-            this.btnTemizle.Location = new System.Drawing.Point(695, 44);
+            this.btnTemizle.Location = new System.Drawing.Point(521, 36);
+            this.btnTemizle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(160, 30);
+            this.btnTemizle.Size = new System.Drawing.Size(120, 24);
             this.btnTemizle.TabIndex = 3;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = true;
@@ -846,9 +828,10 @@
             // 
             // btnSorgula
             // 
-            this.btnSorgula.Location = new System.Drawing.Point(695, 0);
+            this.btnSorgula.Location = new System.Drawing.Point(521, 0);
+            this.btnSorgula.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSorgula.Name = "btnSorgula";
-            this.btnSorgula.Size = new System.Drawing.Size(160, 30);
+            this.btnSorgula.Size = new System.Drawing.Size(120, 24);
             this.btnSorgula.TabIndex = 2;
             this.btnSorgula.Text = "Sorgula";
             this.btnSorgula.UseVisualStyleBackColor = true;
@@ -857,8 +840,9 @@
             // rtbSorgula
             // 
             this.rtbSorgula.Location = new System.Drawing.Point(0, 0);
+            this.rtbSorgula.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbSorgula.Name = "rtbSorgula";
-            this.rtbSorgula.Size = new System.Drawing.Size(689, 74);
+            this.rtbSorgula.Size = new System.Drawing.Size(518, 61);
             this.rtbSorgula.TabIndex = 1;
             this.rtbSorgula.Text = "";
             // 
@@ -877,11 +861,9 @@
             this.groupBox4.Controls.Add(this.lblUser);
             this.groupBox4.Controls.Add(this.CBServers);
             this.groupBox4.Controls.Add(this.txtPassword);
-            this.groupBox4.Location = new System.Drawing.Point(173, 40);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Location = new System.Drawing.Point(130, 32);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(560, 266);
+            this.groupBox4.Size = new System.Drawing.Size(420, 216);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "SQL Server Bağlantı Ayarları";
@@ -889,19 +871,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 103);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(3, 84);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 16);
+            this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Veritabanı Adı :";
             // 
             // btnFindDbUsers
             // 
-            this.btnFindDbUsers.Location = new System.Drawing.Point(407, 132);
-            this.btnFindDbUsers.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFindDbUsers.Location = new System.Drawing.Point(305, 107);
             this.btnFindDbUsers.Name = "btnFindDbUsers";
-            this.btnFindDbUsers.Size = new System.Drawing.Size(145, 26);
+            this.btnFindDbUsers.Size = new System.Drawing.Size(109, 21);
             this.btnFindDbUsers.TabIndex = 10;
             this.btnFindDbUsers.Text = "Kullanıcıları Listele";
             this.btnFindDbUsers.UseVisualStyleBackColor = true;
@@ -911,19 +891,17 @@
             // 
             this.cbxUsername.Enabled = false;
             this.cbxUsername.FormattingEnabled = true;
-            this.cbxUsername.Location = new System.Drawing.Point(116, 130);
-            this.cbxUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxUsername.Location = new System.Drawing.Point(87, 106);
             this.cbxUsername.Name = "cbxUsername";
-            this.cbxUsername.Size = new System.Drawing.Size(281, 24);
+            this.cbxUsername.Size = new System.Drawing.Size(212, 21);
             this.cbxUsername.TabIndex = 8;
             this.cbxUsername.TextChanged += new System.EventHandler(this.cbxUsername_TextChanged);
             // 
             // btnDatabaseList
             // 
-            this.btnDatabaseList.Location = new System.Drawing.Point(407, 98);
-            this.btnDatabaseList.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDatabaseList.Location = new System.Drawing.Point(305, 80);
             this.btnDatabaseList.Name = "btnDatabaseList";
-            this.btnDatabaseList.Size = new System.Drawing.Size(145, 26);
+            this.btnDatabaseList.Size = new System.Drawing.Size(109, 21);
             this.btnDatabaseList.TabIndex = 8;
             this.btnDatabaseList.Text = "Veritabanı Listele";
             this.btnDatabaseList.UseVisualStyleBackColor = true;
@@ -934,20 +912,18 @@
             this.cbxDbName.FormattingEnabled = true;
             this.cbxDbName.Items.AddRange(new object[] {
             "DenemeEsit"});
-            this.cbxDbName.Location = new System.Drawing.Point(116, 98);
-            this.cbxDbName.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxDbName.Location = new System.Drawing.Point(87, 80);
             this.cbxDbName.Name = "cbxDbName";
-            this.cbxDbName.Size = new System.Drawing.Size(281, 24);
+            this.cbxDbName.Size = new System.Drawing.Size(212, 21);
             this.cbxDbName.TabIndex = 7;
             this.cbxDbName.Text = "SPWIN_DB";
             this.cbxDbName.TextChanged += new System.EventHandler(this.cbxDbName_TextChanged);
             // 
             // btnSQLServerList
             // 
-            this.btnSQLServerList.Location = new System.Drawing.Point(409, 37);
-            this.btnSQLServerList.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSQLServerList.Location = new System.Drawing.Point(307, 30);
             this.btnSQLServerList.Name = "btnSQLServerList";
-            this.btnSQLServerList.Size = new System.Drawing.Size(143, 26);
+            this.btnSQLServerList.Size = new System.Drawing.Size(107, 21);
             this.btnSQLServerList.TabIndex = 6;
             this.btnSQLServerList.Text = "SQL Server Listele";
             this.btnSQLServerList.UseVisualStyleBackColor = true;
@@ -956,10 +932,9 @@
             // lblServer
             // 
             this.lblServer.AutoSize = true;
-            this.lblServer.Location = new System.Drawing.Point(49, 41);
-            this.lblServer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblServer.Location = new System.Drawing.Point(37, 33);
             this.lblServer.Name = "lblServer";
-            this.lblServer.Size = new System.Drawing.Size(53, 16);
+            this.lblServer.Size = new System.Drawing.Size(44, 13);
             this.lblServer.TabIndex = 5;
             this.lblServer.Text = "Server :";
             // 
@@ -968,10 +943,9 @@
             this.CbWindowsAuthentication.AutoSize = true;
             this.CbWindowsAuthentication.Checked = true;
             this.CbWindowsAuthentication.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbWindowsAuthentication.Location = new System.Drawing.Point(116, 70);
-            this.CbWindowsAuthentication.Margin = new System.Windows.Forms.Padding(4);
+            this.CbWindowsAuthentication.Location = new System.Drawing.Point(87, 57);
             this.CbWindowsAuthentication.Name = "CbWindowsAuthentication";
-            this.CbWindowsAuthentication.Size = new System.Drawing.Size(170, 20);
+            this.CbWindowsAuthentication.Size = new System.Drawing.Size(141, 17);
             this.CbWindowsAuthentication.TabIndex = 4;
             this.CbWindowsAuthentication.Text = "Windows Authentication";
             this.CbWindowsAuthentication.UseVisualStyleBackColor = true;
@@ -979,10 +953,9 @@
             // 
             // btnConnectionTest
             // 
-            this.btnConnectionTest.Location = new System.Drawing.Point(116, 192);
-            this.btnConnectionTest.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConnectionTest.Location = new System.Drawing.Point(87, 156);
             this.btnConnectionTest.Name = "btnConnectionTest";
-            this.btnConnectionTest.Size = new System.Drawing.Size(285, 37);
+            this.btnConnectionTest.Size = new System.Drawing.Size(214, 30);
             this.btnConnectionTest.TabIndex = 3;
             this.btnConnectionTest.Text = "Bağlan";
             this.btnConnectionTest.UseVisualStyleBackColor = true;
@@ -992,10 +965,9 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Enabled = false;
-            this.lblPassword.Location = new System.Drawing.Point(63, 171);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPassword.Location = new System.Drawing.Point(47, 139);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(40, 16);
+            this.lblPassword.Size = new System.Drawing.Size(34, 13);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Şifre :";
             // 
@@ -1003,10 +975,9 @@
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Enabled = false;
-            this.lblUser.Location = new System.Drawing.Point(15, 135);
-            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUser.Location = new System.Drawing.Point(11, 110);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(85, 16);
+            this.lblUser.Size = new System.Drawing.Size(70, 13);
             this.lblUser.TabIndex = 1;
             this.lblUser.Text = "Kullanıcı Adı :";
             // 
@@ -1015,10 +986,9 @@
             this.CBServers.FormattingEnabled = true;
             this.CBServers.Items.AddRange(new object[] {
             "JOSEPH_GRCN"});
-            this.CBServers.Location = new System.Drawing.Point(116, 37);
-            this.CBServers.Margin = new System.Windows.Forms.Padding(4);
+            this.CBServers.Location = new System.Drawing.Point(87, 30);
             this.CBServers.Name = "CBServers";
-            this.CBServers.Size = new System.Drawing.Size(284, 24);
+            this.CBServers.Size = new System.Drawing.Size(214, 21);
             this.CBServers.TabIndex = 0;
             this.CBServers.Text = ".\\SQLEXPRESS";
             this.CBServers.TextChanged += new System.EventHandler(this.CBServers_TextChanged);
@@ -1026,11 +996,10 @@
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(116, 162);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Location = new System.Drawing.Point(87, 132);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(281, 22);
+            this.txtPassword.Size = new System.Drawing.Size(212, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
@@ -1042,29 +1011,52 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(887, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(665, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.aboutToolStripMenuItem.Text = "Hakkında";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // esitUserEkle
+            // 
+            this.esitUserEkle.Controls.Add(this.btnEsitUserEkle);
+            this.esitUserEkle.Location = new System.Drawing.Point(4, 40);
+            this.esitUserEkle.Name = "esitUserEkle";
+            this.esitUserEkle.Padding = new System.Windows.Forms.Padding(3);
+            this.esitUserEkle.Size = new System.Drawing.Size(653, 306);
+            this.esitUserEkle.TabIndex = 11;
+            this.esitUserEkle.Text = "Esit-User Ekle";
+            this.esitUserEkle.UseVisualStyleBackColor = true;
+            // 
+            // btnEsitUserEkle
+            // 
+            this.btnEsitUserEkle.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnEsitUserEkle.ForeColor = System.Drawing.Color.White;
+            this.btnEsitUserEkle.Location = new System.Drawing.Point(210, 109);
+            this.btnEsitUserEkle.Name = "btnEsitUserEkle";
+            this.btnEsitUserEkle.Size = new System.Drawing.Size(214, 80);
+            this.btnEsitUserEkle.TabIndex = 0;
+            this.btnEsitUserEkle.Text = "Esit-User Ekle";
+            this.btnEsitUserEkle.UseVisualStyleBackColor = false;
+            this.btnEsitUserEkle.Click += new System.EventHandler(this.btnEsitUserEkle_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 752);
+            this.ClientSize = new System.Drawing.Size(665, 611);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControlProcessHeaders);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1098,6 +1090,7 @@
             this.groupBox4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.esitUserEkle.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1187,6 +1180,8 @@
         private System.Windows.Forms.DateTimePicker dtpFinish;
         private System.Windows.Forms.Label lblDateStart;
         private System.Windows.Forms.Label lblDateFinish;
+        private System.Windows.Forms.TabPage esitUserEkle;
+        private System.Windows.Forms.Button btnEsitUserEkle;
     }
 }
 

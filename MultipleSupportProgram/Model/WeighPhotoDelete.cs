@@ -27,7 +27,7 @@ namespace MultipleSupportProgram.Model
 
                     if (time1 == "" && time2 == "")
                     {
-                        // bütün veritabanında işlem yapıyor
+                        // bütün veritabanında tüm tarihlerde işlem yapıyor
                         switch (radioButtonName)
                         {
                             case "rbOneAndTwoPhoto":

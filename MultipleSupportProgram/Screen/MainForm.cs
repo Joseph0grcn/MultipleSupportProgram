@@ -657,5 +657,16 @@ namespace MultipleSupportProgram
             dtpStart.Visible = false;
             dtpFinish.Visible = false;
         }
+
+        private void btnEsitUserEkle_Click(object sender, EventArgs e)
+        {
+            btnEsitUserEkle.Enabled = false;
+            waitForm.Show(this);
+            Thread.Sleep(100);
+            conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+
+            sqlFileRun.EsitUserAdd(conString);
+            btnEsitUserEkle.Enabled = true;
+        }
     }
 }
