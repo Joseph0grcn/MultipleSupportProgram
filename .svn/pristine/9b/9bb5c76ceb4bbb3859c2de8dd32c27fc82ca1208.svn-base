@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace MultipleSupportProgram.Model
+{
+    public class WeighPhotoDelete
+    {
+        public log4net.ILog logger = log4net.LogManager.GetLogger("WeighPhotoDelete");
+        public void PhotoDelete(string getConString,RadioButton radioButton) 
+        {
+            string commandStr = "";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(getConString))
+                {
+                    con.Open();
+                    switch (radioButton.Name)
+                    {
+                        case "rbJustOnePhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL WHERE seqnum2=0";
+                            break;
+
+                        case "rbOneAndTwoPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL";
+                            break;
+
+                        case "rbInTheFolderPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL";
+                            break;
+
+                        case "rbAllPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL, imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL";
+                            break;
+                    }
+                    SqlCommand command = new SqlCommand(commandStr, con);
+                    bool result = Convert.ToBoolean(command.ExecuteNonQuery());
+                    con.Close();
+                    if (result)
+                    {
+                        logger.Debug("Tartım fotoğrafı silme işlemi başarıyla gerçekleşti.");
+                        MessageBox.Show("Tartım fotoğrafı silme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Tartım fotoğrafı silme işlemi başarısız. : " + ex.Message);
+                MessageBox.Show("HATA : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+    }
+}
