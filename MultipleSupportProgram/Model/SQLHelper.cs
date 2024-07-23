@@ -26,29 +26,6 @@ namespace MultipleSupportProgram.Model
 
         public static bool windowsAuthentication = false;
 
-        public static SqlCommand SqlCmd(string quary, SqlConnection connection)
-        {
-            //
-            return null;
-        }
-        public static SqlConnection ConnectionOpenClose(String action)
-        {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                if (action == "open" || action == "Open")
-                {
-                    con.Open();
-                    logger.Debug("Bağlantı başarılı bir şekilde açıldı");
-                }
-                else if (action == "close" || action == "Close")
-                {
-                    con.Close();
-                    logger.Debug("Bağlantı başarılı bir şekilde kapatıldı");
-                }
-                return con;
-            }
-        }
-
         public static bool ExecuteNonQueryScript(string sqlScript)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -59,7 +36,7 @@ namespace MultipleSupportProgram.Model
                     try
                     {
                         command.ExecuteNonQuery();
-                        Console.WriteLine("SQL script başarıyla çalıştırıldı.");
+                        logger.Debug("SQL script başarıyla çalıştırıldı.");
                         return true;
                     }
                     catch (Exception ex)
@@ -147,6 +124,73 @@ namespace MultipleSupportProgram.Model
             return null;
         }
 
+        public static string RestoreFile()
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Veritabanı Dosyası |*.bak";
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                return file.FileName;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static void RestoreDB(string databaseName, string restoreFilePath)
+        {
+            if (databaseName.Replace(" ", "").Length == 0)
+            {
+                Thread.Sleep(500);
+                MainForm.waitForm.Close();
+                Application.DoEvents();
+                MessageBox.Show("Lütfen Database adını giriniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (restoreFilePath.Replace(" ", "").Length == 0)
+            {
+                Thread.Sleep(500);
+                MainForm.waitForm.Close();
+                Application.DoEvents();
+                MessageBox.Show("Lütfen Backup dosyasını seçiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                string sqlScript = $"USE [master] ALTER DATABASE [{databaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE RESTORE DATABASE [{databaseName}] FROM  DISK =  '{restoreFilePath}' WITH  FILE = 1,  NOUNLOAD,  REPLACE,  STATS = 5 ALTER DATABASE [{databaseName}] SET MULTI_USER";
+                bool result = ExecuteNonQueryScript(sqlScript);
+                if (!result)
+                {
+                    Thread.Sleep(500);
+                    MainForm.waitForm.Close();
+                    Application.DoEvents();
+                    logger.Error("Restore işlemi başarısız! :");
+                    MessageBox.Show("Restore işlemi başarısız! :", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    MainForm.waitForm.Close();
+                    Application.DoEvents();
+                    logger.Debug("Geri yükleme işlemi başarıyla gerçekleşti.");
+                    MessageBox.Show("Geri yükleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Thread.Sleep(500);
+                MainForm.waitForm.Close();
+                Application.DoEvents();
+                logger.Error("HATA Restore işlemi başarısız!: " + ex.Message);
+                MessageBox.Show("HATA Restore işlemi başarısız! : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
 
 
 
@@ -162,13 +206,13 @@ namespace MultipleSupportProgram.Model
             password = _password;
             windowsAuthentication = _windowsAuthentication;
 
-            if (windowsAuthentication == true)
+            if (_windowsAuthentication == true)
             {
                 connectionString = "Server=" + serverName + ";Database=" + databaseName + ";Trusted_Connection=True;";
             }
             else
             {
-                connectionString = @"Server=" + serverName + "; Database=" + databaseName + "; User Id= " + userName + " ; Password=" + password + ";";
+                connectionString = @"Server="+serverName+";Database="+databaseName+";User Id="+_userName+";Password="+_password+";";
             }
         }
         public static void ConnectionTest()
@@ -179,9 +223,7 @@ namespace MultipleSupportProgram.Model
                 {
                     con.Open();
                     logger.Debug("Bağlantı başarılı bir şekilde açıldı");
-                    logger.Debug("Bağlantı Başarılı.");
                     con.Close();
-
                     logger.Debug("Bağlantı başarılı bir şekilde kapatıldı");
                 }
             }

@@ -99,11 +99,8 @@
             this.btnEsitUserEkle = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnFindDbUsers = new System.Windows.Forms.Button();
             this.cbxUsername = new System.Windows.Forms.ComboBox();
-            this.btnDatabaseList = new System.Windows.Forms.Button();
             this.cbxDbName = new System.Windows.Forms.ComboBox();
-            this.btnSQLServerList = new System.Windows.Forms.Button();
             this.lblServer = new System.Windows.Forms.Label();
             this.CbWindowsAuthentication = new System.Windows.Forms.CheckBox();
             this.btnConnectionTest = new System.Windows.Forms.Button();
@@ -872,11 +869,8 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.btnFindDbUsers);
             this.groupBox4.Controls.Add(this.cbxUsername);
-            this.groupBox4.Controls.Add(this.btnDatabaseList);
             this.groupBox4.Controls.Add(this.cbxDbName);
-            this.groupBox4.Controls.Add(this.btnSQLServerList);
             this.groupBox4.Controls.Add(this.lblServer);
             this.groupBox4.Controls.Add(this.CbWindowsAuthentication);
             this.groupBox4.Controls.Add(this.btnConnectionTest);
@@ -900,16 +894,6 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Veritabanı Adı :";
             // 
-            // btnFindDbUsers
-            // 
-            this.btnFindDbUsers.Location = new System.Drawing.Point(305, 107);
-            this.btnFindDbUsers.Name = "btnFindDbUsers";
-            this.btnFindDbUsers.Size = new System.Drawing.Size(109, 21);
-            this.btnFindDbUsers.TabIndex = 10;
-            this.btnFindDbUsers.Text = "Kullanıcıları Listele";
-            this.btnFindDbUsers.UseVisualStyleBackColor = true;
-            this.btnFindDbUsers.Click += new System.EventHandler(this.BtnFindDbUsers_Click);
-            // 
             // cbxUsername
             // 
             this.cbxUsername.Enabled = false;
@@ -918,39 +902,19 @@
             this.cbxUsername.Name = "cbxUsername";
             this.cbxUsername.Size = new System.Drawing.Size(212, 21);
             this.cbxUsername.TabIndex = 8;
+            this.cbxUsername.DropDown += new System.EventHandler(this.cbxUsername_DropDown);
             this.cbxUsername.TextChanged += new System.EventHandler(this.cbxUsername_TextChanged);
-            // 
-            // btnDatabaseList
-            // 
-            this.btnDatabaseList.Location = new System.Drawing.Point(305, 80);
-            this.btnDatabaseList.Name = "btnDatabaseList";
-            this.btnDatabaseList.Size = new System.Drawing.Size(109, 21);
-            this.btnDatabaseList.TabIndex = 8;
-            this.btnDatabaseList.Text = "Veritabanı Listele";
-            this.btnDatabaseList.UseVisualStyleBackColor = true;
-            this.btnDatabaseList.Click += new System.EventHandler(this.BtnDatabaseList_Click);
             // 
             // cbxDbName
             // 
+            this.cbxDbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDbName.FormattingEnabled = true;
-            this.cbxDbName.Items.AddRange(new object[] {
-            "DenemeEsit"});
             this.cbxDbName.Location = new System.Drawing.Point(87, 80);
             this.cbxDbName.Name = "cbxDbName";
             this.cbxDbName.Size = new System.Drawing.Size(212, 21);
             this.cbxDbName.TabIndex = 7;
-            this.cbxDbName.Text = "SPWIN_DB";
+            this.cbxDbName.DropDown += new System.EventHandler(this.cbxDbName_DropDown);
             this.cbxDbName.TextChanged += new System.EventHandler(this.cbxDbName_TextChanged);
-            // 
-            // btnSQLServerList
-            // 
-            this.btnSQLServerList.Location = new System.Drawing.Point(307, 30);
-            this.btnSQLServerList.Name = "btnSQLServerList";
-            this.btnSQLServerList.Size = new System.Drawing.Size(107, 21);
-            this.btnSQLServerList.TabIndex = 6;
-            this.btnSQLServerList.Text = "SQL Server Listele";
-            this.btnSQLServerList.UseVisualStyleBackColor = true;
-            this.btnSQLServerList.Click += new System.EventHandler(this.BtnSQLServerList_Click);
             // 
             // lblServer
             // 
@@ -1006,14 +970,12 @@
             // 
             // CBServers
             // 
+            this.CBServers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBServers.FormattingEnabled = true;
-            this.CBServers.Items.AddRange(new object[] {
-            "JOSEPH_GRCN"});
             this.CBServers.Location = new System.Drawing.Point(87, 30);
             this.CBServers.Name = "CBServers";
             this.CBServers.Size = new System.Drawing.Size(214, 21);
             this.CBServers.TabIndex = 0;
-            this.CBServers.Text = ".\\SQLEXPRESS";
             this.CBServers.DropDown += new System.EventHandler(this.CBServers_DropDown);
             this.CBServers.TextChanged += new System.EventHandler(this.CBServers_TextChanged);
             // 
@@ -1130,7 +1092,6 @@
         private System.Windows.Forms.Button btnSQLFileSelect;
         private System.Windows.Forms.TextBox txtSQLFile;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnSQLServerList;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnWeighPhotoDelete;
         private System.Windows.Forms.RadioButton rbAllPhoto;
@@ -1146,13 +1107,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnMoveDbaToScale;
         private System.Windows.Forms.ComboBox cbxDbName;
-        private System.Windows.Forms.Button btnDatabaseList;
         private System.Windows.Forms.ComboBox cbxDbNameBackup;
         private System.Windows.Forms.ComboBox cbxDbNameRestore;
         private System.Windows.Forms.ComboBox cbxDbNameRepair;
         private System.Windows.Forms.ComboBox cbxUsername;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnFindDbUsers;
         private System.Windows.Forms.TabPage tpTablolar;
         private System.Windows.Forms.Button btngoster;
         public System.Windows.Forms.DataGridView dataGV1;

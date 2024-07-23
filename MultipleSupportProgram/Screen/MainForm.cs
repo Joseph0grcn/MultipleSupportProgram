@@ -35,8 +35,8 @@ namespace MultipleSupportProgram
             
         }
         public DatabaseProcess databaseProcess = new DatabaseProcess();
-        public Restore restoreDb = new Restore();
-        public Backup backupDb = new Backup();
+        
+        
         public SQLFileRun sqlFileRun = new SQLFileRun();
         public WeighPhotoDelete weighPhotoDelete = new WeighPhotoDelete();
         public UpdateDbaToScale updateDbaToScale = new UpdateDbaToScale();
@@ -58,7 +58,7 @@ namespace MultipleSupportProgram
             {
                 btnConnectionTest.Enabled = false;
                 waitForm.Show(this);
-                SQLHelper.LoadConnectionString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+                SQLHelper.LoadConnectionString(CbWindowsAuthentication.Checked, CBServers.Text, cbxDbName.Text, cbxUsername.Text, txtPassword.Text);
                 SQLHelper.ConnectionTest();
                 waitForm.Close();
                 MessageBox.Show("Bağlantı Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -81,15 +81,12 @@ namespace MultipleSupportProgram
 
         private void BtnRestore_Click(object sender, EventArgs e)
         {
-            
-            
             try
             {
                 btnRestore.Enabled = false;
                 waitForm.Show(this);
                 Application.DoEvents();
-                restoreDb.RestoreDB(cbxDbNameRestore.Text, txtRestorePath.Text, conString);
-
+                SQLHelper.RestoreDB(cbxDbNameRestore.Text, txtRestorePath.Text);
                 btnRestore.Enabled = true;
             }
             catch (Exception ex)
@@ -104,7 +101,7 @@ namespace MultipleSupportProgram
 
         private void BtnRestoreFile_Click(object sender, EventArgs e)
         {
-            txtRestorePath.Text = restoreDb.RestoreFile();
+            txtRestorePath.Text = SQLHelper.RestoreFile();
         }
 
         private void CbWindowsAuthentication_CheckedChanged(object sender, EventArgs e)
@@ -174,71 +171,7 @@ namespace MultipleSupportProgram
             ComboBox[] comboBoxDatabase = { cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore };
             return comboBoxDatabase;
         }
-        private void BtnSQLServerList_Click(object sender, EventArgs e)
-        {
-            btnSQLServerList.Enabled = false;
-            
-            waitForm.Show(this);
-
-            Thread.Sleep(500);
-            
-
-            try
-            {
-                SQLHelper.GetSQLServerList(CBServers); //dataçekilir
-
-                waitForm.Close();
-                Application.DoEvents();
-                MessageBox.Show("SQL Server Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Thread.Sleep(500);
-
-            }
-            catch (Exception ex)
-            {
-                waitForm.Close();
-                Thread.Sleep(500);
-                Application.DoEvents();
-                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                btnSQLServerList.Enabled = true;
-            }
-        }
-        private void BtnDatabaseList_Click(object sender, EventArgs e)
-        {
-            btnDatabaseList.Enabled = false;
-            conString = SQLHelper.GetConnectionString();
-
-            //if (cbxDbName.Items.Count == 0) { databaseProcess.GetSQLDatabaseList(conString, DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore)); }
-            waitForm.Show(this);
-            Thread.Sleep(500);
-            try
-            {
-                //databaseProcess.GetSQLDatabaseList(conString, DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore), CBServers.Text);
-                SQLHelper.GetSQLDatabaseList(DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore), CBServers.Text);
-
-
-                waitForm.Close();
-                Application.DoEvents();
-                MessageBox.Show("Database Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Thread.Sleep(500);
-            }
-            catch (Exception ex)
-            {
-                Thread.Sleep(500);
-                waitForm.Close();
-                Application.DoEvents();
-
-                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Thread.Sleep(500);
-            }
-            finally
-            {
-                btnDatabaseList.Enabled = true;
-            }
-        }
+       
         private void BtnWeighPhotoDelete_Click(object sender, EventArgs e)
         {
             btnWeighPhotoDelete.Enabled = false;
@@ -341,41 +274,7 @@ namespace MultipleSupportProgram
             Application.DoEvents();
             MainForm.waitForm.Close();
         }
-        private void BtnFindDbUsers_Click(object sender, EventArgs e)
-        {
-            btnFindDbUsers.Enabled = false;
-            if (CbWindowsAuthentication.Checked == false) { CbWindowsAuthentication.Checked = true; }
-            try
-            {
-                waitForm.Show(this);
-                Thread.Sleep(500);
-                SQLHelper.FindDbUsers(cbxUsername, cbxDbName.Text, CBServers.Text); 
-                
-                Application.DoEvents();
-                
-                waitForm.Close();
-                Thread.Sleep(500);
-                Application.DoEvents();
-                MessageBox.Show("Kullanıcı listeleme başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.DoEvents();
-                btnFindDbUsers.Enabled = true;
-                CbWindowsAuthentication.Checked = false;
-
-                Thread.Sleep(500);
-            }
-            catch (Exception ex)
-            {
-                Thread.Sleep(500);
-                waitForm.Close();
-                Application.DoEvents();
-                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnFindDbUsers.Enabled = true;
-                //CbWindowsAuthentication.Checked = false;
-
-            }
-            
-            //if (cbxUsername.Items.Count == 0) { databaseProcess.FindDbUsers(cbxUsername, conString); }
-        }
+        
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -438,7 +337,7 @@ namespace MultipleSupportProgram
                 waitForm.Close();
                 Application.DoEvents();
                 MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnFindDbUsers.Enabled = true;
+                
 
             }
 
@@ -566,7 +465,7 @@ namespace MultipleSupportProgram
                 waitForm.Close();
                 Application.DoEvents();
                 MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnFindDbUsers.Enabled = true;
+                
             }
 
         }
@@ -601,7 +500,7 @@ namespace MultipleSupportProgram
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnFindDbUsers.Enabled = true;
+                
             }
         }
 
@@ -670,15 +569,71 @@ namespace MultipleSupportProgram
 
         private void CBServers_DropDown(object sender, EventArgs e)
         {
-            try
+            if (CBServers.Items.Count == 0)
             {
-                SQLHelper.GetSQLServerList(CBServers); //dataçekilir
-                MessageBox.Show("SQL Server Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    SQLHelper.GetSQLServerList(CBServers); //dataçekilir
+                    MessageBox.Show("SQL Server Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    Application.DoEvents();
+                    MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
+            
+        }
+
+        private void cbxDbName_DropDown(object sender, EventArgs e)
+        {
+            if (cbxDbName.Items.Count == 0)
             {
-                Application.DoEvents();
-                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    SQLHelper.GetSQLDatabaseList(DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore), CBServers.Text);
+                    MessageBox.Show("Database Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+        }
+
+        private void cbxUsername_DropDown(object sender, EventArgs e)
+        {
+            if (cbxUsername.Items.Count == 0)
+            {
+                try
+                {
+                    waitForm.Show(this);
+                    Thread.Sleep(500);
+                    SQLHelper.FindDbUsers(cbxUsername, cbxDbName.Text, CBServers.Text);
+
+                    Application.DoEvents();
+
+                    waitForm.Close();
+                    Thread.Sleep(500);
+                    Application.DoEvents();
+                    MessageBox.Show("Kullanıcı listeleme başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.DoEvents();
+
+                    CbWindowsAuthentication.Checked = false;
+
+                    Thread.Sleep(500);
+                }
+                catch (Exception ex)
+                {
+                    Thread.Sleep(500);
+                    waitForm.Close();
+                    Application.DoEvents();
+                    MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    //CbWindowsAuthentication.Checked = false;
+
+                }
             }
         }
     }
