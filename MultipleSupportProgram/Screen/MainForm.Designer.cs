@@ -77,7 +77,7 @@
             this.btnMoveDbaToScale = new System.Windows.Forms.Button();
             this.tpTablolar = new System.Windows.Forms.TabPage();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.addCbxtable = new System.Windows.Forms.ComboBox();
+            this.CbxtableList = new System.Windows.Forms.ComboBox();
             this.btngoster = new System.Windows.Forms.Button();
             this.dataGV1 = new System.Windows.Forms.DataGridView();
             this.tpQuary = new System.Windows.Forms.TabPage();
@@ -622,7 +622,7 @@
             // tpTablolar
             // 
             this.tpTablolar.Controls.Add(this.checkedListBox1);
-            this.tpTablolar.Controls.Add(this.addCbxtable);
+            this.tpTablolar.Controls.Add(this.CbxtableList);
             this.tpTablolar.Controls.Add(this.btngoster);
             this.tpTablolar.Controls.Add(this.dataGV1);
             this.tpTablolar.Location = new System.Drawing.Point(4, 40);
@@ -644,17 +644,17 @@
             this.checkedListBox1.Size = new System.Drawing.Size(111, 229);
             this.checkedListBox1.TabIndex = 20;
             // 
-            // addCbxtable
+            // CbxtableList
             // 
-            this.addCbxtable.FormattingEnabled = true;
-            this.addCbxtable.Location = new System.Drawing.Point(4, 5);
-            this.addCbxtable.Margin = new System.Windows.Forms.Padding(2);
-            this.addCbxtable.Name = "addCbxtable";
-            this.addCbxtable.Size = new System.Drawing.Size(111, 21);
-            this.addCbxtable.TabIndex = 11;
-            this.addCbxtable.Text = "Tablolar";
-            this.addCbxtable.SelectedValueChanged += new System.EventHandler(this.AddCbxtable_SelectedValueChanged);
-            this.addCbxtable.Click += new System.EventHandler(this.addCbxtable_Click);
+            this.CbxtableList.FormattingEnabled = true;
+            this.CbxtableList.Location = new System.Drawing.Point(4, 5);
+            this.CbxtableList.Margin = new System.Windows.Forms.Padding(2);
+            this.CbxtableList.Name = "CbxtableList";
+            this.CbxtableList.Size = new System.Drawing.Size(111, 21);
+            this.CbxtableList.TabIndex = 11;
+            this.CbxtableList.Text = "Tablolar";
+            this.CbxtableList.SelectedValueChanged += new System.EventHandler(this.AddCbxtable_SelectedValueChanged);
+            this.CbxtableList.Click += new System.EventHandler(this.CbxtableList_Click);
             // 
             // btngoster
             // 
@@ -896,6 +896,7 @@
             // 
             // cbxUsername
             // 
+            this.cbxUsername.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUsername.Enabled = false;
             this.cbxUsername.FormattingEnabled = true;
             this.cbxUsername.Location = new System.Drawing.Point(87, 106);
@@ -1115,7 +1116,7 @@
         private System.Windows.Forms.TabPage tpTablolar;
         private System.Windows.Forms.Button btngoster;
         public System.Windows.Forms.DataGridView dataGV1;
-        private System.Windows.Forms.ComboBox addCbxtable;
+        private System.Windows.Forms.ComboBox CbxtableList;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.TabPage tpQuary;
         private System.Windows.Forms.RichTextBox tbxQuary;

@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
 using System.Text;
@@ -101,7 +102,7 @@ namespace MultipleSupportProgram
 
         private void BtnRestoreFile_Click(object sender, EventArgs e)
         {
-            txtRestorePath.Text = SQLHelper.RestoreFile();
+            txtRestorePath.Text = SQLHelper.RestoreFileLocation();
         }
 
         private void CbWindowsAuthentication_CheckedChanged(object sender, EventArgs e)
@@ -129,7 +130,7 @@ namespace MultipleSupportProgram
             try
             {
 
-                SQLHelper.BackupDB(cbxDbNameBackup.Text, txtBackupPath.Text, conString);
+                SQLHelper.BackupDB(cbxDbNameBackup.Text, txtBackupPath.Text);
                 btnBackup.Enabled = true;
             }
             catch (Exception ex) {
@@ -143,7 +144,7 @@ namespace MultipleSupportProgram
 
         private void BtnSQLFileSelect_Click(object sender, EventArgs e)
         {
-            txtSQLFile.Text = sqlFileRun.SQLFileSelect();
+            txtSQLFile.Text = SQLHelper.SQLFileSelect();
         }
 
         public void MainForm_Load(object sender, EventArgs e)
@@ -160,9 +161,9 @@ namespace MultipleSupportProgram
             btnSQLRun.Enabled = false;
             waitForm.Show(this);
             Thread.Sleep(100);
-            conString = SQLHelper.GetConnectionString();
+            
 
-            sqlFileRun.SQLRun(txtSQLFile.Text, conString);
+            SQLHelper.RunSQLFile(txtSQLFile.Text);
             btnSQLRun.Enabled = true;
 
         }
@@ -305,7 +306,7 @@ namespace MultipleSupportProgram
             {
                 quary = "*";
             }
-            SqlCommand cmd = new SqlCommand("USE " + cbxDbName.Text + "; SELECT " + quary + " FROM " + addCbxtable.Text, connect);
+            SqlCommand cmd = new SqlCommand("USE " + cbxDbName.Text + "; SELECT " + quary + " FROM " + CbxtableList.Text, connect);
             SqlDataReader dr = cmd.ExecuteReader();
             DataTable dt = new DataTable();
             dataGV1.DataSource = null;
@@ -326,7 +327,7 @@ namespace MultipleSupportProgram
                 conString = SQLHelper.GetConnectionString();
                 waitForm.Show(this);
                 Thread.Sleep(500);
-                databaseProcess.FindTbColum(conString, cbxDbName.Text, addCbxtable.Text, checkedListBox1);
+                SQLHelper.FindTableColums(cbxDbName.Text, CbxtableList.Text, checkedListBox1);
                 Application.DoEvents();
                 waitForm.Close();
 
@@ -480,27 +481,20 @@ namespace MultipleSupportProgram
 
         
 
-        private void addCbxtable_Click(object sender, EventArgs e)
+        private void CbxtableList_Click(object sender, EventArgs e)// son kalınan nokta
         {
-            
             try
             {
-                addCbxtable.Items.Clear();
-                conString = SQLHelper.GetConnectionString();
-                SqlConnection connect = new SqlConnection(conString);
-                connect.Open();
-                SqlCommand cmd = new SqlCommand("USE " + cbxDbName.Text + "; SELECT * FROM SYS.TABLES  ;", connect);
-                SqlDataReader DR = cmd.ExecuteReader();
-                while (DR.Read())
-                {
-                    addCbxtable.Items.Add(DR[0]);
-                }
-                connect.Close();
+                CbxtableList.Items.Clear();
+                DataTable DR = SQLHelper.ExecuteDataReaderScript("USE " + cbxDbName.Text + "; SELECT * FROM SYS.TABLES  ;");
+                //while (DR.Read())
+                //{
+                //    CbxtableList.Items.Add(DR[0]);
+                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
             }
         }
 
@@ -514,7 +508,6 @@ namespace MultipleSupportProgram
             }
             
         }
-
         private void cbxDbName_TextChanged(object sender, EventArgs e)
         {
             if (tabControlProcessHeaders.Enabled == true)
@@ -522,7 +515,6 @@ namespace MultipleSupportProgram
                 tabControlProcessHeaders.Enabled = false;
             }
         }
-
         private void cbxUsername_TextChanged(object sender, EventArgs e)
         {
             if (tabControlProcessHeaders.Enabled == true)
@@ -530,7 +522,6 @@ namespace MultipleSupportProgram
                 tabControlProcessHeaders.Enabled = false;
             }
         }
-
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             if (tabControlProcessHeaders.Enabled == true)
@@ -547,7 +538,6 @@ namespace MultipleSupportProgram
             dtpStart.Visible = true;
             dtpFinish.Visible = true;
         }
-
         private void rdbAll_CheckedChanged(object sender, EventArgs e)
         {
             lblDateStart.Visible = false;
@@ -558,13 +548,9 @@ namespace MultipleSupportProgram
 
         private void btnEsitUserEkle_Click(object sender, EventArgs e)
         {
-            btnEsitUserEkle.Enabled = false;
             waitForm.Show(this);
             Thread.Sleep(100);
-            conString = SQLHelper.GetConnectionString();
-
-            sqlFileRun.EsitUserAdd(conString);
-            btnEsitUserEkle.Enabled = true;
+            SQLHelper.EsitUserAdd();
         }
 
         private void CBServers_DropDown(object sender, EventArgs e)
@@ -584,7 +570,6 @@ namespace MultipleSupportProgram
             }
             
         }
-
         private void cbxDbName_DropDown(object sender, EventArgs e)
         {
             if (cbxDbName.Items.Count == 0)
@@ -601,7 +586,6 @@ namespace MultipleSupportProgram
             }
             
         }
-
         private void cbxUsername_DropDown(object sender, EventArgs e)
         {
             if (cbxUsername.Items.Count == 0)
@@ -615,14 +599,11 @@ namespace MultipleSupportProgram
                     Application.DoEvents();
 
                     waitForm.Close();
+
                     Thread.Sleep(500);
                     Application.DoEvents();
                     MessageBox.Show("Kullanıcı listeleme başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.DoEvents();
-
-                    CbWindowsAuthentication.Checked = false;
-
-                    Thread.Sleep(500);
                 }
                 catch (Exception ex)
                 {
@@ -630,9 +611,6 @@ namespace MultipleSupportProgram
                     waitForm.Close();
                     Application.DoEvents();
                     MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    //CbWindowsAuthentication.Checked = false;
-
                 }
             }
         }

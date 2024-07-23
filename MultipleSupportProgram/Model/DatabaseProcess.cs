@@ -28,7 +28,7 @@ namespace MultipleSupportProgram.Model
         
 
         // ekleme 
-        public void FindTbColum(string getConString, string databaseName ,string tableName,CheckedListBox checkedListBox)
+        public void FindTableColums(string getConString, string databaseName ,string tableName,CheckedListBox checkedListBox)
         {
             try
             {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -26,6 +27,7 @@ namespace MultipleSupportProgram.Model
 
         public static bool windowsAuthentication = false;
 
+
         public static bool ExecuteNonQueryScript(string sqlScript)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -47,7 +49,7 @@ namespace MultipleSupportProgram.Model
                 }
             }
         }
-        public object ExecuteScalarScript(string sqlScript)
+        public static object ExecuteScalarScript(string sqlScript)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -57,6 +59,31 @@ namespace MultipleSupportProgram.Model
                     try
                     {
                         var result = command.ExecuteScalar();
+                        
+                        return result;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Hata: " + ex.Message);
+                        return null;
+                    }
+                }
+            }
+        }
+        public static DataTable ExecuteDataReaderScript(string sqlScript)
+        {
+            DataTable result = new DataTable();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(sqlScript, connection))
+                {
+                    try
+                    {
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        result.Load(reader);
+
                         return result;
                     }
                     catch (Exception ex)
@@ -68,7 +95,17 @@ namespace MultipleSupportProgram.Model
             }
         }
 
-        public static void BackupDB(string databaseName, string backupFileLocation, string getConString)
+        public static string BackupFileLocation()
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                return folderBrowserDialog.SelectedPath;
+            }
+            return null;
+        }
+        public static void BackupDB(string databaseName, string backupFileLocation)
         {
 
             if (databaseName.Replace(" ", "").Length == 0)
@@ -113,18 +150,8 @@ namespace MultipleSupportProgram.Model
             }
 
         }
-        public static string BackupFileLocation()
-        {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            DialogResult result = folderBrowserDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                return folderBrowserDialog.SelectedPath;
-            }
-            return null;
-        }
-
-        public static string RestoreFile()
+        
+        public static string RestoreFileLocation()
         {
             OpenFileDialog file = new OpenFileDialog();
             file.Filter = "Veritabanı Dosyası |*.bak";
@@ -137,7 +164,6 @@ namespace MultipleSupportProgram.Model
                 return null;
             }
         }
-
         public static void RestoreDB(string databaseName, string restoreFilePath)
         {
             if (databaseName.Replace(" ", "").Length == 0)
@@ -188,10 +214,96 @@ namespace MultipleSupportProgram.Model
             }
         }
 
+        public static string SQLFileSelect()
+        {
+            using (OpenFileDialog file = new OpenFileDialog())
+            {
+                file.Filter = "SQL Dosyası |*.sql";
+                if (file.ShowDialog() == DialogResult.OK)
+                {
+                    return file.FileName;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public static void RunSQLFile(string sqlFile)
+        {
+            if (sqlFile.Replace(" ", "").Length == 0)
+            {
+                Thread.Sleep(500);
+                MainForm.waitForm.Close();
+                Application.DoEvents();
+                MessageBox.Show("Lütfen SQL dosyasını seçiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                FileInfo file = new FileInfo(sqlFile);
+                string scriptText = file.OpenText().ReadToEnd();
+                bool result = false;
+                string[] commandTextArray = scriptText.Split(new string[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
+                
+                foreach (string commandText in commandTextArray)
+                {
+                    if (commandText.Trim() == string.Empty) continue;
+                    result = ExecuteNonQueryScript(commandText);
+                }
+                if (result == false)
+                {
+                    Thread.Sleep(500);
+                    MainForm.waitForm.Close();
+                    Application.DoEvents();
+                    logger.Error("SQL dosyası çalıştırma işlemi başarısız!");
+                    MessageBox.Show("SQL dosyası çalıştırma işlemi başarısız!", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    MainForm.waitForm.Close();
+                    Application.DoEvents();
+                    logger.Debug("SQL Dosya Çalıştırma işlemi başarıyla gerçekleşti.");
+                    MessageBox.Show("SQL Dosya Çalıştırma işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                Thread.Sleep(500);
+                MainForm.waitForm.Close();
+                Application.DoEvents();
+                logger.Error("SQL dosyası çalıştırma işlemi başarısız! : " + ex.Message);
+                MessageBox.Show("SQL dosyası çalıştırma işlemi başarısız! : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static void EsitUserAdd()
+        {
+            try
+            {
+                string userAddScriptText = @"CREATE LOGIN esit_user WITH PASSWORD=N'esit12345', 
+                DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF,
+                CHECK_POLICY=OFF EXEC master..sp_addsrvrolemember @loginame = N'esit_user', @rolename = N'sysadmin'";
 
+                bool result = ExecuteNonQueryScript(userAddScriptText);
+                if (result == false)
+                {
+                    logger.Error("Esit-User Ekleme işlemi başarısız!");
+                    MessageBox.Show("Esit-User Ekleme işlemi başarısız!", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    logger.Debug("Esit-User Ekleme işlemi başarıyla gerçekleşti.");
+                    MessageBox.Show("Esit-User Ekleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Esit-User Ekleme işlemi başarısız! : \n" + ex.Message);
+                MessageBox.Show("Esit-User Ekleme işlemi başarısız! : \n" + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-
-
+        }
 
 
         public static string GetConnectionString()
@@ -310,7 +422,27 @@ namespace MultipleSupportProgram.Model
             }
 
         }
-
+        public static void FindTableColums(string databaseName, string tableName, CheckedListBox checkedListBox)//executereader yazılacak
+        {
+            try
+            {
+                checkedListBox.Items.Clear();
+                
+                String SQLScript = "USE " + databaseName + "; SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tableName + "';";
+                object objectDR = ExecuteScalarScript(SQLScript);
+                SqlDataReader DR = objectDR as SqlDataReader; 
+                while (DR.Read())
+                {
+                    checkedListBox.Items.Add(DR[0]);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                logger.Error("HATA SQL table column listeleme işlemi başarısız! : " + ex.Message + "");
+                throw new Exception("HATA SQL table column listeleme işlemi başarısız! : " + ex.Message);
+            }
+        }
 
 
 
