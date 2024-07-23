@@ -47,6 +47,7 @@ namespace MultipleSupportProgram
                     loadthread = null;
                 Application.DoEvents();
             }
+            
         }
         private void LoadingProcess()
         {

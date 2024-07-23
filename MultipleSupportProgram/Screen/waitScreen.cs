@@ -40,10 +40,6 @@ namespace MultipleSupportProgram
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
-            //if (label2.Image!=null)
-            //{
-            //    label2.Image.Dispose();
-            //}
         }
     }
 }

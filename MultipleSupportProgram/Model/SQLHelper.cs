@@ -136,11 +136,16 @@ namespace MultipleSupportProgram.Model
             }
 
         }
-
-
-
-
-
+        public static string BackupFileLocation()
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                return folderBrowserDialog.SelectedPath;
+            }
+            return null;
+        }
 
 
 
@@ -201,7 +206,6 @@ namespace MultipleSupportProgram.Model
                         sqlServerList.Items.Clear();
                         foreach (var instanceName in instanceKey.GetValueNames())
                         {
-                            //sqlServerList.Items.Add(ServerName + "\\" + instanceName); //22.07.2024
                             sqlServerList.Items.Add(serverName);
                         }
                     }

@@ -121,7 +121,7 @@ namespace MultipleSupportProgram
 
         private void BtnBackupFileLocationSelect_Click(object sender, EventArgs e)
         {
-            txtBackupPath.Text = (backupDb.BackupFileLocation() + "\\");
+            txtBackupPath.Text = (SQLHelper.BackupFileLocation() + "\\");
         }
 
         private void BtnBackup_Click(object sender, EventArgs e)
@@ -177,11 +177,11 @@ namespace MultipleSupportProgram
         private void BtnSQLServerList_Click(object sender, EventArgs e)
         {
             btnSQLServerList.Enabled = false;
-            //if (CBServers.Items.Count == 0){ databaseProcess.GetSQLServerList(CBServers); }//değişmeyen
+            
             waitForm.Show(this);
 
             Thread.Sleep(500);
-            //thread başlat 
+            
 
             try
             {
@@ -670,7 +670,16 @@ namespace MultipleSupportProgram
 
         private void CBServers_DropDown(object sender, EventArgs e)
         {
-
+            try
+            {
+                SQLHelper.GetSQLServerList(CBServers); //dataçekilir
+                MessageBox.Show("SQL Server Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                Application.DoEvents();
+                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
