@@ -95,6 +95,8 @@
             this.btnTemizle = new System.Windows.Forms.Button();
             this.btnSorgula = new System.Windows.Forms.Button();
             this.rtbSorgula = new System.Windows.Forms.RichTextBox();
+            this.esitUserEkle = new System.Windows.Forms.TabPage();
+            this.btnEsitUserEkle = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnFindDbUsers = new System.Windows.Forms.Button();
@@ -111,8 +113,6 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.esitUserEkle = new System.Windows.Forms.TabPage();
-            this.btnEsitUserEkle = new System.Windows.Forms.Button();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
             this.grpBoxPatch.SuspendLayout();
@@ -130,9 +130,9 @@
             this.tpQuary.SuspendLayout();
             this.tbSorgu.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.esitUserEkle.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.esitUserEkle.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProcessHeaders
@@ -161,7 +161,7 @@
             this.tpBackup.Controls.Add(this.grpBoxPatch);
             this.tpBackup.Location = new System.Drawing.Point(4, 40);
             this.tpBackup.Name = "tpBackup";
-            this.tpBackup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpBackup.Padding = new System.Windows.Forms.Padding(3);
             this.tpBackup.Size = new System.Drawing.Size(653, 306);
             this.tpBackup.TabIndex = 0;
             this.tpBackup.Text = "Yedekle";
@@ -239,10 +239,10 @@
             // 
             this.tpRestore.BackColor = System.Drawing.SystemColors.Control;
             this.tpRestore.Controls.Add(this.groupBox1);
-            this.tpRestore.Location = new System.Drawing.Point(4, 22);
+            this.tpRestore.Location = new System.Drawing.Point(4, 40);
             this.tpRestore.Name = "tpRestore";
-            this.tpRestore.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tpRestore.Size = new System.Drawing.Size(653, 324);
+            this.tpRestore.Padding = new System.Windows.Forms.Padding(3);
+            this.tpRestore.Size = new System.Drawing.Size(653, 306);
             this.tpRestore.TabIndex = 1;
             this.tpRestore.Text = "Geri Yükle";
             // 
@@ -322,7 +322,7 @@
             this.tpSQLFile.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tpSQLFile.Location = new System.Drawing.Point(4, 40);
             this.tpSQLFile.Name = "tpSQLFile";
-            this.tpSQLFile.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSQLFile.Padding = new System.Windows.Forms.Padding(3);
             this.tpSQLFile.Size = new System.Drawing.Size(653, 306);
             this.tpSQLFile.TabIndex = 2;
             this.tpSQLFile.Text = "SQL Dosyası Çalıştırma";
@@ -388,7 +388,7 @@
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.groupBox5);
             this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 40);
             this.tpSPWinDatabasePhotoDelete.Name = "tpSPWinDatabasePhotoDelete";
-            this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(3);
             this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(653, 306);
             this.tpSPWinDatabasePhotoDelete.TabIndex = 3;
             this.tpSPWinDatabasePhotoDelete.Text = "Veritabanından Fotoğraf Silme";
@@ -418,7 +418,7 @@
             // dtpFinish
             // 
             this.dtpFinish.Location = new System.Drawing.Point(90, 253);
-            this.dtpFinish.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFinish.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFinish.Name = "dtpFinish";
             this.dtpFinish.Size = new System.Drawing.Size(112, 20);
             this.dtpFinish.TabIndex = 15;
@@ -429,7 +429,7 @@
             // 
             this.rdbAll.AutoSize = true;
             this.rdbAll.Location = new System.Drawing.Point(10, 174);
-            this.rdbAll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbAll.Margin = new System.Windows.Forms.Padding(2);
             this.rdbAll.Name = "rdbAll";
             this.rdbAll.Size = new System.Drawing.Size(76, 17);
             this.rdbAll.TabIndex = 14;
@@ -441,7 +441,7 @@
             // 
             this.rdbPeriod.AutoSize = true;
             this.rdbPeriod.Location = new System.Drawing.Point(10, 195);
-            this.rdbPeriod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbPeriod.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPeriod.Name = "rdbPeriod";
             this.rdbPeriod.Size = new System.Drawing.Size(63, 17);
             this.rdbPeriod.TabIndex = 12;
@@ -452,7 +452,7 @@
             // dtpStart
             // 
             this.dtpStart.Location = new System.Drawing.Point(90, 230);
-            this.dtpStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpStart.Margin = new System.Windows.Forms.Padding(2);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(112, 20);
             this.dtpStart.TabIndex = 10;
@@ -518,7 +518,7 @@
             this.tpDatabaseRepair.Controls.Add(this.groupBox6);
             this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 40);
             this.tpDatabaseRepair.Name = "tpDatabaseRepair";
-            this.tpDatabaseRepair.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpDatabaseRepair.Padding = new System.Windows.Forms.Padding(3);
             this.tpDatabaseRepair.Size = new System.Drawing.Size(653, 306);
             this.tpDatabaseRepair.TabIndex = 7;
             this.tpDatabaseRepair.Text = "Veritabanı Onarma";
@@ -607,7 +607,7 @@
             this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.btnMoveDbaToScale);
             this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 40);
             this.tpSPWinScaleAndDBAConsolidation.Name = "tpSPWinScaleAndDBAConsolidation";
-            this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3);
             this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(653, 306);
             this.tpSPWinScaleAndDBAConsolidation.TabIndex = 6;
             this.tpSPWinScaleAndDBAConsolidation.Text = "SPWin Scale ve DBA Birleştirme";
@@ -629,9 +629,9 @@
             this.tpTablolar.Controls.Add(this.btngoster);
             this.tpTablolar.Controls.Add(this.dataGV1);
             this.tpTablolar.Location = new System.Drawing.Point(4, 40);
-            this.tpTablolar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpTablolar.Margin = new System.Windows.Forms.Padding(2);
             this.tpTablolar.Name = "tpTablolar";
-            this.tpTablolar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpTablolar.Padding = new System.Windows.Forms.Padding(2);
             this.tpTablolar.Size = new System.Drawing.Size(653, 306);
             this.tpTablolar.TabIndex = 8;
             this.tpTablolar.Text = "Tablolar";
@@ -642,7 +642,7 @@
             this.checkedListBox1.CheckOnClick = true;
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(4, 32);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(111, 229);
             this.checkedListBox1.TabIndex = 20;
@@ -651,7 +651,7 @@
             // 
             this.addCbxtable.FormattingEnabled = true;
             this.addCbxtable.Location = new System.Drawing.Point(4, 5);
-            this.addCbxtable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addCbxtable.Margin = new System.Windows.Forms.Padding(2);
             this.addCbxtable.Name = "addCbxtable";
             this.addCbxtable.Size = new System.Drawing.Size(111, 21);
             this.addCbxtable.TabIndex = 11;
@@ -663,7 +663,7 @@
             // 
             this.btngoster.Enabled = false;
             this.btngoster.Location = new System.Drawing.Point(4, 275);
-            this.btngoster.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btngoster.Margin = new System.Windows.Forms.Padding(2);
             this.btngoster.Name = "btngoster";
             this.btngoster.Size = new System.Drawing.Size(110, 44);
             this.btngoster.TabIndex = 1;
@@ -678,7 +678,7 @@
             this.dataGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGV1.Dock = System.Windows.Forms.DockStyle.Right;
             this.dataGV1.Location = new System.Drawing.Point(118, 2);
-            this.dataGV1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGV1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGV1.Name = "dataGV1";
             this.dataGV1.ReadOnly = true;
             this.dataGV1.RowHeadersWidth = 51;
@@ -697,9 +697,9 @@
             this.tpQuary.Controls.Add(this.btnQuarySave);
             this.tpQuary.Controls.Add(this.tbxQuary);
             this.tpQuary.Location = new System.Drawing.Point(4, 40);
-            this.tpQuary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpQuary.Margin = new System.Windows.Forms.Padding(2);
             this.tpQuary.Name = "tpQuary";
-            this.tpQuary.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tpQuary.Padding = new System.Windows.Forms.Padding(2);
             this.tpQuary.Size = new System.Drawing.Size(653, 306);
             this.tpQuary.TabIndex = 9;
             this.tpQuary.Text = "Quary.sql";
@@ -730,7 +730,7 @@
             // tbxQuaryName
             // 
             this.tbxQuaryName.Location = new System.Drawing.Point(135, 5);
-            this.tbxQuaryName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxQuaryName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxQuaryName.Name = "tbxQuaryName";
             this.tbxQuaryName.Size = new System.Drawing.Size(516, 20);
             this.tbxQuaryName.TabIndex = 6;
@@ -755,7 +755,7 @@
             // btnQuaryClear
             // 
             this.btnQuaryClear.Location = new System.Drawing.Point(4, 287);
-            this.btnQuaryClear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQuaryClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuaryClear.Name = "btnQuaryClear";
             this.btnQuaryClear.Size = new System.Drawing.Size(90, 32);
             this.btnQuaryClear.TabIndex = 3;
@@ -766,7 +766,7 @@
             // btnQuarySave
             // 
             this.btnQuarySave.Location = new System.Drawing.Point(560, 289);
-            this.btnQuarySave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQuarySave.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuarySave.Name = "btnQuarySave";
             this.btnQuarySave.Size = new System.Drawing.Size(90, 32);
             this.btnQuarySave.TabIndex = 2;
@@ -777,7 +777,7 @@
             // tbxQuary
             // 
             this.tbxQuary.Location = new System.Drawing.Point(4, 28);
-            this.tbxQuary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbxQuary.Margin = new System.Windows.Forms.Padding(2);
             this.tbxQuary.Name = "tbxQuary";
             this.tbxQuary.Size = new System.Drawing.Size(647, 258);
             this.tbxQuary.TabIndex = 1;
@@ -787,9 +787,9 @@
             // 
             this.tbSorgu.Controls.Add(this.panel1);
             this.tbSorgu.Location = new System.Drawing.Point(4, 40);
-            this.tbSorgu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSorgu.Margin = new System.Windows.Forms.Padding(2);
             this.tbSorgu.Name = "tbSorgu";
-            this.tbSorgu.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSorgu.Padding = new System.Windows.Forms.Padding(2);
             this.tbSorgu.Size = new System.Drawing.Size(653, 306);
             this.tbSorgu.TabIndex = 10;
             this.tbSorgu.Text = "Sorgu";
@@ -802,7 +802,7 @@
             this.panel1.Controls.Add(this.btnSorgula);
             this.panel1.Controls.Add(this.rtbSorgula);
             this.panel1.Location = new System.Drawing.Point(4, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(646, 317);
             this.panel1.TabIndex = 0;
@@ -810,7 +810,7 @@
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(2, 65);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(639, 249);
             this.panel2.TabIndex = 4;
@@ -818,7 +818,7 @@
             // btnTemizle
             // 
             this.btnTemizle.Location = new System.Drawing.Point(521, 36);
-            this.btnTemizle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTemizle.Margin = new System.Windows.Forms.Padding(2);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(120, 24);
             this.btnTemizle.TabIndex = 3;
@@ -829,7 +829,7 @@
             // btnSorgula
             // 
             this.btnSorgula.Location = new System.Drawing.Point(521, 0);
-            this.btnSorgula.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSorgula.Margin = new System.Windows.Forms.Padding(2);
             this.btnSorgula.Name = "btnSorgula";
             this.btnSorgula.Size = new System.Drawing.Size(120, 24);
             this.btnSorgula.TabIndex = 2;
@@ -840,11 +840,34 @@
             // rtbSorgula
             // 
             this.rtbSorgula.Location = new System.Drawing.Point(0, 0);
-            this.rtbSorgula.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtbSorgula.Margin = new System.Windows.Forms.Padding(2);
             this.rtbSorgula.Name = "rtbSorgula";
             this.rtbSorgula.Size = new System.Drawing.Size(518, 61);
             this.rtbSorgula.TabIndex = 1;
             this.rtbSorgula.Text = "";
+            // 
+            // esitUserEkle
+            // 
+            this.esitUserEkle.Controls.Add(this.btnEsitUserEkle);
+            this.esitUserEkle.Location = new System.Drawing.Point(4, 40);
+            this.esitUserEkle.Name = "esitUserEkle";
+            this.esitUserEkle.Padding = new System.Windows.Forms.Padding(3);
+            this.esitUserEkle.Size = new System.Drawing.Size(653, 306);
+            this.esitUserEkle.TabIndex = 11;
+            this.esitUserEkle.Text = "Esit-User Ekle";
+            this.esitUserEkle.UseVisualStyleBackColor = true;
+            // 
+            // btnEsitUserEkle
+            // 
+            this.btnEsitUserEkle.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnEsitUserEkle.ForeColor = System.Drawing.Color.White;
+            this.btnEsitUserEkle.Location = new System.Drawing.Point(210, 109);
+            this.btnEsitUserEkle.Name = "btnEsitUserEkle";
+            this.btnEsitUserEkle.Size = new System.Drawing.Size(214, 80);
+            this.btnEsitUserEkle.TabIndex = 0;
+            this.btnEsitUserEkle.Text = "Esit-User Ekle";
+            this.btnEsitUserEkle.UseVisualStyleBackColor = false;
+            this.btnEsitUserEkle.Click += new System.EventHandler(this.btnEsitUserEkle_Click);
             // 
             // groupBox4
             // 
@@ -991,6 +1014,7 @@
             this.CBServers.Size = new System.Drawing.Size(214, 21);
             this.CBServers.TabIndex = 0;
             this.CBServers.Text = ".\\SQLEXPRESS";
+            this.CBServers.DropDown += new System.EventHandler(this.CBServers_DropDown);
             this.CBServers.TextChanged += new System.EventHandler(this.CBServers_TextChanged);
             // 
             // txtPassword
@@ -1022,29 +1046,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.aboutToolStripMenuItem.Text = "Hakkında";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // esitUserEkle
-            // 
-            this.esitUserEkle.Controls.Add(this.btnEsitUserEkle);
-            this.esitUserEkle.Location = new System.Drawing.Point(4, 40);
-            this.esitUserEkle.Name = "esitUserEkle";
-            this.esitUserEkle.Padding = new System.Windows.Forms.Padding(3);
-            this.esitUserEkle.Size = new System.Drawing.Size(653, 306);
-            this.esitUserEkle.TabIndex = 11;
-            this.esitUserEkle.Text = "Esit-User Ekle";
-            this.esitUserEkle.UseVisualStyleBackColor = true;
-            // 
-            // btnEsitUserEkle
-            // 
-            this.btnEsitUserEkle.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnEsitUserEkle.ForeColor = System.Drawing.Color.White;
-            this.btnEsitUserEkle.Location = new System.Drawing.Point(210, 109);
-            this.btnEsitUserEkle.Name = "btnEsitUserEkle";
-            this.btnEsitUserEkle.Size = new System.Drawing.Size(214, 80);
-            this.btnEsitUserEkle.TabIndex = 0;
-            this.btnEsitUserEkle.Text = "Esit-User Ekle";
-            this.btnEsitUserEkle.UseVisualStyleBackColor = false;
-            this.btnEsitUserEkle.Click += new System.EventHandler(this.btnEsitUserEkle_Click);
             // 
             // MainForm
             // 
@@ -1086,11 +1087,11 @@
             this.tpQuary.PerformLayout();
             this.tbSorgu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.esitUserEkle.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.esitUserEkle.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

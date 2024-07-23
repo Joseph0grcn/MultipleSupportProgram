@@ -114,6 +114,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\SQLHelper.cs" />
     <Compile Include="Screen\AboutBox1.cs">
       <SubType>Form</SubType>
     </Compile>

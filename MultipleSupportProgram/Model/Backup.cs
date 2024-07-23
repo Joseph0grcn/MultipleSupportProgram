@@ -49,10 +49,10 @@ namespace MultipleSupportProgram.Model
             try
             {
                 SqlCommand command = new SqlCommand();
-                command.CommandTimeout = 0;
                 SqlConnection connect = new SqlConnection(getConString);
                 command = new SqlCommand(@"backup database " + databaseName + " to disk = @directory with init,stats=10", connect);
                 command.Parameters.AddWithValue("@directory", string.Concat("" + backupFileLocation + "", "" + databaseName + "_" + DateTime.Now.ToString("MM_dd_yyyy_HH_mm_ss") + ".bak"));
+                command.CommandTimeout = 0;
                 connect.Open();
                 bool result = Convert.ToBoolean(command.ExecuteNonQuery());
                 connect.Close();

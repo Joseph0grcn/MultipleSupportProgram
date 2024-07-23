@@ -30,7 +30,7 @@ namespace MultipleSupportProgram
             loadthread = new Thread(new ParameterizedThreadStart(LoadingProcess));
             loadthread.Start(parent);
             timer = new System.Threading.Timer(TimerClose, null, 60000, Timeout.Infinite);
-
+            Application.DoEvents();
 
         }
         private void TimerClose(object state)
@@ -41,11 +41,11 @@ namespace MultipleSupportProgram
         {
             if (wait != null)
             {
-                    wait.BeginInvoke(new System.Threading.ThreadStart(wait.CloseWaitScreen));
+                    wait.Invoke(new System.Threading.ThreadStart(wait.CloseWaitScreen));
                 
                     wait = null;
                     loadthread = null;
-                    
+                Application.DoEvents();
             }
         }
         private void LoadingProcess()

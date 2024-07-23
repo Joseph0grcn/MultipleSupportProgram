@@ -15,8 +15,7 @@ namespace MultipleSupportProgram.Model
     public class WeighPhotoDelete
     {
         public log4net.ILog logger = log4net.LogManager.GetLogger("WeighPhotoDelete");
-        public void PhotoDelete(string getConString,string radioButtonName,string time1 ,string time2
-            ) 
+        public void PhotoDelete(string getConString,string radioButtonName,string time1 ,string time2) 
         {
             string commandStr = "";
             try
@@ -32,17 +31,17 @@ namespace MultipleSupportProgram.Model
                         {
                             case "rbOneAndTwoPhoto":
                                 commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL " +
-                                    "where seqnum2 in(select seq from Weigh2')";                           
+                                    "where seqnum2 in(select seq from Weigh2)";                           
                                 break;
 
                             case "rbInTheFolderPhoto":
                                 commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
-                                    "where seqnum2 in(select seq from Weigh2')";
+                                    "where seqnum2 in(select seq from Weigh2)";
                                 break;
 
                             case "rbAllPhoto":
                                 commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL, imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
-                                    "where seqnum2 in(select seq from Weigh2')";
+                                    "where seqnum2 in(select seq from Weigh2)";
                                 break;
                         }
                     }

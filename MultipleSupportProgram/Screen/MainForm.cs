@@ -31,7 +31,7 @@ namespace MultipleSupportProgram
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false; //kanalları açar çapraz iş parçacığını kapatır
-            Console.Write("github deneme");
+            
             
         }
         public DatabaseProcess databaseProcess = new DatabaseProcess();
@@ -57,22 +57,23 @@ namespace MultipleSupportProgram
             try
             {
                 btnConnectionTest.Enabled = false;
-                Application.DoEvents();
                 waitForm.Show(this);
-                Thread.Sleep(1000);
-                databaseProcess.ConnectionTest(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
-                Application.DoEvents();
+                SQLHelper.LoadConnectionString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+                SQLHelper.ConnectionTest();
+                waitForm.Close();
+                MessageBox.Show("Bağlantı Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnConnectionTest.Enabled = true;
-                Application.DoEvents();
                 tabControlProcessHeaders.Enabled = true;
-                Application.DoEvents();
             }
             catch (Exception ex)
             {
                 waitForm.Close();
-                Application.DoEvents();
                 MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnConnectionTest.Enabled = true;
+            }
+            finally
+            {
+       
             }
             //Console.WriteLine(CbWindowsAuthentication.Checked);
             //databaseProcess.ConnectionTest(CbWindowsAuthentication., CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
@@ -131,7 +132,7 @@ namespace MultipleSupportProgram
             try
             {
 
-                backupDb.BackupDB(cbxDbNameBackup.Text, txtBackupPath.Text, conString);
+                SQLHelper.BackupDB(cbxDbNameBackup.Text, txtBackupPath.Text, conString);
                 btnBackup.Enabled = true;
             }
             catch (Exception ex) {
@@ -150,7 +151,7 @@ namespace MultipleSupportProgram
 
         public void MainForm_Load(object sender, EventArgs e)
         {
-            //conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            //conString = SQLHelper.GetConnectionString();
             loggers.CreateSpwinlogsFile();
             tabControlProcessHeaders.TabPages.Remove(tpDatabaseRepair);
             tabControlProcessHeaders.TabPages.Remove(tpQuary);
@@ -162,7 +163,7 @@ namespace MultipleSupportProgram
             btnSQLRun.Enabled = false;
             waitForm.Show(this);
             Thread.Sleep(100);
-            conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            conString = SQLHelper.GetConnectionString();
 
             sqlFileRun.SQLRun(txtSQLFile.Text, conString);
             btnSQLRun.Enabled = true;
@@ -184,7 +185,7 @@ namespace MultipleSupportProgram
 
             try
             {
-                databaseProcess.GetSQLServerList(CBServers); //dataçekilir
+                SQLHelper.GetSQLServerList(CBServers); //dataçekilir
 
                 waitForm.Close();
                 Application.DoEvents();
@@ -207,7 +208,7 @@ namespace MultipleSupportProgram
         private void BtnDatabaseList_Click(object sender, EventArgs e)
         {
             btnDatabaseList.Enabled = false;
-            conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            conString = SQLHelper.GetConnectionString();
 
             //if (cbxDbName.Items.Count == 0) { databaseProcess.GetSQLDatabaseList(conString, DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore)); }
             waitForm.Show(this);
@@ -215,7 +216,7 @@ namespace MultipleSupportProgram
             try
             {
                 //databaseProcess.GetSQLDatabaseList(conString, DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore), CBServers.Text);
-                databaseProcess.GetSQLDatabaseList(conString, DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore));
+                SQLHelper.GetSQLDatabaseList(DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore), CBServers.Text);
 
 
                 waitForm.Close();
@@ -241,11 +242,11 @@ namespace MultipleSupportProgram
         private void BtnWeighPhotoDelete_Click(object sender, EventArgs e)
         {
             btnWeighPhotoDelete.Enabled = false;
-            
-            
 
+
+            
             //MainForm.waitForm.Show(MainForm.ActiveForm);
-            conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            conString = SQLHelper.GetConnectionString();
 
             if (rbOneAndTwoPhoto.Checked == true || rbInTheFolderPhoto.Checked == true || rbAllPhoto.Checked == true)
             {
@@ -330,7 +331,7 @@ namespace MultipleSupportProgram
             waitForm.Show(this);
 
             Thread.Sleep(1000);
-            conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            conString = SQLHelper.GetConnectionString();
             updateDbaToScale.MoveDbaService(conString);
             updateDbaToScale.MoveCarrierCompany(conString);
             updateDbaToScale.MovePortList(conString);
@@ -344,14 +345,12 @@ namespace MultipleSupportProgram
         {
             btnFindDbUsers.Enabled = false;
             if (CbWindowsAuthentication.Checked == false) { CbWindowsAuthentication.Checked = true; }
-
-
             try
             {
-                conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
                 waitForm.Show(this);
                 Thread.Sleep(500);
-                databaseProcess.FindDbUsers(cbxUsername, conString, cbxDbName.Text); Application.DoEvents();
+                SQLHelper.FindDbUsers(cbxUsername, cbxDbName.Text, CBServers.Text); 
+                
                 Application.DoEvents();
                 
                 waitForm.Close();
@@ -385,7 +384,7 @@ namespace MultipleSupportProgram
 
         private void Goster_Click(object sender, EventArgs e)
         {
-            conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            conString = SQLHelper.GetConnectionString();
             SqlConnection connect = new SqlConnection(conString);
             connect.Open();
             string quary = "";
@@ -425,7 +424,7 @@ namespace MultipleSupportProgram
             try
             {
 
-                conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+                conString = SQLHelper.GetConnectionString();
                 waitForm.Show(this);
                 Thread.Sleep(500);
                 databaseProcess.FindTbColum(conString, cbxDbName.Text, addCbxtable.Text, checkedListBox1);
@@ -502,7 +501,7 @@ namespace MultipleSupportProgram
                 
                 waitForm.Show(this);
                 Thread.Sleep(500);
-                conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+                conString = SQLHelper.GetConnectionString();
                 SqlConnection connect = new SqlConnection(conString);
                 connect.Open();
 
@@ -588,7 +587,7 @@ namespace MultipleSupportProgram
             try
             {
                 addCbxtable.Items.Clear();
-                conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+                conString = SQLHelper.GetConnectionString();
                 SqlConnection connect = new SqlConnection(conString);
                 connect.Open();
                 SqlCommand cmd = new SqlCommand("USE " + cbxDbName.Text + "; SELECT * FROM SYS.TABLES  ;", connect);
@@ -663,10 +662,15 @@ namespace MultipleSupportProgram
             btnEsitUserEkle.Enabled = false;
             waitForm.Show(this);
             Thread.Sleep(100);
-            conString = databaseProcess.GetConString(CbWindowsAuthentication.Checked, CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            conString = SQLHelper.GetConnectionString();
 
             sqlFileRun.EsitUserAdd(conString);
             btnEsitUserEkle.Enabled = true;
+        }
+
+        private void CBServers_DropDown(object sender, EventArgs e)
+        {
+
         }
     }
 }
