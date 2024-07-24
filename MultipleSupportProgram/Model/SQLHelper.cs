@@ -151,19 +151,19 @@ namespace MultipleSupportProgram.Model
 
         }
         
-        public static string RestoreFileLocation()
-        {
-            OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "Veritabanı Dosyası |*.bak";
-            if (file.ShowDialog() == DialogResult.OK)
-            {
-                return file.FileName;
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //public static string RestoreFileLocation()
+        //{
+        //    OpenFileDialog file = new OpenFileDialog();
+        //    file.Filter = "Veritabanı Dosyası |*.bak";
+        //    if (file.ShowDialog() == DialogResult.OK)
+        //    {
+        //        return file.FileName;
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
         public static void RestoreDB(string databaseName, string restoreFilePath)
         {
             if (databaseName.Replace(" ", "").Length == 0)
@@ -213,22 +213,22 @@ namespace MultipleSupportProgram.Model
                 MessageBox.Show("HATA Restore işlemi başarısız! : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        public static string SQLFileSelect()
-        {
-            using (OpenFileDialog file = new OpenFileDialog())
-            {
-                file.Filter = "SQL Dosyası |*.sql";
-                if (file.ShowDialog() == DialogResult.OK)
-                {
-                    return file.FileName;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
+        
+        //public static string SQLFileSelect()
+        //{
+        //    using (OpenFileDialog file = new OpenFileDialog())
+        //    {
+        //        file.Filter = "SQL Dosyası |*.sql";
+        //        if (file.ShowDialog() == DialogResult.OK)
+        //        {
+        //            return file.FileName;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
         public static void RunSQLFile(string sqlFile)
         {
             if (sqlFile.Replace(" ", "").Length == 0)

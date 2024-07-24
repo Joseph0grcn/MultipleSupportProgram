@@ -98,7 +98,7 @@ namespace MultipleSupportProgram
 
         private void BtnRestoreFile_Click(object sender, EventArgs e)
         {
-            txtRestorePath.Text = SQLHelper.RestoreFileLocation();
+            txtRestorePath.Text = FileOperations.RestoreFileLocation();
         }
 
         private void CbWindowsAuthentication_CheckedChanged(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace MultipleSupportProgram
 
         private void BtnSQLFileSelect_Click(object sender, EventArgs e)
         {
-            txtSQLFile.Text = SQLHelper.SQLFileSelect();
+            txtSQLFile.Text = FileOperations.SQLFileSelect();
         }
 
         
@@ -581,28 +581,28 @@ namespace MultipleSupportProgram
 
         private void btnEsitScaleSil_Click(object sender, EventArgs e)
         {
+
+
+
             string appDataRoaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string appDataLocal = appDataRoaming.Replace("Roaming", "Local");
             string dosyaIsmi = "www.esitscale.com";
             appDataLocal = appDataLocal + "\\" + dosyaIsmi;
             appDataRoaming = appDataRoaming + "\\" + dosyaIsmi;
 
-            Console.WriteLine($"Geçerli kullanıcının AppData Roaming yolu: {appDataRoaming}");
-            Console.WriteLine($"Geçerli kullanıcının AppData Local yolu: {appDataLocal}");
             
             
-                string message = "Bu işlem www.esitscale.com dosyalarını silecektir \ndevam etmek istiyor musunuz?"
-                    +appDataLocal;
+                string message = "Bu işlem www.esitscale.com dosyalarını silecektir \ndevam etmek istiyor musunuz?";
                 string title = "UYARI";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result = MessageBox.Show(message, title, buttons);
                 if (result == DialogResult.Yes)
                 {
-
                     if (Directory.Exists(appDataLocal))
                     {
                         FileSecurity dosyaGuvenlik = File.GetAccessControl(appDataLocal);
-                        dosyaGuvenlik.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));
+                        dosyaGuvenlik.AddAccessRule(
+                        new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));
                         File.SetAccessControl(appDataLocal, dosyaGuvenlik);
                         Directory.Delete(appDataLocal, true);
                         Console.WriteLine("Dosya başarıyla silindi.");
@@ -628,8 +628,6 @@ namespace MultipleSupportProgram
                 {
                     Console.WriteLine("işlem seçim sonrası iptal edildi");
                 }
-            
-
         }
     }
 }
