@@ -70,7 +70,7 @@ namespace MultipleSupportProgram.Model
                 }
             }
         }
-        public static DataTable ExecuteDataReaderScript(string sqlScript)
+        public static DataTable ExecuteReaderScript(string sqlScript)
         {
             DataTable result = new DataTable();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -422,20 +422,20 @@ namespace MultipleSupportProgram.Model
             }
 
         }
-        public static void FindTableColums(string databaseName, string tableName, CheckedListBox checkedListBox)//executereader yazılacak
+        public static void FindTableColums(string databaseName, string tableName, CheckedListBox checkedListBox)
         {
             try
             {
                 checkedListBox.Items.Clear();
                 
                 String SQLScript = "USE " + databaseName + "; SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tableName + "';";
-                object objectDR = ExecuteScalarScript(SQLScript);
-                SqlDataReader DR = objectDR as SqlDataReader; 
-                while (DR.Read())
-                {
-                    checkedListBox.Items.Add(DR[0]);
-                }
+                DataTable DR = ExecuteReaderScript(SQLScript);
                 
+                foreach (DataRow row in DR.Rows)
+                {
+                    checkedListBox.Items.Add(row[0].ToString());
+                }
+
             }
             catch (Exception ex)
             {

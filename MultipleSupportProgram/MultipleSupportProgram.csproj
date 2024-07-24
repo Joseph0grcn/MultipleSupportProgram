@@ -127,9 +127,7 @@
     <Compile Include="Screen\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\DatabaseProcess.cs" />
     <Compile Include="Model\Loggers.cs" />
-    <Compile Include="Model\SQLFileRun.cs" />
     <Compile Include="Model\UpdateDbaToScale.cs" />
     <Compile Include="Model\WeighPhotoDelete.cs" />
     <Compile Include="Program.cs" />

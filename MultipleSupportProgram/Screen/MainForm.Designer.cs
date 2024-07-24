@@ -646,14 +646,14 @@
             // 
             // CbxtableList
             // 
+            this.CbxtableList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxtableList.FormattingEnabled = true;
             this.CbxtableList.Location = new System.Drawing.Point(4, 5);
             this.CbxtableList.Margin = new System.Windows.Forms.Padding(2);
             this.CbxtableList.Name = "CbxtableList";
             this.CbxtableList.Size = new System.Drawing.Size(111, 21);
             this.CbxtableList.TabIndex = 11;
-            this.CbxtableList.Text = "Tablolar";
-            this.CbxtableList.SelectedValueChanged += new System.EventHandler(this.AddCbxtable_SelectedValueChanged);
+            this.CbxtableList.SelectedIndexChanged += new System.EventHandler(this.CbxtableList_SelectedIndexChanged);
             this.CbxtableList.Click += new System.EventHandler(this.CbxtableList_Click);
             // 
             // btngoster

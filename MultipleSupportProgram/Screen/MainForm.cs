@@ -16,6 +16,7 @@ using System.Security.Permissions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -35,10 +36,9 @@ namespace MultipleSupportProgram
             
             
         }
-        public DatabaseProcess databaseProcess = new DatabaseProcess();
         
         
-        public SQLFileRun sqlFileRun = new SQLFileRun();
+        
         public WeighPhotoDelete weighPhotoDelete = new WeighPhotoDelete();
         public UpdateDbaToScale updateDbaToScale = new UpdateDbaToScale();
         public string conString;
@@ -58,26 +58,22 @@ namespace MultipleSupportProgram
             try
             {
                 btnConnectionTest.Enabled = false;
-                waitForm.Show(this);
+                
                 SQLHelper.LoadConnectionString(CbWindowsAuthentication.Checked, CBServers.Text, cbxDbName.Text, cbxUsername.Text, txtPassword.Text);
                 SQLHelper.ConnectionTest();
-                waitForm.Close();
+                
                 MessageBox.Show("Bağlantı Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnConnectionTest.Enabled = true;
                 tabControlProcessHeaders.Enabled = true;
             }
             catch (Exception ex)
             {
-                waitForm.Close();
+                
                 MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnConnectionTest.Enabled = true;
             }
-            finally
-            {
-       
-            }
-            //Console.WriteLine(CbWindowsAuthentication.Checked);
-            //databaseProcess.ConnectionTest(CbWindowsAuthentication., CBServers.Text, cbxUsername.Text, txtPassword.Text, cbxDbName.Text);
+            
+            
         }
 
         private void BtnRestore_Click(object sender, EventArgs e)
@@ -306,42 +302,15 @@ namespace MultipleSupportProgram
             {
                 quary = "*";
             }
-            SqlCommand cmd = new SqlCommand("USE " + cbxDbName.Text + "; SELECT " + quary + " FROM " + CbxtableList.Text, connect);
-            SqlDataReader dr = cmd.ExecuteReader();
+            
+
             DataTable dt = new DataTable();
+            dt = SQLHelper.ExecuteReaderScript("USE " + cbxDbName.Text + "; SELECT " + quary + " FROM " + CbxtableList.Text);
+
             dataGV1.DataSource = null;
-            dt.Load(dr);
+            
             dataGV1.DataSource = dt;
             connect.Close();
-        }
-
-        private void AddCbxtable_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (btngoster.Enabled == false)
-            {
-                btngoster.Enabled = true;
-            }
-            try
-            {
-
-                conString = SQLHelper.GetConnectionString();
-                waitForm.Show(this);
-                Thread.Sleep(500);
-                SQLHelper.FindTableColums(cbxDbName.Text, CbxtableList.Text, checkedListBox1);
-                Application.DoEvents();
-                waitForm.Close();
-
-            }
-            catch (Exception ex)
-            {
-                Thread.Sleep(500);
-                waitForm.Close();
-                Application.DoEvents();
-                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-
-            }
-
         }
 
         
@@ -389,7 +358,6 @@ namespace MultipleSupportProgram
     
         private void btnTemizle_Click(object sender, EventArgs e)
         {
-            
             rtbSorgula.Clear();
         }
 
@@ -486,11 +454,13 @@ namespace MultipleSupportProgram
             try
             {
                 CbxtableList.Items.Clear();
-                DataTable DR = SQLHelper.ExecuteDataReaderScript("USE " + cbxDbName.Text + "; SELECT * FROM SYS.TABLES  ;");
-                //while (DR.Read())
-                //{
-                //    CbxtableList.Items.Add(DR[0]);
-                //}
+                DataTable DR = SQLHelper.ExecuteReaderScript("USE " + cbxDbName.Text + "; SELECT * FROM SYS.TABLES  ;");
+                
+                
+                foreach (DataRow row in DR.Rows)
+                {
+                    CbxtableList.Items.Add(row[0].ToString());
+                }
             }
             catch (Exception ex)
             {
@@ -560,7 +530,6 @@ namespace MultipleSupportProgram
                 try
                 {
                     SQLHelper.GetSQLServerList(CBServers); //dataçekilir
-                    MessageBox.Show("SQL Server Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -577,7 +546,6 @@ namespace MultipleSupportProgram
                 try
                 {
                     SQLHelper.GetSQLDatabaseList(DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore), CBServers.Text);
-                    MessageBox.Show("Database Listeleme Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -612,6 +580,34 @@ namespace MultipleSupportProgram
                     Application.DoEvents();
                     MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void CbxtableList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (btngoster.Enabled == false)
+            {
+                btngoster.Enabled = true;
+            }
+            try
+            {
+
+                conString = SQLHelper.GetConnectionString();
+                waitForm.Show(this);
+                Thread.Sleep(500);
+                SQLHelper.FindTableColums(cbxDbName.Text, CbxtableList.Text, checkedListBox1);
+                Application.DoEvents();
+                waitForm.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Thread.Sleep(500);
+                waitForm.Close();
+                Application.DoEvents();
+                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
             }
         }
     }
