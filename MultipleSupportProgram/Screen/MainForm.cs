@@ -243,18 +243,14 @@ namespace MultipleSupportProgram
         private void BtnMoveDbaToScale_Click(object sender, EventArgs e)
         {
             btnMoveDbaToScale.Enabled = false;
-            waitForm.Show(this);
 
-            Thread.Sleep(1000);
-            
-            updateDbaToScale.MoveDbaService(conString);
-            SQLHelper.MoveCarrierCompany(conString);
-            updateDbaToScale.MovePortList(conString);
-            updateDbaToScale.SelectDbaDataAndAddDatatable(conString);
+            SQLHelper.MoveDbaService();
+            SQLHelper.MoveCarrierCompany();
+            SQLHelper.MovePortList();
+            SQLHelper.SelectDbaDataAndAddDatatable();
 
             btnMoveDbaToScale.Enabled = true;
-            Application.DoEvents();
-            MainForm.waitForm.Close();
+            
         }
         
 
