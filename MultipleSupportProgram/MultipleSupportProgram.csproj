@@ -129,7 +129,6 @@
     </Compile>
     <Compile Include="Model\Loggers.cs" />
     <Compile Include="Model\UpdateDbaToScale.cs" />
-    <Compile Include="Model\WeighPhotoDelete.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen\waitScreen.cs">

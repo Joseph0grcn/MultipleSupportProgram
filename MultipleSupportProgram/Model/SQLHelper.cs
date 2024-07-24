@@ -445,7 +445,109 @@ namespace MultipleSupportProgram.Model
         }
 
 
+        //id tut öyle devam et
+        public static void PhotoDelete(string radioButtonName, string time1, string time2)
+        {
+            string commandStr = "";
+            try
+            {
+                if (time1 == "" && time2 == "")
+                {
+                    // bütün veritabanında tüm tarihlerde işlem yapıyor
+                    switch (radioButtonName)
+                    {
+                        case "rbOneAndTwoPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL " +
+                                "where seqnum2 in(select seq from Weigh2)";
+                            break;
 
+                        case "rbInTheFolderPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
+                                "where seqnum2 in(select seq from Weigh2)";
+                            break;
+
+                        case "rbAllPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL, imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
+                                "where seqnum2 in(select seq from Weigh2)";
+                            break;
+                    }
+                }
+                else
+                {
+                    //Seçilen tarih aralığında işlem yapıyor
+                    switch (radioButtonName)
+                    {
+                        case "rbOneAndTwoPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL " +
+                                "where seqnum2 in(select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            break;
+
+                        case "rbInTheFolderPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
+                                "where seqnum2 in(select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            break;
+
+                        case "rbAllPhoto":
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL, imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
+                                "where seqnum2 in(select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            break;
+                    }
+                }
+
+                    
+                bool result = Convert.ToBoolean(ExecuteNonQueryScript(commandStr));
+                    
+                if (result)
+                {
+                    Thread.Sleep(100);
+                    Application.DoEvents();
+                    MainForm.waitForm.Close();
+                    Thread.Sleep(100);
+                    Application.DoEvents();
+
+                    MessageBox.Show("Tartım fotoğrafı silme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Debug("Tartım fotoğrafı silme işlemi başarıyla gerçekleşti.");
+
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Thread.Sleep(1000);
+                MainForm.waitForm.Close();
+                Application.DoEvents();
+                logger.Error("Tartım fotoğrafı silme işlemi başarısız. : " + ex.Message);
+                MessageBox.Show("HATAsss : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
+        //updateDbaToScale
+        public static void MoveCarrierCompany()
+        { /* Taşıyıcı Firma'alanına taşınacak */
+            
+            try
+            {
+                
+                    string SQLScript = "INSERT INTO SPWIN_DB.dbo.Firm(FirmCode, FirmName) SELECT TOP 100 SPWIN_DB.dbo.Code_4.Code, SPWIN_DB.dbo.Code_4.Name FROM SPWIN_DB.dbo.Code_4 LEFT JOIN SPWIN_DB.dbo.Firm on (SPWIN_DB.dbo.Code_4.Code = SPWIN_DB.dbo.Firm.FirmCode and SPWIN_DB.dbo.Firm.FirmName = SPWIN_DB.dbo.Code_4.Name) where SPWIN_DB.dbo.Firm.FirmCode is null and SPWIN_DB.dbo.Firm.FirmName is null";
+                    bool result = ExecuteNonQueryScript(SQLScript);
+                    if (result)
+                    {
+                        MainForm.waitForm.Close();
+                        logger.Debug("Veri taşıma işlemi başarılı! - Taşıyıcı Firma --> Firma listesine eklendi");
+                        MessageBox.Show("Veri taşıma işlemi başarılı! - Taşıyıcı Firma --> Firma listesine eklendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                
+            }
+            catch (Exception ex)
+            {
+
+                MainForm.waitForm.Close();
+                logger.Error("Veri taşıma işlemi başarısız: " + ex.Message);
+                MessageBox.Show("HATA : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 

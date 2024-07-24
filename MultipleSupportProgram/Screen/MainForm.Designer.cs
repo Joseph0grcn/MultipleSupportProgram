@@ -110,6 +110,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EsitScaleSil = new System.Windows.Forms.TabPage();
+            this.btnEsitScaleSil = new System.Windows.Forms.Button();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
             this.grpBoxPatch.SuspendLayout();
@@ -130,6 +132,7 @@
             this.esitUserEkle.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.EsitScaleSil.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProcessHeaders
@@ -144,6 +147,7 @@
             this.tabControlProcessHeaders.Controls.Add(this.tpQuary);
             this.tabControlProcessHeaders.Controls.Add(this.tbSorgu);
             this.tabControlProcessHeaders.Controls.Add(this.esitUserEkle);
+            this.tabControlProcessHeaders.Controls.Add(this.EsitScaleSil);
             this.tabControlProcessHeaders.Enabled = false;
             this.tabControlProcessHeaders.Location = new System.Drawing.Point(3, 262);
             this.tabControlProcessHeaders.Multiline = true;
@@ -236,10 +240,10 @@
             // 
             this.tpRestore.BackColor = System.Drawing.SystemColors.Control;
             this.tpRestore.Controls.Add(this.groupBox1);
-            this.tpRestore.Location = new System.Drawing.Point(4, 40);
+            this.tpRestore.Location = new System.Drawing.Point(4, 22);
             this.tpRestore.Name = "tpRestore";
             this.tpRestore.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRestore.Size = new System.Drawing.Size(653, 306);
+            this.tpRestore.Size = new System.Drawing.Size(653, 324);
             this.tpRestore.TabIndex = 1;
             this.tpRestore.Text = "Geri Yükle";
             // 
@@ -317,10 +321,10 @@
             this.tpSQLFile.BackColor = System.Drawing.SystemColors.Control;
             this.tpSQLFile.Controls.Add(this.groupBox2);
             this.tpSQLFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tpSQLFile.Location = new System.Drawing.Point(4, 40);
+            this.tpSQLFile.Location = new System.Drawing.Point(4, 22);
             this.tpSQLFile.Name = "tpSQLFile";
             this.tpSQLFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSQLFile.Size = new System.Drawing.Size(653, 306);
+            this.tpSQLFile.Size = new System.Drawing.Size(653, 324);
             this.tpSQLFile.TabIndex = 2;
             this.tpSQLFile.Text = "SQL Dosyası Çalıştırma";
             // 
@@ -383,10 +387,10 @@
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.rdbPeriod);
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.dtpStart);
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.groupBox5);
-            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 40);
+            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 22);
             this.tpSPWinDatabasePhotoDelete.Name = "tpSPWinDatabasePhotoDelete";
             this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(653, 306);
+            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(653, 324);
             this.tpSPWinDatabasePhotoDelete.TabIndex = 3;
             this.tpSPWinDatabasePhotoDelete.Text = "Veritabanından Fotoğraf Silme";
             // 
@@ -513,10 +517,10 @@
             // 
             this.tpDatabaseRepair.BackColor = System.Drawing.SystemColors.Control;
             this.tpDatabaseRepair.Controls.Add(this.groupBox6);
-            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 40);
+            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 22);
             this.tpDatabaseRepair.Name = "tpDatabaseRepair";
             this.tpDatabaseRepair.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDatabaseRepair.Size = new System.Drawing.Size(653, 306);
+            this.tpDatabaseRepair.Size = new System.Drawing.Size(653, 324);
             this.tpDatabaseRepair.TabIndex = 7;
             this.tpDatabaseRepair.Text = "Veritabanı Onarma";
             // 
@@ -602,10 +606,10 @@
             // 
             this.tpSPWinScaleAndDBAConsolidation.BackColor = System.Drawing.SystemColors.Control;
             this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.btnMoveDbaToScale);
-            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 40);
+            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 22);
             this.tpSPWinScaleAndDBAConsolidation.Name = "tpSPWinScaleAndDBAConsolidation";
             this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(653, 306);
+            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(653, 324);
             this.tpSPWinScaleAndDBAConsolidation.TabIndex = 6;
             this.tpSPWinScaleAndDBAConsolidation.Text = "SPWin Scale ve DBA Birleştirme";
             // 
@@ -1010,6 +1014,27 @@
             this.aboutToolStripMenuItem.Text = "Hakkında";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // EsitScaleSil
+            // 
+            this.EsitScaleSil.Controls.Add(this.btnEsitScaleSil);
+            this.EsitScaleSil.Location = new System.Drawing.Point(4, 40);
+            this.EsitScaleSil.Name = "EsitScaleSil";
+            this.EsitScaleSil.Padding = new System.Windows.Forms.Padding(3);
+            this.EsitScaleSil.Size = new System.Drawing.Size(653, 306);
+            this.EsitScaleSil.TabIndex = 12;
+            this.EsitScaleSil.Text = "EsitScale Sil";
+            this.EsitScaleSil.UseVisualStyleBackColor = true;
+            // 
+            // btnEsitScaleSil
+            // 
+            this.btnEsitScaleSil.Location = new System.Drawing.Point(210, 86);
+            this.btnEsitScaleSil.Name = "btnEsitScaleSil";
+            this.btnEsitScaleSil.Size = new System.Drawing.Size(197, 130);
+            this.btnEsitScaleSil.TabIndex = 0;
+            this.btnEsitScaleSil.Text = "www.EsitScale.com dosyalarını  Sil";
+            this.btnEsitScaleSil.UseVisualStyleBackColor = true;
+            this.btnEsitScaleSil.Click += new System.EventHandler(this.btnEsitScaleSil_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1055,6 +1080,7 @@
             this.groupBox4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.EsitScaleSil.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1143,6 +1169,8 @@
         private System.Windows.Forms.Label lblDateFinish;
         private System.Windows.Forms.TabPage esitUserEkle;
         private System.Windows.Forms.Button btnEsitUserEkle;
+        private System.Windows.Forms.TabPage EsitScaleSil;
+        private System.Windows.Forms.Button btnEsitScaleSil;
     }
 }
 

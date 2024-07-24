@@ -11,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
 using System.Text;
@@ -36,22 +37,21 @@ namespace MultipleSupportProgram
             
             
         }
-        
-        
-        
-        public WeighPhotoDelete weighPhotoDelete = new WeighPhotoDelete();
+
+        public void MainForm_Load(object sender, EventArgs e)
+        {
+            //conString = SQLHelper.GetConnectionString();
+            loggers.CreateSpwinlogsFile();
+            tabControlProcessHeaders.TabPages.Remove(tpDatabaseRepair);
+            tabControlProcessHeaders.TabPages.Remove(tpQuary);
+
+        }
+
         public UpdateDbaToScale updateDbaToScale = new UpdateDbaToScale();
         public string conString;
         public Loggers loggers = new Loggers();
         public static WaitScreenFunc waitForm = new WaitScreenFunc();
         
-
-
-        public static void WaitClose()
-        {
-            Application.DoEvents();
-            waitForm.Close();
-        }
 
         private void BtnConnectionTest_Click(object sender, EventArgs e)
         {
@@ -143,14 +143,7 @@ namespace MultipleSupportProgram
             txtSQLFile.Text = SQLHelper.SQLFileSelect();
         }
 
-        public void MainForm_Load(object sender, EventArgs e)
-        {
-            //conString = SQLHelper.GetConnectionString();
-            loggers.CreateSpwinlogsFile();
-            tabControlProcessHeaders.TabPages.Remove(tpDatabaseRepair);
-            tabControlProcessHeaders.TabPages.Remove(tpQuary);
-            
-        }
+        
 
         private void BtnSQLRun_Click(object sender, EventArgs e)
         {
@@ -196,29 +189,21 @@ namespace MultipleSupportProgram
                 {
                     string message = "Bu işlem Bütün veritabanı üzerinde silme işlemi yapacaktır \n işleme devam etmek istiyor musunuz?";
                     string title = "UYARI";
-
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result = MessageBox.Show(message, title, buttons);
                     if (result==DialogResult.Yes)
                     {
-                        
                         MainForm.waitForm.Show(MainForm.ActiveForm);
                     }
                     else
                     {
-                        
-                        
                         MessageBox.Show("İşlem iptal edildi.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnWeighPhotoDelete.Enabled = true;
                         return;
-
                     }
-
-                    
                 }
                 else
                 {
-                    
                     MessageBox.Show("Bu işlemi yapabilmek için zaman ayarlarından birini seçmek zorundasınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnWeighPhotoDelete.Enabled = true;
                     return;
@@ -239,7 +224,7 @@ namespace MultipleSupportProgram
 
                 // silme fonksiyonuna gidiş
                 //************************
-                weighPhotoDelete.PhotoDelete(conString, rbName,time1,time2);
+                SQLHelper.PhotoDelete(rbName,time1,time2);
 
 
                 btnWeighPhotoDelete.Enabled = true;
@@ -261,9 +246,9 @@ namespace MultipleSupportProgram
             waitForm.Show(this);
 
             Thread.Sleep(1000);
-            conString = SQLHelper.GetConnectionString();
+            
             updateDbaToScale.MoveDbaService(conString);
-            updateDbaToScale.MoveCarrierCompany(conString);
+            SQLHelper.MoveCarrierCompany(conString);
             updateDbaToScale.MovePortList(conString);
             updateDbaToScale.SelectDbaDataAndAddDatatable(conString);
 
@@ -560,24 +545,11 @@ namespace MultipleSupportProgram
             {
                 try
                 {
-                    waitForm.Show(this);
-                    Thread.Sleep(500);
                     SQLHelper.FindDbUsers(cbxUsername, cbxDbName.Text, CBServers.Text);
-
-                    Application.DoEvents();
-
-                    waitForm.Close();
-
-                    Thread.Sleep(500);
-                    Application.DoEvents();
                     MessageBox.Show("Kullanıcı listeleme başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Application.DoEvents();
                 }
                 catch (Exception ex)
                 {
-                    Thread.Sleep(500);
-                    waitForm.Close();
-                    Application.DoEvents();
                     MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -609,6 +581,59 @@ namespace MultipleSupportProgram
 
 
             }
+        }
+
+        private void btnEsitScaleSil_Click(object sender, EventArgs e)
+        {
+            string appDataRoaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string appDataLocal = appDataRoaming.Replace("Roaming", "Local");
+            string dosyaIsmi = "www.esitscale.com";
+            appDataLocal = appDataLocal + "\\" + dosyaIsmi;
+            appDataRoaming = appDataRoaming + "\\" + dosyaIsmi;
+
+            Console.WriteLine($"Geçerli kullanıcının AppData Roaming yolu: {appDataRoaming}");
+            Console.WriteLine($"Geçerli kullanıcının AppData Local yolu: {appDataLocal}");
+            
+            
+                string message = "Bu işlem www.esitscale.com dosyalarını silecektir \ndevam etmek istiyor musunuz?"
+                    +appDataLocal;
+                string title = "UYARI";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
+                {
+
+                    if (Directory.Exists(appDataLocal))
+                    {
+                        FileSecurity dosyaGuvenlik = File.GetAccessControl(appDataLocal);
+                        dosyaGuvenlik.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));
+                        File.SetAccessControl(appDataLocal, dosyaGuvenlik);
+                        Directory.Delete(appDataLocal, true);
+                        Console.WriteLine("Dosya başarıyla silindi.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dosya bulunamadı.");
+                    }
+                    if (Directory.Exists(appDataRoaming))
+                    {
+                        FileSecurity dosyaGuvenlik = File.GetAccessControl(appDataRoaming);
+                        dosyaGuvenlik.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));
+                        File.SetAccessControl(appDataRoaming, dosyaGuvenlik);
+                        Directory.Delete(appDataRoaming, true);
+                        Console.WriteLine("Dosya başarıyla silindi.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dosya bulunamadı.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("işlem seçim sonrası iptal edildi");
+                }
+            
+
         }
     }
 }
