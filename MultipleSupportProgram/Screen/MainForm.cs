@@ -98,7 +98,7 @@ namespace MultipleSupportProgram
 
         private void BtnRestoreFile_Click(object sender, EventArgs e)
         {
-            txtRestorePath.Text = FileOperations.RestoreFileLocation();
+            txtRestorePath.Text = FileHelper.RestoreFileLocation();
         }
 
         private void CbWindowsAuthentication_CheckedChanged(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace MultipleSupportProgram
 
         private void BtnBackupFileLocationSelect_Click(object sender, EventArgs e)
         {
-            txtBackupPath.Text = (SQLHelper.BackupFileLocation() + "\\");
+            txtBackupPath.Text = (FileHelper.BackupFileLocation() + "\\");
         }
 
         private void BtnBackup_Click(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace MultipleSupportProgram
 
         private void BtnSQLFileSelect_Click(object sender, EventArgs e)
         {
-            txtSQLFile.Text = FileOperations.SQLFileSelect();
+            txtSQLFile.Text = FileHelper.SQLFileSelect();
         }
 
         
@@ -581,53 +581,28 @@ namespace MultipleSupportProgram
 
         private void btnEsitScaleSil_Click(object sender, EventArgs e)
         {
-
-
-
             string appDataRoaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string appDataLocal = appDataRoaming.Replace("Roaming", "Local");
             string dosyaIsmi = "www.esitscale.com";
-            appDataLocal = appDataLocal + "\\" + dosyaIsmi;
-            appDataRoaming = appDataRoaming + "\\" + dosyaIsmi;
+            string localPath = Path.Combine(appDataLocal, dosyaIsmi);
+            string roamingPath = Path.Combine(appDataRoaming, dosyaIsmi);
+
 
             
-            
-                string message = "Bu işlem www.esitscale.com dosyalarını silecektir \ndevam etmek istiyor musunuz?";
-                string title = "UYARI";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    if (Directory.Exists(appDataLocal))
-                    {
-                        FileSecurity dosyaGuvenlik = File.GetAccessControl(appDataLocal);
-                        dosyaGuvenlik.AddAccessRule(
-                        new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));
-                        File.SetAccessControl(appDataLocal, dosyaGuvenlik);
-                        Directory.Delete(appDataLocal, true);
-                        Console.WriteLine("Dosya başarıyla silindi.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Dosya bulunamadı.");
-                    }
-                    if (Directory.Exists(appDataRoaming))
-                    {
-                        FileSecurity dosyaGuvenlik = File.GetAccessControl(appDataRoaming);
-                        dosyaGuvenlik.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));
-                        File.SetAccessControl(appDataRoaming, dosyaGuvenlik);
-                        Directory.Delete(appDataRoaming, true);
-                        Console.WriteLine("Dosya başarıyla silindi.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Dosya bulunamadı.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("işlem seçim sonrası iptal edildi");
-                }
+            string message = "Bu işlem www.esitscale.com dosyalarını silecektir \ndevam etmek istiyor musunuz?";
+            string title = "UYARI";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                FileHelper.DeleteDirectoryIfExists(localPath);
+                FileHelper.DeleteDirectoryIfExists(roamingPath);
+            }
+            else
+            {
+                
+            }
         }
     }
 }

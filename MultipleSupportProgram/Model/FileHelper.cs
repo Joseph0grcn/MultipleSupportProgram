@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MultipleSupportProgram.Model
 {
-    internal class FileOperations
+    internal class FileHelper
     {
         public static log4net.ILog logger = log4net.LogManager.GetLogger("FileOperations");
         public static string RestoreFileLocation()
@@ -18,12 +18,24 @@ namespace MultipleSupportProgram.Model
             file.Filter = "Veritabanı Dosyası |*.bak";
             if (file.ShowDialog() == DialogResult.OK)
             {
+                logger.Info(file.FileName +" yedeği seçildi");
                 return file.FileName;
             }
             else
             {
                 return null;
             }
+        }
+        public static string BackupFileLocation()
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                logger.Info(folderBrowserDialog.SelectedPath + "  dosya yolu seçildi");
+                return folderBrowserDialog.SelectedPath;
+            }
+            return null;
         }
 
         public static string SQLFileSelect()
@@ -41,7 +53,7 @@ namespace MultipleSupportProgram.Model
                 }
             }
         }
-        private void DeleteDirectoryIfExists(string path)
+        public static void DeleteDirectoryIfExists(string path)
         {
             try
             {

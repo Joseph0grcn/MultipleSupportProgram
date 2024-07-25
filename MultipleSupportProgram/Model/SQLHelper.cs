@@ -95,16 +95,16 @@ namespace MultipleSupportProgram.Model
             }
         }
 
-        public static string BackupFileLocation()
-        {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            DialogResult result = folderBrowserDialog.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                return folderBrowserDialog.SelectedPath;
-            }
-            return null;
-        }
+        //public static string BackupFileLocation()
+        //{
+        //    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+        //    DialogResult result = folderBrowserDialog.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        return folderBrowserDialog.SelectedPath;
+        //    }
+        //    return null;
+        //}
         public static void BackupDB(string databaseName, string backupFileLocation)
         {
 
