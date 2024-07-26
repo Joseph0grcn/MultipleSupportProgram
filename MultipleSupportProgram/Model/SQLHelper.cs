@@ -28,7 +28,7 @@ namespace MultipleSupportProgram.Model
         public static bool windowsAuthentication = false;
 
 
-        public static bool ExecuteNonQueryScript(string sqlScript)
+        public static bool ExecuteNonQueryScript(string sqlScript, int timeout = 30)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -37,6 +37,7 @@ namespace MultipleSupportProgram.Model
                 {
                     try
                     {
+                        command.CommandTimeout = timeout;
                         command.ExecuteNonQuery();
                         logger.Debug("SQL script başarıyla çalıştırıldı.");
                         return true;
@@ -49,7 +50,7 @@ namespace MultipleSupportProgram.Model
                 }
             }
         }
-        public static object ExecuteScalarScript(string sqlScript)
+        public static object ExecuteScalarScript(string sqlScript, int timeout = 30)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -58,8 +59,8 @@ namespace MultipleSupportProgram.Model
                 {
                     try
                     {
+                        command.CommandTimeout = timeout;
                         var result = command.ExecuteScalar();
-                        
                         return result;
                     }
                     catch (Exception ex)
@@ -70,7 +71,7 @@ namespace MultipleSupportProgram.Model
                 }
             }
         }
-        public static DataTable ExecuteReaderScript(string sqlScript)
+        public static DataTable ExecuteReaderScript(string sqlScript, int timeout = 30)
         {
             DataTable result = new DataTable();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -80,10 +81,9 @@ namespace MultipleSupportProgram.Model
                 {
                     try
                     {
-
+                        command.CommandTimeout = timeout;
                         SqlDataReader reader = command.ExecuteReader();
                         result.Load(reader);
-
                         return result;
                     }
                     catch (Exception ex)
@@ -95,16 +95,7 @@ namespace MultipleSupportProgram.Model
             }
         }
 
-        //public static string BackupFileLocation()
-        //{
-        //    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-        //    DialogResult result = folderBrowserDialog.ShowDialog();
-        //    if (result == DialogResult.OK)
-        //    {
-        //        return folderBrowserDialog.SelectedPath;
-        //    }
-        //    return null;
-        //}
+        
         public static void BackupDB(string databaseName, string backupFileLocation)
         {
 
@@ -150,20 +141,6 @@ namespace MultipleSupportProgram.Model
             }
 
         }
-        
-        //public static string RestoreFileLocation()
-        //{
-        //    OpenFileDialog file = new OpenFileDialog();
-        //    file.Filter = "Veritabanı Dosyası |*.bak";
-        //    if (file.ShowDialog() == DialogResult.OK)
-        //    {
-        //        return file.FileName;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
         public static void RestoreDB(string databaseName, string restoreFilePath)
         {
             if (databaseName.Replace(" ", "").Length == 0)
@@ -214,21 +191,7 @@ namespace MultipleSupportProgram.Model
             }
         }
         
-        //public static string SQLFileSelect()
-        //{
-        //    using (OpenFileDialog file = new OpenFileDialog())
-        //    {
-        //        file.Filter = "SQL Dosyası |*.sql";
-        //        if (file.ShowDialog() == DialogResult.OK)
-        //        {
-        //            return file.FileName;
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
+        
         public static void RunSQLFile(string sqlFile)
         {
             if (sqlFile.Replace(" ", "").Length == 0)
@@ -277,13 +240,42 @@ namespace MultipleSupportProgram.Model
                 MessageBox.Show("SQL dosyası çalıştırma işlemi başarısız! : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public static void EsitUserAdd()
+        public static void EsitUserAdd(string user, string password, int role)
         {
             try
             {
-                string userAddScriptText = @"CREATE LOGIN esit_user WITH PASSWORD=N'esit12345', 
-                DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF,
-                CHECK_POLICY=OFF EXEC master..sp_addsrvrolemember @loginame = N'esit_user', @rolename = N'sysadmin'";
+                string userAddScriptText="";
+                if (role ==1) // admin = 1
+                {
+                    userAddScriptText = $@"
+                        CREATE LOGIN [{user}] WITH PASSWORD=N'{password}', 
+                        DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], 
+                        CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
+
+                        USE [SPWIN_DB];
+                        CREATE USER [{user}] FOR LOGIN [{user}];
+
+                        EXEC sp_addsrvrolemember @loginame = N'{user}', @rolename = N'sysadmin';
+                    ";
+                }
+                else if(role == 0) //read-only = 0
+                {
+                    userAddScriptText = $@"
+                        CREATE LOGIN [{user}] WITH PASSWORD=N'{password}', 
+                        DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], 
+                        CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
+
+                        USE [SPWIN_DB];
+                        CREATE USER [{user}] FOR LOGIN [{user}];
+
+                        EXEC sp_addrolemember N'db_datareader', N'{user}';
+                    ";
+                }
+                else
+                {
+                    MessageBox.Show("Esit-User Ekleme işlemi için rol seçiniz!", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
 
                 bool result = ExecuteNonQueryScript(userAddScriptText);
                 if (result == false)
@@ -327,22 +319,32 @@ namespace MultipleSupportProgram.Model
                 connectionString = @"Server="+serverName+";Database="+databaseName+";User Id="+_userName+";Password="+_password+";";
             }
         }
-        public static void ConnectionTest()
+        public static bool ConnectionTest()
         {
             try
             {
+                if (serverName == "" || databaseName == "")
+                {
+                    MessageBox.Show("Server ismi ve Database ismi boş olamaz  \n" , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
+                    
                     con.Open();
                     logger.Debug("Bağlantı başarılı bir şekilde açıldı");
                     con.Close();
                     logger.Debug("Bağlantı başarılı bir şekilde kapatıldı");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
+               
                 logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "");
+                
                 throw new Exception("HATA Bağlantı kurulamadı : " + ex.Message);
+                return false;
             }
         }
         public static void GetSQLServerList(ComboBox sqlServerList)
@@ -445,7 +447,7 @@ namespace MultipleSupportProgram.Model
         }
 
 
-        //id tut öyle devam et
+        
         public static void PhotoDelete(string radioButtonName, string time1, string time2)
         {
             string commandStr = "";
@@ -495,7 +497,7 @@ namespace MultipleSupportProgram.Model
                 }
 
                     
-                bool result = Convert.ToBoolean(ExecuteNonQueryScript(commandStr));
+                bool result = Convert.ToBoolean(ExecuteNonQueryScript(commandStr , 0));
                     
                 if (result)
                 {
@@ -521,7 +523,73 @@ namespace MultipleSupportProgram.Model
             }
 
         }
+        public static void WeighingDelete(string tartım, string time1, string time2)
+        {
+            string commandStr = "";
+            string tabloName = "";
+            if (tartım == "rbTartım1")
+            {
+                tabloName = "dbo.Weigh1";
+            }else if(tartım == "rbTartım2")
+            {
+                tabloName = "dbo.Weigh2";
+            }
+            try
+            {
+                if (time1 == "" && time2 == "")
+                {
+                    //veritabanında tarih kısıtlaması olmadan çalışıyor
+                    switch (tartım)
+                    {
+                        case "rbTartım1":
+                            commandStr = "select seq from dbo.Weigh1 where WeighTime1 < GETDATE();";
+                            break;
 
+                        case "rbTartım2":
+                            commandStr = "select seq from dbo.Weigh2 where WeighTime1 < GETDATE();";
+                            break;
+                    }
+                }
+                else
+                {
+                    //Seçilen tarih aralığında çalışıyor
+                    switch (tartım)
+                    {
+                        case "rbTartım1":
+                            commandStr = "select seq from Weigh1 where WeighTime1 between '" + time1 + "' and '" + time2 + "';";
+                            break;
+
+                        case "rbTartım2":
+                            commandStr = "select seq from Weigh2 where WeighTime1 between '" + time1 + "' and '" + time2 + "';";
+                            break;
+                    }
+                }
+
+
+                DataTable datatable = ExecuteReaderScript(commandStr, 0);
+                foreach (DataRow row in datatable.Rows)
+                {
+                    
+                    ExecuteNonQueryScript("delete from " + tabloName + " where seq = " + row["seq"]+";");
+                }
+
+
+
+                MessageBox.Show("Tartım silme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                logger.Info("tartım tablosu silme işlemi" + commandStr + "kodu ile gerçekleşti");
+                logger.Debug("Tartım silme işlemi başarıyla gerçekleşti.");
+
+
+            }
+            catch (Exception ex)
+            {
+                Thread.Sleep(1000);
+                MainForm.waitForm.Close();
+                Application.DoEvents();
+                logger.Error("Tartım silme işlemi başarısız. : " + ex.Message);
+                MessageBox.Show("HATAsss : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //updateDbaToScale
         public static void MoveCarrierCompany()
@@ -584,12 +652,12 @@ namespace MultipleSupportProgram.Model
         }
         public static void SelectDbaDataAndAddDatatable()
         {
-
-            DataTable dataTable = new DataTable();
             try
             {
                 string SQLScript = "select seq,seqnum1,CName4,CName5,CName6,CName9,CName10,Code4,Code9 from SPWIN_DB.dbo.Weigh2 where (CName4 IS NOT NULL and CName4 <> '') and (CName5 IS NOT NULL and CName5 <> '') and (CName9 IS NOT NULL and CName9 <> '') and (DbaWeigh2Id IS NULL or DbaWeigh2Id = '' or DbaWeigh2Id = 0)";
-                dataTable = ExecuteReaderScript(SQLScript);    
+
+                DataTable dataTable = new DataTable();
+                dataTable = ExecuteReaderScript(SQLScript);
                 MoveDba_Data(dataTable);
             }
             catch (Exception ex)

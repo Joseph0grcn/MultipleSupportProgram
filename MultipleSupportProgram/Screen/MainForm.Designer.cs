@@ -96,22 +96,53 @@
             this.btnSorgula = new System.Windows.Forms.Button();
             this.rtbSorgula = new System.Windows.Forms.RichTextBox();
             this.esitUserEkle = new System.Windows.Forms.TabPage();
+            this.cbUserAddUserRole = new System.Windows.Forms.ComboBox();
+            this.lbUserAddUserRole = new System.Windows.Forms.Label();
+            this.tbUserAddUserPassword = new System.Windows.Forms.TextBox();
+            this.tbUserAddUserName = new System.Windows.Forms.TextBox();
+            this.lbUserAddUserPassword = new System.Windows.Forms.Label();
+            this.lbUserAddUserName = new System.Windows.Forms.Label();
             this.btnEsitUserEkle = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.EsitScaleSil = new System.Windows.Forms.TabPage();
+            this.btnEsitScaleSil = new System.Windows.Forms.Button();
+            this.tpCamPhotoLink = new System.Windows.Forms.TabPage();
+            this.btnLinkCopy = new System.Windows.Forms.Button();
+            this.tbCamLink = new System.Windows.Forms.TextBox();
+            this.btnCamLinkCreate = new System.Windows.Forms.Button();
+            this.cbCamType = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbCamPassword = new System.Windows.Forms.TextBox();
+            this.tbCamUser = new System.Windows.Forms.TextBox();
+            this.tbCamIpAddress = new System.Windows.Forms.TextBox();
+            this.lblCamPassword = new System.Windows.Forms.Label();
+            this.lblCamUser = new System.Windows.Forms.Label();
+            this.lblCamIpAddress = new System.Windows.Forms.Label();
+            this.tpTartımSilme = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.rbTartım1 = new System.Windows.Forms.RadioButton();
+            this.rbTartım2 = new System.Windows.Forms.RadioButton();
+            this.btnTartımSilme = new System.Windows.Forms.Button();
+            this.lbTartımEnd = new System.Windows.Forms.Label();
+            this.lbTartımStart = new System.Windows.Forms.Label();
+            this.dtpTartımDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.rbTartımAllDelete = new System.Windows.Forms.RadioButton();
+            this.rbTartımPeriodDelete = new System.Windows.Forms.RadioButton();
+            this.dtpTartımDateStart = new System.Windows.Forms.DateTimePicker();
+            this.gbConnectionSettings = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxUsername = new System.Windows.Forms.ComboBox();
             this.cbxDbName = new System.Windows.Forms.ComboBox();
             this.lblServer = new System.Windows.Forms.Label();
             this.CbWindowsAuthentication = new System.Windows.Forms.CheckBox();
-            this.btnConnectionTest = new System.Windows.Forms.Button();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.CBServers = new System.Windows.Forms.ComboBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnConnectionTest = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EsitScaleSil = new System.Windows.Forms.TabPage();
-            this.btnEsitScaleSil = new System.Windows.Forms.Button();
+            this.dtpTartımSaatEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpTartımSaatStart = new System.Windows.Forms.DateTimePicker();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
             this.grpBoxPatch.SuspendLayout();
@@ -130,9 +161,12 @@
             this.tbSorgu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.esitUserEkle.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.EsitScaleSil.SuspendLayout();
+            this.tpCamPhotoLink.SuspendLayout();
+            this.tpTartımSilme.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.gbConnectionSettings.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProcessHeaders
@@ -148,6 +182,8 @@
             this.tabControlProcessHeaders.Controls.Add(this.tbSorgu);
             this.tabControlProcessHeaders.Controls.Add(this.esitUserEkle);
             this.tabControlProcessHeaders.Controls.Add(this.EsitScaleSil);
+            this.tabControlProcessHeaders.Controls.Add(this.tpCamPhotoLink);
+            this.tabControlProcessHeaders.Controls.Add(this.tpTartımSilme);
             this.tabControlProcessHeaders.Enabled = false;
             this.tabControlProcessHeaders.Location = new System.Drawing.Point(3, 262);
             this.tabControlProcessHeaders.Multiline = true;
@@ -240,10 +276,10 @@
             // 
             this.tpRestore.BackColor = System.Drawing.SystemColors.Control;
             this.tpRestore.Controls.Add(this.groupBox1);
-            this.tpRestore.Location = new System.Drawing.Point(4, 22);
+            this.tpRestore.Location = new System.Drawing.Point(4, 40);
             this.tpRestore.Name = "tpRestore";
             this.tpRestore.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRestore.Size = new System.Drawing.Size(653, 324);
+            this.tpRestore.Size = new System.Drawing.Size(653, 306);
             this.tpRestore.TabIndex = 1;
             this.tpRestore.Text = "Geri Yükle";
             // 
@@ -321,10 +357,10 @@
             this.tpSQLFile.BackColor = System.Drawing.SystemColors.Control;
             this.tpSQLFile.Controls.Add(this.groupBox2);
             this.tpSQLFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tpSQLFile.Location = new System.Drawing.Point(4, 22);
+            this.tpSQLFile.Location = new System.Drawing.Point(4, 40);
             this.tpSQLFile.Name = "tpSQLFile";
             this.tpSQLFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSQLFile.Size = new System.Drawing.Size(653, 324);
+            this.tpSQLFile.Size = new System.Drawing.Size(653, 306);
             this.tpSQLFile.TabIndex = 2;
             this.tpSQLFile.Text = "SQL Dosyası Çalıştırma";
             // 
@@ -387,10 +423,10 @@
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.rdbPeriod);
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.dtpStart);
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.groupBox5);
-            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 22);
+            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 40);
             this.tpSPWinDatabasePhotoDelete.Name = "tpSPWinDatabasePhotoDelete";
             this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(653, 324);
+            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(653, 306);
             this.tpSPWinDatabasePhotoDelete.TabIndex = 3;
             this.tpSPWinDatabasePhotoDelete.Text = "Veritabanından Fotoğraf Silme";
             // 
@@ -517,10 +553,10 @@
             // 
             this.tpDatabaseRepair.BackColor = System.Drawing.SystemColors.Control;
             this.tpDatabaseRepair.Controls.Add(this.groupBox6);
-            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 22);
+            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 40);
             this.tpDatabaseRepair.Name = "tpDatabaseRepair";
             this.tpDatabaseRepair.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDatabaseRepair.Size = new System.Drawing.Size(653, 324);
+            this.tpDatabaseRepair.Size = new System.Drawing.Size(653, 306);
             this.tpDatabaseRepair.TabIndex = 7;
             this.tpDatabaseRepair.Text = "Veritabanı Onarma";
             // 
@@ -606,10 +642,10 @@
             // 
             this.tpSPWinScaleAndDBAConsolidation.BackColor = System.Drawing.SystemColors.Control;
             this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.btnMoveDbaToScale);
-            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 22);
+            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 40);
             this.tpSPWinScaleAndDBAConsolidation.Name = "tpSPWinScaleAndDBAConsolidation";
             this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(653, 324);
+            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(653, 306);
             this.tpSPWinScaleAndDBAConsolidation.TabIndex = 6;
             this.tpSPWinScaleAndDBAConsolidation.Text = "SPWin Scale ve DBA Birleştirme";
             // 
@@ -849,6 +885,12 @@
             // 
             // esitUserEkle
             // 
+            this.esitUserEkle.Controls.Add(this.cbUserAddUserRole);
+            this.esitUserEkle.Controls.Add(this.lbUserAddUserRole);
+            this.esitUserEkle.Controls.Add(this.tbUserAddUserPassword);
+            this.esitUserEkle.Controls.Add(this.tbUserAddUserName);
+            this.esitUserEkle.Controls.Add(this.lbUserAddUserPassword);
+            this.esitUserEkle.Controls.Add(this.lbUserAddUserName);
             this.esitUserEkle.Controls.Add(this.btnEsitUserEkle);
             this.esitUserEkle.Location = new System.Drawing.Point(4, 40);
             this.esitUserEkle.Name = "esitUserEkle";
@@ -858,11 +900,70 @@
             this.esitUserEkle.Text = "Esit-User Ekle";
             this.esitUserEkle.UseVisualStyleBackColor = true;
             // 
+            // cbUserAddUserRole
+            // 
+            this.cbUserAddUserRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUserAddUserRole.FormattingEnabled = true;
+            this.cbUserAddUserRole.Items.AddRange(new object[] {
+            "Read-Only",
+            "Admin"});
+            this.cbUserAddUserRole.Location = new System.Drawing.Point(184, 130);
+            this.cbUserAddUserRole.Name = "cbUserAddUserRole";
+            this.cbUserAddUserRole.Size = new System.Drawing.Size(167, 21);
+            this.cbUserAddUserRole.TabIndex = 6;
+            // 
+            // lbUserAddUserRole
+            // 
+            this.lbUserAddUserRole.AutoSize = true;
+            this.lbUserAddUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbUserAddUserRole.Location = new System.Drawing.Point(56, 130);
+            this.lbUserAddUserRole.Name = "lbUserAddUserRole";
+            this.lbUserAddUserRole.Size = new System.Drawing.Size(122, 24);
+            this.lbUserAddUserRole.TabIndex = 5;
+            this.lbUserAddUserRole.Text = "Yetki Düzeyi :";
+            // 
+            // tbUserAddUserPassword
+            // 
+            this.tbUserAddUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbUserAddUserPassword.Location = new System.Drawing.Point(184, 80);
+            this.tbUserAddUserPassword.Name = "tbUserAddUserPassword";
+            this.tbUserAddUserPassword.PasswordChar = '*';
+            this.tbUserAddUserPassword.Size = new System.Drawing.Size(167, 29);
+            this.tbUserAddUserPassword.TabIndex = 4;
+            // 
+            // tbUserAddUserName
+            // 
+            this.tbUserAddUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbUserAddUserName.Location = new System.Drawing.Point(184, 30);
+            this.tbUserAddUserName.Name = "tbUserAddUserName";
+            this.tbUserAddUserName.Size = new System.Drawing.Size(167, 29);
+            this.tbUserAddUserName.TabIndex = 3;
+            // 
+            // lbUserAddUserPassword
+            // 
+            this.lbUserAddUserPassword.AutoSize = true;
+            this.lbUserAddUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbUserAddUserPassword.Location = new System.Drawing.Point(46, 80);
+            this.lbUserAddUserPassword.Name = "lbUserAddUserPassword";
+            this.lbUserAddUserPassword.Size = new System.Drawing.Size(132, 24);
+            this.lbUserAddUserPassword.TabIndex = 2;
+            this.lbUserAddUserPassword.Text = "Kullanıcı Şifre :";
+            // 
+            // lbUserAddUserName
+            // 
+            this.lbUserAddUserName.AutoSize = true;
+            this.lbUserAddUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbUserAddUserName.Location = new System.Drawing.Point(55, 30);
+            this.lbUserAddUserName.Name = "lbUserAddUserName";
+            this.lbUserAddUserName.Size = new System.Drawing.Size(123, 24);
+            this.lbUserAddUserName.TabIndex = 1;
+            this.lbUserAddUserName.Text = "Kullanıcı Adı :";
+            // 
             // btnEsitUserEkle
             // 
             this.btnEsitUserEkle.BackColor = System.Drawing.Color.ForestGreen;
             this.btnEsitUserEkle.ForeColor = System.Drawing.Color.White;
-            this.btnEsitUserEkle.Location = new System.Drawing.Point(210, 109);
+            this.btnEsitUserEkle.Location = new System.Drawing.Point(432, 217);
             this.btnEsitUserEkle.Name = "btnEsitUserEkle";
             this.btnEsitUserEkle.Size = new System.Drawing.Size(214, 80);
             this.btnEsitUserEkle.TabIndex = 0;
@@ -870,24 +971,307 @@
             this.btnEsitUserEkle.UseVisualStyleBackColor = false;
             this.btnEsitUserEkle.Click += new System.EventHandler(this.btnEsitUserEkle_Click);
             // 
-            // groupBox4
+            // EsitScaleSil
             // 
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.cbxUsername);
-            this.groupBox4.Controls.Add(this.cbxDbName);
-            this.groupBox4.Controls.Add(this.lblServer);
-            this.groupBox4.Controls.Add(this.CbWindowsAuthentication);
-            this.groupBox4.Controls.Add(this.btnConnectionTest);
-            this.groupBox4.Controls.Add(this.lblPassword);
-            this.groupBox4.Controls.Add(this.lblUser);
-            this.groupBox4.Controls.Add(this.CBServers);
-            this.groupBox4.Controls.Add(this.txtPassword);
-            this.groupBox4.Location = new System.Drawing.Point(130, 32);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(420, 216);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "SQL Server Bağlantı Ayarları";
+            this.EsitScaleSil.Controls.Add(this.btnEsitScaleSil);
+            this.EsitScaleSil.Location = new System.Drawing.Point(4, 40);
+            this.EsitScaleSil.Name = "EsitScaleSil";
+            this.EsitScaleSil.Padding = new System.Windows.Forms.Padding(3);
+            this.EsitScaleSil.Size = new System.Drawing.Size(653, 306);
+            this.EsitScaleSil.TabIndex = 12;
+            this.EsitScaleSil.Text = "www.EsitScale.com Sil";
+            this.EsitScaleSil.UseVisualStyleBackColor = true;
+            // 
+            // btnEsitScaleSil
+            // 
+            this.btnEsitScaleSil.Location = new System.Drawing.Point(210, 86);
+            this.btnEsitScaleSil.Name = "btnEsitScaleSil";
+            this.btnEsitScaleSil.Size = new System.Drawing.Size(197, 130);
+            this.btnEsitScaleSil.TabIndex = 0;
+            this.btnEsitScaleSil.Text = "www.EsitScale.com dosyalarını  Sil";
+            this.btnEsitScaleSil.UseVisualStyleBackColor = true;
+            this.btnEsitScaleSil.Click += new System.EventHandler(this.btnEsitScaleSil_Click);
+            // 
+            // tpCamPhotoLink
+            // 
+            this.tpCamPhotoLink.Controls.Add(this.btnLinkCopy);
+            this.tpCamPhotoLink.Controls.Add(this.tbCamLink);
+            this.tpCamPhotoLink.Controls.Add(this.btnCamLinkCreate);
+            this.tpCamPhotoLink.Controls.Add(this.cbCamType);
+            this.tpCamPhotoLink.Controls.Add(this.label8);
+            this.tpCamPhotoLink.Controls.Add(this.tbCamPassword);
+            this.tpCamPhotoLink.Controls.Add(this.tbCamUser);
+            this.tpCamPhotoLink.Controls.Add(this.tbCamIpAddress);
+            this.tpCamPhotoLink.Controls.Add(this.lblCamPassword);
+            this.tpCamPhotoLink.Controls.Add(this.lblCamUser);
+            this.tpCamPhotoLink.Controls.Add(this.lblCamIpAddress);
+            this.tpCamPhotoLink.Location = new System.Drawing.Point(4, 40);
+            this.tpCamPhotoLink.Name = "tpCamPhotoLink";
+            this.tpCamPhotoLink.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCamPhotoLink.Size = new System.Drawing.Size(653, 306);
+            this.tpCamPhotoLink.TabIndex = 13;
+            this.tpCamPhotoLink.Text = "kamera link";
+            this.tpCamPhotoLink.UseVisualStyleBackColor = true;
+            // 
+            // btnLinkCopy
+            // 
+            this.btnLinkCopy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnLinkCopy.Location = new System.Drawing.Point(494, 214);
+            this.btnLinkCopy.Name = "btnLinkCopy";
+            this.btnLinkCopy.Size = new System.Drawing.Size(135, 46);
+            this.btnLinkCopy.TabIndex = 6;
+            this.btnLinkCopy.Text = "Linki kopyala";
+            this.btnLinkCopy.UseVisualStyleBackColor = true;
+            this.btnLinkCopy.Click += new System.EventHandler(this.btnLinkCopy_Click);
+            // 
+            // tbCamLink
+            // 
+            this.tbCamLink.Location = new System.Drawing.Point(38, 228);
+            this.tbCamLink.Name = "tbCamLink";
+            this.tbCamLink.ReadOnly = true;
+            this.tbCamLink.Size = new System.Drawing.Size(450, 20);
+            this.tbCamLink.TabIndex = 5;
+            // 
+            // btnCamLinkCreate
+            // 
+            this.btnCamLinkCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCamLinkCreate.Location = new System.Drawing.Point(163, 116);
+            this.btnCamLinkCreate.Name = "btnCamLinkCreate";
+            this.btnCamLinkCreate.Size = new System.Drawing.Size(325, 46);
+            this.btnCamLinkCreate.TabIndex = 4;
+            this.btnCamLinkCreate.Text = "Kamera Linki Oluştur";
+            this.btnCamLinkCreate.UseVisualStyleBackColor = true;
+            this.btnCamLinkCreate.Click += new System.EventHandler(this.btnCamLinkCreate_Click);
+            // 
+            // cbCamType
+            // 
+            this.cbCamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCamType.FormattingEnabled = true;
+            this.cbCamType.Items.AddRange(new object[] {
+            "Aver",
+            "Dahua",
+            "Hikvision"});
+            this.cbCamType.Location = new System.Drawing.Point(451, 75);
+            this.cbCamType.Name = "cbCamType";
+            this.cbCamType.Size = new System.Drawing.Size(118, 21);
+            this.cbCamType.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label8.Location = new System.Drawing.Point(302, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(143, 24);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Kamera Model :";
+            // 
+            // tbCamPassword
+            // 
+            this.tbCamPassword.Location = new System.Drawing.Point(163, 75);
+            this.tbCamPassword.Name = "tbCamPassword";
+            this.tbCamPassword.Size = new System.Drawing.Size(118, 20);
+            this.tbCamPassword.TabIndex = 1;
+            // 
+            // tbCamUser
+            // 
+            this.tbCamUser.Location = new System.Drawing.Point(163, 49);
+            this.tbCamUser.Name = "tbCamUser";
+            this.tbCamUser.Size = new System.Drawing.Size(118, 20);
+            this.tbCamUser.TabIndex = 0;
+            // 
+            // tbCamIpAddress
+            // 
+            this.tbCamIpAddress.Location = new System.Drawing.Point(451, 49);
+            this.tbCamIpAddress.Name = "tbCamIpAddress";
+            this.tbCamIpAddress.Size = new System.Drawing.Size(118, 20);
+            this.tbCamIpAddress.TabIndex = 2;
+            // 
+            // lblCamPassword
+            // 
+            this.lblCamPassword.AutoSize = true;
+            this.lblCamPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCamPassword.Location = new System.Drawing.Point(100, 71);
+            this.lblCamPassword.Name = "lblCamPassword";
+            this.lblCamPassword.Size = new System.Drawing.Size(57, 24);
+            this.lblCamPassword.TabIndex = 2;
+            this.lblCamPassword.Text = "Şifre :";
+            // 
+            // lblCamUser
+            // 
+            this.lblCamUser.AutoSize = true;
+            this.lblCamUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCamUser.Location = new System.Drawing.Point(34, 45);
+            this.lblCamUser.Name = "lblCamUser";
+            this.lblCamUser.Size = new System.Drawing.Size(123, 24);
+            this.lblCamUser.TabIndex = 1;
+            this.lblCamUser.Text = "Kullanıcı Adı :";
+            // 
+            // lblCamIpAddress
+            // 
+            this.lblCamIpAddress.AutoSize = true;
+            this.lblCamIpAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCamIpAddress.Location = new System.Drawing.Point(409, 44);
+            this.lblCamIpAddress.Name = "lblCamIpAddress";
+            this.lblCamIpAddress.Size = new System.Drawing.Size(36, 24);
+            this.lblCamIpAddress.TabIndex = 0;
+            this.lblCamIpAddress.Text = "IP :";
+            // 
+            // tpTartımSilme
+            // 
+            this.tpTartımSilme.Controls.Add(this.dtpTartımSaatEnd);
+            this.tpTartımSilme.Controls.Add(this.dtpTartımSaatStart);
+            this.tpTartımSilme.Controls.Add(this.panel3);
+            this.tpTartımSilme.Controls.Add(this.btnTartımSilme);
+            this.tpTartımSilme.Controls.Add(this.lbTartımEnd);
+            this.tpTartımSilme.Controls.Add(this.lbTartımStart);
+            this.tpTartımSilme.Controls.Add(this.dtpTartımDateEnd);
+            this.tpTartımSilme.Controls.Add(this.rbTartımAllDelete);
+            this.tpTartımSilme.Controls.Add(this.rbTartımPeriodDelete);
+            this.tpTartımSilme.Controls.Add(this.dtpTartımDateStart);
+            this.tpTartımSilme.Location = new System.Drawing.Point(4, 40);
+            this.tpTartımSilme.Name = "tpTartımSilme";
+            this.tpTartımSilme.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTartımSilme.Size = new System.Drawing.Size(653, 306);
+            this.tpTartımSilme.TabIndex = 14;
+            this.tpTartımSilme.Text = "Tartım Silme";
+            this.tpTartımSilme.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.rbTartım1);
+            this.panel3.Controls.Add(this.rbTartım2);
+            this.panel3.Location = new System.Drawing.Point(360, 41);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(158, 108);
+            this.panel3.TabIndex = 26;
+            // 
+            // rbTartım1
+            // 
+            this.rbTartım1.AutoSize = true;
+            this.rbTartım1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartım1.Location = new System.Drawing.Point(14, 30);
+            this.rbTartım1.Name = "rbTartım1";
+            this.rbTartım1.Size = new System.Drawing.Size(100, 28);
+            this.rbTartım1.TabIndex = 8;
+            this.rbTartım1.Text = "1. Tartım";
+            this.rbTartım1.UseVisualStyleBackColor = true;
+            // 
+            // rbTartım2
+            // 
+            this.rbTartım2.AutoSize = true;
+            this.rbTartım2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartım2.Location = new System.Drawing.Point(14, 57);
+            this.rbTartım2.Name = "rbTartım2";
+            this.rbTartım2.Size = new System.Drawing.Size(100, 28);
+            this.rbTartım2.TabIndex = 9;
+            this.rbTartım2.Text = "2. Tartım";
+            this.rbTartım2.UseVisualStyleBackColor = true;
+            // 
+            // btnTartımSilme
+            // 
+            this.btnTartımSilme.BackColor = System.Drawing.Color.Red;
+            this.btnTartımSilme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTartımSilme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnTartımSilme.Location = new System.Drawing.Point(423, 242);
+            this.btnTartımSilme.Name = "btnTartımSilme";
+            this.btnTartımSilme.Size = new System.Drawing.Size(223, 55);
+            this.btnTartımSilme.TabIndex = 4;
+            this.btnTartımSilme.Text = "Tartımları Sil !";
+            this.btnTartımSilme.UseVisualStyleBackColor = false;
+            this.btnTartımSilme.Click += new System.EventHandler(this.btnTartımSilme_Click);
+            // 
+            // lbTartımEnd
+            // 
+            this.lbTartımEnd.AutoSize = true;
+            this.lbTartımEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbTartımEnd.Location = new System.Drawing.Point(69, 230);
+            this.lbTartımEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTartımEnd.Name = "lbTartımEnd";
+            this.lbTartımEnd.Size = new System.Drawing.Size(95, 24);
+            this.lbTartımEnd.TabIndex = 24;
+            this.lbTartımEnd.Text = "Bitiş Tarihi";
+            this.lbTartımEnd.Visible = false;
+            // 
+            // lbTartımStart
+            // 
+            this.lbTartımStart.AutoSize = true;
+            this.lbTartımStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbTartımStart.Location = new System.Drawing.Point(24, 185);
+            this.lbTartımStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTartımStart.Name = "lbTartımStart";
+            this.lbTartımStart.Size = new System.Drawing.Size(143, 24);
+            this.lbTartımStart.TabIndex = 23;
+            this.lbTartımStart.Text = "Başlangıç Tarihi";
+            this.lbTartımStart.Visible = false;
+            // 
+            // dtpTartımDateEnd
+            // 
+            this.dtpTartımDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartımDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTartımDateEnd.Location = new System.Drawing.Point(173, 230);
+            this.dtpTartımDateEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartımDateEnd.Name = "dtpTartımDateEnd";
+            this.dtpTartımDateEnd.Size = new System.Drawing.Size(115, 29);
+            this.dtpTartımDateEnd.TabIndex = 22;
+            this.dtpTartımDateEnd.Value = new System.DateTime(2023, 7, 25, 23, 59, 59, 0);
+            this.dtpTartımDateEnd.Visible = false;
+            // 
+            // rbTartımAllDelete
+            // 
+            this.rbTartımAllDelete.AutoSize = true;
+            this.rbTartımAllDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartımAllDelete.Location = new System.Drawing.Point(123, 71);
+            this.rbTartımAllDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.rbTartımAllDelete.Name = "rbTartımAllDelete";
+            this.rbTartımAllDelete.Size = new System.Drawing.Size(206, 28);
+            this.rbTartımAllDelete.TabIndex = 21;
+            this.rbTartımAllDelete.Text = "Tüm Tarih aralığını sil";
+            this.rbTartımAllDelete.UseVisualStyleBackColor = true;
+            this.rbTartımAllDelete.Click += new System.EventHandler(this.rbTartımAllDelete_Click);
+            // 
+            // rbTartımPeriodDelete
+            // 
+            this.rbTartımPeriodDelete.AutoSize = true;
+            this.rbTartımPeriodDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartımPeriodDelete.Location = new System.Drawing.Point(123, 98);
+            this.rbTartımPeriodDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.rbTartımPeriodDelete.Name = "rbTartımPeriodDelete";
+            this.rbTartımPeriodDelete.Size = new System.Drawing.Size(202, 28);
+            this.rbTartımPeriodDelete.TabIndex = 20;
+            this.rbTartımPeriodDelete.Text = "Belli Tarih aralığını sil";
+            this.rbTartımPeriodDelete.UseVisualStyleBackColor = true;
+            this.rbTartımPeriodDelete.Click += new System.EventHandler(this.rbTartımPeriodDelete_Click);
+            // 
+            // dtpTartımDateStart
+            // 
+            this.dtpTartımDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartımDateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTartımDateStart.Location = new System.Drawing.Point(171, 185);
+            this.dtpTartımDateStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartımDateStart.Name = "dtpTartımDateStart";
+            this.dtpTartımDateStart.Size = new System.Drawing.Size(117, 29);
+            this.dtpTartımDateStart.TabIndex = 19;
+            this.dtpTartımDateStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
+            this.dtpTartımDateStart.Visible = false;
+            // 
+            // gbConnectionSettings
+            // 
+            this.gbConnectionSettings.Controls.Add(this.label5);
+            this.gbConnectionSettings.Controls.Add(this.cbxUsername);
+            this.gbConnectionSettings.Controls.Add(this.cbxDbName);
+            this.gbConnectionSettings.Controls.Add(this.lblServer);
+            this.gbConnectionSettings.Controls.Add(this.CbWindowsAuthentication);
+            this.gbConnectionSettings.Controls.Add(this.lblPassword);
+            this.gbConnectionSettings.Controls.Add(this.lblUser);
+            this.gbConnectionSettings.Controls.Add(this.CBServers);
+            this.gbConnectionSettings.Controls.Add(this.txtPassword);
+            this.gbConnectionSettings.Location = new System.Drawing.Point(130, 32);
+            this.gbConnectionSettings.Name = "gbConnectionSettings";
+            this.gbConnectionSettings.Size = new System.Drawing.Size(420, 164);
+            this.gbConnectionSettings.TabIndex = 4;
+            this.gbConnectionSettings.TabStop = false;
+            this.gbConnectionSettings.Text = "SQL Server Bağlantı Ayarları";
             // 
             // label5
             // 
@@ -900,7 +1284,6 @@
             // 
             // cbxUsername
             // 
-            this.cbxUsername.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxUsername.Enabled = false;
             this.cbxUsername.FormattingEnabled = true;
             this.cbxUsername.Location = new System.Drawing.Point(87, 106);
@@ -912,7 +1295,6 @@
             // 
             // cbxDbName
             // 
-            this.cbxDbName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDbName.FormattingEnabled = true;
             this.cbxDbName.Location = new System.Drawing.Point(87, 80);
             this.cbxDbName.Name = "cbxDbName";
@@ -943,16 +1325,6 @@
             this.CbWindowsAuthentication.UseVisualStyleBackColor = true;
             this.CbWindowsAuthentication.CheckedChanged += new System.EventHandler(this.CbWindowsAuthentication_CheckedChanged);
             // 
-            // btnConnectionTest
-            // 
-            this.btnConnectionTest.Location = new System.Drawing.Point(87, 156);
-            this.btnConnectionTest.Name = "btnConnectionTest";
-            this.btnConnectionTest.Size = new System.Drawing.Size(214, 30);
-            this.btnConnectionTest.TabIndex = 3;
-            this.btnConnectionTest.Text = "Bağlan";
-            this.btnConnectionTest.UseVisualStyleBackColor = true;
-            this.btnConnectionTest.Click += new System.EventHandler(this.BtnConnectionTest_Click);
-            // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
@@ -975,7 +1347,6 @@
             // 
             // CBServers
             // 
-            this.CBServers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBServers.FormattingEnabled = true;
             this.CBServers.Location = new System.Drawing.Point(87, 30);
             this.CBServers.Name = "CBServers";
@@ -993,6 +1364,18 @@
             this.txtPassword.Size = new System.Drawing.Size(212, 20);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            // 
+            // btnConnectionTest
+            // 
+            this.btnConnectionTest.BackColor = System.Drawing.Color.Green;
+            this.btnConnectionTest.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnConnectionTest.Location = new System.Drawing.Point(217, 202);
+            this.btnConnectionTest.Name = "btnConnectionTest";
+            this.btnConnectionTest.Size = new System.Drawing.Size(214, 30);
+            this.btnConnectionTest.TabIndex = 3;
+            this.btnConnectionTest.Text = "Bağlan";
+            this.btnConnectionTest.UseVisualStyleBackColor = false;
+            this.btnConnectionTest.Click += new System.EventHandler(this.BtnConnectionTest_Click);
             // 
             // menuStrip1
             // 
@@ -1014,35 +1397,39 @@
             this.aboutToolStripMenuItem.Text = "Hakkında";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // EsitScaleSil
+            // dtpTartımSaatEnd
             // 
-            this.EsitScaleSil.Controls.Add(this.btnEsitScaleSil);
-            this.EsitScaleSil.Location = new System.Drawing.Point(4, 40);
-            this.EsitScaleSil.Name = "EsitScaleSil";
-            this.EsitScaleSil.Padding = new System.Windows.Forms.Padding(3);
-            this.EsitScaleSil.Size = new System.Drawing.Size(653, 306);
-            this.EsitScaleSil.TabIndex = 12;
-            this.EsitScaleSil.Text = "EsitScale Sil";
-            this.EsitScaleSil.UseVisualStyleBackColor = true;
+            this.dtpTartımSaatEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartımSaatEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTartımSaatEnd.Location = new System.Drawing.Point(307, 230);
+            this.dtpTartımSaatEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartımSaatEnd.Name = "dtpTartımSaatEnd";
+            this.dtpTartımSaatEnd.Size = new System.Drawing.Size(115, 29);
+            this.dtpTartımSaatEnd.TabIndex = 28;
+            this.dtpTartımSaatEnd.Value = new System.DateTime(2024, 7, 26, 23, 59, 0, 0);
+            this.dtpTartımSaatEnd.Visible = false;
             // 
-            // btnEsitScaleSil
+            // dtpTartımSaatStart
             // 
-            this.btnEsitScaleSil.Location = new System.Drawing.Point(210, 86);
-            this.btnEsitScaleSil.Name = "btnEsitScaleSil";
-            this.btnEsitScaleSil.Size = new System.Drawing.Size(197, 130);
-            this.btnEsitScaleSil.TabIndex = 0;
-            this.btnEsitScaleSil.Text = "www.EsitScale.com dosyalarını  Sil";
-            this.btnEsitScaleSil.UseVisualStyleBackColor = true;
-            this.btnEsitScaleSil.Click += new System.EventHandler(this.btnEsitScaleSil_Click);
+            this.dtpTartımSaatStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartımSaatStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTartımSaatStart.Location = new System.Drawing.Point(305, 185);
+            this.dtpTartımSaatStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartımSaatStart.Name = "dtpTartımSaatStart";
+            this.dtpTartımSaatStart.Size = new System.Drawing.Size(119, 29);
+            this.dtpTartımSaatStart.TabIndex = 27;
+            this.dtpTartımSaatStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
+            this.dtpTartımSaatStart.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 611);
-            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.gbConnectionSettings);
             this.Controls.Add(this.tabControlProcessHeaders);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.btnConnectionTest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -1076,11 +1463,18 @@
             this.tbSorgu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.esitUserEkle.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.esitUserEkle.PerformLayout();
+            this.EsitScaleSil.ResumeLayout(false);
+            this.tpCamPhotoLink.ResumeLayout(false);
+            this.tpCamPhotoLink.PerformLayout();
+            this.tpTartımSilme.ResumeLayout(false);
+            this.tpTartımSilme.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.gbConnectionSettings.ResumeLayout(false);
+            this.gbConnectionSettings.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.EsitScaleSil.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1100,7 +1494,7 @@
         private System.Windows.Forms.TabPage tpSQLFile;
         private System.Windows.Forms.TabPage tpSPWinDatabasePhotoDelete;
         private System.Windows.Forms.TabPage tpSPWinScaleAndDBAConsolidation;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox gbConnectionSettings;
         private System.Windows.Forms.Label lblServer;
         private System.Windows.Forms.CheckBox CbWindowsAuthentication;
         private System.Windows.Forms.Button btnConnectionTest;
@@ -1171,6 +1565,37 @@
         private System.Windows.Forms.Button btnEsitUserEkle;
         private System.Windows.Forms.TabPage EsitScaleSil;
         private System.Windows.Forms.Button btnEsitScaleSil;
+        private System.Windows.Forms.TabPage tpCamPhotoLink;
+        private System.Windows.Forms.Label lblCamIpAddress;
+        private System.Windows.Forms.TextBox tbCamPassword;
+        private System.Windows.Forms.TextBox tbCamUser;
+        private System.Windows.Forms.TextBox tbCamIpAddress;
+        private System.Windows.Forms.Label lblCamPassword;
+        private System.Windows.Forms.Label lblCamUser;
+        private System.Windows.Forms.ComboBox cbCamType;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbCamLink;
+        private System.Windows.Forms.Button btnCamLinkCreate;
+        private System.Windows.Forms.Button btnLinkCopy;
+        private System.Windows.Forms.TabPage tpTartımSilme;
+        private System.Windows.Forms.Label lbTartımEnd;
+        private System.Windows.Forms.Label lbTartımStart;
+        private System.Windows.Forms.DateTimePicker dtpTartımDateEnd;
+        private System.Windows.Forms.RadioButton rbTartımAllDelete;
+        private System.Windows.Forms.RadioButton rbTartımPeriodDelete;
+        private System.Windows.Forms.DateTimePicker dtpTartımDateStart;
+        private System.Windows.Forms.RadioButton rbTartım2;
+        private System.Windows.Forms.RadioButton rbTartım1;
+        private System.Windows.Forms.Button btnTartımSilme;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lbUserAddUserPassword;
+        private System.Windows.Forms.Label lbUserAddUserName;
+        private System.Windows.Forms.ComboBox cbUserAddUserRole;
+        private System.Windows.Forms.Label lbUserAddUserRole;
+        private System.Windows.Forms.TextBox tbUserAddUserPassword;
+        private System.Windows.Forms.TextBox tbUserAddUserName;
+        private System.Windows.Forms.DateTimePicker dtpTartımSaatEnd;
+        private System.Windows.Forms.DateTimePicker dtpTartımSaatStart;
     }
 }
 

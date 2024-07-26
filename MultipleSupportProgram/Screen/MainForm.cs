@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -19,6 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
@@ -47,7 +49,7 @@ namespace MultipleSupportProgram
 
         }
 
-        public UpdateDbaToScale updateDbaToScale = new UpdateDbaToScale();
+        
         public string conString;
         public Loggers loggers = new Loggers();
         public static WaitScreenFunc waitForm = new WaitScreenFunc();
@@ -57,23 +59,33 @@ namespace MultipleSupportProgram
         {
             try
             {
-                btnConnectionTest.Enabled = false;
-                
                 SQLHelper.LoadConnectionString(CbWindowsAuthentication.Checked, CBServers.Text, cbxDbName.Text, cbxUsername.Text, txtPassword.Text);
-                SQLHelper.ConnectionTest();
-                
-                MessageBox.Show("Bağlantı Başarılı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnConnectionTest.Enabled = true;
-                tabControlProcessHeaders.Enabled = true;
+                if (btnConnectionTest.Text == "Kopar")
+                {
+                    gbConnectionSettings.Enabled = true;
+                    tabControlProcessHeaders.Enabled = false;
+                    btnConnectionTest.Text = "Bağlan";
+                    btnConnectionTest.BackColor = Color.Green;
+                    MessageBox.Show("Bağlantı Koparıldı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    if (SQLHelper.ConnectionTest() == true)
+                    {
+                        gbConnectionSettings.Enabled = false;
+                        tabControlProcessHeaders.Enabled = true;
+                        btnConnectionTest.Text = "Kopar";
+                        btnConnectionTest.BackColor = Color.Red;
+                        MessageBox.Show("Bağlantı Oluşturuldu.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 
                 MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnConnectionTest.Enabled = true;
+                
             }
-            
-            
         }
 
         private void BtnRestore_Click(object sender, EventArgs e)
@@ -165,7 +177,7 @@ namespace MultipleSupportProgram
         private void BtnWeighPhotoDelete_Click(object sender, EventArgs e)
         {
             btnWeighPhotoDelete.Enabled = false;
-
+           
 
             
             //MainForm.waitForm.Show(MainForm.ActiveForm);
@@ -285,12 +297,12 @@ namespace MultipleSupportProgram
             }
             
 
-            DataTable dt = new DataTable();
-            dt = SQLHelper.ExecuteReaderScript("USE " + cbxDbName.Text + "; SELECT " + quary + " FROM " + CbxtableList.Text);
+            DataTable dataTable = new DataTable();
+            dataTable = SQLHelper.ExecuteReaderScript("USE " + cbxDbName.Text + "; SELECT " + quary + " FROM " + CbxtableList.Text);
 
             dataGV1.DataSource = null;
             
-            dataGV1.DataSource = dt;
+            dataGV1.DataSource = dataTable;
             connect.Close();
         }
 
@@ -358,34 +370,6 @@ namespace MultipleSupportProgram
                 SqlCommand cmd = new SqlCommand(rtbSorgula.Text.Replace('\n', ' '), connect);
                 var adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(ds);
-                //SqlDataReader dtemp = cmd.ExecuteReader();
-
-
-
-                //int tablecount = 0;
-                //while (dtemp.HasRows)
-                //{
-                //    tablecount++;
-                //    dtemp.NextResult();
-                //}
-                //dtemp.Close();
-
-                //SqlDataReader dr = cmd.ExecuteReader();
-                //DataSet dataset = dr.;
-                //int height =panel2.Height/tablecount;
-
-                //for (int i = 0; i < tablecount; i++)
-                //{
-                //    DataGridView dataGridView = new DataGridView();
-                //    dataGridView.Location = new Point(1, 0 + (i * height));
-                //    dataGridView.Height = height;
-                //    dataGridView.Width = 850;
-                //    panel2.Controls.Add(dataGridView);
-                //    ds.Load(dr);
-                //    dataGridView.DataSource = ds;
-                //    dr.NextResult();
-                //    panel2.Refresh();
-                //}
                 int tablecount = ds.Tables.Count ;
                 int height = panel2.Height / tablecount;
                 int weidth = panel2.Width;
@@ -402,11 +386,8 @@ namespace MultipleSupportProgram
                     dataGridView.DataSource = table;
                     i++;
                 }
-
-                
                 connect.Close();
                 waitForm.Close();
-
             }
             catch (Exception ex)
             {
@@ -425,10 +406,6 @@ namespace MultipleSupportProgram
             AboutBox1 about = new AboutBox1();
             about.Show();
         }
-
-        
-
-        
 
         private void CbxtableList_Click(object sender, EventArgs e)// son kalınan nokta
         {
@@ -499,9 +476,7 @@ namespace MultipleSupportProgram
 
         private void btnEsitUserEkle_Click(object sender, EventArgs e)
         {
-            waitForm.Show(this);
-            Thread.Sleep(100);
-            SQLHelper.EsitUserAdd();
+            SQLHelper.EsitUserAdd(tbUserAddUserName.Text,tbUserAddUserPassword.Text,cbUserAddUserRole.SelectedIndex);
         }
 
         private void CBServers_DropDown(object sender, EventArgs e)
@@ -581,27 +556,161 @@ namespace MultipleSupportProgram
 
         private void btnEsitScaleSil_Click(object sender, EventArgs e)
         {
-            string appDataRoaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string appDataLocal = appDataRoaming.Replace("Roaming", "Local");
-            string dosyaIsmi = "www.esitscale.com";
-            string localPath = Path.Combine(appDataLocal, dosyaIsmi);
-            string roamingPath = Path.Combine(appDataRoaming, dosyaIsmi);
+            try
+            {
+                string appDataRoaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string appDataLocal = appDataRoaming.Replace("Roaming", "Local");
+                string dosyaIsmi = "www.esitscale.com";
+                string localPath = Path.Combine(appDataLocal, dosyaIsmi);
+                string roamingPath = Path.Combine(appDataRoaming, dosyaIsmi);
 
 
+
+                string message = "Bu işlem www.esitscale.com dosyalarını silecektir \ndevam etmek istiyor musunuz?";
+                string title = "UYARI";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+
+                if (result == DialogResult.Yes)
+                {
+                    FileHelper.DeleteDirectoryIfExists(localPath);
+                    FileHelper.DeleteDirectoryIfExists(roamingPath);
+                }
+
+            }
+            catch (Exception ex) { }
+                
             
-            string message = "Bu işlem www.esitscale.com dosyalarını silecektir \ndevam etmek istiyor musunuz?";
+            
+        }
+
+        private void btnCamLinkCreate_Click(object sender, EventArgs e)
+        {
+            string camLink = "";
+            string camType = cbCamType.Text;
+            string camUser = tbCamUser.Text;
+            string camPassword = tbCamPassword.Text;
+            string camIpAddress = tbCamIpAddress.Text;
+            switch (camType)
+            {
+                case "Aver":
+                    camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/GetImage.cgi?CH=1";
+                    break;
+                case "Dahua":
+                    camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/cgi-bin/snapshot.cgi?";
+                    break;
+                case "Hikvision":
+                    camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/ISAPI/Streaming/channels/1/picture";
+                    break;
+                default:
+                    break;
+            }
+            tbCamLink.Text = camLink;
+        }
+
+        private void btnLinkCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(tbCamLink.Text);
+        }
+
+        private void rbTartımAllDelete_Click(object sender, EventArgs e)
+        {
+            string message = "Bu işlem Tüm tarihlerde silme işlemi yapacaktır \n işleme devam etmek istiyor musunuz?";
             string title = "UYARI";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
+            MessageBoxIcon messageBoxIcon = MessageBoxIcon.Warning;
+            DialogResult result = MessageBox.Show(message, title, buttons,messageBoxIcon);
+            if (result == DialogResult.No)
+            {
+                rbTartımPeriodDelete.Checked = true;
+                rbTartımPeriodDelete_Click(sender, e);
+                return;
+            }
+
+            lbTartımStart.Visible = false;
+            lbTartımEnd.Visible = false;
+            dtpTartımDateStart.Visible = false;
+            dtpTartımDateEnd.Visible = false;
+            dtpTartımSaatStart.Visible = false;
+            dtpTartımSaatEnd.Visible = false;
+        }
+
+        private void rbTartımPeriodDelete_Click(object sender, EventArgs e)
+        {
+            lbTartımStart.Visible = true;
+            lbTartımEnd.Visible = true;
+            dtpTartımDateStart.Visible = true;
+            dtpTartımDateEnd.Visible = true;
+            dtpTartımSaatStart.Visible = true;
+            dtpTartımSaatEnd.Visible = true;
+        }
+
+        private void btnTartımSilme_Click(object sender, EventArgs e)
+        {
+            string message = "Bu işlem veri tabanında geri alınamayan SİLME işlemleri gerçekleştirecektir \nDevam edilsin mi?";
+            string title = "UYARI";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            MessageBoxIcon messageBoxIcon = MessageBoxIcon.Warning;
+            DialogResult result = MessageBox.Show(message, title, buttons, messageBoxIcon);
+
+            
 
             if (result == DialogResult.Yes)
             {
-                FileHelper.DeleteDirectoryIfExists(localPath);
-                FileHelper.DeleteDirectoryIfExists(roamingPath);
+                string rbName = "";
+                string time1 = "";
+                string time2 = "";
+
+
+                if (rbTartım1.Checked == true || rbTartım2.Checked == true )
+                {
+                    if (rbTartım1.Checked == true)
+                    {
+                        rbName = rbTartım1.Name.ToString();
+                    }
+                    else if (rbTartım2.Checked == true)
+                    {
+                        rbName = rbTartım2.Name.ToString();
+                    }
+                    
+
+                    if (rbTartımPeriodDelete.Checked == true)
+                    {
+                        time1 = dtpTartımDateStart.Value.Date.ToString("yyyy-MM-dd") + " " + dtpTartımSaatStart.Value.TimeOfDay.ToString("t");
+                        time2 = dtpTartımDateEnd.Value.Date.ToString("yyyy-MM-dd") + " " + dtpTartımSaatEnd.Value.TimeOfDay.ToString("t");
+                        
+                        SQLHelper.WeighingDelete(rbName, time1, time2);
+                        
+                    }
+                    else if (rbTartımAllDelete.Checked == true)
+                    {
+                        SQLHelper.WeighingDelete(rbName,time1,time2);
+                    }
+                    else
+                    {
+                        message = "Bu işlem için tarih seçeneklerinden birini seçmeniz gerekmektedir";
+                        title = "UYARI";
+                        buttons = MessageBoxButtons.OK;
+                        messageBoxIcon = MessageBoxIcon.Warning;
+                        MessageBox.Show(message, title, buttons, messageBoxIcon);
+                    }
+                }
+                else
+                {
+                    message = "Bu işlem için tartımlardan birini seçmeniz gerekmektedir";
+                    title = "UYARI";
+                    buttons = MessageBoxButtons.OK;
+                    messageBoxIcon = MessageBoxIcon.Warning;
+                    MessageBox.Show(message, title, buttons, messageBoxIcon);
+                }
             }
             else
             {
-                
+                message = "Silme işlemi iptal edildi";
+                title = "UYARI";
+                buttons = MessageBoxButtons.OK;
+                messageBoxIcon = MessageBoxIcon.Information;
+                MessageBox.Show(message, title, buttons, messageBoxIcon);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace MultipleSupportProgram.Model
 {
     internal class FileHelper
     {
-        public static log4net.ILog logger = log4net.LogManager.GetLogger("FileOperations");
+        public static log4net.ILog logger = log4net.LogManager.GetLogger("FileHelper");
         public static string RestoreFileLocation()
         {
             OpenFileDialog file = new OpenFileDialog();
