@@ -63,10 +63,12 @@ namespace MultipleSupportProgram.Model
                     dirSecurity.AddAccessRule(new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, AccessControlType.Allow));
                     Directory.SetAccessControl(path, dirSecurity);
                     Directory.Delete(path, true);
+                    MessageBox.Show($"'{path}' başarıyla silindi.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     logger.Info($"'{path}' başarıyla silindi.");
                 }
                 else
                 {
+                    MessageBox.Show($"'{path}' bulunamadı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     logger.Warn($"'{path}' bulunamadı.");
                 }
             }

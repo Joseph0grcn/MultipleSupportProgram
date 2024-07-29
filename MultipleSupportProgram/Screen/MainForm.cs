@@ -60,13 +60,13 @@ namespace MultipleSupportProgram
             try
             {
                 SQLHelper.LoadConnectionString(CbWindowsAuthentication.Checked, CBServers.Text, cbxDbName.Text, cbxUsername.Text, txtPassword.Text);
-                if (btnConnectionTest.Text == "Kopar")
+                if (btnConnectionTest.Text == "Bağlantı Kes")
                 {
                     gbConnectionSettings.Enabled = true;
                     tabControlProcessHeaders.Enabled = false;
                     btnConnectionTest.Text = "Bağlan";
                     btnConnectionTest.BackColor = Color.Green;
-                    MessageBox.Show("Bağlantı Koparıldı.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Bağlantı Kesildi.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace MultipleSupportProgram
                     {
                         gbConnectionSettings.Enabled = false;
                         tabControlProcessHeaders.Enabled = true;
-                        btnConnectionTest.Text = "Kopar";
+                        btnConnectionTest.Text = "Bağlantı Kes";
                         btnConnectionTest.BackColor = Color.Red;
                         MessageBox.Show("Bağlantı Oluşturuldu.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -578,7 +578,10 @@ namespace MultipleSupportProgram
                 }
 
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Hata Meydana geldi : " + ex, "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
                 
             
             
@@ -615,17 +618,8 @@ namespace MultipleSupportProgram
 
         private void rbTartımAllDelete_Click(object sender, EventArgs e)
         {
-            string message = "Bu işlem Tüm tarihlerde silme işlemi yapacaktır \n işleme devam etmek istiyor musunuz?";
-            string title = "UYARI";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            MessageBoxIcon messageBoxIcon = MessageBoxIcon.Warning;
-            DialogResult result = MessageBox.Show(message, title, buttons,messageBoxIcon);
-            if (result == DialogResult.No)
-            {
-                rbTartımPeriodDelete.Checked = true;
-                rbTartımPeriodDelete_Click(sender, e);
-                return;
-            }
+            
+            
 
             lbTartımStart.Visible = false;
             lbTartımEnd.Visible = false;
@@ -712,6 +706,66 @@ namespace MultipleSupportProgram
                 messageBoxIcon = MessageBoxIcon.Information;
                 MessageBox.Show(message, title, buttons, messageBoxIcon);
             }
+        }
+
+        private void btnAuditDBScript_Click(object sender, EventArgs e)
+        {
+            string message = "Bu işlem veritabanına bağlanmayı geçici süre engelleyecektir \n işleme devam etmek istiyor musunuz?";
+            string title = "UYARI";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            MessageBoxIcon messageBoxIcon = MessageBoxIcon.Warning;
+            DialogResult result = MessageBox.Show(message, title, buttons, messageBoxIcon);
+
+            if (result == DialogResult.Yes)
+            {
+                if (SQLHelper.AuditStopedScriptRun())
+                {
+                    message = "AUDIT_DB Hata giderme işlemi başarılı bir şekilde sonuçlandı";
+                    title = "UYARI";
+                    buttons = MessageBoxButtons.OK;
+                    messageBoxIcon = MessageBoxIcon.Information;
+                    MessageBox.Show(message, title, buttons, messageBoxIcon);
+                }
+               
+            }
+            else
+            {
+                message = "İşlem iptal edildi";
+                title = "UYARI";
+                buttons = MessageBoxButtons.OK;
+                messageBoxIcon = MessageBoxIcon.Information;
+                MessageBox.Show(message, title, buttons, messageBoxIcon);
+            }
+            
+        }
+
+        private void btnSpwinDBScript_Click(object sender, EventArgs e)
+        {
+            string message = "Bu işlem veritabanına bağlanmayı geçici süre engelleyecektir \n işleme devam etmek istiyor musunuz?";
+            string title = "UYARI";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            MessageBoxIcon messageBoxIcon = MessageBoxIcon.Warning;
+            DialogResult result = MessageBox.Show(message, title, buttons, messageBoxIcon);
+            if (result == DialogResult.Yes)
+            {
+                if (SQLHelper.SpwinStopedScriptRun()){
+                    message = "SPWIN_DB Hata giderme işlem başarılı bir şekilde sonuçlandı";
+                    title = "UYARI";
+                    buttons = MessageBoxButtons.OK;
+                    messageBoxIcon = MessageBoxIcon.Information;
+                    MessageBox.Show(message, title, buttons, messageBoxIcon);
+                }
+                
+            }
+            else
+            {
+                message = "İşlem iptal edildi";
+                title = "UYARI";
+                buttons = MessageBoxButtons.OK;
+                messageBoxIcon = MessageBoxIcon.Information;
+                MessageBox.Show(message, title, buttons, messageBoxIcon);
+            }
+            
         }
     }
 }

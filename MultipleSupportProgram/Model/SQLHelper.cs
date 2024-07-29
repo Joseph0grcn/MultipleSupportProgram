@@ -44,7 +44,12 @@ namespace MultipleSupportProgram.Model
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Hata: " + ex.Message);
+                        if (ex.Message.Contains("already exists.\r\nUser, group, or role"))
+                        {
+                            MessageBox.Show("Kullanıcı ismi kullanılmaktadır.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        
+                        logger.Error(ex);
                         return false;
                     }
                 }
@@ -278,12 +283,7 @@ namespace MultipleSupportProgram.Model
                 
 
                 bool result = ExecuteNonQueryScript(userAddScriptText);
-                if (result == false)
-                {
-                    logger.Error("Esit-User Ekleme işlemi başarısız!");
-                    MessageBox.Show("Esit-User Ekleme işlemi başarısız!", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
+                if (result == true)
                 {
                     logger.Debug("Esit-User Ekleme işlemi başarıyla gerçekleşti.");
                     MessageBox.Show("Esit-User Ekleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -340,10 +340,18 @@ namespace MultipleSupportProgram.Model
             }
             catch (Exception ex)
             {
-               
-                logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "");
+                if (!windowsAuthentication && ex.ToString().Contains("Login failed for user"))
+                {
+                    logger.Error("Kullanıcı Adı veya Şifre hatalı girildi : " + ex.Message + "");
+                    MessageBox.Show("Kullanıcı Adı veya Şifre hatalı girildi.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "");
+                }
                 
-                throw new Exception("HATA Bağlantı kurulamadı : " + ex.Message);
+                
+                
                 return false;
             }
         }
@@ -720,7 +728,73 @@ namespace MultipleSupportProgram.Model
 
         }
 
+        public static bool AuditStopedScriptRun()
+        {
+            try
+            {
+                string[] sqlCommands = new string[]
+                {
+                    "ALTER DATABASE AUDIT_SPWIN SET EMERGENCY;",
+                    "DBCC CHECKDB('AUDIT_SPWIN');",
+                    "ALTER DATABASE AUDIT_SPWIN SET SINGLE_USER WITH ROLLBACK IMMEDIATE;",
+                    "DBCC CHECKDB('AUDIT_SPWIN', REPAIR_ALLOW_DATA_LOSS);",
+                    "ALTER DATABASE AUDIT_SPWIN SET MULTI_USER;"
+                };
+                foreach (string sqlCommand in sqlCommands)
+                {
+                    if (!ExecuteNonQueryScript(sqlCommand))
+                    {
+                        MessageBox.Show(sqlCommand + " \nçalıştırılamadı scripti tekrar çalıştırın", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return false;
+            }
+            
+            
+            
 
+        }
+
+        public static bool SpwinStopedScriptRun()
+        {
+            try
+            {
+                string[] sqlCommands = new string[]
+                {
+                    "ALTER DATABASE SPWIN_DB SET EMERGENCY;",
+                    "DBCC CHECKDB('SPWIN_DB');",
+                    "ALTER DATABASE SPWIN_DB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;",
+                    "DBCC CHECKDB (SPWIN_DB, REPAIR_ALLOW_DATA_LOSS);",
+                    "ALTER DATABASE SPWIN_DB SET MULTI_USER;"
+                };
+
+                foreach (string sqlCommand in sqlCommands)
+                {
+                    if (!ExecuteNonQueryScript(sqlCommand))
+                    {
+                        MessageBox.Show(sqlCommand + " \nçalıştırılamadı scripti tekrar çalıştırın" ,"Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return false;
+
+                
+            }
+            
+            
+        }
 
 
 
