@@ -12,12 +12,14 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Net.PeerToPeer;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -46,6 +48,8 @@ namespace MultipleSupportProgram
             loggers.CreateSpwinlogsFile();
             tabControlProcessHeaders.TabPages.Remove(tpDatabaseRepair);
             tabControlProcessHeaders.TabPages.Remove(tpQuary);
+            tabControlProcessHeaders.TabPages.Remove(tpTablolar);
+            tabControlProcessHeaders.TabPages.Remove(tpSorgu);
 
         }
 
@@ -474,10 +478,7 @@ namespace MultipleSupportProgram
             dtpFinish.Visible = false;
         }
 
-        private void btnEsitUserEkle_Click(object sender, EventArgs e)
-        {
-            SQLHelper.EsitUserAdd(tbUserAddUserName.Text,tbUserAddUserPassword.Text,cbUserAddUserRole.SelectedIndex);
-        }
+        
 
         private void CBServers_DropDown(object sender, EventArgs e)
         {
@@ -766,6 +767,52 @@ namespace MultipleSupportProgram
                 MessageBox.Show(message, title, buttons, messageBoxIcon);
             }
             
+        }
+
+        private void btnEsitUserEkle_Click(object sender, EventArgs e)
+        {
+            SQLHelper.EsitUserAdd(tbUserAddUserName.Text, tbUserAddUserPassword.Text, cbUserAddUserRole.SelectedIndex);
+        }
+        private void btnEsitUserSil_Click(object sender, EventArgs e)
+        {
+            string selectedUserName =  tbUserAddUserName.Text;
+            // Silinmemesi gereken kullanıcıların listesi
+            List<string> protectedUsers = new List<string>
+            {
+                "sa",
+                "NT AUTHORITY\\SYSTEM",
+                "NT SERVICE\\MSSQLSERVER",
+                "NT SERVICE\\SQLWriter",
+                "NT AUTHORITY\\NETWORK SERVICE",
+                "BUILTIN\\Administrators",
+                ""
+            };
+
+            if (!protectedUsers.Contains(selectedUserName) && tbUserAddUserPassword.Text == "KULLANICISIL" )
+            {
+                
+                SQLHelper.EsitUserDelete(tbUserAddUserName.Text);
+            }else if (selectedUserName == "")
+            {
+                MessageBox.Show("Kullanıcı silme işlemi için bir kullanıcı adı girilmedi!"
+                                , "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (protectedUsers.Contains(selectedUserName))
+            {
+                MessageBox.Show("Kullanıcı silme işlemi için sistem kullanıcılarından biri seçilemez!"
+                                , "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Kullanıcı silme işlemi için \n silmek istediğiniz kullanıcı adını ve şifre olarakta 'KULLANICISIL' bilgilerini giriniz"
+                                , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+        }
+
+        private void btnServerConManager_Click(object sender, EventArgs e)
+        {
+            SQLHelper.ServerConfigSettingsSetter();
         }
     }
 }

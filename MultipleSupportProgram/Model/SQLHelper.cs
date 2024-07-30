@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -39,12 +40,14 @@ namespace MultipleSupportProgram.Model
                     {
                         command.CommandTimeout = timeout;
                         command.ExecuteNonQuery();
+                        
                         logger.Debug("SQL script başarıyla çalıştırıldı.");
                         return true;
+                        
                     }
                     catch (Exception ex)
                     {
-                        if (ex.Message.Contains("already exists.\r\nUser, group, or role"))
+                        if (ex.Message.Contains("already exists.\r\nUser, group, or role")||ex.Message.Contains("already exists in the current database"))
                         {
                             MessageBox.Show("Kullanıcı ismi kullanılmaktadır.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -130,7 +133,7 @@ namespace MultipleSupportProgram.Model
                 Application.DoEvents();
                 if (!result)
                 {
-                    logger.Error("HATA Backup işlemi başarısız!");
+                    logger.Error("HATA Backup işlemi başarısız! " );
                     MessageBox.Show("HATA Backup işlemi başarısız! : ", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -141,7 +144,7 @@ namespace MultipleSupportProgram.Model
             }
             catch (Exception ex)
             {
-                logger.Error("HATA Backup işlemi başarısız!: " + ex.Message);
+                logger.Error("HATA Backup işlemi başarısız!: " + ex.Message );
                 throw new Exception("HATA Backup işlemi başarısız! : " + ex.Message + "");
             }
 
@@ -247,8 +250,9 @@ namespace MultipleSupportProgram.Model
         }
         public static void EsitUserAdd(string user, string password, int role)
         {
-            try
-            {
+            
+                //kullanıcı kontrolü
+
                 string userAddScriptText="";
                 if (role ==1) // admin = 1
                 {
@@ -288,15 +292,33 @@ namespace MultipleSupportProgram.Model
                     logger.Debug("Esit-User Ekleme işlemi başarıyla gerçekleşti.");
                     MessageBox.Show("Esit-User Ekleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
-                logger.Error("Esit-User Ekleme işlemi başarısız! : \n" + ex.Message);
-                MessageBox.Show("Esit-User Ekleme işlemi başarısız! : \n" + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
 
         }
 
+        public static void EsitUserDelete(string username)
+        {
+            string[] sqlScripts = { "USE SPWIN_DB;", "DROP USER " + username , "DROP LOGIN " + username};
+            try
+            {
+                foreach (string sql in sqlScripts)
+                {
+                    if (!ExecuteNonQueryScript(sql))
+                    {
+                        throw new Exception("kullanıcı bulunamadı.");
+                    }
+                    
+                }
+                MessageBox.Show("Kullanıcı silme işlemi tamamlandı","Bilgilendirme",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kullanıcı silme işlemi tamamlanamadı. "+ex.Message, "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+               logger.Error(ex);
+            }
+            
+        }
 
         public static string GetConnectionString()
         {
@@ -608,12 +630,18 @@ namespace MultipleSupportProgram.Model
                 
                     string SQLScript = "INSERT INTO SPWIN_DB.dbo.Firm(FirmCode, FirmName) SELECT TOP 100 SPWIN_DB.dbo.Code_4.Code, SPWIN_DB.dbo.Code_4.Name FROM SPWIN_DB.dbo.Code_4 LEFT JOIN SPWIN_DB.dbo.Firm on (SPWIN_DB.dbo.Code_4.Code = SPWIN_DB.dbo.Firm.FirmCode and SPWIN_DB.dbo.Firm.FirmName = SPWIN_DB.dbo.Code_4.Name) where SPWIN_DB.dbo.Firm.FirmCode is null and SPWIN_DB.dbo.Firm.FirmName is null";
                     bool result = ExecuteNonQueryScript(SQLScript);
-                    if (result)
-                    {
-                        logger.Debug("Veri taşıma işlemi başarılı! - Taşıyıcı Firma --> Firma listesine eklendi");
-                        MessageBox.Show("Veri taşıma işlemi başarılı! - Taşıyıcı Firma --> Firma listesine eklendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                
+                if (result)
+                {
+                    logger.Debug("Veri taşıma işlemi başarılı! - Taşıyıcı Firma --> Firma listesine eklendi");
+                    MessageBox.Show("Veri taşıma işlemi başarılı! - Taşıyıcı Firma --> Firma listesine eklendi", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Veri Taşıma işleminde Etkilenen satır bulunamadı ", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+
             }
             catch (Exception ex)
             {
@@ -631,7 +659,11 @@ namespace MultipleSupportProgram.Model
                 if (result)
                 {
                     logger.Debug("Veri taşıma işlemi başarılı! - Liman Listesi taşındı");
-                    //MessageBox.Show("Veri taşıma işlemi başarılı! - Liman Listesi taşındı", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Veri taşıma işlemi başarılı! - Liman Listesi taşındı", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Veri Taşıma işleminde Etkilenen satır bulunamadı ", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -650,6 +682,10 @@ namespace MultipleSupportProgram.Model
                     {
                         logger.Debug("Veri taşıma işlemi başarılı!");
                         MessageBox.Show("Veri taşıma işlemi başarılı! - DBA_Servis bilgileri taşındı", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Veri Taşıma işleminde Etkilenen satır bulunamadı " , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
             catch (Exception ex)
@@ -794,6 +830,35 @@ namespace MultipleSupportProgram.Model
             }
             
             
+        }
+
+        public static void ServerConfigSettingsSetter()
+        {
+            // Çalıştırılacak .bat dosyasının adı
+            string batFileName = "SqlMachineConf.bat";
+            // Çalıştırılabilir dosyanın bulunduğu dizin
+            string executablePath = AppDomain.CurrentDomain.BaseDirectory;
+            // .bat dosyasının tam yolunu oluştur
+            string batFilePath = Path.Combine(executablePath, batFileName);
+            // .bat dosyasını çalıştırmak için ProcessStartInfo ayarları
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = batFilePath,
+                UseShellExecute = true,
+                Verb = "runas" // Yönetici olarak çalıştırmak için "runas" kullanılır
+            };
+            try
+            {
+                // Process başlatma
+                Process process = Process.Start(processStartInfo);
+                process.WaitForExit(); // İsteğe bağlı: İşlem bitene kadar bekle
+                MessageBox.Show("Server Configuration Ayarları Düzenlendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Server Configuration Ayarları Düzenlenmesinde hata oluştu", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                logger.Error("Server Configuration Ayarları Düzenlenmesinde hata oluştu " + ex);
+            }
         }
 
 

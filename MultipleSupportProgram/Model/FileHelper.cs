@@ -14,16 +14,18 @@ namespace MultipleSupportProgram.Model
         public static log4net.ILog logger = log4net.LogManager.GetLogger("FileHelper");
         public static string RestoreFileLocation()
         {
-            OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "Veritabanı Dosyası |*.bak";
-            if (file.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog file = new OpenFileDialog())
             {
-                logger.Info(file.FileName +" yedeği seçildi");
-                return file.FileName;
-            }
-            else
-            {
-                return null;
+                file.Filter = "Veritabanı Dosyası |*.bak";
+                if (file.ShowDialog() == DialogResult.OK)
+                {
+                    logger.Info(file.FileName + " yedeği seçildi");
+                    return file.FileName;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
         public static string BackupFileLocation()
