@@ -168,7 +168,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SqlMachineConf.bat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

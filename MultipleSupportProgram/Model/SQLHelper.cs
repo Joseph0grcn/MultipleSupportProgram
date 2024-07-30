@@ -835,30 +835,88 @@ namespace MultipleSupportProgram.Model
         public static void ServerConfigSettingsSetter()
         {
             // Çalıştırılacak .bat dosyasının adı
-            string batFileName = "SqlMachineConf.bat";
-            // Çalıştırılabilir dosyanın bulunduğu dizin
-            string executablePath = AppDomain.CurrentDomain.BaseDirectory;
-            // .bat dosyasının tam yolunu oluştur
-            string batFilePath = Path.Combine(executablePath, batFileName);
-            // .bat dosyasını çalıştırmak için ProcessStartInfo ayarları
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
-            {
-                FileName = batFilePath,
-                UseShellExecute = true,
-                Verb = "runas" // Yönetici olarak çalıştırmak için "runas" kullanılır
-            };
+            string batFileContent = @"
+netsh advfirewall firewall add rule name=""Open Port 8080"" dir=in action=allow protocol=TCP localport=8080
+netsh http add urlacl url=http://+:8080/ user=Everyone
+netsh advfirewall firewall add rule name=""Open Port 80"" dir=in action=allow protocol=TCP localport=80
+
+@echo =========  SQL Server Ports  ===================
+@echo Enabling SQLServer default instance port 1433
+netsh advfirewall firewall add rule name=""SQL Server"" dir=in action=allow protocol=TCP localport=1433
+@echo Enabling Dedicated Admin Connection port 1434
+netsh advfirewall firewall add rule name=""SQL Admin Connection"" dir=in action=allow protocol=TCP localport=1434
+@echo Enabling Conventional SQL Server Service Broker port 4022
+netsh advfirewall firewall add rule name=""SQL Service Broker"" dir=in action=allow protocol=TCP localport=4022
+@echo Enabling Transact SQL/RPC port 135
+netsh advfirewall firewall add rule name=""SQL Debugger/RPC"" dir=in action=allow protocol=TCP localport=135
+@echo =========  Analysis Services Ports  ==============
+@echo Enabling SSAS Default Instance port 2383
+netsh advfirewall firewall add rule name=""Analysis Services"" dir=in action=allow protocol=TCP localport=2383
+@echo Enabling SQL Server Browser Service port 2382
+netsh advfirewall firewall add rule name=""SQL Browser"" dir=in action=allow protocol=TCP localport=2382
+
+@echo =========  Misc Applications  ==============
+@echo Enabling HTTP port 80
+netsh advfirewall firewall add rule name=""HTTP"" dir=in action=allow protocol=TCP localport=80
+@echo Enabling SSL port 443
+netsh advfirewall firewall add rule name=""SSL"" dir=in action=allow protocol=TCP localport=443
+@echo Enabling port for SQL Server Browser Service's 'Browse' Button
+netsh advfirewall firewall add rule name=""SQL Browser"" dir=in action=allow protocol=UDP localport=1434
+@echo Allowing multicast broadcast response on UDP (Browser Service Enumerations OK)
+netsh firewall set multicastbroadcastresponse ENABLE
+
+@echo =========  File Access Privileges  ==============
+cd /d %~dp0
+cmd.exe /c ""icacls ""%cd%"" /grant Everyone:(OI)(CI)M""
+";
+            string tempBatFilePath = Path.Combine(Path.GetTempPath(), "tempServerConfigScript.bat");
             try
             {
-                // Process başlatma
+                // Geçici dosyaya içeriği yaz
+                File.WriteAllText(tempBatFilePath, batFileContent);
+
+                // ProcessStartInfo ile dosyayı çalıştır
+                ProcessStartInfo processStartInfo = new ProcessStartInfo
+                {
+                    FileName = tempBatFilePath,
+                    UseShellExecute = true,
+                    Verb = "runas"
+                };
+
                 Process process = Process.Start(processStartInfo);
-                process.WaitForExit(); // İsteğe bağlı: İşlem bitene kadar bekle
+                process.WaitForExit();
+                if (process.ExitCode != 0)
+                {
+                    throw new Exception("BAT dosyası çalıştırılırken hata oluştu.");
+                }
+
                 MessageBox.Show("Server Configuration Ayarları Düzenlendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Server Configuration Ayarları Düzenlenmesinde hata oluştu", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Server Configuration Ayarları Düzenlenmesinde hata oluştu. " + ex.Message, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 logger.Error("Server Configuration Ayarları Düzenlenmesinde hata oluştu " + ex);
             }
+            finally
+            {
+                // Geçici dosyayı temizle
+                if (File.Exists(tempBatFilePath))
+                {
+                    try
+                    {
+                        File.Delete(tempBatFilePath);
+                    }
+                    catch (Exception deleteEx)
+                    {
+                        // Dosya silinirken hata oluştuysa, bunu loglayabilirsiniz.
+                        logger.Error("Geçici BAT dosyası silinirken hata oluştu: " + deleteEx.Message);
+                    }
+                }
+            }
+
+
+            
+                
         }
 
 

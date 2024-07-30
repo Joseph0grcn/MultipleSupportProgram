@@ -771,7 +771,15 @@ namespace MultipleSupportProgram
 
         private void btnEsitUserEkle_Click(object sender, EventArgs e)
         {
-            SQLHelper.EsitUserAdd(tbUserAddUserName.Text, tbUserAddUserPassword.Text, cbUserAddUserRole.SelectedIndex);
+            if (tbUserAddUserPassword.Text == tbUserAddUserPasswordConfirm.Text)
+            {
+                SQLHelper.EsitUserAdd(tbUserAddUserName.Text, tbUserAddUserPassword.Text, cbUserAddUserRole.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show("Şifre ve şifre doğrulama aynı olmalıdır. Lütfen tekrar deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         private void btnEsitUserSil_Click(object sender, EventArgs e)
         {

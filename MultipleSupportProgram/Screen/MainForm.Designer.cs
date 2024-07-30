@@ -149,6 +149,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tpServerConManager = new System.Windows.Forms.TabPage();
             this.btnServerConManager = new System.Windows.Forms.Button();
+            this.tbUserAddUserPasswordConfirm = new System.Windows.Forms.TextBox();
+            this.lbUserAddUserPasswordConfirm = new System.Windows.Forms.Label();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
             this.grpBoxPatch.SuspendLayout();
@@ -897,6 +899,8 @@
             // tpEsitUserEkle
             // 
             this.tpEsitUserEkle.BackColor = System.Drawing.SystemColors.Control;
+            this.tpEsitUserEkle.Controls.Add(this.tbUserAddUserPasswordConfirm);
+            this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserPasswordConfirm);
             this.tpEsitUserEkle.Controls.Add(this.btnEsitUserSil);
             this.tpEsitUserEkle.Controls.Add(this.cbUserAddUserRole);
             this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserRole);
@@ -905,10 +909,10 @@
             this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserPassword);
             this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserName);
             this.tpEsitUserEkle.Controls.Add(this.btnEsitUserEkle);
-            this.tpEsitUserEkle.Location = new System.Drawing.Point(4, 53);
+            this.tpEsitUserEkle.Location = new System.Drawing.Point(4, 79);
             this.tpEsitUserEkle.Name = "tpEsitUserEkle";
             this.tpEsitUserEkle.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEsitUserEkle.Size = new System.Drawing.Size(657, 372);
+            this.tpEsitUserEkle.Size = new System.Drawing.Size(657, 346);
             this.tpEsitUserEkle.TabIndex = 11;
             this.tpEsitUserEkle.Text = "Esit-User İşlemleri";
             // 
@@ -931,7 +935,7 @@
             this.cbUserAddUserRole.Items.AddRange(new object[] {
             "Read-Only",
             "Admin"});
-            this.cbUserAddUserRole.Location = new System.Drawing.Point(184, 130);
+            this.cbUserAddUserRole.Location = new System.Drawing.Point(184, 172);
             this.cbUserAddUserRole.Name = "cbUserAddUserRole";
             this.cbUserAddUserRole.Size = new System.Drawing.Size(167, 23);
             this.cbUserAddUserRole.TabIndex = 6;
@@ -940,7 +944,7 @@
             // 
             this.lbUserAddUserRole.AutoSize = true;
             this.lbUserAddUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbUserAddUserRole.Location = new System.Drawing.Point(56, 130);
+            this.lbUserAddUserRole.Location = new System.Drawing.Point(56, 172);
             this.lbUserAddUserRole.Name = "lbUserAddUserRole";
             this.lbUserAddUserRole.Size = new System.Drawing.Size(122, 24);
             this.lbUserAddUserRole.TabIndex = 5;
@@ -951,7 +955,7 @@
             this.tbUserAddUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbUserAddUserPassword.Location = new System.Drawing.Point(184, 80);
             this.tbUserAddUserPassword.Name = "tbUserAddUserPassword";
-            this.tbUserAddUserPassword.PasswordChar = '*';
+            this.tbUserAddUserPassword.PasswordChar = 'x';
             this.tbUserAddUserPassword.Size = new System.Drawing.Size(167, 29);
             this.tbUserAddUserPassword.TabIndex = 4;
             // 
@@ -1500,6 +1504,25 @@
             this.btnServerConManager.UseVisualStyleBackColor = true;
             this.btnServerConManager.Click += new System.EventHandler(this.btnServerConManager_Click);
             // 
+            // tbUserAddUserPasswordConfirm
+            // 
+            this.tbUserAddUserPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbUserAddUserPasswordConfirm.Location = new System.Drawing.Point(184, 126);
+            this.tbUserAddUserPasswordConfirm.Name = "tbUserAddUserPasswordConfirm";
+            this.tbUserAddUserPasswordConfirm.PasswordChar = 'x';
+            this.tbUserAddUserPasswordConfirm.Size = new System.Drawing.Size(167, 29);
+            this.tbUserAddUserPasswordConfirm.TabIndex = 9;
+            // 
+            // lbUserAddUserPasswordConfirm
+            // 
+            this.lbUserAddUserPasswordConfirm.AutoSize = true;
+            this.lbUserAddUserPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbUserAddUserPasswordConfirm.Location = new System.Drawing.Point(24, 126);
+            this.lbUserAddUserPasswordConfirm.Name = "lbUserAddUserPasswordConfirm";
+            this.lbUserAddUserPasswordConfirm.Size = new System.Drawing.Size(154, 24);
+            this.lbUserAddUserPasswordConfirm.TabIndex = 8;
+            this.lbUserAddUserPasswordConfirm.Text = "Şifre Doğrulama :";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1684,6 +1707,8 @@
         private System.Windows.Forms.Button btnEsitUserSil;
         private System.Windows.Forms.TabPage tpServerConManager;
         private System.Windows.Forms.Button btnServerConManager;
+        private System.Windows.Forms.TextBox tbUserAddUserPasswordConfirm;
+        private System.Windows.Forms.Label lbUserAddUserPasswordConfirm;
     }
 }
 
