@@ -31,39 +31,49 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControlProcessHeaders = new System.Windows.Forms.TabControl();
             this.tpBackup = new System.Windows.Forms.TabPage();
-            this.grpBoxPatch = new System.Windows.Forms.GroupBox();
-            this.cbxDbNameBackup = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnBackup = new System.Windows.Forms.Button();
-            this.btnBackupFileLocationSelect = new System.Windows.Forms.Button();
-            this.txtBackupPath = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tpRestore = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbxDbNameRestore = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnRestore = new System.Windows.Forms.Button();
-            this.btnRestoreFile = new System.Windows.Forms.Button();
-            this.txtRestorePath = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tpSQLFile = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSQLRun = new System.Windows.Forms.Button();
-            this.btnSQLFileSelect = new System.Windows.Forms.Button();
-            this.txtSQLFile = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tpSPWinDatabasePhotoDelete = new System.Windows.Forms.TabPage();
-            this.lblDateFinish = new System.Windows.Forms.Label();
-            this.lblDateStart = new System.Windows.Forms.Label();
-            this.dtpFinish = new System.Windows.Forms.DateTimePicker();
-            this.rdbAll = new System.Windows.Forms.RadioButton();
-            this.rdbPeriod = new System.Windows.Forms.RadioButton();
-            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnBackupFileLocationSelect = new System.Windows.Forms.Button();
+            this.btnBackup = new System.Windows.Forms.Button();
+            this.cbxDbNameBackup = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBackupPath = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tpRestore = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnRestoreFile = new System.Windows.Forms.Button();
+            this.cbxDbNameRestore = new System.Windows.Forms.ComboBox();
+            this.txtRestorePath = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.tpSQLFile = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSQLFile = new System.Windows.Forms.TextBox();
+            this.btnSQLFileSelect = new System.Windows.Forms.Button();
+            this.btnSQLRun = new System.Windows.Forms.Button();
+            this.tpSPWinDatabasePhotoDelete = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.rbAllPhoto = new System.Windows.Forms.RadioButton();
-            this.rbInTheFolderPhoto = new System.Windows.Forms.RadioButton();
             this.rbOneAndTwoPhoto = new System.Windows.Forms.RadioButton();
+            this.rbInTheFolderPhoto = new System.Windows.Forms.RadioButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.rdbPeriod = new System.Windows.Forms.RadioButton();
+            this.rdbAll = new System.Windows.Forms.RadioButton();
             this.btnWeighPhotoDelete = new System.Windows.Forms.Button();
+            this.dtpFinish = new System.Windows.Forms.DateTimePicker();
+            this.lblDateFinish = new System.Windows.Forms.Label();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.lblDateStart = new System.Windows.Forms.Label();
             this.tpDatabaseRepair = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbxDbNameRepair = new System.Windows.Forms.ComboBox();
@@ -74,6 +84,7 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tpSPWinScaleAndDBAConsolidation = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnMoveDbaToScale = new System.Windows.Forms.Button();
             this.tpTablolar = new System.Windows.Forms.TabPage();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
@@ -96,44 +107,61 @@
             this.btnSorgula = new System.Windows.Forms.Button();
             this.rtbSorgula = new System.Windows.Forms.RichTextBox();
             this.tpEsitUserEkle = new System.Windows.Forms.TabPage();
-            this.btnEsitUserSil = new System.Windows.Forms.Button();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEsitUserSilHelp = new System.Windows.Forms.Button();
+            this.btnKullanıcıSil = new System.Windows.Forms.Button();
+            this.tbUserAddUserPasswordConfirm = new System.Windows.Forms.TextBox();
+            this.btnKullanıcıEkle = new System.Windows.Forms.Button();
             this.cbUserAddUserRole = new System.Windows.Forms.ComboBox();
-            this.lbUserAddUserRole = new System.Windows.Forms.Label();
-            this.tbUserAddUserPassword = new System.Windows.Forms.TextBox();
-            this.tbUserAddUserName = new System.Windows.Forms.TextBox();
-            this.lbUserAddUserPassword = new System.Windows.Forms.Label();
             this.lbUserAddUserName = new System.Windows.Forms.Label();
-            this.btnEsitUserEkle = new System.Windows.Forms.Button();
-            this.tpEsitScaleSil = new System.Windows.Forms.TabPage();
-            this.btnEsitScaleSil = new System.Windows.Forms.Button();
+            this.lbUserAddUserPasswordConfirm = new System.Windows.Forms.Label();
+            this.lbUserAddUserPassword = new System.Windows.Forms.Label();
+            this.tbUserAddUserPassword = new System.Windows.Forms.TextBox();
+            this.lbUserAddUserRole = new System.Windows.Forms.Label();
+            this.tbUserAddUserName = new System.Windows.Forms.TextBox();
             this.tpCamPhotoLink = new System.Windows.Forms.TabPage();
-            this.btnLinkCopy = new System.Windows.Forms.Button();
-            this.tbCamLink = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCamLinkCreate = new System.Windows.Forms.Button();
+            this.btnLinkCopy = new System.Windows.Forms.Button();
+            this.lblCamUser = new System.Windows.Forms.Label();
+            this.lblCamPassword = new System.Windows.Forms.Label();
             this.cbCamType = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tbCamPassword = new System.Windows.Forms.TextBox();
             this.tbCamUser = new System.Windows.Forms.TextBox();
             this.tbCamIpAddress = new System.Windows.Forms.TextBox();
-            this.lblCamPassword = new System.Windows.Forms.Label();
-            this.lblCamUser = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbCamPassword = new System.Windows.Forms.TextBox();
             this.lblCamIpAddress = new System.Windows.Forms.Label();
+            this.tbCamLink = new System.Windows.Forms.TextBox();
+            this.tpEsitScaleSil = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEsitScaleSil = new System.Windows.Forms.Button();
             this.tpTartımSilme = new System.Windows.Forms.TabPage();
-            this.dtpTartımSaatEnd = new System.Windows.Forms.DateTimePicker();
-            this.dtpTartımSaatStart = new System.Windows.Forms.DateTimePicker();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rbTartım1 = new System.Windows.Forms.RadioButton();
-            this.rbTartım2 = new System.Windows.Forms.RadioButton();
-            this.btnTartımSilme = new System.Windows.Forms.Button();
-            this.lbTartımEnd = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.rbTartim2 = new System.Windows.Forms.RadioButton();
+            this.rbTartim1 = new System.Windows.Forms.RadioButton();
+            this.btnTartimSilme = new System.Windows.Forms.Button();
+            this.dtpTartimSaatEnd = new System.Windows.Forms.DateTimePicker();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.rbTartimPeriodDelete = new System.Windows.Forms.RadioButton();
+            this.rbTartimAllDelete = new System.Windows.Forms.RadioButton();
+            this.dtpTartimDateStart = new System.Windows.Forms.DateTimePicker();
             this.lbTartımStart = new System.Windows.Forms.Label();
-            this.dtpTartımDateEnd = new System.Windows.Forms.DateTimePicker();
-            this.rbTartımAllDelete = new System.Windows.Forms.RadioButton();
-            this.rbTartımPeriodDelete = new System.Windows.Forms.RadioButton();
-            this.dtpTartımDateStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpTartimDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.lbTartımEnd = new System.Windows.Forms.Label();
+            this.dtpTartimSaatStart = new System.Windows.Forms.DateTimePicker();
             this.tpDatabaseStop = new System.Windows.Forms.TabPage();
-            this.btnSpwinDBScript = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAuditDBScript = new System.Windows.Forms.Button();
+            this.btnSpwinDBScript = new System.Windows.Forms.Button();
+            this.tpServerConManager = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnServerConManager = new System.Windows.Forms.Button();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbConfigServerName = new System.Windows.Forms.TextBox();
             this.gbConnectionSettings = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxUsername = new System.Windows.Forms.ComboBox();
@@ -147,36 +175,57 @@
             this.btnConnectionTest = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tpServerConManager = new System.Windows.Forms.TabPage();
-            this.btnServerConManager = new System.Windows.Forms.Button();
-            this.tbUserAddUserPasswordConfirm = new System.Windows.Forms.TextBox();
-            this.lbUserAddUserPasswordConfirm = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
-            this.grpBoxPatch.SuspendLayout();
-            this.tpRestore.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tpSQLFile.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tpSPWinDatabasePhotoDelete.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.tpRestore.SuspendLayout();
+            this.tableLayoutPanel16.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
+            this.tpSQLFile.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
+            this.tpSPWinDatabasePhotoDelete.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
             this.tpDatabaseRepair.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tpSPWinScaleAndDBAConsolidation.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.tpTablolar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV1)).BeginInit();
             this.tpQuary.SuspendLayout();
             this.tpSorgu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tpEsitUserEkle.SuspendLayout();
-            this.tpEsitScaleSil.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.tpCamPhotoLink.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tpEsitScaleSil.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.tpTartımSilme.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
             this.tpDatabaseStop.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tpServerConManager.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
             this.gbConnectionSettings.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.tpServerConManager.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProcessHeaders
@@ -198,378 +247,591 @@
             this.tabControlProcessHeaders.Controls.Add(this.tpDatabaseStop);
             this.tabControlProcessHeaders.Controls.Add(this.tpServerConManager);
             this.tabControlProcessHeaders.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabControlProcessHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlProcessHeaders.Enabled = false;
-            this.tabControlProcessHeaders.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tabControlProcessHeaders.Location = new System.Drawing.Point(0, 262);
+            this.tabControlProcessHeaders.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tabControlProcessHeaders.Location = new System.Drawing.Point(3, 253);
+            this.tabControlProcessHeaders.MinimumSize = new System.Drawing.Size(665, 413);
             this.tabControlProcessHeaders.Multiline = true;
             this.tabControlProcessHeaders.Name = "tabControlProcessHeaders";
             this.tabControlProcessHeaders.SelectedIndex = 0;
-            this.tabControlProcessHeaders.Size = new System.Drawing.Size(665, 429);
+            this.tabControlProcessHeaders.Size = new System.Drawing.Size(665, 413);
+            this.tabControlProcessHeaders.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControlProcessHeaders.TabIndex = 0;
             // 
             // tpBackup
             // 
             this.tpBackup.BackColor = System.Drawing.SystemColors.Control;
-            this.tpBackup.Controls.Add(this.grpBoxPatch);
-            this.tpBackup.Location = new System.Drawing.Point(4, 79);
+            this.tpBackup.Controls.Add(this.tableLayoutPanel18);
+            this.tpBackup.Location = new System.Drawing.Point(4, 82);
             this.tpBackup.Name = "tpBackup";
             this.tpBackup.Padding = new System.Windows.Forms.Padding(3);
-            this.tpBackup.Size = new System.Drawing.Size(657, 346);
+            this.tpBackup.Size = new System.Drawing.Size(657, 327);
             this.tpBackup.TabIndex = 0;
             this.tpBackup.Text = "Yedekle";
             // 
-            // grpBoxPatch
+            // tableLayoutPanel18
             // 
-            this.grpBoxPatch.Controls.Add(this.cbxDbNameBackup);
-            this.grpBoxPatch.Controls.Add(this.label2);
-            this.grpBoxPatch.Controls.Add(this.btnBackup);
-            this.grpBoxPatch.Controls.Add(this.btnBackupFileLocationSelect);
-            this.grpBoxPatch.Controls.Add(this.txtBackupPath);
-            this.grpBoxPatch.Controls.Add(this.label1);
-            this.grpBoxPatch.Location = new System.Drawing.Point(105, 97);
-            this.grpBoxPatch.Name = "grpBoxPatch";
-            this.grpBoxPatch.Size = new System.Drawing.Size(432, 130);
-            this.grpBoxPatch.TabIndex = 5;
-            this.grpBoxPatch.TabStop = false;
-            this.grpBoxPatch.Text = "Veritabanı Yedekleme";
+            this.tableLayoutPanel18.ColumnCount = 3;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel18.Controls.Add(this.groupBox1, 1, 1);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 3;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel18.TabIndex = 10;
             // 
-            // cbxDbNameBackup
+            // groupBox1
             // 
-            this.cbxDbNameBackup.FormattingEnabled = true;
-            this.cbxDbNameBackup.Location = new System.Drawing.Point(160, 28);
-            this.cbxDbNameBackup.Name = "cbxDbNameBackup";
-            this.cbxDbNameBackup.Size = new System.Drawing.Size(264, 23);
-            this.cbxDbNameBackup.TabIndex = 8;
+            this.groupBox1.Controls.Add(this.tableLayoutPanel19);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(133, 67);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(384, 186);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Veritabanı Yedekle";
             // 
-            // label2
+            // tableLayoutPanel19
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Veritabanı Adı :";
-            // 
-            // btnBackup
-            // 
-            this.btnBackup.Location = new System.Drawing.Point(160, 82);
-            this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(264, 31);
-            this.btnBackup.TabIndex = 4;
-            this.btnBackup.Text = "Yedekle";
-            this.btnBackup.UseVisualStyleBackColor = true;
-            this.btnBackup.Click += new System.EventHandler(this.BtnBackup_Click);
+            this.tableLayoutPanel19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel19.ColumnCount = 3;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel19.Controls.Add(this.btnBackupFileLocationSelect, 2, 1);
+            this.tableLayoutPanel19.Controls.Add(this.btnBackup, 1, 2);
+            this.tableLayoutPanel19.Controls.Add(this.cbxDbNameBackup, 1, 0);
+            this.tableLayoutPanel19.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel19.Controls.Add(this.txtBackupPath, 1, 1);
+            this.tableLayoutPanel19.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 18);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 3;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(378, 165);
+            this.tableLayoutPanel19.TabIndex = 5;
             // 
             // btnBackupFileLocationSelect
             // 
-            this.btnBackupFileLocationSelect.Location = new System.Drawing.Point(360, 54);
+            this.btnBackupFileLocationSelect.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnBackupFileLocationSelect.Location = new System.Drawing.Point(324, 71);
             this.btnBackupFileLocationSelect.Name = "btnBackupFileLocationSelect";
-            this.btnBackupFileLocationSelect.Size = new System.Drawing.Size(64, 22);
+            this.btnBackupFileLocationSelect.Size = new System.Drawing.Size(51, 22);
             this.btnBackupFileLocationSelect.TabIndex = 3;
             this.btnBackupFileLocationSelect.Text = "- - -";
             this.btnBackupFileLocationSelect.UseVisualStyleBackColor = true;
             this.btnBackupFileLocationSelect.Click += new System.EventHandler(this.BtnBackupFileLocationSelect_Click);
             // 
-            // txtBackupPath
+            // btnBackup
             // 
-            this.txtBackupPath.Location = new System.Drawing.Point(160, 55);
-            this.txtBackupPath.Name = "txtBackupPath";
-            this.txtBackupPath.Size = new System.Drawing.Size(194, 21);
-            this.txtBackupPath.TabIndex = 2;
+            this.tableLayoutPanel19.SetColumnSpan(this.btnBackup, 2);
+            this.btnBackup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnBackup.Location = new System.Drawing.Point(135, 113);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(240, 49);
+            this.btnBackup.TabIndex = 4;
+            this.btnBackup.Text = "Yedekle";
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.BtnBackup_Click);
+            // 
+            // cbxDbNameBackup
+            // 
+            this.cbxDbNameBackup.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxDbNameBackup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbxDbNameBackup.Enabled = false;
+            this.cbxDbNameBackup.FormattingEnabled = true;
+            this.cbxDbNameBackup.Location = new System.Drawing.Point(135, 15);
+            this.cbxDbNameBackup.Name = "cbxDbNameBackup";
+            this.cbxDbNameBackup.Size = new System.Drawing.Size(183, 24);
+            this.cbxDbNameBackup.TabIndex = 8;
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 58);
+            this.label1.Location = new System.Drawing.Point(15, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 15);
+            this.label1.Size = new System.Drawing.Size(114, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Veritabanı Dosya Konumu :";
+            // 
+            // txtBackupPath
+            // 
+            this.txtBackupPath.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtBackupPath.Location = new System.Drawing.Point(135, 71);
+            this.txtBackupPath.Name = "txtBackupPath";
+            this.txtBackupPath.Size = new System.Drawing.Size(183, 22);
+            this.txtBackupPath.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Veritabanı Adı :";
             // 
             // tpRestore
             // 
             this.tpRestore.BackColor = System.Drawing.SystemColors.Control;
-            this.tpRestore.Controls.Add(this.groupBox1);
-            this.tpRestore.Location = new System.Drawing.Point(4, 27);
+            this.tpRestore.Controls.Add(this.tableLayoutPanel16);
+            this.tpRestore.Location = new System.Drawing.Point(4, 82);
             this.tpRestore.Name = "tpRestore";
             this.tpRestore.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRestore.Size = new System.Drawing.Size(657, 398);
+            this.tpRestore.Size = new System.Drawing.Size(657, 327);
             this.tpRestore.TabIndex = 1;
             this.tpRestore.Text = "Geri Yükle";
             // 
-            // groupBox1
+            // tableLayoutPanel16
             // 
-            this.groupBox1.Controls.Add(this.cbxDbNameRestore);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.btnRestore);
-            this.groupBox1.Controls.Add(this.btnRestoreFile);
-            this.groupBox1.Controls.Add(this.txtRestorePath);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(105, 97);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(432, 130);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Veritabanı Geri Yükleme";
+            this.tableLayoutPanel16.ColumnCount = 3;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel16.Controls.Add(this.groupBox5, 1, 1);
+            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 3;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel16.TabIndex = 9;
             // 
-            // cbxDbNameRestore
+            // groupBox5
             // 
-            this.cbxDbNameRestore.FormattingEnabled = true;
-            this.cbxDbNameRestore.Location = new System.Drawing.Point(160, 28);
-            this.cbxDbNameRestore.Name = "cbxDbNameRestore";
-            this.cbxDbNameRestore.Size = new System.Drawing.Size(264, 23);
-            this.cbxDbNameRestore.TabIndex = 9;
+            this.groupBox5.Controls.Add(this.tableLayoutPanel17);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(133, 67);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(384, 186);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "SQL Dosyası Çalıştırma";
             // 
-            // label3
+            // tableLayoutPanel17
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 15);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Veritabanı Adı :";
-            // 
-            // btnRestore
-            // 
-            this.btnRestore.Location = new System.Drawing.Point(160, 82);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(264, 31);
-            this.btnRestore.TabIndex = 4;
-            this.btnRestore.Text = "Veritabanını Geri Yükle";
-            this.btnRestore.UseVisualStyleBackColor = true;
-            this.btnRestore.Click += new System.EventHandler(this.BtnRestore_Click);
+            this.tableLayoutPanel17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel17.ColumnCount = 3;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel17.Controls.Add(this.btnRestoreFile, 2, 1);
+            this.tableLayoutPanel17.Controls.Add(this.cbxDbNameRestore, 1, 0);
+            this.tableLayoutPanel17.Controls.Add(this.txtRestorePath, 1, 1);
+            this.tableLayoutPanel17.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel17.Controls.Add(this.btnRestore, 1, 2);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 18);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 3;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(378, 165);
+            this.tableLayoutPanel17.TabIndex = 5;
             // 
             // btnRestoreFile
             // 
-            this.btnRestoreFile.Location = new System.Drawing.Point(360, 54);
+            this.btnRestoreFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnRestoreFile.Location = new System.Drawing.Point(324, 71);
             this.btnRestoreFile.Name = "btnRestoreFile";
-            this.btnRestoreFile.Size = new System.Drawing.Size(64, 22);
+            this.btnRestoreFile.Size = new System.Drawing.Size(51, 22);
             this.btnRestoreFile.TabIndex = 3;
             this.btnRestoreFile.Text = "- - -";
             this.btnRestoreFile.UseVisualStyleBackColor = true;
             this.btnRestoreFile.Click += new System.EventHandler(this.BtnRestoreFile_Click);
             // 
+            // cbxDbNameRestore
+            // 
+            this.cbxDbNameRestore.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxDbNameRestore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbxDbNameRestore.Enabled = false;
+            this.cbxDbNameRestore.FormattingEnabled = true;
+            this.cbxDbNameRestore.Location = new System.Drawing.Point(135, 15);
+            this.cbxDbNameRestore.Name = "cbxDbNameRestore";
+            this.cbxDbNameRestore.Size = new System.Drawing.Size(183, 24);
+            this.cbxDbNameRestore.TabIndex = 9;
+            // 
             // txtRestorePath
             // 
-            this.txtRestorePath.Location = new System.Drawing.Point(160, 55);
+            this.txtRestorePath.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtRestorePath.Location = new System.Drawing.Point(135, 71);
             this.txtRestorePath.Name = "txtRestorePath";
-            this.txtRestorePath.Size = new System.Drawing.Size(194, 21);
+            this.txtRestorePath.Size = new System.Drawing.Size(183, 22);
             this.txtRestorePath.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Veritabanı Adı :";
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 58);
+            this.label4.Location = new System.Drawing.Point(5, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 15);
+            this.label4.Size = new System.Drawing.Size(124, 32);
             this.label4.TabIndex = 0;
             this.label4.Text = "Veritabanı Dosyası :";
+            // 
+            // btnRestore
+            // 
+            this.tableLayoutPanel17.SetColumnSpan(this.btnRestore, 2);
+            this.btnRestore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRestore.Location = new System.Drawing.Point(135, 113);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(240, 49);
+            this.btnRestore.TabIndex = 4;
+            this.btnRestore.Text = "Veritabanını Geri Yükle";
+            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.BtnRestore_Click);
             // 
             // tpSQLFile
             // 
             this.tpSQLFile.BackColor = System.Drawing.SystemColors.Control;
-            this.tpSQLFile.Controls.Add(this.groupBox2);
+            this.tpSQLFile.Controls.Add(this.tableLayoutPanel14);
             this.tpSQLFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tpSQLFile.Location = new System.Drawing.Point(4, 27);
+            this.tpSQLFile.Location = new System.Drawing.Point(4, 82);
             this.tpSQLFile.Name = "tpSQLFile";
             this.tpSQLFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSQLFile.Size = new System.Drawing.Size(657, 398);
+            this.tpSQLFile.Size = new System.Drawing.Size(657, 327);
             this.tpSQLFile.TabIndex = 2;
             this.tpSQLFile.Text = "SQL Dosyası Çalıştırma";
             // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 3;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel14.Controls.Add(this.groupBox2, 1, 1);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 3;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel14.TabIndex = 8;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnSQLRun);
-            this.groupBox2.Controls.Add(this.btnSQLFileSelect);
-            this.groupBox2.Controls.Add(this.txtSQLFile);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(105, 97);
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.tableLayoutPanel15);
+            this.groupBox2.Location = new System.Drawing.Point(139, 117);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(432, 130);
+            this.groupBox2.Size = new System.Drawing.Size(371, 85);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "SQL Dosyası Çalıştırma";
             // 
-            // btnSQLRun
+            // tableLayoutPanel15
             // 
-            this.btnSQLRun.Location = new System.Drawing.Point(160, 66);
-            this.btnSQLRun.Name = "btnSQLRun";
-            this.btnSQLRun.Size = new System.Drawing.Size(264, 31);
-            this.btnSQLRun.TabIndex = 4;
-            this.btnSQLRun.Text = "SQL Dosyasını Çalıştır";
-            this.btnSQLRun.UseVisualStyleBackColor = true;
-            this.btnSQLRun.Click += new System.EventHandler(this.BtnSQLRun_Click);
+            this.tableLayoutPanel15.ColumnCount = 3;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel15.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.txtSQLFile, 1, 0);
+            this.tableLayoutPanel15.Controls.Add(this.btnSQLFileSelect, 2, 0);
+            this.tableLayoutPanel15.Controls.Add(this.btnSQLRun, 1, 1);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 18);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 2;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(365, 64);
+            this.tableLayoutPanel15.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(32, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 16);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "SQL Dosyası :";
+            // 
+            // txtSQLFile
+            // 
+            this.txtSQLFile.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtSQLFile.Location = new System.Drawing.Point(130, 5);
+            this.txtSQLFile.Name = "txtSQLFile";
+            this.txtSQLFile.Size = new System.Drawing.Size(176, 22);
+            this.txtSQLFile.TabIndex = 2;
             // 
             // btnSQLFileSelect
             // 
-            this.btnSQLFileSelect.Location = new System.Drawing.Point(360, 38);
+            this.btnSQLFileSelect.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSQLFileSelect.Location = new System.Drawing.Point(312, 5);
             this.btnSQLFileSelect.Name = "btnSQLFileSelect";
-            this.btnSQLFileSelect.Size = new System.Drawing.Size(64, 22);
+            this.btnSQLFileSelect.Size = new System.Drawing.Size(50, 22);
             this.btnSQLFileSelect.TabIndex = 3;
             this.btnSQLFileSelect.Text = "- - -";
             this.btnSQLFileSelect.UseVisualStyleBackColor = true;
             this.btnSQLFileSelect.Click += new System.EventHandler(this.BtnSQLFileSelect_Click);
             // 
-            // txtSQLFile
+            // btnSQLRun
             // 
-            this.txtSQLFile.Location = new System.Drawing.Point(160, 39);
-            this.txtSQLFile.Name = "txtSQLFile";
-            this.txtSQLFile.Size = new System.Drawing.Size(194, 21);
-            this.txtSQLFile.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(70, 42);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "SQL Dosyası :";
+            this.tableLayoutPanel15.SetColumnSpan(this.btnSQLRun, 2);
+            this.btnSQLRun.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSQLRun.Location = new System.Drawing.Point(130, 35);
+            this.btnSQLRun.Name = "btnSQLRun";
+            this.btnSQLRun.Size = new System.Drawing.Size(232, 26);
+            this.btnSQLRun.TabIndex = 4;
+            this.btnSQLRun.Text = "SQL Dosyasını Çalıştır";
+            this.btnSQLRun.UseVisualStyleBackColor = true;
+            this.btnSQLRun.Click += new System.EventHandler(this.BtnSQLRun_Click);
             // 
             // tpSPWinDatabasePhotoDelete
             // 
             this.tpSPWinDatabasePhotoDelete.BackColor = System.Drawing.SystemColors.Control;
-            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.lblDateFinish);
-            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.lblDateStart);
-            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.dtpFinish);
-            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.rdbAll);
-            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.rdbPeriod);
-            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.dtpStart);
-            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.groupBox5);
-            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 27);
+            this.tpSPWinDatabasePhotoDelete.Controls.Add(this.tableLayoutPanel9);
+            this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 82);
             this.tpSPWinDatabasePhotoDelete.Name = "tpSPWinDatabasePhotoDelete";
             this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(657, 398);
+            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(657, 327);
             this.tpSPWinDatabasePhotoDelete.TabIndex = 3;
             this.tpSPWinDatabasePhotoDelete.Text = "Veritabanından Fotoğraf Silme";
             // 
-            // lblDateFinish
+            // tableLayoutPanel9
             // 
-            this.lblDateFinish.AutoSize = true;
-            this.lblDateFinish.Location = new System.Drawing.Point(8, 257);
-            this.lblDateFinish.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDateFinish.Name = "lblDateFinish";
-            this.lblDateFinish.Size = new System.Drawing.Size(76, 15);
-            this.lblDateFinish.TabIndex = 17;
-            this.lblDateFinish.Text = "Bitiş Tarihi";
-            this.lblDateFinish.Visible = false;
+            this.tableLayoutPanel9.ColumnCount = 4;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26F));
+            this.tableLayoutPanel9.Controls.Add(this.groupBox7, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.groupBox8, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.btnWeighPhotoDelete, 3, 3);
+            this.tableLayoutPanel9.Controls.Add(this.dtpFinish, 2, 2);
+            this.tableLayoutPanel9.Controls.Add(this.lblDateFinish, 2, 1);
+            this.tableLayoutPanel9.Controls.Add(this.dtpStart, 1, 2);
+            this.tableLayoutPanel9.Controls.Add(this.lblDateStart, 1, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 4;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel9.TabIndex = 33;
             // 
-            // lblDateStart
+            // groupBox7
             // 
-            this.lblDateStart.AutoSize = true;
-            this.lblDateStart.Location = new System.Drawing.Point(8, 234);
-            this.lblDateStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDateStart.Name = "lblDateStart";
-            this.lblDateStart.Size = new System.Drawing.Size(111, 15);
-            this.lblDateStart.TabIndex = 16;
-            this.lblDateStart.Text = "Başlangıç Tarihi";
-            this.lblDateStart.Visible = false;
+            this.groupBox7.Controls.Add(this.tableLayoutPanel11);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox7.Location = new System.Drawing.Point(315, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(163, 122);
+            this.groupBox7.TabIndex = 31;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Tartım Seçiniz";
             // 
-            // dtpFinish
+            // tableLayoutPanel11
             // 
-            this.dtpFinish.Location = new System.Drawing.Point(90, 253);
-            this.dtpFinish.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpFinish.Name = "dtpFinish";
-            this.dtpFinish.Size = new System.Drawing.Size(112, 21);
-            this.dtpFinish.TabIndex = 15;
-            this.dtpFinish.Value = new System.DateTime(2023, 7, 25, 23, 59, 59, 0);
-            this.dtpFinish.Visible = false;
-            // 
-            // rdbAll
-            // 
-            this.rdbAll.AutoSize = true;
-            this.rdbAll.Location = new System.Drawing.Point(10, 174);
-            this.rdbAll.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbAll.Name = "rdbAll";
-            this.rdbAll.Size = new System.Drawing.Size(96, 19);
-            this.rdbAll.TabIndex = 14;
-            this.rdbAll.Text = "Tümünü sil";
-            this.rdbAll.UseVisualStyleBackColor = true;
-            this.rdbAll.CheckedChanged += new System.EventHandler(this.rdbAll_CheckedChanged);
-            // 
-            // rdbPeriod
-            // 
-            this.rdbPeriod.AutoSize = true;
-            this.rdbPeriod.Location = new System.Drawing.Point(10, 195);
-            this.rdbPeriod.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbPeriod.Name = "rdbPeriod";
-            this.rdbPeriod.Size = new System.Drawing.Size(80, 19);
-            this.rdbPeriod.TabIndex = 12;
-            this.rdbPeriod.Text = "Aralık sil";
-            this.rdbPeriod.UseVisualStyleBackColor = true;
-            this.rdbPeriod.CheckedChanged += new System.EventHandler(this.rdbPeriod_CheckedChanged);
-            // 
-            // dtpStart
-            // 
-            this.dtpStart.Location = new System.Drawing.Point(90, 230);
-            this.dtpStart.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(112, 21);
-            this.dtpStart.TabIndex = 10;
-            this.dtpStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
-            this.dtpStart.Visible = false;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.rbAllPhoto);
-            this.groupBox5.Controls.Add(this.rbInTheFolderPhoto);
-            this.groupBox5.Controls.Add(this.rbOneAndTwoPhoto);
-            this.groupBox5.Controls.Add(this.btnWeighPhotoDelete);
-            this.groupBox5.Location = new System.Drawing.Point(147, 72);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(333, 152);
-            this.groupBox5.TabIndex = 9;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Tartım Fotoğraflarını Silme";
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.Controls.Add(this.rbAllPhoto, 0, 2);
+            this.tableLayoutPanel11.Controls.Add(this.rbOneAndTwoPhoto, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.rbInTheFolderPhoto, 0, 1);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 25);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 3;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(157, 94);
+            this.tableLayoutPanel11.TabIndex = 32;
             // 
             // rbAllPhoto
             // 
+            this.rbAllPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbAllPhoto.AutoSize = true;
-            this.rbAllPhoto.Location = new System.Drawing.Point(37, 102);
+            this.rbAllPhoto.Location = new System.Drawing.Point(3, 65);
             this.rbAllPhoto.Name = "rbAllPhoto";
-            this.rbAllPhoto.Size = new System.Drawing.Size(62, 19);
+            this.rbAllPhoto.Size = new System.Drawing.Size(151, 26);
             this.rbAllPhoto.TabIndex = 10;
             this.rbAllPhoto.Text = "Hepsi";
             this.rbAllPhoto.UseVisualStyleBackColor = true;
             // 
-            // rbInTheFolderPhoto
-            // 
-            this.rbInTheFolderPhoto.AutoSize = true;
-            this.rbInTheFolderPhoto.Location = new System.Drawing.Point(37, 79);
-            this.rbInTheFolderPhoto.Name = "rbInTheFolderPhoto";
-            this.rbInTheFolderPhoto.Size = new System.Drawing.Size(66, 19);
-            this.rbInTheFolderPhoto.TabIndex = 9;
-            this.rbInTheFolderPhoto.Text = "Klasör";
-            this.rbInTheFolderPhoto.UseVisualStyleBackColor = true;
-            // 
             // rbOneAndTwoPhoto
             // 
+            this.rbOneAndTwoPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbOneAndTwoPhoto.AutoSize = true;
-            this.rbOneAndTwoPhoto.Location = new System.Drawing.Point(37, 57);
+            this.rbOneAndTwoPhoto.Location = new System.Drawing.Point(3, 3);
             this.rbOneAndTwoPhoto.Name = "rbOneAndTwoPhoto";
-            this.rbOneAndTwoPhoto.Size = new System.Drawing.Size(94, 19);
+            this.rbOneAndTwoPhoto.Size = new System.Drawing.Size(151, 25);
             this.rbOneAndTwoPhoto.TabIndex = 8;
             this.rbOneAndTwoPhoto.Text = "Veri tabanı";
             this.rbOneAndTwoPhoto.UseVisualStyleBackColor = true;
             // 
+            // rbInTheFolderPhoto
+            // 
+            this.rbInTheFolderPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbInTheFolderPhoto.AutoSize = true;
+            this.rbInTheFolderPhoto.Location = new System.Drawing.Point(3, 34);
+            this.rbInTheFolderPhoto.Name = "rbInTheFolderPhoto";
+            this.rbInTheFolderPhoto.Size = new System.Drawing.Size(151, 25);
+            this.rbInTheFolderPhoto.TabIndex = 9;
+            this.rbInTheFolderPhoto.Text = "Klasör";
+            this.rbInTheFolderPhoto.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.tableLayoutPanel10);
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox8.Location = new System.Drawing.Point(146, 3);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(163, 122);
+            this.groupBox8.TabIndex = 30;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Tarih Seçiniz";
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 1;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.rdbPeriod, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.rdbAll, 0, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 25);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 2;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(157, 94);
+            this.tableLayoutPanel10.TabIndex = 32;
+            // 
+            // rdbPeriod
+            // 
+            this.rdbPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdbPeriod.AutoSize = true;
+            this.rdbPeriod.Location = new System.Drawing.Point(2, 49);
+            this.rdbPeriod.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbPeriod.Name = "rdbPeriod";
+            this.rdbPeriod.Size = new System.Drawing.Size(153, 28);
+            this.rdbPeriod.TabIndex = 12;
+            this.rdbPeriod.Text = "Tarih aralığını sil";
+            this.rdbPeriod.UseVisualStyleBackColor = true;
+            this.rdbPeriod.CheckedChanged += new System.EventHandler(this.rdbPeriod_CheckedChanged);
+            // 
+            // rdbAll
+            // 
+            this.rdbAll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdbAll.AutoSize = true;
+            this.rdbAll.Location = new System.Drawing.Point(2, 17);
+            this.rdbAll.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbAll.Name = "rdbAll";
+            this.rdbAll.Size = new System.Drawing.Size(153, 28);
+            this.rdbAll.TabIndex = 14;
+            this.rdbAll.Text = "Tüm kayıtları sil";
+            this.rdbAll.UseVisualStyleBackColor = true;
+            this.rdbAll.CheckedChanged += new System.EventHandler(this.rdbAll_CheckedChanged);
+            // 
             // btnWeighPhotoDelete
             // 
-            this.btnWeighPhotoDelete.Location = new System.Drawing.Point(128, 115);
+            this.btnWeighPhotoDelete.BackColor = System.Drawing.Color.Red;
+            this.btnWeighPhotoDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnWeighPhotoDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnWeighPhotoDelete.Location = new System.Drawing.Point(484, 259);
             this.btnWeighPhotoDelete.Name = "btnWeighPhotoDelete";
-            this.btnWeighPhotoDelete.Size = new System.Drawing.Size(194, 31);
+            this.btnWeighPhotoDelete.Size = new System.Drawing.Size(164, 59);
             this.btnWeighPhotoDelete.TabIndex = 4;
             this.btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
-            this.btnWeighPhotoDelete.UseVisualStyleBackColor = true;
+            this.btnWeighPhotoDelete.UseVisualStyleBackColor = false;
             this.btnWeighPhotoDelete.Click += new System.EventHandler(this.BtnWeighPhotoDelete_Click);
+            // 
+            // dtpFinish
+            // 
+            this.dtpFinish.Location = new System.Drawing.Point(314, 194);
+            this.dtpFinish.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpFinish.Name = "dtpFinish";
+            this.dtpFinish.Size = new System.Drawing.Size(128, 22);
+            this.dtpFinish.TabIndex = 15;
+            this.dtpFinish.Value = new System.DateTime(2023, 7, 25, 23, 59, 59, 0);
+            this.dtpFinish.Visible = false;
+            // 
+            // lblDateFinish
+            // 
+            this.lblDateFinish.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblDateFinish.AutoSize = true;
+            this.lblDateFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblDateFinish.Location = new System.Drawing.Point(314, 148);
+            this.lblDateFinish.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDateFinish.Name = "lblDateFinish";
+            this.lblDateFinish.Size = new System.Drawing.Size(95, 24);
+            this.lblDateFinish.TabIndex = 24;
+            this.lblDateFinish.Text = "Bitiş Tarihi";
+            this.lblDateFinish.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDateFinish.Visible = false;
+            // 
+            // dtpStart
+            // 
+            this.dtpStart.Location = new System.Drawing.Point(145, 194);
+            this.dtpStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(127, 22);
+            this.dtpStart.TabIndex = 10;
+            this.dtpStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
+            this.dtpStart.Visible = false;
+            // 
+            // lblDateStart
+            // 
+            this.lblDateStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblDateStart.AutoSize = true;
+            this.lblDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblDateStart.Location = new System.Drawing.Point(145, 148);
+            this.lblDateStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDateStart.Name = "lblDateStart";
+            this.lblDateStart.Size = new System.Drawing.Size(143, 24);
+            this.lblDateStart.TabIndex = 23;
+            this.lblDateStart.Text = "Başlangıç Tarihi";
+            this.lblDateStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDateStart.Visible = false;
             // 
             // tpDatabaseRepair
             // 
             this.tpDatabaseRepair.BackColor = System.Drawing.SystemColors.Control;
             this.tpDatabaseRepair.Controls.Add(this.groupBox6);
-            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 27);
+            this.tpDatabaseRepair.Location = new System.Drawing.Point(4, 82);
             this.tpDatabaseRepair.Name = "tpDatabaseRepair";
             this.tpDatabaseRepair.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDatabaseRepair.Size = new System.Drawing.Size(657, 398);
+            this.tpDatabaseRepair.Size = new System.Drawing.Size(657, 327);
             this.tpDatabaseRepair.TabIndex = 7;
             this.tpDatabaseRepair.Text = "Veritabanı Onarma";
             // 
@@ -592,10 +854,11 @@
             // 
             // cbxDbNameRepair
             // 
+            this.cbxDbNameRepair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cbxDbNameRepair.FormattingEnabled = true;
             this.cbxDbNameRepair.Location = new System.Drawing.Point(128, 28);
             this.cbxDbNameRepair.Name = "cbxDbNameRepair";
-            this.cbxDbNameRepair.Size = new System.Drawing.Size(194, 23);
+            this.cbxDbNameRepair.Size = new System.Drawing.Size(194, 24);
             this.cbxDbNameRepair.TabIndex = 10;
             // 
             // textBox4
@@ -603,7 +866,7 @@
             this.textBox4.Location = new System.Drawing.Point(128, 81);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(194, 21);
+            this.textBox4.Size = new System.Drawing.Size(194, 22);
             this.textBox4.TabIndex = 8;
             // 
             // label9
@@ -611,7 +874,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(72, 84);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 15);
+            this.label9.Size = new System.Drawing.Size(47, 16);
             this.label9.TabIndex = 7;
             this.label9.Text = "Boyut :";
             // 
@@ -620,7 +883,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(34, 31);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 15);
+            this.label10.Size = new System.Drawing.Size(97, 16);
             this.label10.TabIndex = 6;
             this.label10.Text = "Veritabanı Adı :";
             // 
@@ -639,7 +902,7 @@
             this.textBox6.Location = new System.Drawing.Point(128, 55);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(194, 21);
+            this.textBox6.Size = new System.Drawing.Size(194, 22);
             this.textBox6.TabIndex = 2;
             // 
             // label11
@@ -647,29 +910,49 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(69, 58);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 15);
+            this.label11.Size = new System.Drawing.Size(50, 16);
             this.label11.TabIndex = 0;
             this.label11.Text = "Status :";
             // 
             // tpSPWinScaleAndDBAConsolidation
             // 
             this.tpSPWinScaleAndDBAConsolidation.BackColor = System.Drawing.SystemColors.Control;
-            this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.btnMoveDbaToScale);
-            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 53);
+            this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.tableLayoutPanel8);
+            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 82);
             this.tpSPWinScaleAndDBAConsolidation.Name = "tpSPWinScaleAndDBAConsolidation";
             this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(657, 372);
+            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(657, 327);
             this.tpSPWinScaleAndDBAConsolidation.TabIndex = 6;
             this.tpSPWinScaleAndDBAConsolidation.Text = "SPWin Scale ve DBA Birleştirme";
             // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.Controls.Add(this.btnMoveDbaToScale, 1, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 3;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel8.TabIndex = 3;
+            // 
             // btnMoveDbaToScale
             // 
-            this.btnMoveDbaToScale.Location = new System.Drawing.Point(161, 124);
+            this.btnMoveDbaToScale.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMoveDbaToScale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMoveDbaToScale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMoveDbaToScale.Location = new System.Drawing.Point(198, 99);
             this.btnMoveDbaToScale.Name = "btnMoveDbaToScale";
-            this.btnMoveDbaToScale.Size = new System.Drawing.Size(288, 48);
+            this.btnMoveDbaToScale.Size = new System.Drawing.Size(254, 122);
             this.btnMoveDbaToScale.TabIndex = 0;
             this.btnMoveDbaToScale.Text = "Eski Versiyondaki DBA Verilerini Yeni Versiyona Taşı";
-            this.btnMoveDbaToScale.UseVisualStyleBackColor = true;
+            this.btnMoveDbaToScale.UseVisualStyleBackColor = false;
             this.btnMoveDbaToScale.Click += new System.EventHandler(this.BtnMoveDbaToScale_Click);
             // 
             // tpTablolar
@@ -679,11 +962,11 @@
             this.tpTablolar.Controls.Add(this.CbxtableList);
             this.tpTablolar.Controls.Add(this.btngoster);
             this.tpTablolar.Controls.Add(this.dataGV1);
-            this.tpTablolar.Location = new System.Drawing.Point(4, 53);
+            this.tpTablolar.Location = new System.Drawing.Point(4, 82);
             this.tpTablolar.Margin = new System.Windows.Forms.Padding(2);
             this.tpTablolar.Name = "tpTablolar";
             this.tpTablolar.Padding = new System.Windows.Forms.Padding(2);
-            this.tpTablolar.Size = new System.Drawing.Size(657, 372);
+            this.tpTablolar.Size = new System.Drawing.Size(657, 327);
             this.tpTablolar.TabIndex = 8;
             this.tpTablolar.Text = "Tablolar";
             // 
@@ -694,7 +977,7 @@
             this.checkedListBox1.Location = new System.Drawing.Point(4, 32);
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(111, 228);
+            this.checkedListBox1.Size = new System.Drawing.Size(111, 225);
             this.checkedListBox1.TabIndex = 20;
             // 
             // CbxtableList
@@ -704,7 +987,7 @@
             this.CbxtableList.Location = new System.Drawing.Point(4, 5);
             this.CbxtableList.Margin = new System.Windows.Forms.Padding(2);
             this.CbxtableList.Name = "CbxtableList";
-            this.CbxtableList.Size = new System.Drawing.Size(111, 23);
+            this.CbxtableList.Size = new System.Drawing.Size(111, 24);
             this.CbxtableList.TabIndex = 11;
             this.CbxtableList.SelectedIndexChanged += new System.EventHandler(this.CbxtableList_SelectedIndexChanged);
             this.CbxtableList.Click += new System.EventHandler(this.CbxtableList_Click);
@@ -733,7 +1016,7 @@
             this.dataGV1.ReadOnly = true;
             this.dataGV1.RowHeadersWidth = 51;
             this.dataGV1.RowTemplate.Height = 24;
-            this.dataGV1.Size = new System.Drawing.Size(533, 368);
+            this.dataGV1.Size = new System.Drawing.Size(533, 323);
             this.dataGV1.TabIndex = 0;
             // 
             // tpQuary
@@ -747,11 +1030,11 @@
             this.tpQuary.Controls.Add(this.btnQuaryClear);
             this.tpQuary.Controls.Add(this.btnQuarySave);
             this.tpQuary.Controls.Add(this.tbxQuary);
-            this.tpQuary.Location = new System.Drawing.Point(4, 53);
+            this.tpQuary.Location = new System.Drawing.Point(4, 82);
             this.tpQuary.Margin = new System.Windows.Forms.Padding(2);
             this.tpQuary.Name = "tpQuary";
             this.tpQuary.Padding = new System.Windows.Forms.Padding(2);
-            this.tpQuary.Size = new System.Drawing.Size(657, 372);
+            this.tpQuary.Size = new System.Drawing.Size(657, 327);
             this.tpQuary.TabIndex = 9;
             this.tpQuary.Text = "Quary.sql";
             // 
@@ -782,14 +1065,14 @@
             this.tbxQuaryName.Location = new System.Drawing.Point(135, 5);
             this.tbxQuaryName.Margin = new System.Windows.Forms.Padding(2);
             this.tbxQuaryName.Name = "tbxQuaryName";
-            this.tbxQuaryName.Size = new System.Drawing.Size(516, 21);
+            this.tbxQuaryName.Size = new System.Drawing.Size(516, 22);
             this.tbxQuaryName.TabIndex = 6;
             // 
             // tbxQuarySaveLoc
             // 
             this.tbxQuarySaveLoc.Location = new System.Drawing.Point(235, 297);
             this.tbxQuarySaveLoc.Name = "tbxQuarySaveLoc";
-            this.tbxQuarySaveLoc.Size = new System.Drawing.Size(225, 21);
+            this.tbxQuarySaveLoc.Size = new System.Drawing.Size(225, 22);
             this.tbxQuarySaveLoc.TabIndex = 5;
             // 
             // btnloc
@@ -837,11 +1120,11 @@
             // 
             this.tpSorgu.BackColor = System.Drawing.SystemColors.Control;
             this.tpSorgu.Controls.Add(this.panel1);
-            this.tpSorgu.Location = new System.Drawing.Point(4, 53);
+            this.tpSorgu.Location = new System.Drawing.Point(4, 82);
             this.tpSorgu.Margin = new System.Windows.Forms.Padding(2);
             this.tpSorgu.Name = "tpSorgu";
             this.tpSorgu.Padding = new System.Windows.Forms.Padding(2);
-            this.tpSorgu.Size = new System.Drawing.Size(657, 372);
+            this.tpSorgu.Size = new System.Drawing.Size(657, 327);
             this.tpSorgu.TabIndex = 10;
             this.tpSorgu.Text = "Sorgu";
             // 
@@ -899,450 +1182,748 @@
             // tpEsitUserEkle
             // 
             this.tpEsitUserEkle.BackColor = System.Drawing.SystemColors.Control;
-            this.tpEsitUserEkle.Controls.Add(this.tbUserAddUserPasswordConfirm);
-            this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserPasswordConfirm);
-            this.tpEsitUserEkle.Controls.Add(this.btnEsitUserSil);
-            this.tpEsitUserEkle.Controls.Add(this.cbUserAddUserRole);
-            this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserRole);
-            this.tpEsitUserEkle.Controls.Add(this.tbUserAddUserPassword);
-            this.tpEsitUserEkle.Controls.Add(this.tbUserAddUserName);
-            this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserPassword);
-            this.tpEsitUserEkle.Controls.Add(this.lbUserAddUserName);
-            this.tpEsitUserEkle.Controls.Add(this.btnEsitUserEkle);
-            this.tpEsitUserEkle.Location = new System.Drawing.Point(4, 79);
+            this.tpEsitUserEkle.Controls.Add(this.tableLayoutPanel7);
+            this.tpEsitUserEkle.Location = new System.Drawing.Point(4, 82);
             this.tpEsitUserEkle.Name = "tpEsitUserEkle";
             this.tpEsitUserEkle.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEsitUserEkle.Size = new System.Drawing.Size(657, 346);
+            this.tpEsitUserEkle.Size = new System.Drawing.Size(657, 327);
             this.tpEsitUserEkle.TabIndex = 11;
-            this.tpEsitUserEkle.Text = "Esit-User İşlemleri";
+            this.tpEsitUserEkle.Text = "Kullanıcı İşlemleri";
             // 
-            // btnEsitUserSil
+            // tableLayoutPanel7
             // 
-            this.btnEsitUserSil.BackColor = System.Drawing.Color.Red;
-            this.btnEsitUserSil.ForeColor = System.Drawing.Color.White;
-            this.btnEsitUserSil.Location = new System.Drawing.Point(421, 242);
-            this.btnEsitUserSil.Name = "btnEsitUserSil";
-            this.btnEsitUserSil.Size = new System.Drawing.Size(214, 80);
-            this.btnEsitUserSil.TabIndex = 7;
-            this.btnEsitUserSil.Text = "Esit-User Sil";
-            this.btnEsitUserSil.UseVisualStyleBackColor = false;
-            this.btnEsitUserSil.Click += new System.EventHandler(this.btnEsitUserSil_Click);
+            this.tableLayoutPanel7.ColumnCount = 4;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel7.Controls.Add(this.btnEsitUserSilHelp, 2, 6);
+            this.tableLayoutPanel7.Controls.Add(this.btnKullanıcıSil, 3, 6);
+            this.tableLayoutPanel7.Controls.Add(this.tbUserAddUserPasswordConfirm, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.btnKullanıcıEkle, 3, 5);
+            this.tableLayoutPanel7.Controls.Add(this.cbUserAddUserRole, 1, 4);
+            this.tableLayoutPanel7.Controls.Add(this.lbUserAddUserName, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.lbUserAddUserPasswordConfirm, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.lbUserAddUserPassword, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.tbUserAddUserPassword, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.lbUserAddUserRole, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.tbUserAddUserName, 1, 1);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 7;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel7.TabIndex = 11;
+            // 
+            // btnEsitUserSilHelp
+            // 
+            this.btnEsitUserSilHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEsitUserSilHelp.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnEsitUserSilHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEsitUserSilHelp.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEsitUserSilHelp.Location = new System.Drawing.Point(422, 278);
+            this.btnEsitUserSilHelp.Name = "btnEsitUserSilHelp";
+            this.btnEsitUserSilHelp.Size = new System.Drawing.Size(30, 40);
+            this.btnEsitUserSilHelp.TabIndex = 10;
+            this.btnEsitUserSilHelp.Text = "?";
+            this.btnEsitUserSilHelp.UseVisualStyleBackColor = false;
+            this.btnEsitUserSilHelp.Click += new System.EventHandler(this.btnEsitUserSilHelp_Click);
+            // 
+            // btnKullanıcıSil
+            // 
+            this.btnKullanıcıSil.BackColor = System.Drawing.Color.Red;
+            this.btnKullanıcıSil.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKullanıcıSil.ForeColor = System.Drawing.Color.White;
+            this.btnKullanıcıSil.Location = new System.Drawing.Point(458, 273);
+            this.btnKullanıcıSil.Name = "btnKullanıcıSil";
+            this.btnKullanıcıSil.Size = new System.Drawing.Size(190, 45);
+            this.btnKullanıcıSil.TabIndex = 7;
+            this.btnKullanıcıSil.Text = "Kullanıcı Sil";
+            this.btnKullanıcıSil.UseVisualStyleBackColor = false;
+            this.btnKullanıcıSil.Click += new System.EventHandler(this.btnKullanıcıSil_Click);
+            // 
+            // tbUserAddUserPasswordConfirm
+            // 
+            this.tbUserAddUserPasswordConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUserAddUserPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbUserAddUserPasswordConfirm.Location = new System.Drawing.Point(198, 143);
+            this.tbUserAddUserPasswordConfirm.Name = "tbUserAddUserPasswordConfirm";
+            this.tbUserAddUserPasswordConfirm.PasswordChar = 'x';
+            this.tbUserAddUserPasswordConfirm.Size = new System.Drawing.Size(189, 29);
+            this.tbUserAddUserPasswordConfirm.TabIndex = 9;
+            this.tbUserAddUserPasswordConfirm.Text = "esit12345";
+            // 
+            // btnKullanıcıEkle
+            // 
+            this.btnKullanıcıEkle.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnKullanıcıEkle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKullanıcıEkle.ForeColor = System.Drawing.Color.White;
+            this.btnKullanıcıEkle.Location = new System.Drawing.Point(458, 228);
+            this.btnKullanıcıEkle.Name = "btnKullanıcıEkle";
+            this.btnKullanıcıEkle.Size = new System.Drawing.Size(190, 39);
+            this.btnKullanıcıEkle.TabIndex = 0;
+            this.btnKullanıcıEkle.Text = "Kullanıcı Ekle";
+            this.btnKullanıcıEkle.UseVisualStyleBackColor = false;
+            this.btnKullanıcıEkle.Click += new System.EventHandler(this.btnKullanıcıEkle_Click);
             // 
             // cbUserAddUserRole
             // 
+            this.cbUserAddUserRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbUserAddUserRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUserAddUserRole.FormattingEnabled = true;
             this.cbUserAddUserRole.Items.AddRange(new object[] {
             "Read-Only",
             "Admin"});
-            this.cbUserAddUserRole.Location = new System.Drawing.Point(184, 172);
+            this.cbUserAddUserRole.Location = new System.Drawing.Point(198, 190);
             this.cbUserAddUserRole.Name = "cbUserAddUserRole";
-            this.cbUserAddUserRole.Size = new System.Drawing.Size(167, 23);
+            this.cbUserAddUserRole.Size = new System.Drawing.Size(189, 24);
             this.cbUserAddUserRole.TabIndex = 6;
-            // 
-            // lbUserAddUserRole
-            // 
-            this.lbUserAddUserRole.AutoSize = true;
-            this.lbUserAddUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbUserAddUserRole.Location = new System.Drawing.Point(56, 172);
-            this.lbUserAddUserRole.Name = "lbUserAddUserRole";
-            this.lbUserAddUserRole.Size = new System.Drawing.Size(122, 24);
-            this.lbUserAddUserRole.TabIndex = 5;
-            this.lbUserAddUserRole.Text = "Yetki Düzeyi :";
-            // 
-            // tbUserAddUserPassword
-            // 
-            this.tbUserAddUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbUserAddUserPassword.Location = new System.Drawing.Point(184, 80);
-            this.tbUserAddUserPassword.Name = "tbUserAddUserPassword";
-            this.tbUserAddUserPassword.PasswordChar = 'x';
-            this.tbUserAddUserPassword.Size = new System.Drawing.Size(167, 29);
-            this.tbUserAddUserPassword.TabIndex = 4;
-            // 
-            // tbUserAddUserName
-            // 
-            this.tbUserAddUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbUserAddUserName.Location = new System.Drawing.Point(184, 30);
-            this.tbUserAddUserName.Name = "tbUserAddUserName";
-            this.tbUserAddUserName.Size = new System.Drawing.Size(167, 29);
-            this.tbUserAddUserName.TabIndex = 3;
-            // 
-            // lbUserAddUserPassword
-            // 
-            this.lbUserAddUserPassword.AutoSize = true;
-            this.lbUserAddUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbUserAddUserPassword.Location = new System.Drawing.Point(46, 80);
-            this.lbUserAddUserPassword.Name = "lbUserAddUserPassword";
-            this.lbUserAddUserPassword.Size = new System.Drawing.Size(132, 24);
-            this.lbUserAddUserPassword.TabIndex = 2;
-            this.lbUserAddUserPassword.Text = "Kullanıcı Şifre :";
             // 
             // lbUserAddUserName
             // 
+            this.lbUserAddUserName.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbUserAddUserName.AutoSize = true;
             this.lbUserAddUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbUserAddUserName.Location = new System.Drawing.Point(55, 30);
+            this.lbUserAddUserName.Location = new System.Drawing.Point(69, 55);
             this.lbUserAddUserName.Name = "lbUserAddUserName";
             this.lbUserAddUserName.Size = new System.Drawing.Size(123, 24);
             this.lbUserAddUserName.TabIndex = 1;
             this.lbUserAddUserName.Text = "Kullanıcı Adı :";
             // 
-            // btnEsitUserEkle
+            // lbUserAddUserPasswordConfirm
             // 
-            this.btnEsitUserEkle.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnEsitUserEkle.ForeColor = System.Drawing.Color.White;
-            this.btnEsitUserEkle.Location = new System.Drawing.Point(421, 30);
-            this.btnEsitUserEkle.Name = "btnEsitUserEkle";
-            this.btnEsitUserEkle.Size = new System.Drawing.Size(214, 80);
-            this.btnEsitUserEkle.TabIndex = 0;
-            this.btnEsitUserEkle.Text = "Esit-User Ekle";
-            this.btnEsitUserEkle.UseVisualStyleBackColor = false;
-            this.btnEsitUserEkle.Click += new System.EventHandler(this.btnEsitUserEkle_Click);
+            this.lbUserAddUserPasswordConfirm.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbUserAddUserPasswordConfirm.AutoSize = true;
+            this.lbUserAddUserPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbUserAddUserPasswordConfirm.Location = new System.Drawing.Point(38, 145);
+            this.lbUserAddUserPasswordConfirm.Name = "lbUserAddUserPasswordConfirm";
+            this.lbUserAddUserPasswordConfirm.Size = new System.Drawing.Size(154, 24);
+            this.lbUserAddUserPasswordConfirm.TabIndex = 8;
+            this.lbUserAddUserPasswordConfirm.Text = "Şifre Doğrulama :";
             // 
-            // tpEsitScaleSil
+            // lbUserAddUserPassword
             // 
-            this.tpEsitScaleSil.BackColor = System.Drawing.SystemColors.Control;
-            this.tpEsitScaleSil.Controls.Add(this.btnEsitScaleSil);
-            this.tpEsitScaleSil.Location = new System.Drawing.Point(4, 79);
-            this.tpEsitScaleSil.Name = "tpEsitScaleSil";
-            this.tpEsitScaleSil.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEsitScaleSil.Size = new System.Drawing.Size(657, 346);
-            this.tpEsitScaleSil.TabIndex = 12;
-            this.tpEsitScaleSil.Text = "www.EsitScale.com Sil";
+            this.lbUserAddUserPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbUserAddUserPassword.AutoSize = true;
+            this.lbUserAddUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbUserAddUserPassword.Location = new System.Drawing.Point(60, 100);
+            this.lbUserAddUserPassword.Name = "lbUserAddUserPassword";
+            this.lbUserAddUserPassword.Size = new System.Drawing.Size(132, 24);
+            this.lbUserAddUserPassword.TabIndex = 2;
+            this.lbUserAddUserPassword.Text = "Kullanıcı Şifre :";
             // 
-            // btnEsitScaleSil
+            // tbUserAddUserPassword
             // 
-            this.btnEsitScaleSil.Location = new System.Drawing.Point(210, 86);
-            this.btnEsitScaleSil.Name = "btnEsitScaleSil";
-            this.btnEsitScaleSil.Size = new System.Drawing.Size(197, 130);
-            this.btnEsitScaleSil.TabIndex = 0;
-            this.btnEsitScaleSil.Text = "www.EsitScale.com dosyalarını  Sil";
-            this.btnEsitScaleSil.UseVisualStyleBackColor = true;
-            this.btnEsitScaleSil.Click += new System.EventHandler(this.btnEsitScaleSil_Click);
+            this.tbUserAddUserPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUserAddUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbUserAddUserPassword.Location = new System.Drawing.Point(198, 98);
+            this.tbUserAddUserPassword.Name = "tbUserAddUserPassword";
+            this.tbUserAddUserPassword.PasswordChar = 'x';
+            this.tbUserAddUserPassword.Size = new System.Drawing.Size(189, 29);
+            this.tbUserAddUserPassword.TabIndex = 4;
+            this.tbUserAddUserPassword.Text = "esit12345";
+            // 
+            // lbUserAddUserRole
+            // 
+            this.lbUserAddUserRole.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbUserAddUserRole.AutoSize = true;
+            this.lbUserAddUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbUserAddUserRole.Location = new System.Drawing.Point(70, 190);
+            this.lbUserAddUserRole.Name = "lbUserAddUserRole";
+            this.lbUserAddUserRole.Size = new System.Drawing.Size(122, 24);
+            this.lbUserAddUserRole.TabIndex = 5;
+            this.lbUserAddUserRole.Text = "Yetki Düzeyi :";
+            // 
+            // tbUserAddUserName
+            // 
+            this.tbUserAddUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUserAddUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbUserAddUserName.Location = new System.Drawing.Point(198, 53);
+            this.tbUserAddUserName.Name = "tbUserAddUserName";
+            this.tbUserAddUserName.Size = new System.Drawing.Size(189, 29);
+            this.tbUserAddUserName.TabIndex = 3;
+            this.tbUserAddUserName.Text = "Esit_User";
             // 
             // tpCamPhotoLink
             // 
             this.tpCamPhotoLink.BackColor = System.Drawing.SystemColors.Control;
-            this.tpCamPhotoLink.Controls.Add(this.btnLinkCopy);
-            this.tpCamPhotoLink.Controls.Add(this.tbCamLink);
-            this.tpCamPhotoLink.Controls.Add(this.btnCamLinkCreate);
-            this.tpCamPhotoLink.Controls.Add(this.cbCamType);
-            this.tpCamPhotoLink.Controls.Add(this.label8);
-            this.tpCamPhotoLink.Controls.Add(this.tbCamPassword);
-            this.tpCamPhotoLink.Controls.Add(this.tbCamUser);
-            this.tpCamPhotoLink.Controls.Add(this.tbCamIpAddress);
-            this.tpCamPhotoLink.Controls.Add(this.lblCamPassword);
-            this.tpCamPhotoLink.Controls.Add(this.lblCamUser);
-            this.tpCamPhotoLink.Controls.Add(this.lblCamIpAddress);
-            this.tpCamPhotoLink.Location = new System.Drawing.Point(4, 53);
+            this.tpCamPhotoLink.Controls.Add(this.tableLayoutPanel5);
+            this.tpCamPhotoLink.Location = new System.Drawing.Point(4, 82);
             this.tpCamPhotoLink.Name = "tpCamPhotoLink";
             this.tpCamPhotoLink.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCamPhotoLink.Size = new System.Drawing.Size(657, 372);
+            this.tpCamPhotoLink.Size = new System.Drawing.Size(657, 327);
             this.tpCamPhotoLink.TabIndex = 13;
             this.tpCamPhotoLink.Text = "kamera link";
             // 
-            // btnLinkCopy
+            // tableLayoutPanel5
             // 
-            this.btnLinkCopy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnLinkCopy.Location = new System.Drawing.Point(494, 214);
-            this.btnLinkCopy.Name = "btnLinkCopy";
-            this.btnLinkCopy.Size = new System.Drawing.Size(135, 46);
-            this.btnLinkCopy.TabIndex = 6;
-            this.btnLinkCopy.Text = "Linki kopyala";
-            this.btnLinkCopy.UseVisualStyleBackColor = true;
-            this.btnLinkCopy.Click += new System.EventHandler(this.btnLinkCopy_Click);
-            // 
-            // tbCamLink
-            // 
-            this.tbCamLink.Location = new System.Drawing.Point(38, 228);
-            this.tbCamLink.Name = "tbCamLink";
-            this.tbCamLink.ReadOnly = true;
-            this.tbCamLink.Size = new System.Drawing.Size(450, 21);
-            this.tbCamLink.TabIndex = 5;
+            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel5.Controls.Add(this.btnCamLinkCreate, 3, 2);
+            this.tableLayoutPanel5.Controls.Add(this.btnLinkCopy, 3, 3);
+            this.tableLayoutPanel5.Controls.Add(this.lblCamUser, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblCamPassword, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.cbCamType, 3, 1);
+            this.tableLayoutPanel5.Controls.Add(this.tbCamUser, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tbCamIpAddress, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label8, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.tbCamPassword, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lblCamIpAddress, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tbCamLink, 1, 3);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel5.TabIndex = 7;
             // 
             // btnCamLinkCreate
             // 
+            this.btnCamLinkCreate.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCamLinkCreate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCamLinkCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCamLinkCreate.Location = new System.Drawing.Point(163, 116);
+            this.btnCamLinkCreate.Location = new System.Drawing.Point(424, 163);
             this.btnCamLinkCreate.Name = "btnCamLinkCreate";
-            this.btnCamLinkCreate.Size = new System.Drawing.Size(325, 46);
+            this.btnCamLinkCreate.Size = new System.Drawing.Size(224, 74);
             this.btnCamLinkCreate.TabIndex = 4;
             this.btnCamLinkCreate.Text = "Kamera Linki Oluştur";
-            this.btnCamLinkCreate.UseVisualStyleBackColor = true;
+            this.btnCamLinkCreate.UseVisualStyleBackColor = false;
             this.btnCamLinkCreate.Click += new System.EventHandler(this.btnCamLinkCreate_Click);
+            // 
+            // btnLinkCopy
+            // 
+            this.btnLinkCopy.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnLinkCopy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLinkCopy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnLinkCopy.Location = new System.Drawing.Point(424, 243);
+            this.btnLinkCopy.Name = "btnLinkCopy";
+            this.btnLinkCopy.Size = new System.Drawing.Size(224, 75);
+            this.btnLinkCopy.TabIndex = 6;
+            this.btnLinkCopy.Text = "Linki kopyala";
+            this.btnLinkCopy.UseVisualStyleBackColor = false;
+            this.btnLinkCopy.Click += new System.EventHandler(this.btnLinkCopy_Click);
+            // 
+            // lblCamUser
+            // 
+            this.lblCamUser.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblCamUser.AutoSize = true;
+            this.lblCamUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCamUser.Location = new System.Drawing.Point(9, 16);
+            this.lblCamUser.Name = "lblCamUser";
+            this.lblCamUser.Size = new System.Drawing.Size(85, 48);
+            this.lblCamUser.TabIndex = 1;
+            this.lblCamUser.Text = "Kullanıcı Adı :";
+            // 
+            // lblCamPassword
+            // 
+            this.lblCamPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblCamPassword.AutoSize = true;
+            this.lblCamPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCamPassword.Location = new System.Drawing.Point(37, 108);
+            this.lblCamPassword.Name = "lblCamPassword";
+            this.lblCamPassword.Size = new System.Drawing.Size(57, 24);
+            this.lblCamPassword.TabIndex = 2;
+            this.lblCamPassword.Text = "Şifre :";
             // 
             // cbCamType
             // 
+            this.cbCamType.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbCamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCamType.FormattingEnabled = true;
             this.cbCamType.Items.AddRange(new object[] {
             "Aver",
             "Dahua",
             "Hikvision"});
-            this.cbCamType.Location = new System.Drawing.Point(451, 75);
+            this.cbCamType.Location = new System.Drawing.Point(424, 108);
             this.cbCamType.Name = "cbCamType";
-            this.cbCamType.Size = new System.Drawing.Size(118, 23);
+            this.cbCamType.Size = new System.Drawing.Size(224, 24);
             this.cbCamType.TabIndex = 3;
+            // 
+            // tbCamUser
+            // 
+            this.tbCamUser.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbCamUser.Location = new System.Drawing.Point(100, 29);
+            this.tbCamUser.Name = "tbCamUser";
+            this.tbCamUser.Size = new System.Drawing.Size(221, 22);
+            this.tbCamUser.TabIndex = 0;
+            // 
+            // tbCamIpAddress
+            // 
+            this.tbCamIpAddress.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbCamIpAddress.Location = new System.Drawing.Point(424, 29);
+            this.tbCamIpAddress.Name = "tbCamIpAddress";
+            this.tbCamIpAddress.Size = new System.Drawing.Size(224, 22);
+            this.tbCamIpAddress.TabIndex = 2;
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(302, 72);
+            this.label8.Location = new System.Drawing.Point(338, 96);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(143, 24);
+            this.label8.Size = new System.Drawing.Size(80, 48);
             this.label8.TabIndex = 6;
             this.label8.Text = "Kamera Model :";
             // 
             // tbCamPassword
             // 
-            this.tbCamPassword.Location = new System.Drawing.Point(163, 75);
+            this.tbCamPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbCamPassword.Location = new System.Drawing.Point(100, 109);
             this.tbCamPassword.Name = "tbCamPassword";
-            this.tbCamPassword.Size = new System.Drawing.Size(118, 21);
+            this.tbCamPassword.Size = new System.Drawing.Size(221, 22);
             this.tbCamPassword.TabIndex = 1;
-            // 
-            // tbCamUser
-            // 
-            this.tbCamUser.Location = new System.Drawing.Point(163, 49);
-            this.tbCamUser.Name = "tbCamUser";
-            this.tbCamUser.Size = new System.Drawing.Size(118, 21);
-            this.tbCamUser.TabIndex = 0;
-            // 
-            // tbCamIpAddress
-            // 
-            this.tbCamIpAddress.Location = new System.Drawing.Point(451, 49);
-            this.tbCamIpAddress.Name = "tbCamIpAddress";
-            this.tbCamIpAddress.Size = new System.Drawing.Size(118, 21);
-            this.tbCamIpAddress.TabIndex = 2;
-            // 
-            // lblCamPassword
-            // 
-            this.lblCamPassword.AutoSize = true;
-            this.lblCamPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCamPassword.Location = new System.Drawing.Point(100, 71);
-            this.lblCamPassword.Name = "lblCamPassword";
-            this.lblCamPassword.Size = new System.Drawing.Size(57, 24);
-            this.lblCamPassword.TabIndex = 2;
-            this.lblCamPassword.Text = "Şifre :";
-            // 
-            // lblCamUser
-            // 
-            this.lblCamUser.AutoSize = true;
-            this.lblCamUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCamUser.Location = new System.Drawing.Point(34, 45);
-            this.lblCamUser.Name = "lblCamUser";
-            this.lblCamUser.Size = new System.Drawing.Size(123, 24);
-            this.lblCamUser.TabIndex = 1;
-            this.lblCamUser.Text = "Kullanıcı Adı :";
             // 
             // lblCamIpAddress
             // 
+            this.lblCamIpAddress.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblCamIpAddress.AutoSize = true;
             this.lblCamIpAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCamIpAddress.Location = new System.Drawing.Point(409, 44);
+            this.lblCamIpAddress.Location = new System.Drawing.Point(382, 28);
             this.lblCamIpAddress.Name = "lblCamIpAddress";
             this.lblCamIpAddress.Size = new System.Drawing.Size(36, 24);
             this.lblCamIpAddress.TabIndex = 0;
             this.lblCamIpAddress.Text = "IP :";
             // 
+            // tbCamLink
+            // 
+            this.tbCamLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbCamLink.BackColor = System.Drawing.Color.GreenYellow;
+            this.tableLayoutPanel5.SetColumnSpan(this.tbCamLink, 2);
+            this.tbCamLink.Location = new System.Drawing.Point(100, 269);
+            this.tbCamLink.Name = "tbCamLink";
+            this.tbCamLink.ReadOnly = true;
+            this.tbCamLink.Size = new System.Drawing.Size(318, 22);
+            this.tbCamLink.TabIndex = 5;
+            // 
+            // tpEsitScaleSil
+            // 
+            this.tpEsitScaleSil.BackColor = System.Drawing.SystemColors.Control;
+            this.tpEsitScaleSil.Controls.Add(this.tableLayoutPanel3);
+            this.tpEsitScaleSil.Location = new System.Drawing.Point(4, 82);
+            this.tpEsitScaleSil.Name = "tpEsitScaleSil";
+            this.tpEsitScaleSil.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEsitScaleSil.Size = new System.Drawing.Size(657, 327);
+            this.tpEsitScaleSil.TabIndex = 12;
+            this.tpEsitScaleSil.Text = "www.EsitScale.com Sil";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.Controls.Add(this.btnEsitScaleSil, 1, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // btnEsitScaleSil
+            // 
+            this.btnEsitScaleSil.BackColor = System.Drawing.Color.Red;
+            this.btnEsitScaleSil.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEsitScaleSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEsitScaleSil.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEsitScaleSil.Location = new System.Drawing.Point(198, 99);
+            this.btnEsitScaleSil.Name = "btnEsitScaleSil";
+            this.btnEsitScaleSil.Size = new System.Drawing.Size(254, 122);
+            this.btnEsitScaleSil.TabIndex = 0;
+            this.btnEsitScaleSil.Text = "www.EsitScale.com dosyalarını  Sil";
+            this.btnEsitScaleSil.UseVisualStyleBackColor = false;
+            this.btnEsitScaleSil.Click += new System.EventHandler(this.btnEsitScaleSil_Click);
+            // 
             // tpTartımSilme
             // 
             this.tpTartımSilme.BackColor = System.Drawing.SystemColors.Control;
-            this.tpTartımSilme.Controls.Add(this.dtpTartımSaatEnd);
-            this.tpTartımSilme.Controls.Add(this.dtpTartımSaatStart);
-            this.tpTartımSilme.Controls.Add(this.panel3);
-            this.tpTartımSilme.Controls.Add(this.btnTartımSilme);
-            this.tpTartımSilme.Controls.Add(this.lbTartımEnd);
-            this.tpTartımSilme.Controls.Add(this.lbTartımStart);
-            this.tpTartımSilme.Controls.Add(this.dtpTartımDateEnd);
-            this.tpTartımSilme.Controls.Add(this.rbTartımAllDelete);
-            this.tpTartımSilme.Controls.Add(this.rbTartımPeriodDelete);
-            this.tpTartımSilme.Controls.Add(this.dtpTartımDateStart);
-            this.tpTartımSilme.Location = new System.Drawing.Point(4, 79);
+            this.tpTartımSilme.Controls.Add(this.tableLayoutPanel6);
+            this.tpTartımSilme.Location = new System.Drawing.Point(4, 82);
             this.tpTartımSilme.Name = "tpTartımSilme";
             this.tpTartımSilme.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTartımSilme.Size = new System.Drawing.Size(657, 346);
+            this.tpTartımSilme.Size = new System.Drawing.Size(657, 327);
             this.tpTartımSilme.TabIndex = 14;
             this.tpTartımSilme.Text = "Tartım Silme";
             // 
-            // dtpTartımSaatEnd
+            // tableLayoutPanel6
             // 
-            this.dtpTartımSaatEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dtpTartımSaatEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTartımSaatEnd.Location = new System.Drawing.Point(307, 230);
-            this.dtpTartımSaatEnd.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpTartımSaatEnd.Name = "dtpTartımSaatEnd";
-            this.dtpTartımSaatEnd.Size = new System.Drawing.Size(115, 29);
-            this.dtpTartımSaatEnd.TabIndex = 28;
-            this.dtpTartımSaatEnd.Value = new System.DateTime(2024, 7, 26, 23, 59, 0, 0);
-            this.dtpTartımSaatEnd.Visible = false;
+            this.tableLayoutPanel6.ColumnCount = 4;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.Controls.Add(this.groupBox4, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnTartimSilme, 3, 4);
+            this.tableLayoutPanel6.Controls.Add(this.dtpTartimSaatEnd, 2, 3);
+            this.tableLayoutPanel6.Controls.Add(this.groupBox3, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.dtpTartimDateStart, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.lbTartımStart, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.dtpTartimDateEnd, 2, 2);
+            this.tableLayoutPanel6.Controls.Add(this.lbTartımEnd, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.dtpTartimSaatStart, 1, 3);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 5;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel6.TabIndex = 32;
             // 
-            // dtpTartımSaatStart
+            // groupBox4
             // 
-            this.dtpTartımSaatStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dtpTartımSaatStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTartımSaatStart.Location = new System.Drawing.Point(305, 185);
-            this.dtpTartımSaatStart.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpTartımSaatStart.Name = "dtpTartımSaatStart";
-            this.dtpTartımSaatStart.Size = new System.Drawing.Size(119, 29);
-            this.dtpTartımSaatStart.TabIndex = 27;
-            this.dtpTartımSaatStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
-            this.dtpTartımSaatStart.Visible = false;
+            this.groupBox4.Controls.Add(this.tableLayoutPanel13);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox4.Location = new System.Drawing.Point(295, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(189, 122);
+            this.groupBox4.TabIndex = 31;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Tartım Seçiniz";
             // 
-            // panel3
+            // tableLayoutPanel13
             // 
-            this.panel3.Controls.Add(this.rbTartım1);
-            this.panel3.Controls.Add(this.rbTartım2);
-            this.panel3.Location = new System.Drawing.Point(360, 41);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(158, 108);
-            this.panel3.TabIndex = 26;
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Controls.Add(this.rbTartim2, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.rbTartim1, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 25);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(183, 94);
+            this.tableLayoutPanel13.TabIndex = 32;
             // 
-            // rbTartım1
+            // rbTartim2
             // 
-            this.rbTartım1.AutoSize = true;
-            this.rbTartım1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbTartım1.Location = new System.Drawing.Point(14, 30);
-            this.rbTartım1.Name = "rbTartım1";
-            this.rbTartım1.Size = new System.Drawing.Size(100, 28);
-            this.rbTartım1.TabIndex = 8;
-            this.rbTartım1.Text = "1. Tartım";
-            this.rbTartım1.UseVisualStyleBackColor = true;
+            this.rbTartim2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbTartim2.AutoSize = true;
+            this.rbTartim2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartim2.Location = new System.Drawing.Point(3, 56);
+            this.rbTartim2.Name = "rbTartim2";
+            this.rbTartim2.Size = new System.Drawing.Size(177, 28);
+            this.rbTartim2.TabIndex = 9;
+            this.rbTartim2.Text = "2. Tartım";
+            this.rbTartim2.UseVisualStyleBackColor = true;
             // 
-            // rbTartım2
+            // rbTartim1
             // 
-            this.rbTartım2.AutoSize = true;
-            this.rbTartım2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbTartım2.Location = new System.Drawing.Point(14, 57);
-            this.rbTartım2.Name = "rbTartım2";
-            this.rbTartım2.Size = new System.Drawing.Size(100, 28);
-            this.rbTartım2.TabIndex = 9;
-            this.rbTartım2.Text = "2. Tartım";
-            this.rbTartım2.UseVisualStyleBackColor = true;
+            this.rbTartim1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbTartim1.AutoSize = true;
+            this.rbTartim1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartim1.Location = new System.Drawing.Point(3, 9);
+            this.rbTartim1.Name = "rbTartim1";
+            this.rbTartim1.Size = new System.Drawing.Size(177, 28);
+            this.rbTartim1.TabIndex = 8;
+            this.rbTartim1.Text = "1. Tartım";
+            this.rbTartim1.UseVisualStyleBackColor = true;
             // 
-            // btnTartımSilme
+            // btnTartimSilme
             // 
-            this.btnTartımSilme.BackColor = System.Drawing.Color.Red;
-            this.btnTartımSilme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTartımSilme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnTartımSilme.Location = new System.Drawing.Point(423, 242);
-            this.btnTartımSilme.Name = "btnTartımSilme";
-            this.btnTartımSilme.Size = new System.Drawing.Size(223, 55);
-            this.btnTartımSilme.TabIndex = 4;
-            this.btnTartımSilme.Text = "Tartımları Sil !";
-            this.btnTartımSilme.UseVisualStyleBackColor = false;
-            this.btnTartımSilme.Click += new System.EventHandler(this.btnTartımSilme_Click);
+            this.btnTartimSilme.BackColor = System.Drawing.Color.Red;
+            this.btnTartimSilme.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTartimSilme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTartimSilme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnTartimSilme.Location = new System.Drawing.Point(490, 275);
+            this.btnTartimSilme.Name = "btnTartimSilme";
+            this.btnTartimSilme.Size = new System.Drawing.Size(158, 43);
+            this.btnTartimSilme.TabIndex = 4;
+            this.btnTartimSilme.Text = "Tartımları Sil !";
+            this.btnTartimSilme.UseVisualStyleBackColor = false;
+            this.btnTartimSilme.Click += new System.EventHandler(this.btnTartımSilme_Click);
             // 
-            // lbTartımEnd
+            // dtpTartimSaatEnd
             // 
-            this.lbTartımEnd.AutoSize = true;
-            this.lbTartımEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbTartımEnd.Location = new System.Drawing.Point(69, 230);
-            this.lbTartımEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbTartımEnd.Name = "lbTartımEnd";
-            this.lbTartımEnd.Size = new System.Drawing.Size(95, 24);
-            this.lbTartımEnd.TabIndex = 24;
-            this.lbTartımEnd.Text = "Bitiş Tarihi";
-            this.lbTartımEnd.Visible = false;
+            this.dtpTartimSaatEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartimSaatEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTartimSaatEnd.Location = new System.Drawing.Point(294, 226);
+            this.dtpTartimSaatEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartimSaatEnd.Name = "dtpTartimSaatEnd";
+            this.dtpTartimSaatEnd.Size = new System.Drawing.Size(95, 29);
+            this.dtpTartimSaatEnd.TabIndex = 28;
+            this.dtpTartimSaatEnd.Value = new System.DateTime(2024, 7, 26, 23, 59, 0, 0);
+            this.dtpTartimSaatEnd.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.tableLayoutPanel12);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox3.Location = new System.Drawing.Point(100, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(189, 122);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tarih Seçiniz";
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 1;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Controls.Add(this.rbTartimPeriodDelete, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.rbTartimAllDelete, 0, 0);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 25);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(183, 94);
+            this.tableLayoutPanel12.TabIndex = 32;
+            // 
+            // rbTartimPeriodDelete
+            // 
+            this.rbTartimPeriodDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbTartimPeriodDelete.AutoSize = true;
+            this.rbTartimPeriodDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartimPeriodDelete.Location = new System.Drawing.Point(2, 56);
+            this.rbTartimPeriodDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.rbTartimPeriodDelete.Name = "rbTartimPeriodDelete";
+            this.rbTartimPeriodDelete.Size = new System.Drawing.Size(179, 28);
+            this.rbTartimPeriodDelete.TabIndex = 20;
+            this.rbTartimPeriodDelete.Text = "Tarih aralığını sil";
+            this.rbTartimPeriodDelete.UseVisualStyleBackColor = true;
+            this.rbTartimPeriodDelete.Click += new System.EventHandler(this.rbTartımPeriodDelete_Click);
+            // 
+            // rbTartimAllDelete
+            // 
+            this.rbTartimAllDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbTartimAllDelete.AutoSize = true;
+            this.rbTartimAllDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartimAllDelete.Location = new System.Drawing.Point(2, 9);
+            this.rbTartimAllDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.rbTartimAllDelete.Name = "rbTartimAllDelete";
+            this.rbTartimAllDelete.Size = new System.Drawing.Size(179, 28);
+            this.rbTartimAllDelete.TabIndex = 21;
+            this.rbTartimAllDelete.Text = "Tüm kayıtları sil";
+            this.rbTartimAllDelete.UseVisualStyleBackColor = true;
+            this.rbTartimAllDelete.Click += new System.EventHandler(this.rbTartımAllDelete_Click);
+            // 
+            // dtpTartimDateStart
+            // 
+            this.dtpTartimDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpTartimDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartimDateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTartimDateStart.Location = new System.Drawing.Point(99, 193);
+            this.dtpTartimDateStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartimDateStart.Name = "dtpTartimDateStart";
+            this.dtpTartimDateStart.Size = new System.Drawing.Size(118, 29);
+            this.dtpTartimDateStart.TabIndex = 19;
+            this.dtpTartimDateStart.Value = new System.DateTime(2024, 7, 29, 0, 0, 0, 0);
+            this.dtpTartimDateStart.Visible = false;
             // 
             // lbTartımStart
             // 
+            this.lbTartımStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbTartımStart.AutoSize = true;
             this.lbTartımStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbTartımStart.Location = new System.Drawing.Point(24, 185);
+            this.lbTartımStart.Location = new System.Drawing.Point(99, 140);
             this.lbTartımStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTartımStart.Name = "lbTartımStart";
             this.lbTartımStart.Size = new System.Drawing.Size(143, 24);
             this.lbTartımStart.TabIndex = 23;
             this.lbTartımStart.Text = "Başlangıç Tarihi";
+            this.lbTartımStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbTartımStart.Visible = false;
             // 
-            // dtpTartımDateEnd
+            // dtpTartimDateEnd
             // 
-            this.dtpTartımDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dtpTartımDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTartımDateEnd.Location = new System.Drawing.Point(173, 230);
-            this.dtpTartımDateEnd.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpTartımDateEnd.Name = "dtpTartımDateEnd";
-            this.dtpTartımDateEnd.Size = new System.Drawing.Size(115, 29);
-            this.dtpTartımDateEnd.TabIndex = 22;
-            this.dtpTartımDateEnd.Value = new System.DateTime(2024, 7, 29, 0, 0, 0, 0);
-            this.dtpTartımDateEnd.Visible = false;
+            this.dtpTartimDateEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpTartimDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartimDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTartimDateEnd.Location = new System.Drawing.Point(294, 193);
+            this.dtpTartimDateEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartimDateEnd.Name = "dtpTartimDateEnd";
+            this.dtpTartimDateEnd.Size = new System.Drawing.Size(118, 29);
+            this.dtpTartimDateEnd.TabIndex = 22;
+            this.dtpTartimDateEnd.Value = new System.DateTime(2024, 7, 29, 0, 0, 0, 0);
+            this.dtpTartimDateEnd.Visible = false;
             // 
-            // rbTartımAllDelete
+            // lbTartımEnd
             // 
-            this.rbTartımAllDelete.AutoSize = true;
-            this.rbTartımAllDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbTartımAllDelete.Location = new System.Drawing.Point(123, 71);
-            this.rbTartımAllDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.rbTartımAllDelete.Name = "rbTartımAllDelete";
-            this.rbTartımAllDelete.Size = new System.Drawing.Size(206, 28);
-            this.rbTartımAllDelete.TabIndex = 21;
-            this.rbTartımAllDelete.Text = "Tüm Tarih aralığını sil";
-            this.rbTartımAllDelete.UseVisualStyleBackColor = true;
-            this.rbTartımAllDelete.Click += new System.EventHandler(this.rbTartımAllDelete_Click);
+            this.lbTartımEnd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbTartımEnd.AutoSize = true;
+            this.lbTartımEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbTartımEnd.Location = new System.Drawing.Point(294, 140);
+            this.lbTartımEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTartımEnd.Name = "lbTartımEnd";
+            this.lbTartımEnd.Size = new System.Drawing.Size(95, 24);
+            this.lbTartımEnd.TabIndex = 24;
+            this.lbTartımEnd.Text = "Bitiş Tarihi";
+            this.lbTartımEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbTartımEnd.Visible = false;
             // 
-            // rbTartımPeriodDelete
+            // dtpTartimSaatStart
             // 
-            this.rbTartımPeriodDelete.AutoSize = true;
-            this.rbTartımPeriodDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbTartımPeriodDelete.Location = new System.Drawing.Point(123, 98);
-            this.rbTartımPeriodDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.rbTartımPeriodDelete.Name = "rbTartımPeriodDelete";
-            this.rbTartımPeriodDelete.Size = new System.Drawing.Size(202, 28);
-            this.rbTartımPeriodDelete.TabIndex = 20;
-            this.rbTartımPeriodDelete.Text = "Belli Tarih aralığını sil";
-            this.rbTartımPeriodDelete.UseVisualStyleBackColor = true;
-            this.rbTartımPeriodDelete.Click += new System.EventHandler(this.rbTartımPeriodDelete_Click);
-            // 
-            // dtpTartımDateStart
-            // 
-            this.dtpTartımDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dtpTartımDateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTartımDateStart.Location = new System.Drawing.Point(171, 185);
-            this.dtpTartımDateStart.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpTartımDateStart.Name = "dtpTartımDateStart";
-            this.dtpTartımDateStart.Size = new System.Drawing.Size(117, 29);
-            this.dtpTartımDateStart.TabIndex = 19;
-            this.dtpTartımDateStart.Value = new System.DateTime(2024, 7, 29, 0, 0, 0, 0);
-            this.dtpTartımDateStart.Visible = false;
+            this.dtpTartimSaatStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartimSaatStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTartimSaatStart.Location = new System.Drawing.Point(99, 226);
+            this.dtpTartimSaatStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartimSaatStart.Name = "dtpTartimSaatStart";
+            this.dtpTartimSaatStart.Size = new System.Drawing.Size(99, 29);
+            this.dtpTartimSaatStart.TabIndex = 27;
+            this.dtpTartimSaatStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
+            this.dtpTartimSaatStart.Visible = false;
             // 
             // tpDatabaseStop
             // 
             this.tpDatabaseStop.BackColor = System.Drawing.SystemColors.Control;
-            this.tpDatabaseStop.Controls.Add(this.btnSpwinDBScript);
-            this.tpDatabaseStop.Controls.Add(this.btnAuditDBScript);
-            this.tpDatabaseStop.Location = new System.Drawing.Point(4, 79);
+            this.tpDatabaseStop.Controls.Add(this.tableLayoutPanel2);
+            this.tpDatabaseStop.Location = new System.Drawing.Point(4, 82);
             this.tpDatabaseStop.Name = "tpDatabaseStop";
             this.tpDatabaseStop.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDatabaseStop.Size = new System.Drawing.Size(657, 346);
+            this.tpDatabaseStop.Size = new System.Drawing.Size(657, 327);
             this.tpDatabaseStop.TabIndex = 15;
             this.tpDatabaseStop.Text = "Veri Tabanı Durdu";
             // 
-            // btnSpwinDBScript
+            // tableLayoutPanel2
             // 
-            this.btnSpwinDBScript.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSpwinDBScript.Location = new System.Drawing.Point(324, 85);
-            this.btnSpwinDBScript.Name = "btnSpwinDBScript";
-            this.btnSpwinDBScript.Size = new System.Drawing.Size(164, 127);
-            this.btnSpwinDBScript.TabIndex = 1;
-            this.btnSpwinDBScript.Text = "Spwin Script çalıştır";
-            this.btnSpwinDBScript.UseVisualStyleBackColor = true;
-            this.btnSpwinDBScript.Click += new System.EventHandler(this.btnSpwinDBScript_Click);
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.btnAuditDBScript, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnSpwinDBScript, 2, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel2.TabIndex = 2;
             // 
             // btnAuditDBScript
             // 
+            this.btnAuditDBScript.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnAuditDBScript.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAuditDBScript.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnAuditDBScript.Location = new System.Drawing.Point(114, 85);
+            this.btnAuditDBScript.Location = new System.Drawing.Point(133, 99);
             this.btnAuditDBScript.Name = "btnAuditDBScript";
-            this.btnAuditDBScript.Size = new System.Drawing.Size(164, 127);
+            this.btnAuditDBScript.Size = new System.Drawing.Size(189, 122);
             this.btnAuditDBScript.TabIndex = 0;
             this.btnAuditDBScript.Text = "Audit script çalıştır";
-            this.btnAuditDBScript.UseVisualStyleBackColor = true;
-            this.btnAuditDBScript.Click += new System.EventHandler(this.btnAuditDBScript_Click);
+            this.btnAuditDBScript.UseVisualStyleBackColor = false;
+            this.btnAuditDBScript.Click += new System.EventHandler(this.BtnAuditDBScript_Click);
+            // 
+            // btnSpwinDBScript
+            // 
+            this.btnSpwinDBScript.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnSpwinDBScript.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSpwinDBScript.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSpwinDBScript.Location = new System.Drawing.Point(328, 99);
+            this.btnSpwinDBScript.Name = "btnSpwinDBScript";
+            this.btnSpwinDBScript.Size = new System.Drawing.Size(189, 122);
+            this.btnSpwinDBScript.TabIndex = 1;
+            this.btnSpwinDBScript.Text = "Spwin Script çalıştır";
+            this.btnSpwinDBScript.UseVisualStyleBackColor = false;
+            this.btnSpwinDBScript.Click += new System.EventHandler(this.btnSpwinDBScript_Click);
+            // 
+            // tpServerConManager
+            // 
+            this.tpServerConManager.Controls.Add(this.tableLayoutPanel4);
+            this.tpServerConManager.Location = new System.Drawing.Point(4, 82);
+            this.tpServerConManager.Name = "tpServerConManager";
+            this.tpServerConManager.Padding = new System.Windows.Forms.Padding(3);
+            this.tpServerConManager.Size = new System.Drawing.Size(657, 327);
+            this.tpServerConManager.TabIndex = 16;
+            this.tpServerConManager.Text = "Server Configuration Manager";
+            this.tpServerConManager.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel4.Controls.Add(this.btnServerConManager, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel20, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // btnServerConManager
+            // 
+            this.btnServerConManager.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnServerConManager.Location = new System.Drawing.Point(198, 99);
+            this.btnServerConManager.Name = "btnServerConManager";
+            this.btnServerConManager.Size = new System.Drawing.Size(254, 122);
+            this.btnServerConManager.TabIndex = 0;
+            this.btnServerConManager.Text = "Server Configuration Manager Ayarlarını Yap";
+            this.btnServerConManager.UseVisualStyleBackColor = true;
+            this.btnServerConManager.Click += new System.EventHandler(this.btnServerConManager_Click);
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 1;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel20.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel20.Controls.Add(this.tbConfigServerName, 0, 1);
+            this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(198, 3);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.RowCount = 2;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(254, 90);
+            this.tableLayoutPanel20.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(248, 45);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Server İsmi";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // tbConfigServerName
+            // 
+            this.tbConfigServerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbConfigServerName.Location = new System.Drawing.Point(3, 56);
+            this.tbConfigServerName.Name = "tbConfigServerName";
+            this.tbConfigServerName.Size = new System.Drawing.Size(248, 22);
+            this.tbConfigServerName.TabIndex = 1;
             // 
             // gbConnectionSettings
             // 
+            this.gbConnectionSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.gbConnectionSettings.Controls.Add(this.label5);
             this.gbConnectionSettings.Controls.Add(this.cbxUsername);
             this.gbConnectionSettings.Controls.Add(this.cbxDbName);
@@ -1352,7 +1933,7 @@
             this.gbConnectionSettings.Controls.Add(this.lblUser);
             this.gbConnectionSettings.Controls.Add(this.CBServers);
             this.gbConnectionSettings.Controls.Add(this.txtPassword);
-            this.gbConnectionSettings.Location = new System.Drawing.Point(130, 32);
+            this.gbConnectionSettings.Location = new System.Drawing.Point(150, 3);
             this.gbConnectionSettings.Name = "gbConnectionSettings";
             this.gbConnectionSettings.Size = new System.Drawing.Size(420, 164);
             this.gbConnectionSettings.TabIndex = 4;
@@ -1386,6 +1967,7 @@
             this.cbxDbName.Name = "cbxDbName";
             this.cbxDbName.Size = new System.Drawing.Size(212, 21);
             this.cbxDbName.TabIndex = 7;
+            this.cbxDbName.Text = "SPWIN_DB";
             this.cbxDbName.DropDown += new System.EventHandler(this.cbxDbName_DropDown);
             this.cbxDbName.TextChanged += new System.EventHandler(this.cbxDbName_TextChanged);
             // 
@@ -1438,6 +2020,7 @@
             this.CBServers.Name = "CBServers";
             this.CBServers.Size = new System.Drawing.Size(214, 21);
             this.CBServers.TabIndex = 0;
+            this.CBServers.Text = ".\\SQLEXPRESS";
             this.CBServers.DropDown += new System.EventHandler(this.CBServers_DropDown);
             this.CBServers.TextChanged += new System.EventHandler(this.CBServers_TextChanged);
             // 
@@ -1453,9 +2036,11 @@
             // 
             // btnConnectionTest
             // 
-            this.btnConnectionTest.BackColor = System.Drawing.Color.Green;
-            this.btnConnectionTest.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConnectionTest.Location = new System.Drawing.Point(217, 202);
+            this.btnConnectionTest.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnConnectionTest.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnConnectionTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnConnectionTest.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnConnectionTest.Location = new System.Drawing.Point(237, 183);
             this.btnConnectionTest.Name = "btnConnectionTest";
             this.btnConnectionTest.Size = new System.Drawing.Size(214, 30);
             this.btnConnectionTest.TabIndex = 3;
@@ -1481,84 +2066,79 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.aboutToolStripMenuItem.Text = "Hakkında";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
-            // tpServerConManager
+            // panel3
             // 
-            this.tpServerConManager.Controls.Add(this.btnServerConManager);
-            this.tpServerConManager.Location = new System.Drawing.Point(4, 79);
-            this.tpServerConManager.Name = "tpServerConManager";
-            this.tpServerConManager.Padding = new System.Windows.Forms.Padding(3);
-            this.tpServerConManager.Size = new System.Drawing.Size(657, 346);
-            this.tpServerConManager.TabIndex = 16;
-            this.tpServerConManager.Text = "Server Configuration Manager";
-            this.tpServerConManager.UseVisualStyleBackColor = true;
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel3.Controls.Add(this.gbConnectionSettings);
+            this.panel3.Controls.Add(this.btnConnectionTest);
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.MinimumSize = new System.Drawing.Size(665, 214);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(665, 233);
+            this.panel3.TabIndex = 6;
             // 
-            // btnServerConManager
+            // tableLayoutPanel1
             // 
-            this.btnServerConManager.Location = new System.Drawing.Point(210, 107);
-            this.btnServerConManager.Name = "btnServerConManager";
-            this.btnServerConManager.Size = new System.Drawing.Size(215, 112);
-            this.btnServerConManager.TabIndex = 0;
-            this.btnServerConManager.Text = "Server Configuration Manager Ayarlarını Yap";
-            this.btnServerConManager.UseVisualStyleBackColor = true;
-            this.btnServerConManager.Click += new System.EventHandler(this.btnServerConManager_Click);
-            // 
-            // tbUserAddUserPasswordConfirm
-            // 
-            this.tbUserAddUserPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbUserAddUserPasswordConfirm.Location = new System.Drawing.Point(184, 126);
-            this.tbUserAddUserPasswordConfirm.Name = "tbUserAddUserPasswordConfirm";
-            this.tbUserAddUserPasswordConfirm.PasswordChar = 'x';
-            this.tbUserAddUserPasswordConfirm.Size = new System.Drawing.Size(167, 29);
-            this.tbUserAddUserPasswordConfirm.TabIndex = 9;
-            // 
-            // lbUserAddUserPasswordConfirm
-            // 
-            this.lbUserAddUserPasswordConfirm.AutoSize = true;
-            this.lbUserAddUserPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbUserAddUserPasswordConfirm.Location = new System.Drawing.Point(24, 126);
-            this.lbUserAddUserPasswordConfirm.Name = "lbUserAddUserPasswordConfirm";
-            this.lbUserAddUserPasswordConfirm.Size = new System.Drawing.Size(154, 24);
-            this.lbUserAddUserPasswordConfirm.TabIndex = 8;
-            this.lbUserAddUserPasswordConfirm.Text = "Şifre Doğrulama :";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tabControlProcessHeaders, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(665, 666);
+            this.tableLayoutPanel1.TabIndex = 7;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(665, 690);
-            this.Controls.Add(this.gbConnectionSettings);
-            this.Controls.Add(this.tabControlProcessHeaders);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btnConnectionTest);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(681, 729);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ESİT SPWin Teknik Servis Programı";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControlProcessHeaders.ResumeLayout(false);
             this.tpBackup.ResumeLayout(false);
-            this.grpBoxPatch.ResumeLayout(false);
-            this.grpBoxPatch.PerformLayout();
-            this.tpRestore.ResumeLayout(false);
+            this.tableLayoutPanel18.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tpSQLFile.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.tpSPWinDatabasePhotoDelete.ResumeLayout(false);
-            this.tpSPWinDatabasePhotoDelete.PerformLayout();
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
+            this.tpRestore.ResumeLayout(false);
+            this.tableLayoutPanel16.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.tableLayoutPanel17.PerformLayout();
+            this.tpSQLFile.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
+            this.tpSPWinDatabasePhotoDelete.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
             this.tpDatabaseRepair.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tpSPWinScaleAndDBAConsolidation.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
             this.tpTablolar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGV1)).EndInit();
             this.tpQuary.ResumeLayout(false);
@@ -1566,20 +2146,34 @@
             this.tpSorgu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tpEsitUserEkle.ResumeLayout(false);
-            this.tpEsitUserEkle.PerformLayout();
-            this.tpEsitScaleSil.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.tpCamPhotoLink.ResumeLayout(false);
-            this.tpCamPhotoLink.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tpEsitScaleSil.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.tpTartımSilme.ResumeLayout(false);
-            this.tpTartımSilme.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel12.PerformLayout();
             this.tpDatabaseStop.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tpServerConManager.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel20.ResumeLayout(false);
+            this.tableLayoutPanel20.PerformLayout();
             this.gbConnectionSettings.ResumeLayout(false);
             this.gbConnectionSettings.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tpServerConManager.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1589,7 +2183,6 @@
 
         private System.Windows.Forms.TabControl tabControlProcessHeaders;
         private System.Windows.Forms.TabPage tpBackup;
-        private System.Windows.Forms.GroupBox grpBoxPatch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnBackupFileLocationSelect;
@@ -1607,7 +2200,6 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.ComboBox CBServers;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.Button btnRestoreFile;
@@ -1618,7 +2210,6 @@
         private System.Windows.Forms.Button btnSQLFileSelect;
         private System.Windows.Forms.TextBox txtSQLFile;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnWeighPhotoDelete;
         private System.Windows.Forms.RadioButton rbAllPhoto;
         private System.Windows.Forms.RadioButton rbInTheFolderPhoto;
@@ -1664,10 +2255,8 @@
         private System.Windows.Forms.RadioButton rdbPeriod;
         private System.Windows.Forms.RadioButton rdbAll;
         private System.Windows.Forms.DateTimePicker dtpFinish;
-        private System.Windows.Forms.Label lblDateStart;
-        private System.Windows.Forms.Label lblDateFinish;
         private System.Windows.Forms.TabPage tpEsitUserEkle;
-        private System.Windows.Forms.Button btnEsitUserEkle;
+        private System.Windows.Forms.Button btnKullanıcıEkle;
         private System.Windows.Forms.TabPage tpEsitScaleSil;
         private System.Windows.Forms.Button btnEsitScaleSil;
         private System.Windows.Forms.TabPage tpCamPhotoLink;
@@ -1685,30 +2274,61 @@
         private System.Windows.Forms.TabPage tpTartımSilme;
         private System.Windows.Forms.Label lbTartımEnd;
         private System.Windows.Forms.Label lbTartımStart;
-        private System.Windows.Forms.DateTimePicker dtpTartımDateEnd;
-        private System.Windows.Forms.RadioButton rbTartımAllDelete;
-        private System.Windows.Forms.RadioButton rbTartımPeriodDelete;
-        private System.Windows.Forms.DateTimePicker dtpTartımDateStart;
-        private System.Windows.Forms.RadioButton rbTartım2;
-        private System.Windows.Forms.RadioButton rbTartım1;
-        private System.Windows.Forms.Button btnTartımSilme;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DateTimePicker dtpTartimDateEnd;
+        private System.Windows.Forms.RadioButton rbTartimAllDelete;
+        private System.Windows.Forms.RadioButton rbTartimPeriodDelete;
+        private System.Windows.Forms.DateTimePicker dtpTartimDateStart;
+        private System.Windows.Forms.RadioButton rbTartim2;
+        private System.Windows.Forms.RadioButton rbTartim1;
+        private System.Windows.Forms.Button btnTartimSilme;
         private System.Windows.Forms.Label lbUserAddUserPassword;
         private System.Windows.Forms.Label lbUserAddUserName;
         private System.Windows.Forms.ComboBox cbUserAddUserRole;
         private System.Windows.Forms.Label lbUserAddUserRole;
         private System.Windows.Forms.TextBox tbUserAddUserPassword;
         private System.Windows.Forms.TextBox tbUserAddUserName;
-        private System.Windows.Forms.DateTimePicker dtpTartımSaatEnd;
-        private System.Windows.Forms.DateTimePicker dtpTartımSaatStart;
+        private System.Windows.Forms.DateTimePicker dtpTartimSaatEnd;
+        private System.Windows.Forms.DateTimePicker dtpTartimSaatStart;
         private System.Windows.Forms.TabPage tpDatabaseStop;
         private System.Windows.Forms.Button btnSpwinDBScript;
         private System.Windows.Forms.Button btnAuditDBScript;
-        private System.Windows.Forms.Button btnEsitUserSil;
+        private System.Windows.Forms.Button btnKullanıcıSil;
         private System.Windows.Forms.TabPage tpServerConManager;
         private System.Windows.Forms.Button btnServerConManager;
         private System.Windows.Forms.TextBox tbUserAddUserPasswordConfirm;
         private System.Windows.Forms.Label lbUserAddUserPasswordConfirm;
+        private System.Windows.Forms.Button btnEsitUserSilHelp;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label lblDateStart;
+        private System.Windows.Forms.Label lblDateFinish;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbConfigServerName;
     }
 }
 

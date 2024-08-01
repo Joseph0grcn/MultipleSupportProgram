@@ -7,11 +7,14 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Security.Cryptography.X509Certificates;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace MultipleSupportProgram.Model
 {
@@ -40,18 +43,18 @@ namespace MultipleSupportProgram.Model
                     {
                         command.CommandTimeout = timeout;
                         command.ExecuteNonQuery();
-                        
+
                         logger.Debug("SQL script başarıyla çalıştırıldı.");
                         return true;
-                        
+
                     }
                     catch (Exception ex)
                     {
-                        if (ex.Message.Contains("already exists.\r\nUser, group, or role")||ex.Message.Contains("already exists in the current database"))
+                        if (ex.Message.Contains("already exists.\r\nUser, group, or role") || ex.Message.Contains("already exists in the current database"))
                         {
                             MessageBox.Show("Kullanıcı ismi kullanılmaktadır.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        
+
                         logger.Error(ex);
                         return false;
                     }
@@ -103,7 +106,7 @@ namespace MultipleSupportProgram.Model
             }
         }
 
-        
+
         public static void BackupDB(string databaseName, string backupFileLocation)
         {
 
@@ -127,13 +130,13 @@ namespace MultipleSupportProgram.Model
             {
                 string backupFilePath = $"{backupFileLocation}{databaseName}_{DateTime.Now:MM_dd_yyyy_HH_mm_ss}.bak";
                 string sqlScript = $@"BACKUP DATABASE [{databaseName}] TO DISK = '{backupFilePath}' WITH INIT, STATS = 10";
-                bool result = ExecuteNonQueryScript(sqlScript);
+                bool result = ExecuteNonQueryScript(sqlScript, 0);
                 Thread.Sleep(500);
                 MainForm.waitForm.Close();
                 Application.DoEvents();
                 if (!result)
                 {
-                    logger.Error("HATA Backup işlemi başarısız! " );
+                    logger.Error("HATA Backup işlemi başarısız! ");
                     MessageBox.Show("HATA Backup işlemi başarısız! : ", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
@@ -144,7 +147,7 @@ namespace MultipleSupportProgram.Model
             }
             catch (Exception ex)
             {
-                logger.Error("HATA Backup işlemi başarısız!: " + ex.Message );
+                logger.Error("HATA Backup işlemi başarısız!: " + ex.Message);
                 throw new Exception("HATA Backup işlemi başarısız! : " + ex.Message + "");
             }
 
@@ -170,7 +173,7 @@ namespace MultipleSupportProgram.Model
             try
             {
                 string sqlScript = $"USE [master] ALTER DATABASE [{databaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE RESTORE DATABASE [{databaseName}] FROM  DISK =  '{restoreFilePath}' WITH  FILE = 1,  NOUNLOAD,  REPLACE,  STATS = 5 ALTER DATABASE [{databaseName}] SET MULTI_USER";
-                bool result = ExecuteNonQueryScript(sqlScript);
+                bool result = ExecuteNonQueryScript(sqlScript, 0);
                 if (!result)
                 {
                     Thread.Sleep(500);
@@ -187,7 +190,7 @@ namespace MultipleSupportProgram.Model
                     logger.Debug("Geri yükleme işlemi başarıyla gerçekleşti.");
                     MessageBox.Show("Geri yükleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -198,8 +201,8 @@ namespace MultipleSupportProgram.Model
                 MessageBox.Show("HATA Restore işlemi başarısız! : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-        
+
+
         public static void RunSQLFile(string sqlFile)
         {
             if (sqlFile.Replace(" ", "").Length == 0)
@@ -216,7 +219,7 @@ namespace MultipleSupportProgram.Model
                 string scriptText = file.OpenText().ReadToEnd();
                 bool result = false;
                 string[] commandTextArray = scriptText.Split(new string[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
-                
+
                 foreach (string commandText in commandTextArray)
                 {
                     if (commandText.Trim() == string.Empty) continue;
@@ -248,15 +251,15 @@ namespace MultipleSupportProgram.Model
                 MessageBox.Show("SQL dosyası çalıştırma işlemi başarısız! : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public static void EsitUserAdd(string user, string password, int role)
+        public static void EsitUserAdd(string user, string password, string role)
         {
-            
-                //kullanıcı kontrolü
 
-                string userAddScriptText="";
-                if (role ==1) // admin = 1
-                {
-                    userAddScriptText = $@"
+            //kullanıcı kontrolü
+
+            string userAddScriptText = "";
+            if (role == "Admin") // admin
+            {
+                userAddScriptText = $@"
                         CREATE LOGIN [{user}] WITH PASSWORD=N'{password}', 
                         DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], 
                         CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
@@ -266,10 +269,10 @@ namespace MultipleSupportProgram.Model
 
                         EXEC sp_addsrvrolemember @loginame = N'{user}', @rolename = N'sysadmin';
                     ";
-                }
-                else if(role == 0) //read-only = 0
-                {
-                    userAddScriptText = $@"
+            }
+            else if (role == "Read-Only") //read-only
+            {
+                userAddScriptText = $@"
                         CREATE LOGIN [{user}] WITH PASSWORD=N'{password}', 
                         DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], 
                         CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
@@ -279,26 +282,26 @@ namespace MultipleSupportProgram.Model
 
                         EXEC sp_addrolemember N'db_datareader', N'{user}';
                     ";
-                }
-                else
-                {
-                    MessageBox.Show("Esit-User Ekleme işlemi için rol seçiniz!", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                
+            }
+            else
+            {
+                MessageBox.Show("Esit-User Ekleme işlemi için rol seçiniz!", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-                bool result = ExecuteNonQueryScript(userAddScriptText);
-                if (result == true)
-                {
-                    logger.Debug("Esit-User Ekleme işlemi başarıyla gerçekleşti.");
-                    MessageBox.Show("Esit-User Ekleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-           
+
+            bool result = ExecuteNonQueryScript(userAddScriptText);
+            if (result == true)
+            {
+                logger.Debug("Esit-User Ekleme işlemi başarıyla gerçekleşti.");
+                MessageBox.Show("Esit-User Ekleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
 
         }
 
         public static void EsitUserDelete(string username)
         {
-            string[] sqlScripts = { "USE SPWIN_DB;", "DROP USER " + username , "DROP LOGIN " + username};
+            string[] sqlScripts = { "USE SPWIN_DB;", "DROP USER " + username, "DROP LOGIN " + username };
             try
             {
                 foreach (string sql in sqlScripts)
@@ -307,17 +310,17 @@ namespace MultipleSupportProgram.Model
                     {
                         throw new Exception("kullanıcı bulunamadı.");
                     }
-                    
+
                 }
-                MessageBox.Show("Kullanıcı silme işlemi tamamlandı","Bilgilendirme",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Kullanıcı silme işlemi tamamlandı", "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Kullanıcı silme işlemi tamamlanamadı. "+ex.Message, "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Kullanıcı silme işlemi tamamlanamadı. " + ex.Message, "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-               logger.Error(ex);
+                logger.Error(ex);
             }
-            
+
         }
 
         public static string GetConnectionString()
@@ -338,7 +341,7 @@ namespace MultipleSupportProgram.Model
             }
             else
             {
-                connectionString = @"Server="+serverName+";Database="+databaseName+";User Id="+_userName+";Password="+_password+";";
+                connectionString = @"Server=" + serverName + ";Database=" + databaseName + ";User Id=" + _userName + ";Password=" + _password + ";";
             }
         }
         public static bool ConnectionTest()
@@ -347,12 +350,12 @@ namespace MultipleSupportProgram.Model
             {
                 if (serverName == "" || databaseName == "")
                 {
-                    MessageBox.Show("Server ismi ve Database ismi boş olamaz  \n" , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Server ismi ve Database ismi boş olamaz  \n", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    
+
                     con.Open();
                     logger.Debug("Bağlantı başarılı bir şekilde açıldı");
                     con.Close();
@@ -371,16 +374,17 @@ namespace MultipleSupportProgram.Model
                 {
                     logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "");
                 }
-                
-                
-                
+
+
+
                 return false;
             }
         }
         public static void GetSQLServerList(ComboBox sqlServerList)
-        {   try
+        {
+            try
             {
-                serverName = Environment.MachineName;
+                string machineName = Environment.MachineName;
                 RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
 
                 using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
@@ -390,37 +394,37 @@ namespace MultipleSupportProgram.Model
                     if (instanceKey != null)
                     {
                         sqlServerList.Items.Clear();
+                        sqlServerList.Items.Add(machineName);
                         foreach (var instanceName in instanceKey.GetValueNames())
                         {
-                            sqlServerList.Items.Add(serverName);
+                            sqlServerList.Items.Add(machineName + "\\" + instanceName); //22.07.2024
+                            //sqlServerList.Items.Add(instanceName);
                         }
                     }
                 }
                 logger.Debug("SQL server listeleme işlemi başarılı!");
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 logger.Error("HATA SQL server listeleme işlemi başarısız! :" + ex.Message + "");
                 throw new Exception("HATA SQL server listeleme işlemi başarısız! : " + ex.Message);
             }
+
         }
-        public static void GetSQLDatabaseList(ComboBox[] comboBoxDatabase, string serverName)
+        public static void GetSQLDatabaseList(ComboBox cbxDatabase, string cbServerName)
         {
             try
             {
-                foreach (ComboBox cbxDatabase in comboBoxDatabase) { cbxDatabase.Items.Clear(); }
+                cbxDatabase.Items.Clear();
 
-                SqlConnection connect = new SqlConnection("Server=" + serverName + ";Database= Master ;Trusted_Connection=True;");
+                SqlConnection connect = new SqlConnection("Server= " + cbServerName + " ;Database= Master ;Trusted_Connection=True;");
                 connect.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases where name NOT IN ('master','tempdb','model','msdb') ", connect);
                 SqlDataReader DR = cmd.ExecuteReader();
                 while (DR.Read())
                 {
-                    foreach (var cbxItem in comboBoxDatabase)
-                    {
-                        cbxItem.Items.Add(DR[0]);
-                    }
+                    cbxDatabase.Items.Add(DR[0]);
                 }
                 connect.Close();
             }
@@ -437,7 +441,7 @@ namespace MultipleSupportProgram.Model
                 cbxDbUsers.Items.Clear();
                 SqlConnection connect = new SqlConnection("Server=" + serverName + ";Database= Master ;Trusted_Connection=True;");
                 connect.Open();
-                
+
                 SqlCommand cmd = new SqlCommand("USE " + databaseName + "; SELECT name, type_desc FROM sys.sql_logins WHERE type IN('S','U','G') AND is_disabled IN('0')  ;", connect);
                 SqlDataReader DR = cmd.ExecuteReader();
                 while (DR.Read())
@@ -459,10 +463,10 @@ namespace MultipleSupportProgram.Model
             try
             {
                 checkedListBox.Items.Clear();
-                
+
                 String SQLScript = "USE " + databaseName + "; SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tableName + "';";
                 DataTable DR = ExecuteReaderScript(SQLScript);
-                
+
                 foreach (DataRow row in DR.Rows)
                 {
                     checkedListBox.Items.Add(row[0].ToString());
@@ -477,7 +481,7 @@ namespace MultipleSupportProgram.Model
         }
 
 
-        
+
         public static void PhotoDelete(string radioButtonName, string time1, string time2)
         {
             string commandStr = "";
@@ -510,25 +514,25 @@ namespace MultipleSupportProgram.Model
                     switch (radioButtonName)
                     {
                         case "rbOneAndTwoPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL " +
-                                "where seqnum2 in(select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL , image2 = NULL , image3 = NULL , image4 = NULL " +
+                                "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
                             break;
 
                         case "rbInTheFolderPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
-                                "where seqnum2 in(select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL , imageFile4 = NULL " +
+                                "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
                             break;
 
                         case "rbAllPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL, imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
-                                "where seqnum2 in(select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL , image2 = NULL , image3 = NULL , image4 = NULL , imageFile1 = NULL , imageFile2 = NULL , imageFile3 = NULL , imageFile4 = NULL " +
+                                "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
                             break;
                     }
                 }
 
-                    
-                bool result = Convert.ToBoolean(ExecuteNonQueryScript(commandStr , 0));
-                    
+
+                bool result = ExecuteNonQueryScript(commandStr, 0);
+
                 if (result)
                 {
                     Thread.Sleep(100);
@@ -541,7 +545,7 @@ namespace MultipleSupportProgram.Model
                     logger.Debug("Tartım fotoğrafı silme işlemi başarıyla gerçekleşti.");
 
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -553,14 +557,15 @@ namespace MultipleSupportProgram.Model
             }
 
         }
-        public static void WeighingDelete(string tartım, string time1, string time2)
+        public static void WeighingDelete(string tartim, string time1, string time2)
         {
             string commandStr = "";
             string tabloName = "";
-            if (tartım == "rbTartım1")
+            if (tartim == "rbTartım1")
             {
                 tabloName = "dbo.Weigh1";
-            }else if(tartım == "rbTartım2")
+            }
+            else if (tartim == "rbTartım2")
             {
                 tabloName = "dbo.Weigh2";
             }
@@ -569,7 +574,7 @@ namespace MultipleSupportProgram.Model
                 if (time1 == "" && time2 == "")
                 {
                     //veritabanında tarih kısıtlaması olmadan çalışıyor
-                    switch (tartım)
+                    switch (tartim)
                     {
                         case "rbTartım1":
                             commandStr = "select seq from dbo.Weigh1 where WeighTime1 < GETDATE();";
@@ -583,7 +588,7 @@ namespace MultipleSupportProgram.Model
                 else
                 {
                     //Seçilen tarih aralığında çalışıyor
-                    switch (tartım)
+                    switch (tartim)
                     {
                         case "rbTartım1":
                             commandStr = "select seq from Weigh1 where WeighTime1 between '" + time1 + "' and '" + time2 + "';";
@@ -599,8 +604,8 @@ namespace MultipleSupportProgram.Model
                 DataTable datatable = ExecuteReaderScript(commandStr, 0);
                 foreach (DataRow row in datatable.Rows)
                 {
-                    
-                    ExecuteNonQueryScript("delete from " + tabloName + " where seq = " + row["seq"]+";");
+
+                    ExecuteNonQueryScript("delete from " + tabloName + " where seq = " + row["seq"] + ";");
                 }
 
 
@@ -624,12 +629,12 @@ namespace MultipleSupportProgram.Model
         //updateDbaToScale
         public static void MoveCarrierCompany()
         { /* Taşıyıcı Firma'alanına taşınacak */
-            
+
             try
             {
-                
-                    string SQLScript = "INSERT INTO SPWIN_DB.dbo.Firm(FirmCode, FirmName) SELECT TOP 100 SPWIN_DB.dbo.Code_4.Code, SPWIN_DB.dbo.Code_4.Name FROM SPWIN_DB.dbo.Code_4 LEFT JOIN SPWIN_DB.dbo.Firm on (SPWIN_DB.dbo.Code_4.Code = SPWIN_DB.dbo.Firm.FirmCode and SPWIN_DB.dbo.Firm.FirmName = SPWIN_DB.dbo.Code_4.Name) where SPWIN_DB.dbo.Firm.FirmCode is null and SPWIN_DB.dbo.Firm.FirmName is null";
-                    bool result = ExecuteNonQueryScript(SQLScript);
+
+                string SQLScript = "INSERT INTO SPWIN_DB.dbo.Firm(FirmCode, FirmName) SELECT TOP 100 SPWIN_DB.dbo.Code_4.Code, SPWIN_DB.dbo.Code_4.Name FROM SPWIN_DB.dbo.Code_4 LEFT JOIN SPWIN_DB.dbo.Firm on (SPWIN_DB.dbo.Code_4.Code = SPWIN_DB.dbo.Firm.FirmCode and SPWIN_DB.dbo.Firm.FirmName = SPWIN_DB.dbo.Code_4.Name) where SPWIN_DB.dbo.Firm.FirmCode is null and SPWIN_DB.dbo.Firm.FirmName is null";
+                bool result = ExecuteNonQueryScript(SQLScript);
                 if (result)
                 {
                     logger.Debug("Veri taşıma işlemi başarılı! - Taşıyıcı Firma --> Firma listesine eklendi");
@@ -676,17 +681,17 @@ namespace MultipleSupportProgram.Model
         {
             try
             {
-                    string SQLScript = "UPDATE SPWIN_DB.dbo.Parameters SET DbaIsActive = 'False', DbaUserName = ds.username, DbaPassword = ds.password, DbaOrtam = 'False' FROM SPWIN_DB.dbo.Parameters p INNER JOIN SPWIN_DB.dbo.DbaServis ds ON p.seq = ds.ID";
-                    bool result = ExecuteNonQueryScript(SQLScript);
-                    if (result)
-                    {
-                        logger.Debug("Veri taşıma işlemi başarılı!");
-                        MessageBox.Show("Veri taşıma işlemi başarılı! - DBA_Servis bilgileri taşındı", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Veri Taşıma işleminde Etkilenen satır bulunamadı " , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                string SQLScript = "UPDATE SPWIN_DB.dbo.Parameters SET DbaIsActive = 'False', DbaUserName = ds.username, DbaPassword = ds.password, DbaOrtam = 'False' FROM SPWIN_DB.dbo.Parameters p INNER JOIN SPWIN_DB.dbo.DbaServis ds ON p.seq = ds.ID";
+                bool result = ExecuteNonQueryScript(SQLScript);
+                if (result)
+                {
+                    logger.Debug("Veri taşıma işlemi başarılı!");
+                    MessageBox.Show("Veri taşıma işlemi başarılı! - DBA_Servis bilgileri taşındı", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Veri Taşıma işleminde Etkilenen satır bulunamadı ", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -732,7 +737,7 @@ namespace MultipleSupportProgram.Model
 
                     string SQLScript = "INSERT INTO SPWIN_DB.dbo.DBA_Data(" +
                                     "CarrierCompany,ContainerNo,ContainerMaxWeight,AttractiveWeight,TrailerWeight,PortList,PortListCode,CarrierCompanyCode) " +
-                                    "VALUES ('" + carrierCompany + "','" + containerNo + "'," + containerMaxWeight + 
+                                    "VALUES ('" + carrierCompany + "','" + containerNo + "'," + containerMaxWeight +
                                     "," + attractiveWeight + "," + trailerWeight + ",'" + portList + "','" + portListCode + "','" + carrierCompanyCode + "'); " +
                                     "UPDATE SPWIN_DB.dbo.Weigh2 set DbaWeigh2Id =IDENT_CURRENT('SPWIN_DB.dbo.DBA_Data') where seq =" + row["seq"].ToString() + " ;" +
                                     "UPDATE SPWIN_DB.dbo.Weigh1 set DbaWeigh1Id =IDENT_CURRENT('SPWIN_DB.dbo.DBA_Data') where seq =" + row["seqnum1"].ToString();
@@ -740,7 +745,7 @@ namespace MultipleSupportProgram.Model
                     if (result == false)
                     {
                         errorCount++;
-                    }    
+                    }
                 }
                 if (errorCount == 0)
                 {
@@ -750,8 +755,8 @@ namespace MultipleSupportProgram.Model
                 else
                 {
                     logger.Error("Veri taşıma işlemi sonlandı - DBA_Dataları eksik şekilde taşındı " +
-                        "\n"+errorCount + " tane hatalı işlem gerçekleşti" +
-                        "\n"+(dataTable.Rows.Count-errorCount).ToString() + " tane hatasız işlem gerçekleşti");
+                        "\n" + errorCount + " tane hatalı işlem gerçekleşti" +
+                        "\n" + (dataTable.Rows.Count - errorCount).ToString() + " tane hatasız işlem gerçekleşti");
                     MessageBox.Show((dataTable.Rows.Count - errorCount).ToString() + " Adet veri taşıma işlemi başarılı! - DBA_Dataları taşındı", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -761,9 +766,7 @@ namespace MultipleSupportProgram.Model
                 logger.Error("Veri taşıma işlemi başarısız: " + ex.Message);
                 MessageBox.Show("HATA Veri taşıma işlemi başarısız : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
         public static bool AuditStopedScriptRun()
         {
             try
@@ -778,7 +781,7 @@ namespace MultipleSupportProgram.Model
                 };
                 foreach (string sqlCommand in sqlCommands)
                 {
-                    if (!ExecuteNonQueryScript(sqlCommand))
+                    if (!ExecuteNonQueryScript(sqlCommand, 0))
                     {
                         MessageBox.Show(sqlCommand + " \nçalıştırılamadı scripti tekrar çalıştırın", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
@@ -791,12 +794,7 @@ namespace MultipleSupportProgram.Model
                 logger.Error(ex);
                 return false;
             }
-            
-            
-            
-
         }
-
         public static bool SpwinStopedScriptRun()
         {
             try
@@ -812,33 +810,34 @@ namespace MultipleSupportProgram.Model
 
                 foreach (string sqlCommand in sqlCommands)
                 {
-                    if (!ExecuteNonQueryScript(sqlCommand))
+                    if (!ExecuteNonQueryScript(sqlCommand, 0))
                     {
-                        MessageBox.Show(sqlCommand + " \nçalıştırılamadı scripti tekrar çalıştırın" ,"Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        MessageBox.Show(sqlCommand + " \nçalıştırılamadı scripti tekrar çalıştırın", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
                 }
                 return true;
-
             }
             catch (Exception ex)
             {
                 logger.Error(ex);
                 return false;
-
-                
             }
-            
-            
         }
-
-        public static void ServerConfigSettingsSetter()
+        public static void ServerConfigSettingsSetter(String serverName = "SQLEXPRESS")
         {
             // Çalıştırılacak .bat dosyasının adı
-            string batFileContent = @"
+            string batFileContent = $@"
 netsh advfirewall firewall add rule name=""Open Port 8080"" dir=in action=allow protocol=TCP localport=8080
 netsh http add urlacl url=http://+:8080/ user=Everyone
 netsh advfirewall firewall add rule name=""Open Port 80"" dir=in action=allow protocol=TCP localport=80
+
+@echo =========  SQL Server Start Mode  ===================
+sc config ""{serverName}"" start= auto
+sc config ""SQLBrowser"" start= auto
+
+
+
 
 @echo =========  SQL Server Ports  ===================
 @echo Enabling SQLServer default instance port 1433
@@ -849,6 +848,7 @@ netsh advfirewall firewall add rule name=""SQL Admin Connection"" dir=in action=
 netsh advfirewall firewall add rule name=""SQL Service Broker"" dir=in action=allow protocol=TCP localport=4022
 @echo Enabling Transact SQL/RPC port 135
 netsh advfirewall firewall add rule name=""SQL Debugger/RPC"" dir=in action=allow protocol=TCP localport=135
+
 @echo =========  Analysis Services Ports  ==============
 @echo Enabling SSAS Default Instance port 2383
 netsh advfirewall firewall add rule name=""Analysis Services"" dir=in action=allow protocol=TCP localport=2383
@@ -868,7 +868,17 @@ netsh firewall set multicastbroadcastresponse ENABLE
 @echo =========  File Access Privileges  ==============
 cd /d %~dp0
 cmd.exe /c ""icacls ""%cd%"" /grant Everyone:(OI)(CI)M""
+
+@echo =========  Server Restart  ==============
+
+sc stop ""{serverName}""
+net stop ""SQL Server Browser""
+
+sc start ""{serverName}""
+net start ""SQL Server Browser""
+
 ";
+            
             string tempBatFilePath = Path.Combine(Path.GetTempPath(), "tempServerConfigScript.bat");
             try
             {
@@ -915,45 +925,91 @@ cmd.exe /c ""icacls ""%cd%"" /grant Everyone:(OI)(CI)M""
             }
 
 
-            
-                
+
+
         }
+        public static void ServerConfigTcpIpAccessAndPortSetter(bool enableFlag = true, bool listenAllFlag = true, int portNo = 1433)
+        {
+            RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
 
+            using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
+            {
+                string[] possiblePaths = new string[]
+            {
+                @"SOFTWARE\Microsoft\Microsoft SQL Server",
+                @"SOFTWARE\Wow6432Node\Microsoft\Microsoft SQL Server" // 32-bit uygulama yoldan
+            };
+                // SQL Server sürümünü bulmak için kayıt defterini kontrol etme
+                string[] versionPaths = new string[]
+                {
+                "MSSQL16.MSSQLSERVER", // SQL Server 2022
+                "MSSQL15.MSSQLSERVER", // SQL Server 2019
+                "MSSQL14.MSSQLSERVER", // SQL Server 2017
+                "MSSQL13.MSSQLSERVER", // SQL Server 2016
+                "MSSQL12.MSSQLSERVER", // SQL Server 2014
+                "MSSQL11.MSSQLSERVER", // SQL Server 2012
+                "MSSQL10.MSSQLSERVER", // SQL Server 2008 R2
+                "MSSQL09.MSSQLSERVER", // SQL Server 2008
+                "MSSQL08.MSSQLSERVER", // SQL Server 2005
+                "MSSQL07.MSSQLSERVER", // SQL Server 2000
+                                       // Diğer eski sürümler eklenebilir
+                };
+                // SQL Server'ın yüklü olduğu sürümü bulma
+                string keyPath = null;
+                foreach (var path in possiblePaths)
+                {
+                    foreach (var versionPath in versionPaths)
+                    {
+                        string fullKeyPath = $"{path}\\{versionPath}\\MSSQLServer\\SuperSocketNetLib\\Tcp";
+                        using (RegistryKey key = hklm.OpenSubKey(fullKeyPath))
+                        {
+                            if (key != null)
+                            {
+                                keyPath = fullKeyPath;
+                                break;
+                            }
+                        }
+                    }
+                    if (keyPath != null)
+                    {
+                        break;
+                    }
+                }
+                if (keyPath != null)
+                {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    using (RegistryKey key = hklm.OpenSubKey(keyPath, true))
+                    {
+                        if (key != null)
+                        {
+                            //TCP / IP'yi etkinleştirme
+                            key.SetValue("Enabled", Convert.ToInt32(enableFlag), RegistryValueKind.DWord);
+                            Console.WriteLine(key.GetValue("Enabled"));
+                            Console.WriteLine("enable çalıştı.");
+                            key.SetValue("ListenOnAllIPs", Convert.ToInt32(listenAllFlag), RegistryValueKind.DWord);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kayıt defteri anahtarı yazma izniyle açılmadı.");
+                        }
+                    }
+                    using (RegistryKey key = hklm.OpenSubKey(keyPath + "\\IPAll", true))
+                    {
+                        if (key != null)
+                        {
+                            //TCP / IP port numarasını ayarlama
+                            // Değiştirmek istediğiniz port numarası port no olarak metoda geliyor
+                            key.SetValue("TcpPort", portNo, RegistryValueKind.String);
+                            Console.WriteLine(key.GetValue("TcpPort"));
+                            Console.WriteLine("enable çalıştı.");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("SQL Server kayıt defteri anahtarı bulunamadı.");
+                }
+            }
+        }
     }
 }

@@ -50,6 +50,8 @@ namespace MultipleSupportProgram
             tabControlProcessHeaders.TabPages.Remove(tpQuary);
             tabControlProcessHeaders.TabPages.Remove(tpTablolar);
             tabControlProcessHeaders.TabPages.Remove(tpSorgu);
+            
+            
 
         }
 
@@ -69,18 +71,31 @@ namespace MultipleSupportProgram
                     gbConnectionSettings.Enabled = true;
                     tabControlProcessHeaders.Enabled = false;
                     btnConnectionTest.Text = "Bağlan";
-                    btnConnectionTest.BackColor = Color.Green;
+                    btnConnectionTest.BackColor = Color.GreenYellow;
                     MessageBox.Show("Bağlantı Kesildi.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
+                    btnConnectionTest.Text = "Bağlanıyor...";
+                    btnConnectionTest.BackColor = Color.DarkGoldenrod;
+                    Application.DoEvents();
+
                     if (SQLHelper.ConnectionTest() == true)
                     {
+                        cbxDbNameBackup.Text = cbxDbName.Text;
+                        cbxDbNameRepair.Text = cbxDbName.Text;
+                        cbxDbNameRestore.Text = cbxDbName.Text;
                         gbConnectionSettings.Enabled = false;
                         tabControlProcessHeaders.Enabled = true;
                         btnConnectionTest.Text = "Bağlantı Kes";
-                        btnConnectionTest.BackColor = Color.Red;
-                        MessageBox.Show("Bağlantı Oluşturuldu.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnConnectionTest.BackColor = Color.OrangeRed;
+                    }
+                    else
+                    {
+                        btnConnectionTest.Text = "Bağlan";
+                        btnConnectionTest.BackColor = Color.GreenYellow;
+                        MessageBox.Show("Bağlantı Oluşturulamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                     }
                 }
             }
@@ -405,7 +420,7 @@ namespace MultipleSupportProgram
 
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox1 about = new AboutBox1();
             about.Show();
@@ -502,7 +517,7 @@ namespace MultipleSupportProgram
             {
                 try
                 {
-                    SQLHelper.GetSQLDatabaseList(DatabaseComboboxList(cbxDbName, cbxDbNameBackup, cbxDbNameRepair, cbxDbNameRestore), CBServers.Text);
+                    SQLHelper.GetSQLDatabaseList(cbxDbName, CBServers.Text);
                 }
                 catch (Exception ex)
                 {
@@ -595,20 +610,43 @@ namespace MultipleSupportProgram
             string camUser = tbCamUser.Text;
             string camPassword = tbCamPassword.Text;
             string camIpAddress = tbCamIpAddress.Text;
-            switch (camType)
+            if (camUser =="" && camPassword =="")
             {
-                case "Aver":
-                    camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/GetImage.cgi?CH=1";
-                    break;
-                case "Dahua":
-                    camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/cgi-bin/snapshot.cgi?";
-                    break;
-                case "Hikvision":
-                    camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/ISAPI/Streaming/channels/1/picture";
-                    break;
-                default:
-                    break;
+                switch (camType)
+                {
+                    case "Aver":
+                        camLink = @"http://" +camIpAddress + "/GetImage.cgi?CH=1";
+                        break;
+                    case "Dahua":
+                        camLink = @"http://" +camIpAddress + "/cgi-bin/snapshot.cgi?";
+                        break;
+                    case "Hikvision":
+                        camLink = @"http://" +camIpAddress + "/ISAPI/Streaming/channels/1/picture";
+                        break;
+                    default:
+                        break;
+                }
             }
+            else
+            {
+                switch (camType)
+                {
+                    case "Aver":
+                        camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/GetImage.cgi?CH=1";
+                        break;
+                    case "Dahua":
+                        camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/cgi-bin/snapshot.cgi?";
+                        break;
+                    case "Hikvision":
+                        camLink = @"http://" + camUser + ":" + camPassword + "@" + camIpAddress + "/ISAPI/Streaming/channels/1/picture";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+            
             tbCamLink.Text = camLink;
         }
 
@@ -624,20 +662,20 @@ namespace MultipleSupportProgram
 
             lbTartımStart.Visible = false;
             lbTartımEnd.Visible = false;
-            dtpTartımDateStart.Visible = false;
-            dtpTartımDateEnd.Visible = false;
-            dtpTartımSaatStart.Visible = false;
-            dtpTartımSaatEnd.Visible = false;
+            dtpTartimDateStart.Visible = false;
+            dtpTartimDateEnd.Visible = false;
+            dtpTartimSaatStart.Visible = false;
+            dtpTartimSaatEnd.Visible = false;
         }
 
         private void rbTartımPeriodDelete_Click(object sender, EventArgs e)
         {
             lbTartımStart.Visible = true;
             lbTartımEnd.Visible = true;
-            dtpTartımDateStart.Visible = true;
-            dtpTartımDateEnd.Visible = true;
-            dtpTartımSaatStart.Visible = true;
-            dtpTartımSaatEnd.Visible = true;
+            dtpTartimDateStart.Visible = true;
+            dtpTartimDateEnd.Visible = true;
+            dtpTartimSaatStart.Visible = true;
+            dtpTartimSaatEnd.Visible = true;
         }
 
         private void btnTartımSilme_Click(object sender, EventArgs e)
@@ -657,27 +695,27 @@ namespace MultipleSupportProgram
                 string time2 = "";
 
 
-                if (rbTartım1.Checked == true || rbTartım2.Checked == true )
+                if (rbTartim1.Checked == true || rbTartim2.Checked == true )
                 {
-                    if (rbTartım1.Checked == true)
+                    if (rbTartim1.Checked == true)
                     {
-                        rbName = rbTartım1.Name.ToString();
+                        rbName = rbTartim1.Name.ToString();
                     }
-                    else if (rbTartım2.Checked == true)
+                    else if (rbTartim2.Checked == true)
                     {
-                        rbName = rbTartım2.Name.ToString();
+                        rbName = rbTartim2.Name.ToString();
                     }
                     
 
-                    if (rbTartımPeriodDelete.Checked == true)
+                    if (rbTartimPeriodDelete.Checked == true)
                     {
-                        time1 = dtpTartımDateStart.Value.Date.ToString("yyyy-MM-dd") + " " + dtpTartımSaatStart.Value.TimeOfDay.ToString("t");
-                        time2 = dtpTartımDateEnd.Value.Date.ToString("yyyy-MM-dd") + " " + dtpTartımSaatEnd.Value.TimeOfDay.ToString("t");
+                        time1 = dtpTartimDateStart.Value.Date.ToString("yyyy-MM-dd") + " " + dtpTartimSaatStart.Value.TimeOfDay.ToString("t");
+                        time2 = dtpTartimDateEnd.Value.Date.ToString("yyyy-MM-dd") + " " + dtpTartimSaatEnd.Value.TimeOfDay.ToString("t");
                         
                         SQLHelper.WeighingDelete(rbName, time1, time2);
                         
                     }
-                    else if (rbTartımAllDelete.Checked == true)
+                    else if (rbTartimAllDelete.Checked == true)
                     {
                         SQLHelper.WeighingDelete(rbName,time1,time2);
                     }
@@ -709,7 +747,7 @@ namespace MultipleSupportProgram
             }
         }
 
-        private void btnAuditDBScript_Click(object sender, EventArgs e)
+        private void BtnAuditDBScript_Click(object sender, EventArgs e)
         {
             string message = "Bu işlem veritabanına bağlanmayı geçici süre engelleyecektir \n işleme devam etmek istiyor musunuz?";
             string title = "UYARI";
@@ -769,11 +807,11 @@ namespace MultipleSupportProgram
             
         }
 
-        private void btnEsitUserEkle_Click(object sender, EventArgs e)
+        private void btnKullanıcıEkle_Click(object sender, EventArgs e)
         {
             if (tbUserAddUserPassword.Text == tbUserAddUserPasswordConfirm.Text)
             {
-                SQLHelper.EsitUserAdd(tbUserAddUserName.Text, tbUserAddUserPassword.Text, cbUserAddUserRole.SelectedIndex);
+                SQLHelper.EsitUserAdd(tbUserAddUserName.Text, tbUserAddUserPassword.Text, cbUserAddUserRole.Text);
             }
             else
             {
@@ -781,7 +819,7 @@ namespace MultipleSupportProgram
             }
             
         }
-        private void btnEsitUserSil_Click(object sender, EventArgs e)
+        private void btnKullanıcıSil_Click(object sender, EventArgs e)
         {
             string selectedUserName =  tbUserAddUserName.Text;
             // Silinmemesi gereken kullanıcıların listesi
@@ -812,7 +850,7 @@ namespace MultipleSupportProgram
             }
             else
             {
-                MessageBox.Show("Kullanıcı silme işlemi için \n silmek istediğiniz kullanıcı adını ve şifre olarakta 'KULLANICISIL' bilgilerini giriniz"
+                MessageBox.Show("Kullanıcı silme işlemi için \n silmek istediğiniz kullanıcı adını ve kullanıcı şifresi olarakta 'KULLANICISIL' bilgilerini giriniz"
                                 , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
@@ -820,7 +858,23 @@ namespace MultipleSupportProgram
 
         private void btnServerConManager_Click(object sender, EventArgs e)
         {
-            SQLHelper.ServerConfigSettingsSetter();
+            
+            SQLHelper.ServerConfigTcpIpAccessAndPortSetter(true,true,1433);
+            if (tbConfigServerName.Text == "")
+            {
+                SQLHelper.ServerConfigSettingsSetter("SQLEXPRESS");
+            }
+            else
+            {
+                SQLHelper.ServerConfigSettingsSetter(tbConfigServerName.Text);
+            }
+            
+        }
+
+        private void btnEsitUserSilHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Kullanıcı silme işlemi için \n silmek istediğiniz kullanıcı adını ve kullanıcı şifresi olarakta 'KULLANICISIL' bilgilerini giriniz"
+                                , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
