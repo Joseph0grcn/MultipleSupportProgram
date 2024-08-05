@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,5 +86,58 @@ namespace MultipleSupportProgram.Model
             }
         }
 
+        public static string GetPictureFileLocation()
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                logger.Info(folderBrowserDialog.SelectedPath + "  dosya yolu seçildi");
+                return folderBrowserDialog.SelectedPath;
+            }
+            return null;
+        }
+
+        public static void DeletePictureFile(string pictureFilePath, DataTable pictureFileNames)
+        {
+            string[] fileNames =
+                {
+                    "imageFile1",
+                    "imageFile2",
+                    "imageFile3",
+                    "imageFile4",
+                };
+            foreach (DataRow row in pictureFileNames.Rows)
+            {
+
+                foreach (string file in fileNames)
+                {
+                    try
+                    {
+                        if (row[file] != DBNull.Value)
+                        {
+                            string combinedPath = Path.Combine(pictureFilePath, row[file].ToString());
+                            if (File.Exists(combinedPath))
+                            {
+                                File.Delete(combinedPath);
+                            }
+                            else
+                            {
+                                logger.Error($"Failed to delete picture file {combinedPath}");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error($"Dosya silinirken bir hata oluştu: {ex.Message}");
+                        throw;
+                    }
+                    
+                    
+                }
+                string commandstring = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
+                SQLHelper.ExecuteNonQueryScript( commandstring );
+            }
+        }
     }
 }

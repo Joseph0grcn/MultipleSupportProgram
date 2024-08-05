@@ -123,6 +123,12 @@
     <Compile Include="Screen\AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\loginScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\loginScreen.Designer.cs">
+      <DependentUpon>loginScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     <Compile Include="Model\WaitScreenFunc.cs" />
     <EmbeddedResource Include="Screen\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\loginScreen.resx">
+      <DependentUpon>loginScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

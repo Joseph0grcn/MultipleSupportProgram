@@ -55,6 +55,7 @@ namespace MultipleSupportProgram.Model
                             MessageBox.Show("Kullanıcı ismi kullanılmaktadır.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
+                        MessageBox.Show(ex.Message + ex);
                         logger.Error(ex);
                         return false;
                     }
@@ -76,7 +77,8 @@ namespace MultipleSupportProgram.Model
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Hata: " + ex.Message);
+                        
+                        logger.Error(ex);
                         return null;
                     }
                 }
@@ -99,7 +101,7 @@ namespace MultipleSupportProgram.Model
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Hata: " + ex.Message);
+                        logger.Error(ex);
                         return null;
                     }
                 }
@@ -130,6 +132,9 @@ namespace MultipleSupportProgram.Model
             {
                 string backupFilePath = $"{backupFileLocation}{databaseName}_{DateTime.Now:MM_dd_yyyy_HH_mm_ss}.bak";
                 string sqlScript = $@"BACKUP DATABASE [{databaseName}] TO DISK = '{backupFilePath}' WITH INIT, STATS = 10";
+                
+                logger.Debug("backup file path hatası :\n"+backupFilePath);
+                logger.Debug(sqlScript);
                 bool result = ExecuteNonQueryScript(sqlScript, 0);
                 Thread.Sleep(500);
                 MainForm.waitForm.Close();
@@ -141,7 +146,7 @@ namespace MultipleSupportProgram.Model
                 }
                 else
                 {
-                    logger.Debug("Yedekleme işlemi başarıyla gerçekleşti.");
+                    logger.Info("Yedekleme işlemi başarıyla gerçekleşti.");
                     MessageBox.Show("Yedekleme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -358,24 +363,16 @@ namespace MultipleSupportProgram.Model
 
                     con.Open();
                     logger.Debug("Bağlantı başarılı bir şekilde açıldı");
-                    con.Close();
+                    
                     logger.Debug("Bağlantı başarılı bir şekilde kapatıldı");
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                if (!windowsAuthentication && ex.ToString().Contains("Login failed for user"))
-                {
-                    logger.Error("Kullanıcı Adı veya Şifre hatalı girildi : " + ex.Message + "");
-                    MessageBox.Show("Kullanıcı Adı veya Şifre hatalı girildi.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "");
-                }
-
-
+               
+                logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "  \nConnection String = " + connectionString);
+                MessageBox.Show("Bağlantı Oluşturulamadı.\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return false;
             }
@@ -482,56 +479,57 @@ namespace MultipleSupportProgram.Model
 
 
 
-        public static void PhotoDelete(string radioButtonName, string time1, string time2)
+        public static void PhotoDelete(string radioButtonTag, string time1, string time2, string picturePath)
         {
             string commandStr = "";
             try
             {
+                bool result = false;
                 if (time1 == "" && time2 == "")
                 {
                     // bütün veritabanında tüm tarihlerde işlem yapıyor
-                    switch (radioButtonName)
+                    switch (radioButtonTag)
                     {
-                        case "rbOneAndTwoPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL " +
-                                "where seqnum2 in(select seq from Weigh2)";
+                        case "TagOneAndTwoPhoto":
+                            OneAndTwoPhotoDelete();
                             break;
 
-                        case "rbInTheFolderPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
-                                "where seqnum2 in(select seq from Weigh2)";
+                        case "TagInTheFolderPhoto":
+                            InTheFolderDelete();
                             break;
 
-                        case "rbAllPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL,image2 = NULL, image3 = NULL, image4 = NULL, imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL, imageFile4 = NULL " +
-                                "where seqnum2 in(select seq from Weigh2)";
+                        case "TagAllPhoto":
+                            OneAndTwoPhotoDelete();
+                            InTheFolderDelete();
                             break;
                     }
                 }
                 else
                 {
                     //Seçilen tarih aralığında işlem yapıyor
-                    switch (radioButtonName)
+                    switch (radioButtonTag)
                     {
-                        case "rbOneAndTwoPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL , image2 = NULL , image3 = NULL , image4 = NULL " +
+                        case "TagOneAndTwoPhoto":
+                            //commandStr = "DELETE SPWIN_DB.dbo.WeighingImages SET image1 = NULL , image2 = NULL , image3 = NULL , image4 = NULL " +
+                            //    "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            commandStr = "DELETE FROM SPWIN_DB.dbo.WeighingImages " +
+                                         "WHERE seqnum2 IN (SELECT seq FROM Weigh2 WHERE WeighTime2 BETWEEN '" + time1 + "' AND '" + time2 + "')";
+                            break;
+
+                        case "TagInTheFolderPhoto":
+                            commandStr = "DELETE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL , imageFile4 = NULL " +
                                 "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
                             break;
 
-                        case "rbInTheFolderPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL , imageFile4 = NULL " +
-                                "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
-                            break;
-
-                        case "rbAllPhoto":
+                        case "TagAllPhoto":
                             commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL , image2 = NULL , image3 = NULL , image4 = NULL , imageFile1 = NULL , imageFile2 = NULL , imageFile3 = NULL , imageFile4 = NULL " +
                                 "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
                             break;
                     }
                 }
+                Console.WriteLine(commandStr);
 
-
-                bool result = ExecuteNonQueryScript(commandStr, 0);
+                 
 
                 if (result)
                 {
@@ -556,6 +554,28 @@ namespace MultipleSupportProgram.Model
                 MessageBox.Show("HATAsss : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            void OneAndTwoPhotoDelete()
+            {
+                // veritabanı seçildiğinde imagefile alanlarının hepsinin boş olduğu verileri silmektedir
+                commandStr = "SELECT seq  FROM SPWIN_DB.dbo.WeighingImages \r\nWHERE \r\n((SPWIN_DB.dbo.WeighingImages.seqnum2 IN(SELECT seq FROM Weigh2)\r\nOR (SPWIN_DB.dbo.WeighingImages.seqnum1 IN (SELECT seqnum1 FROM Weigh2 )\r\nAND SPWIN_DB.dbo.WeighingImages.seqnum2 = 0  )) )AND (imageFile1 IS  NULL   AND imageFile2 IS  NULL   AND imageFile3 IS  NULL   AND imageFile4 IS  NULL)";
+                DataTable dataTable = ExecuteReaderScript(commandStr, 0);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string deleteCommand = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
+                    ExecuteNonQueryScript(deleteCommand, 10);
+                }
+                MessageBox.Show("Veritabanından fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+            }
+
+            void InTheFolderDelete()
+            {
+                commandStr = "SELECT seq , imageFile1 , imageFile2 , imageFile3 , imageFile4  FROM SPWIN_DB.dbo.WeighingImages \r\nWHERE \r\n((SPWIN_DB.dbo.WeighingImages.seqnum2 IN(SELECT seq FROM Weigh2)\r\nOR (SPWIN_DB.dbo.WeighingImages.seqnum1 IN (SELECT seqnum1 FROM Weigh2 )\r\nAND SPWIN_DB.dbo.WeighingImages.seqnum2 = 0  ))) AND (imageFile1 IS NOT NULL   OR imageFile2 IS NOT NULL   OR imageFile3 IS NOT NULL   OR imageFile4 IS NOT NULL)\r\norder by seq";
+                DataTable pictureFileNames = ExecuteReaderScript(commandStr, 0);
+                FileHelper.DeletePictureFile(picturePath, pictureFileNames);
+                MessageBox.Show("Dosya konumundan fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+            }
         }
         public static void WeighingDelete(string tartim, string time1, string time2)
         {
@@ -878,7 +898,7 @@ sc start ""{serverName}""
 net start ""SQL Server Browser""
 
 ";
-            
+
             string tempBatFilePath = Path.Combine(Path.GetTempPath(), "tempServerConfigScript.bat");
             try
             {
@@ -928,20 +948,24 @@ net start ""SQL Server Browser""
 
 
         }
-        public static void ServerConfigTcpIpAccessAndPortSetter(bool enableFlag = true, bool listenAllFlag = true, int portNo = 1433)
+        public static void SQLServerConfigTcpIpAccessAndPortSetter(bool enableFlag = true, bool listenAllFlag = true, int portNo = 1433)
         {
-            RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
 
-            using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
+            try
             {
-                string[] possiblePaths = new string[]
-            {
+
+                RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
+
+                using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
+                {
+                    string[] possiblePaths = new string[]
+                {
                 @"SOFTWARE\Microsoft\Microsoft SQL Server",
                 @"SOFTWARE\Wow6432Node\Microsoft\Microsoft SQL Server" // 32-bit uygulama yoldan
-            };
-                // SQL Server sürümünü bulmak için kayıt defterini kontrol etme
-                string[] versionPaths = new string[]
-                {
+                };
+                    // SQL Server sürümünü bulmak için kayıt defterini kontrol etme
+                    string[] versionPaths = new string[]
+                    {
                 "MSSQL16.MSSQLSERVER", // SQL Server 2022
                 "MSSQL15.MSSQLSERVER", // SQL Server 2019
                 "MSSQL14.MSSQLSERVER", // SQL Server 2017
@@ -952,64 +976,157 @@ net start ""SQL Server Browser""
                 "MSSQL09.MSSQLSERVER", // SQL Server 2008
                 "MSSQL08.MSSQLSERVER", // SQL Server 2005
                 "MSSQL07.MSSQLSERVER", // SQL Server 2000
-                                       // Diğer eski sürümler eklenebilir
-                };
-                // SQL Server'ın yüklü olduğu sürümü bulma
-                string keyPath = null;
-                foreach (var path in possiblePaths)
-                {
-                    foreach (var versionPath in versionPaths)
+
+                        // Diğer eski sürümler eklenebilir
+                    };
+                    // SQL Server'ın yüklü olduğu sürümü bulma
+                    string keyPath = null;
+                    foreach (var path in possiblePaths)
                     {
-                        string fullKeyPath = $"{path}\\{versionPath}\\MSSQLServer\\SuperSocketNetLib\\Tcp";
-                        using (RegistryKey key = hklm.OpenSubKey(fullKeyPath))
+                        foreach (var versionPath in versionPaths)
                         {
-                            if (key != null)
+                            string fullKeyPath = $"{path}\\{versionPath}\\MSSQLServer\\SuperSocketNetLib\\Tcp";
+                            using (RegistryKey key = hklm.OpenSubKey(fullKeyPath))
                             {
-                                keyPath = fullKeyPath;
-                                break;
+                                if (key != null)
+                                {
+                                    keyPath = fullKeyPath;
+                                    break;
+                                }
                             }
+                        }
+                        if (keyPath != null)
+                        {
+                            break;
                         }
                     }
                     if (keyPath != null)
                     {
-                        break;
-                    }
-                }
-                if (keyPath != null)
-                {
 
-                    using (RegistryKey key = hklm.OpenSubKey(keyPath, true))
-                    {
-                        if (key != null)
+                        using (RegistryKey key = hklm.OpenSubKey(keyPath, true))
                         {
-                            //TCP / IP'yi etkinleştirme
-                            key.SetValue("Enabled", Convert.ToInt32(enableFlag), RegistryValueKind.DWord);
-                            Console.WriteLine(key.GetValue("Enabled"));
-                            Console.WriteLine("enable çalıştı.");
-                            key.SetValue("ListenOnAllIPs", Convert.ToInt32(listenAllFlag), RegistryValueKind.DWord);
+                            if (key != null)
+                            {
+                                //TCP / IP'yi etkinleştirme
+                                key.SetValue("Enabled", Convert.ToInt32(enableFlag), RegistryValueKind.DWord);
+                                
+                                key.SetValue("ListenOnAllIPs", Convert.ToInt32(listenAllFlag), RegistryValueKind.DWord);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt defteri anahtarı yazma izniyle açılmadı.");
+                            }
                         }
-                        else
+                        using (RegistryKey key = hklm.OpenSubKey(keyPath + "\\IPAll", true))
                         {
-                            MessageBox.Show("Kayıt defteri anahtarı yazma izniyle açılmadı.");
+                            if (key != null)
+                            {
+                                //TCP / IP port numarasını ayarlama
+                                // Değiştirmek istediğiniz port numarası port no olarak metoda geliyor
+                                key.SetValue("TcpPort", portNo, RegistryValueKind.String);
+                                
+                            }
                         }
                     }
-                    using (RegistryKey key = hklm.OpenSubKey(keyPath + "\\IPAll", true))
+                    else
                     {
-                        if (key != null)
-                        {
-                            //TCP / IP port numarasını ayarlama
-                            // Değiştirmek istediğiniz port numarası port no olarak metoda geliyor
-                            key.SetValue("TcpPort", portNo, RegistryValueKind.String);
-                            Console.WriteLine(key.GetValue("TcpPort"));
-                            Console.WriteLine("enable çalıştı.");
-                        }
+                        MessageBox.Show("SQL Server kayıt defteri anahtarı bulunamadı.");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("SQL Server kayıt defteri anahtarı bulunamadı.");
                 }
             }
+            catch (System.Security.SecurityException ex)
+            {
+                MessageBox.Show("Uygulama yönetici olarak çalıştırılmadı.\n Bu işlem için lütfen uygulamayı Yönetici olarak başlatın.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error("config düzenleyici hatası :",ex);
+            }
         }
+        public static void SQLExpressConfigTcpIpAccessAndPortSetter(bool enableFlag = true, bool listenAllFlag = true, int portNo = 1433)
+        {
+
+            try
+            {
+
+                RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
+
+                using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
+                {
+                    string[] possiblePaths = new string[]
+                {
+                @"SOFTWARE\Microsoft\Microsoft SQL Server",
+                @"SOFTWARE\Wow6432Node\Microsoft\Microsoft SQL Server" // 32-bit uygulama yoldan
+                };
+                    // SQL Server sürümünü bulmak için kayıt defterini kontrol etme
+                    string[] versionPaths = new string[]
+                    {
+                        "MSSQL16.SQLEXPRESS", // SQL Server 2022 Express
+                        "MSSQL15.SQLEXPRESS", // SQL Server 2019 Express
+                        "MSSQL14.SQLEXPRESS", // SQL Server 2017 Express
+                        "MSSQL13.SQLEXPRESS", // SQL Server 2016 Express
+                        "MSSQL12.SQLEXPRESS", // SQL Server 2014 Express
+                        "MSSQL11.SQLEXPRESS", // SQL Server 2012 Express
+                        "MSSQL10_50.SQLEXPRESS", // SQL Server 2008 R2 Express
+                        "MSSQL10.SQLEXPRESS", // SQL Server 2008 Express
+                        "MSSQL.1" // SQL Server 2005 Express
+                    };
+                    // SQL Server'ın yüklü olduğu sürümü bulma
+                    string keyPath = null;
+                    foreach (var path in possiblePaths)
+                    {
+                        foreach (var versionPath in versionPaths)
+                        {
+                            string fullKeyPath = $"{path}\\{versionPath}\\MSSQLServer\\SuperSocketNetLib\\Tcp";
+                            using (RegistryKey key = hklm.OpenSubKey(fullKeyPath))
+                            {
+                                if (key != null)
+                                {
+                                    keyPath = fullKeyPath;
+                                    break;
+                                }
+                            }
+                        }
+                        if (keyPath != null)
+                        {
+                            break;
+                        }
+                    }
+                    if (keyPath != null)
+                    {
+
+                        using (RegistryKey key = hklm.OpenSubKey(keyPath, true))
+                        {
+                            if (key != null)
+                            {
+                                //TCP / IP'yi etkinleştirme
+                                key.SetValue("Enabled", Convert.ToInt32(enableFlag), RegistryValueKind.DWord);
+                                key.SetValue("ListenOnAllIPs", Convert.ToInt32(listenAllFlag), RegistryValueKind.DWord);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt defteri anahtarı yazma izniyle açılmadı.");
+                            }
+                        }
+                        using (RegistryKey key = hklm.OpenSubKey(keyPath + "\\IPAll", true))
+                        {
+                            if (key != null)
+                            {
+                                //TCP / IP port numarasını ayarlama
+                                // Değiştirmek istediğiniz port numarası port no olarak metoda geliyor
+                                key.SetValue("TcpPort", portNo, RegistryValueKind.String);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("SQL Server kayıt defteri anahtarı bulunamadı.");
+                    }
+                }
+            }
+            catch (System.Security.SecurityException ex)
+            {
+                MessageBox.Show("Uygulama yönetici olarak çalıştırılmadı.\n Bu işlem için lütfen uygulamayı Yönetici olarak başlatın.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error("config düzenleyici hatası :", ex);
+            }
+        }
+
     }
 }

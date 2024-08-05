@@ -1,5 +1,6 @@
 ﻿using log4net.Repository.Hierarchy;
 using MultipleSupportProgram.Model;
+using MultipleSupportProgram.Screen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Net.PeerToPeer;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
+using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,8 +40,6 @@ namespace MultipleSupportProgram
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false; //kanalları açar çapraz iş parçacığını kapatır
-            
-            
         }
 
         public void MainForm_Load(object sender, EventArgs e)
@@ -50,16 +50,21 @@ namespace MultipleSupportProgram
             tabControlProcessHeaders.TabPages.Remove(tpQuary);
             tabControlProcessHeaders.TabPages.Remove(tpTablolar);
             tabControlProcessHeaders.TabPages.Remove(tpSorgu);
-            
-            
+            tabControlProcessHeaders.TabPages.Remove(tpSQLFile);
+
+
 
         }
 
-        
+
         public string conString;
         public Loggers loggers = new Loggers();
         public static WaitScreenFunc waitForm = new WaitScreenFunc();
-        
+        public enum photoDeleteEnum { 
+
+
+            }
+
 
         private void BtnConnectionTest_Click(object sender, EventArgs e)
         {
@@ -94,7 +99,7 @@ namespace MultipleSupportProgram
                     {
                         btnConnectionTest.Text = "Bağlan";
                         btnConnectionTest.BackColor = Color.GreenYellow;
-                        MessageBox.Show("Bağlantı Oluşturulamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        
 
                     }
                 }
@@ -102,7 +107,7 @@ namespace MultipleSupportProgram
             catch (Exception ex)
             {
                 
-                MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "connection string " + conString , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
         }
@@ -197,9 +202,13 @@ namespace MultipleSupportProgram
         {
             btnWeighPhotoDelete.Enabled = false;
            
+            
+
+            btnWeighPhotoDelete.Text = "Bekleyiniz...";
+            
 
             
-            //MainForm.waitForm.Show(MainForm.ActiveForm);
+            
             conString = SQLHelper.GetConnectionString();
 
             if (rbOneAndTwoPhoto.Checked == true || rbInTheFolderPhoto.Checked == true || rbAllPhoto.Checked == true)
@@ -209,7 +218,7 @@ namespace MultipleSupportProgram
                 string time2 = "";
                 if (rdbPeriod.Checked == true)
                 {
-                    MainForm.waitForm.Show(MainForm.ActiveForm);
+                   
                     time1 = dtpStart.Value.Date.ToString("u").Replace("Z", "");
 
                     var temp = dtpFinish.Value.Date;
@@ -222,50 +231,51 @@ namespace MultipleSupportProgram
                     string title = "UYARI";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result = MessageBox.Show(message, title, buttons);
-                    if (result==DialogResult.Yes)
-                    {
-                        MainForm.waitForm.Show(MainForm.ActiveForm);
-                    }
-                    else
+                    if (result==DialogResult.No)
                     {
                         MessageBox.Show("İşlem iptal edildi.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnWeighPhotoDelete.Enabled = true;
+                        btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
                         return;
                     }
+                    
                 }
                 else
                 {
                     MessageBox.Show("Bu işlemi yapabilmek için zaman ayarlarından birini seçmek zorundasınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnWeighPhotoDelete.Enabled = true;
+                    btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
                     return;
                 }
 
                  if (rbOneAndTwoPhoto.Checked == true)
                 {
-                    rbName = rbOneAndTwoPhoto.Name.ToString();
+                    rbName = rbOneAndTwoPhoto.Tag.ToString();
                 }
                 else if (rbInTheFolderPhoto.Checked == true)
                 {
-                    rbName = rbInTheFolderPhoto.Name.ToString();
+                    rbName = rbInTheFolderPhoto.Tag.ToString();
                 }
                 else if (rbAllPhoto.Checked == true)
                 {
-                    rbName = rbAllPhoto.Name.ToString();
+                    rbName = rbAllPhoto.Tag.ToString();
                 }
 
                 // silme fonksiyonuna gidiş
                 //************************
-                SQLHelper.PhotoDelete(rbName,time1,time2);
+                SQLHelper.PhotoDelete(rbName,time1,time2,tbPicturePath.Text);
 
 
-                btnWeighPhotoDelete.Enabled = true;
+                
             }
             else
             {
                 
                 MessageBox.Show("Bu işlemi yapabilmek için tartım fotoğraflarını silme seçeneklerinden birini seçmelisiniz.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                btnWeighPhotoDelete.Enabled = true;
+                
             }
+            btnWeighPhotoDelete.Enabled = true;
+            btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
 
         }
 
@@ -513,8 +523,7 @@ namespace MultipleSupportProgram
         }
         private void cbxDbName_DropDown(object sender, EventArgs e)
         {
-            if (cbxDbName.Items.Count == 0)
-            {
+            
                 try
                 {
                     SQLHelper.GetSQLDatabaseList(cbxDbName, CBServers.Text);
@@ -523,7 +532,7 @@ namespace MultipleSupportProgram
                 {
                     MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            
             
         }
         private void cbxUsername_DropDown(object sender, EventArgs e)
@@ -858,23 +867,73 @@ namespace MultipleSupportProgram
 
         private void btnServerConManager_Click(object sender, EventArgs e)
         {
-            
-            SQLHelper.ServerConfigTcpIpAccessAndPortSetter(true,true,1433);
-            if (tbConfigServerName.Text == "")
+            if (IsAdministrator())
             {
-                SQLHelper.ServerConfigSettingsSetter("SQLEXPRESS");
+
+
+                if (rbConfigSQLExpress.Checked)
+                {
+                    SQLHelper.SQLExpressConfigTcpIpAccessAndPortSetter(true, true, 1433);
+                }
+                else if (rbConfigSQLServer.Checked)
+                {
+                    SQLHelper.SQLServerConfigTcpIpAccessAndPortSetter(true, true, 1433);
+                }
+
+
+                if (tbConfigServerName.Text == "")
+                {
+                    SQLHelper.ServerConfigSettingsSetter("SQLEXPRESS");
+                }
+                else
+                {
+                    SQLHelper.ServerConfigSettingsSetter(tbConfigServerName.Text);
+                }
             }
             else
             {
-                SQLHelper.ServerConfigSettingsSetter(tbConfigServerName.Text);
+                MessageBox.Show("İşlem gerçekleştirilemedi bu işlemin gerçekleştirilebilmesi için uygulamanın yönetici olarak açılması gerekmektedir. \nLütfen uygulamayı yönetici olarak tekrar başlatın", "Yetkisiz Giriş", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
 
+        static bool IsAdministrator()
+        {
+            using (WindowsIdentity identity = WindowsIdentity.GetCurrent()) {
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+        }
         private void btnEsitUserSilHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Kullanıcı silme işlemi için \n silmek istediğiniz kullanıcı adını ve kullanıcı şifresi olarakta 'KULLANICISIL' bilgilerini giriniz"
                                 , "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnPicturePath_Click(object sender, EventArgs e)
+        {
+            tbPicturePath.Text = FileHelper.GetPictureFileLocation();
+        }
+
+        private void rbOneAndTwoPhoto_CheckedChanged(object sender, EventArgs e)
+        {
+            rtbPicture.Visible = false;
+            tbPicturePath.Visible = false;
+            btnPicturePath.Visible = false;
+        }
+
+        private void rbInTheFolderPhoto_CheckedChanged(object sender, EventArgs e)
+        {
+            rtbPicture.Visible = true;
+            tbPicturePath.Visible = true;
+            btnPicturePath.Visible = true;
+        }
+
+        private void rbAllPhoto_CheckedChanged(object sender, EventArgs e)
+        {
+            rtbPicture.Visible = true;
+            tbPicturePath.Visible = true;
+            btnPicturePath.Visible = true;
         }
     }
 }
