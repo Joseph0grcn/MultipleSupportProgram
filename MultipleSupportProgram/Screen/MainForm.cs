@@ -1,5 +1,6 @@
 ﻿using log4net.Repository.Hierarchy;
 using MultipleSupportProgram.Model;
+using MultipleSupportProgram.Screen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Net.PeerToPeer;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
+using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,8 +40,6 @@ namespace MultipleSupportProgram
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false; //kanalları açar çapraz iş parçacığını kapatır
-            
-            
         }
 
         public void MainForm_Load(object sender, EventArgs e)
@@ -50,8 +50,9 @@ namespace MultipleSupportProgram
             tabControlProcessHeaders.TabPages.Remove(tpQuary);
             tabControlProcessHeaders.TabPages.Remove(tpTablolar);
             tabControlProcessHeaders.TabPages.Remove(tpSorgu);
-            
-            
+            tabControlProcessHeaders.TabPages.Remove(tpSQLFile);
+
+
 
         }
 
@@ -513,8 +514,7 @@ namespace MultipleSupportProgram
         }
         private void cbxDbName_DropDown(object sender, EventArgs e)
         {
-            if (cbxDbName.Items.Count == 0)
-            {
+            
                 try
                 {
                     SQLHelper.GetSQLDatabaseList(cbxDbName, CBServers.Text);
@@ -523,7 +523,7 @@ namespace MultipleSupportProgram
                 {
                     MessageBox.Show(ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            
             
         }
         private void cbxUsername_DropDown(object sender, EventArgs e)
@@ -858,19 +858,43 @@ namespace MultipleSupportProgram
 
         private void btnServerConManager_Click(object sender, EventArgs e)
         {
-            
-            SQLHelper.ServerConfigTcpIpAccessAndPortSetter(true,true,1433);
-            if (tbConfigServerName.Text == "")
+            if (IsAdministrator())
             {
-                SQLHelper.ServerConfigSettingsSetter("SQLEXPRESS");
+
+
+                if (rbConfigSQLExpress.Checked)
+                {
+                    SQLHelper.SQLExpressConfigTcpIpAccessAndPortSetter(true, true, 1433);
+                }
+                else if (rbConfigSQLServer.Checked)
+                {
+                    SQLHelper.SQLServerConfigTcpIpAccessAndPortSetter(true, true, 1433);
+                }
+
+
+                if (tbConfigServerName.Text == "")
+                {
+                    SQLHelper.ServerConfigSettingsSetter("SQLEXPRESS");
+                }
+                else
+                {
+                    SQLHelper.ServerConfigSettingsSetter(tbConfigServerName.Text);
+                }
             }
             else
             {
-                SQLHelper.ServerConfigSettingsSetter(tbConfigServerName.Text);
+                MessageBox.Show("İşlem gerçekleştirilemedi bu işlemin gerçekleştirilebilmesi için uygulamanın yönetici olarak açılması gerekmektedir. \nLütfen uygulamayı yönetici olarak tekrar başlatın", "Yetkisiz Giriş", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
 
+        static bool IsAdministrator()
+        {
+            using (WindowsIdentity identity = WindowsIdentity.GetCurrent()) {
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+        }
         private void btnEsitUserSilHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Kullanıcı silme işlemi için \n silmek istediğiniz kullanıcı adını ve kullanıcı şifresi olarakta 'KULLANICISIL' bilgilerini giriniz"
