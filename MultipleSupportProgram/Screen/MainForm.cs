@@ -46,6 +46,7 @@ namespace MultipleSupportProgram
         {
             //conString = SQLHelper.GetConnectionString();
             loggers.CreateSpwinlogsFile();
+            
             tabControlProcessHeaders.TabPages.Remove(tpDatabaseRepair);
             tabControlProcessHeaders.TabPages.Remove(tpQuary);
             tabControlProcessHeaders.TabPages.Remove(tpTablolar);

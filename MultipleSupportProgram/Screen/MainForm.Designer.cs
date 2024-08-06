@@ -1,6 +1,8 @@
-﻿namespace MultipleSupportProgram
+﻿using System.Windows.Forms;
+
+namespace MultipleSupportProgram
 {
-    partial class MainForm
+    partial class MainForm : Form
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -19,6 +21,163 @@
             }
             base.Dispose(disposing);
         }
+
+        private System.Windows.Forms.TabControl tabControlProcessHeaders;
+        private System.Windows.Forms.TabPage tpBackup;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnBackup;
+        private System.Windows.Forms.Button btnBackupFileLocationSelect;
+        private System.Windows.Forms.TextBox txtBackupPath;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tpRestore;
+        private System.Windows.Forms.TabPage tpSQLFile;
+        private System.Windows.Forms.TabPage tpSPWinDatabasePhotoDelete;
+        private System.Windows.Forms.TabPage tpSPWinScaleAndDBAConsolidation;
+        private System.Windows.Forms.GroupBox gbConnectionSettings;
+        private System.Windows.Forms.Label lblServer;
+        private System.Windows.Forms.CheckBox CbWindowsAuthentication;
+        private System.Windows.Forms.Button btnConnectionTest;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.ComboBox CBServers;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.Button btnRestoreFile;
+        private System.Windows.Forms.TextBox txtRestorePath;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnSQLRun;
+        private System.Windows.Forms.Button btnSQLFileSelect;
+        private System.Windows.Forms.TextBox txtSQLFile;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnWeighPhotoDelete;
+        private System.Windows.Forms.RadioButton rbAllPhoto;
+        private System.Windows.Forms.RadioButton rbInTheFolderPhoto;
+        private System.Windows.Forms.RadioButton rbOneAndTwoPhoto;
+        private System.Windows.Forms.TabPage tpDatabaseRepair;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnMoveDbaToScale;
+        private System.Windows.Forms.ComboBox cbxDbName;
+        private System.Windows.Forms.ComboBox cbxDbNameBackup;
+        private System.Windows.Forms.ComboBox cbxDbNameRestore;
+        private System.Windows.Forms.ComboBox cbxDbNameRepair;
+        private System.Windows.Forms.ComboBox cbxUsername;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tpTablolar;
+        private System.Windows.Forms.Button btngoster;
+        public System.Windows.Forms.DataGridView dataGV1;
+        private System.Windows.Forms.ComboBox CbxtableList;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.TabPage tpQuary;
+        private System.Windows.Forms.RichTextBox tbxQuary;
+        private System.Windows.Forms.Button btnQuarySave;
+        private System.Windows.Forms.Button btnQuaryClear;
+        private System.Windows.Forms.Button btnloc;
+        private System.Windows.Forms.TextBox tbxQuarySaveLoc;
+        private System.Windows.Forms.TextBox tbxQuaryName;
+        private System.Windows.Forms.Label lblQuaryName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TabPage tpSorgu;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RichTextBox rtbSorgula;
+        private System.Windows.Forms.Button btnTemizle;
+        private System.Windows.Forms.Button btnSorgula;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.RadioButton rdbPeriod;
+        private System.Windows.Forms.RadioButton rdbAll;
+        private System.Windows.Forms.DateTimePicker dtpFinish;
+        private System.Windows.Forms.TabPage tpEsitUserEkle;
+        private System.Windows.Forms.Button btnKullanıcıEkle;
+        private System.Windows.Forms.TabPage tpEsitScaleSil;
+        private System.Windows.Forms.Button btnEsitScaleSil;
+        private System.Windows.Forms.TabPage tpCamPhotoLink;
+        private System.Windows.Forms.Label lblCamIpAddress;
+        private System.Windows.Forms.TextBox tbCamPassword;
+        private System.Windows.Forms.TextBox tbCamUser;
+        private System.Windows.Forms.TextBox tbCamIpAddress;
+        private System.Windows.Forms.Label lblCamPassword;
+        private System.Windows.Forms.Label lblCamUser;
+        private System.Windows.Forms.ComboBox cbCamType;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbCamLink;
+        private System.Windows.Forms.Button btnCamLinkCreate;
+        private System.Windows.Forms.Button btnLinkCopy;
+        private System.Windows.Forms.TabPage tpTartımSilme;
+        private System.Windows.Forms.Label lbTartımEnd;
+        private System.Windows.Forms.Label lbTartımStart;
+        private System.Windows.Forms.DateTimePicker dtpTartimDateEnd;
+        private System.Windows.Forms.RadioButton rbTartimAllDelete;
+        private System.Windows.Forms.RadioButton rbTartimPeriodDelete;
+        private System.Windows.Forms.DateTimePicker dtpTartimDateStart;
+        private System.Windows.Forms.RadioButton rbTartim2;
+        private System.Windows.Forms.RadioButton rbTartim1;
+        private System.Windows.Forms.Button btnTartimSilme;
+        private System.Windows.Forms.Label lbUserAddUserPassword;
+        private System.Windows.Forms.Label lbUserAddUserName;
+        private System.Windows.Forms.ComboBox cbUserAddUserRole;
+        private System.Windows.Forms.Label lbUserAddUserRole;
+        private System.Windows.Forms.TextBox tbUserAddUserPassword;
+        private System.Windows.Forms.TextBox tbUserAddUserName;
+        private System.Windows.Forms.DateTimePicker dtpTartimSaatEnd;
+        private System.Windows.Forms.DateTimePicker dtpTartimSaatStart;
+        private System.Windows.Forms.TabPage tpDatabaseStop;
+        private System.Windows.Forms.Button btnSpwinDBScript;
+        private System.Windows.Forms.Button btnAuditDBScript;
+        private System.Windows.Forms.Button btnKullanıcıSil;
+        private System.Windows.Forms.TabPage tpServerConManager;
+        private System.Windows.Forms.Button btnServerConManager;
+        private System.Windows.Forms.TextBox tbUserAddUserPasswordConfirm;
+        private System.Windows.Forms.Label lbUserAddUserPasswordConfirm;
+        private System.Windows.Forms.Button btnEsitUserSilHelp;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label lblDateStart;
+        private System.Windows.Forms.Label lblDateFinish;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbConfigServerName;
+        // 
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
+        private System.Windows.Forms.RadioButton rbConfigSQLExpress;
+        private System.Windows.Forms.RadioButton rbConfigSQLServer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
+        private System.Windows.Forms.TextBox tbPicturePath;
+        private System.Windows.Forms.RichTextBox rtbPicture;
+        private System.Windows.Forms.Button btnPicturePath;
 
         #region Windows Form Designer üretilen kod
 
@@ -1009,7 +1168,7 @@
             // 
             // rbAllPhoto
             // 
-            this.rbAllPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rbAllPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rbAllPhoto.AutoSize = true;
             this.rbAllPhoto.Location = new System.Drawing.Point(3, 71);
@@ -1023,7 +1182,7 @@
             // 
             // rbOneAndTwoPhoto
             // 
-            this.rbOneAndTwoPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.rbOneAndTwoPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rbOneAndTwoPhoto.AutoSize = true;
             this.rbOneAndTwoPhoto.Location = new System.Drawing.Point(3, 3);
@@ -1037,8 +1196,8 @@
             // 
             // rbInTheFolderPhoto
             // 
-            this.rbInTheFolderPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.rbInTheFolderPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rbInTheFolderPhoto.AutoSize = true;
             this.rbInTheFolderPhoto.Location = new System.Drawing.Point(3, 37);
@@ -1079,7 +1238,7 @@
             // 
             // rdbPeriod
             // 
-            this.rdbPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rdbPeriod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbPeriod.AutoSize = true;
             this.rdbPeriod.Location = new System.Drawing.Point(2, 53);
@@ -1094,7 +1253,7 @@
             // 
             // rdbAll
             // 
-            this.rdbAll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.rdbAll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbAll.AutoSize = true;
             this.rdbAll.Location = new System.Drawing.Point(2, 21);
@@ -2370,8 +2529,8 @@
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 0);
@@ -2557,14 +2716,6 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Veritabanı Dosya Boyutunu Küçültme";
             this.groupBox6.Visible = false;
-            // 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
-        private System.Windows.Forms.RadioButton rbConfigSQLExpress;
-        private System.Windows.Forms.RadioButton rbConfigSQLServer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
-        private System.Windows.Forms.TextBox tbPicturePath;
-        private System.Windows.Forms.RichTextBox rtbPicture;
-        private System.Windows.Forms.Button btnPicturePath;
             // cbxDbNameRepair
             // 
             this.cbxDbNameRepair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
@@ -2983,7 +3134,8 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem
+    });
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -3113,154 +3265,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControlProcessHeaders;
-        private System.Windows.Forms.TabPage tpBackup;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnBackup;
-        private System.Windows.Forms.Button btnBackupFileLocationSelect;
-        private System.Windows.Forms.TextBox txtBackupPath;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tpRestore;
-        private System.Windows.Forms.TabPage tpSQLFile;
-        private System.Windows.Forms.TabPage tpSPWinDatabasePhotoDelete;
-        private System.Windows.Forms.TabPage tpSPWinScaleAndDBAConsolidation;
-        private System.Windows.Forms.GroupBox gbConnectionSettings;
-        private System.Windows.Forms.Label lblServer;
-        private System.Windows.Forms.CheckBox CbWindowsAuthentication;
-        private System.Windows.Forms.Button btnConnectionTest;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.ComboBox CBServers;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnRestore;
-        private System.Windows.Forms.Button btnRestoreFile;
-        private System.Windows.Forms.TextBox txtRestorePath;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnSQLRun;
-        private System.Windows.Forms.Button btnSQLFileSelect;
-        private System.Windows.Forms.TextBox txtSQLFile;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnWeighPhotoDelete;
-        private System.Windows.Forms.RadioButton rbAllPhoto;
-        private System.Windows.Forms.RadioButton rbInTheFolderPhoto;
-        private System.Windows.Forms.RadioButton rbOneAndTwoPhoto;
-        private System.Windows.Forms.TabPage tpDatabaseRepair;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnMoveDbaToScale;
-        private System.Windows.Forms.ComboBox cbxDbName;
-        private System.Windows.Forms.ComboBox cbxDbNameBackup;
-        private System.Windows.Forms.ComboBox cbxDbNameRestore;
-        private System.Windows.Forms.ComboBox cbxDbNameRepair;
-        private System.Windows.Forms.ComboBox cbxUsername;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TabPage tpTablolar;
-        private System.Windows.Forms.Button btngoster;
-        public System.Windows.Forms.DataGridView dataGV1;
-        private System.Windows.Forms.ComboBox CbxtableList;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.TabPage tpQuary;
-        private System.Windows.Forms.RichTextBox tbxQuary;
-        private System.Windows.Forms.Button btnQuarySave;
-        private System.Windows.Forms.Button btnQuaryClear;
-        private System.Windows.Forms.Button btnloc;
-        private System.Windows.Forms.TextBox tbxQuarySaveLoc;
-        private System.Windows.Forms.TextBox tbxQuaryName;
-        private System.Windows.Forms.Label lblQuaryName;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TabPage tpSorgu;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox rtbSorgula;
-        private System.Windows.Forms.Button btnTemizle;
-        private System.Windows.Forms.Button btnSorgula;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DateTimePicker dtpStart;
-        private System.Windows.Forms.RadioButton rdbPeriod;
-        private System.Windows.Forms.RadioButton rdbAll;
-        private System.Windows.Forms.DateTimePicker dtpFinish;
-        private System.Windows.Forms.TabPage tpEsitUserEkle;
-        private System.Windows.Forms.Button btnKullanıcıEkle;
-        private System.Windows.Forms.TabPage tpEsitScaleSil;
-        private System.Windows.Forms.Button btnEsitScaleSil;
-        private System.Windows.Forms.TabPage tpCamPhotoLink;
-        private System.Windows.Forms.Label lblCamIpAddress;
-        private System.Windows.Forms.TextBox tbCamPassword;
-        private System.Windows.Forms.TextBox tbCamUser;
-        private System.Windows.Forms.TextBox tbCamIpAddress;
-        private System.Windows.Forms.Label lblCamPassword;
-        private System.Windows.Forms.Label lblCamUser;
-        private System.Windows.Forms.ComboBox cbCamType;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbCamLink;
-        private System.Windows.Forms.Button btnCamLinkCreate;
-        private System.Windows.Forms.Button btnLinkCopy;
-        private System.Windows.Forms.TabPage tpTartımSilme;
-        private System.Windows.Forms.Label lbTartımEnd;
-        private System.Windows.Forms.Label lbTartımStart;
-        private System.Windows.Forms.DateTimePicker dtpTartimDateEnd;
-        private System.Windows.Forms.RadioButton rbTartimAllDelete;
-        private System.Windows.Forms.RadioButton rbTartimPeriodDelete;
-        private System.Windows.Forms.DateTimePicker dtpTartimDateStart;
-        private System.Windows.Forms.RadioButton rbTartim2;
-        private System.Windows.Forms.RadioButton rbTartim1;
-        private System.Windows.Forms.Button btnTartimSilme;
-        private System.Windows.Forms.Label lbUserAddUserPassword;
-        private System.Windows.Forms.Label lbUserAddUserName;
-        private System.Windows.Forms.ComboBox cbUserAddUserRole;
-        private System.Windows.Forms.Label lbUserAddUserRole;
-        private System.Windows.Forms.TextBox tbUserAddUserPassword;
-        private System.Windows.Forms.TextBox tbUserAddUserName;
-        private System.Windows.Forms.DateTimePicker dtpTartimSaatEnd;
-        private System.Windows.Forms.DateTimePicker dtpTartimSaatStart;
-        private System.Windows.Forms.TabPage tpDatabaseStop;
-        private System.Windows.Forms.Button btnSpwinDBScript;
-        private System.Windows.Forms.Button btnAuditDBScript;
-        private System.Windows.Forms.Button btnKullanıcıSil;
-        private System.Windows.Forms.TabPage tpServerConManager;
-        private System.Windows.Forms.Button btnServerConManager;
-        private System.Windows.Forms.TextBox tbUserAddUserPasswordConfirm;
-        private System.Windows.Forms.Label lbUserAddUserPasswordConfirm;
-        private System.Windows.Forms.Button btnEsitUserSilHelp;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label lblDateStart;
-        private System.Windows.Forms.Label lblDateFinish;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbConfigServerName;
+
     }
 }
+
 
