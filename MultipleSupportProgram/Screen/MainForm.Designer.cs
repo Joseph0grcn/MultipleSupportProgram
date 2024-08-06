@@ -69,6 +69,7 @@
             this.dtpTartimSaatStart = new System.Windows.Forms.DateTimePicker();
             this.tpSPWinDatabasePhotoDelete = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbPicturePath = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.rbAllPhoto = new System.Windows.Forms.RadioButton();
@@ -83,6 +84,9 @@
             this.lblDateFinish = new System.Windows.Forms.Label();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.lblDateStart = new System.Windows.Forms.Label();
+            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            this.rtbPicture = new System.Windows.Forms.RichTextBox();
+            this.btnPicturePath = new System.Windows.Forms.Button();
             this.tpEsitUserEkle = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEsitUserSilHelp = new System.Windows.Forms.Button();
@@ -180,10 +184,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tbPicturePath = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
-            this.rtbPicture = new System.Windows.Forms.RichTextBox();
-            this.btnPicturePath = new System.Windows.Forms.Button();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -790,6 +790,15 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(651, 340);
             this.tableLayoutPanel9.TabIndex = 33;
             // 
+            // tbPicturePath
+            // 
+            this.tbPicturePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPicturePath.Location = new System.Drawing.Point(146, 286);
+            this.tbPicturePath.Name = "tbPicturePath";
+            this.tbPicturePath.Size = new System.Drawing.Size(163, 22);
+            this.tbPicturePath.TabIndex = 32;
+            this.tbPicturePath.Visible = false;
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.tableLayoutPanel11);
@@ -980,6 +989,42 @@
             this.lblDateStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblDateStart.Visible = false;
             // 
+            // tableLayoutPanel22
+            // 
+            this.tableLayoutPanel22.ColumnCount = 1;
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(484, 3);
+            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+            this.tableLayoutPanel22.RowCount = 2;
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(164, 130);
+            this.tableLayoutPanel22.TabIndex = 33;
+            // 
+            // rtbPicture
+            // 
+            this.rtbPicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rtbPicture.Location = new System.Drawing.Point(3, 258);
+            this.rtbPicture.Name = "rtbPicture";
+            this.rtbPicture.ReadOnly = true;
+            this.rtbPicture.Size = new System.Drawing.Size(137, 79);
+            this.rtbPicture.TabIndex = 33;
+            this.rtbPicture.Text = "Resimlerin kaydedildiği dosya yolunu yan tarafa giriniz.\n";
+            this.rtbPicture.Visible = false;
+            // 
+            // btnPicturePath
+            // 
+            this.btnPicturePath.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPicturePath.Location = new System.Drawing.Point(315, 286);
+            this.btnPicturePath.Name = "btnPicturePath";
+            this.btnPicturePath.Size = new System.Drawing.Size(51, 22);
+            this.btnPicturePath.TabIndex = 34;
+            this.btnPicturePath.Text = "- - -";
+            this.btnPicturePath.UseVisualStyleBackColor = true;
+            this.btnPicturePath.Visible = false;
+            this.btnPicturePath.Click += new System.EventHandler(this.btnPicturePath_Click);
+            // 
             // tpEsitUserEkle
             // 
             this.tpEsitUserEkle.BackColor = System.Drawing.SystemColors.Control;
@@ -1082,7 +1127,7 @@
             this.cbUserAddUserRole.Items.AddRange(new object[] {
             "Read-Only",
             "Admin"});
-            this.cbUserAddUserRole.Location = new System.Drawing.Point(198, 204);
+            this.cbUserAddUserRole.Location = new System.Drawing.Point(198, 205);
             this.cbUserAddUserRole.Name = "cbUserAddUserRole";
             this.cbUserAddUserRole.Size = new System.Drawing.Size(189, 24);
             this.cbUserAddUserRole.TabIndex = 6;
@@ -1290,7 +1335,7 @@
             "Aver",
             "Dahua",
             "Hikvision"});
-            this.cbCamType.Location = new System.Drawing.Point(424, 115);
+            this.cbCamType.Location = new System.Drawing.Point(424, 117);
             this.cbCamType.Name = "cbCamType";
             this.cbCamType.Size = new System.Drawing.Size(224, 24);
             this.cbCamType.TabIndex = 3;
@@ -2154,51 +2199,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(665, 688);
             this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // tbPicturePath
-            // 
-            this.tbPicturePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPicturePath.Location = new System.Drawing.Point(146, 286);
-            this.tbPicturePath.Name = "tbPicturePath";
-            this.tbPicturePath.Size = new System.Drawing.Size(163, 22);
-            this.tbPicturePath.TabIndex = 32;
-            this.tbPicturePath.Visible = false;
-            // 
-            // tableLayoutPanel22
-            // 
-            this.tableLayoutPanel22.ColumnCount = 1;
-            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel22.Location = new System.Drawing.Point(484, 3);
-            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
-            this.tableLayoutPanel22.RowCount = 2;
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel22.Size = new System.Drawing.Size(164, 130);
-            this.tableLayoutPanel22.TabIndex = 33;
-            // 
-            // rtbPicture
-            // 
-            this.rtbPicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rtbPicture.Location = new System.Drawing.Point(3, 258);
-            this.rtbPicture.Name = "rtbPicture";
-            this.rtbPicture.ReadOnly = true;
-            this.rtbPicture.Size = new System.Drawing.Size(137, 79);
-            this.rtbPicture.TabIndex = 33;
-            this.rtbPicture.Text = "Resimlerin kaydedildiği dosya yolunu yan tarafa giriniz.\n";
-            this.rtbPicture.Visible = false;
-            // 
-            // btnPicturePath
-            // 
-            this.btnPicturePath.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnPicturePath.Location = new System.Drawing.Point(315, 286);
-            this.btnPicturePath.Name = "btnPicturePath";
-            this.btnPicturePath.Size = new System.Drawing.Size(51, 22);
-            this.btnPicturePath.TabIndex = 34;
-            this.btnPicturePath.Text = "- - -";
-            this.btnPicturePath.UseVisualStyleBackColor = true;
-            this.btnPicturePath.Visible = false;
-            this.btnPicturePath.Click += new System.EventHandler(this.btnPicturePath_Click);
             // 
             // MainForm
             // 
