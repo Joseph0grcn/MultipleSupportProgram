@@ -87,6 +87,64 @@
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
             this.rtbPicture = new System.Windows.Forms.RichTextBox();
             this.btnPicturePath = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tpSPWinScaleAndDBAConsolidation = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnMoveDbaToScale = new System.Windows.Forms.Button();
+            this.tpTablolar = new System.Windows.Forms.TabPage();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.CbxtableList = new System.Windows.Forms.ComboBox();
+            this.btngoster = new System.Windows.Forms.Button();
+            this.dataGV1 = new System.Windows.Forms.DataGridView();
+            this.tpQuary = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblQuaryName = new System.Windows.Forms.Label();
+            this.tbxQuaryName = new System.Windows.Forms.TextBox();
+            this.tbxQuarySaveLoc = new System.Windows.Forms.TextBox();
+            this.btnloc = new System.Windows.Forms.Button();
+            this.btnQuaryClear = new System.Windows.Forms.Button();
+            this.btnQuarySave = new System.Windows.Forms.Button();
+            this.tbxQuary = new System.Windows.Forms.RichTextBox();
+            this.tpSorgu = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTemizle = new System.Windows.Forms.Button();
+            this.btnSorgula = new System.Windows.Forms.Button();
+            this.rtbSorgula = new System.Windows.Forms.RichTextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tpSPWinScaleAndDBAConsolidation = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnMoveDbaToScale = new System.Windows.Forms.Button();
+            this.tpTablolar = new System.Windows.Forms.TabPage();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.CbxtableList = new System.Windows.Forms.ComboBox();
+            this.btngoster = new System.Windows.Forms.Button();
+            this.dataGV1 = new System.Windows.Forms.DataGridView();
+            this.tpQuary = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblQuaryName = new System.Windows.Forms.Label();
+            this.tbxQuaryName = new System.Windows.Forms.TextBox();
+            this.tbxQuarySaveLoc = new System.Windows.Forms.TextBox();
+            this.btnloc = new System.Windows.Forms.Button();
+            this.btnQuaryClear = new System.Windows.Forms.Button();
+            this.btnQuarySave = new System.Windows.Forms.Button();
+            this.tbxQuary = new System.Windows.Forms.RichTextBox();
+            this.tpSorgu = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTemizle = new System.Windows.Forms.Button();
+            this.btnSorgula = new System.Windows.Forms.Button();
+            this.rtbSorgula = new System.Windows.Forms.RichTextBox();
             this.tpEsitUserEkle = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEsitUserSilHelp = new System.Windows.Forms.Button();
@@ -545,64 +603,6 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 5;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(651, 340);
-            this.tableLayoutPanel6.TabIndex = 32;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.tableLayoutPanel13);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox4.Location = new System.Drawing.Point(295, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(189, 130);
-            this.groupBox4.TabIndex = 31;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Tartım Seçiniz";
-            // 
-            // tableLayoutPanel13
-            // 
-            this.tableLayoutPanel13.ColumnCount = 1;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Controls.Add(this.rbTartim2, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.rbTartim1, 0, 0);
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 25);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 2;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(183, 102);
-            this.tableLayoutPanel13.TabIndex = 32;
-            // 
-            // rbTartim2
-            // 
-            this.rbTartim2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbTartim2.AutoSize = true;
-            this.rbTartim2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbTartim2.Location = new System.Drawing.Point(3, 62);
-            this.rbTartim2.Name = "rbTartim2";
-            this.rbTartim2.Size = new System.Drawing.Size(177, 28);
-            this.rbTartim2.TabIndex = 9;
-            this.rbTartim2.Text = "2. Tartım";
-            this.rbTartim2.UseVisualStyleBackColor = true;
-            // 
-            // rbTartim1
-            // 
-            this.rbTartim1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.rbTartim1.AutoSize = true;
-            this.rbTartim1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbTartim1.Location = new System.Drawing.Point(3, 11);
-            this.rbTartim1.Name = "rbTartim1";
-            this.rbTartim1.Size = new System.Drawing.Size(177, 28);
-            this.rbTartim1.TabIndex = 8;
-            this.rbTartim1.Text = "1. Tartım";
-            this.rbTartim1.UseVisualStyleBackColor = true;
-            // 
             // btnTartimSilme
             // 
             this.btnTartimSilme.BackColor = System.Drawing.Color.Red;
@@ -725,12 +725,190 @@
             this.dtpTartimDateEnd.Visible = false;
             // 
             // lbTartımEnd
-            // 
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.lbTartımEnd.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbTartımEnd.AutoSize = true;
             this.lbTartımEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbTartımEnd.Location = new System.Drawing.Point(294, 149);
             this.lbTartımEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTartımEnd.Name = "lbTartımEnd";
+            this.lbTartımEnd.Size = new System.Drawing.Size(95, 24);
+            this.lbTartımEnd.TabIndex = 24;
+            this.lbTartımEnd.Text = "Bitiş Tarihi";
+            this.lbTartımEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbTartımEnd.Visible = false;
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            // dtpTartimSaatStart
+            this.groupBox4.Location = new System.Drawing.Point(295, 3);
+            this.dtpTartimSaatStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartimSaatStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTartimSaatStart.Location = new System.Drawing.Point(99, 240);
+            this.dtpTartimSaatStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartimSaatStart.Name = "dtpTartimSaatStart";
+            this.dtpTartimSaatStart.Size = new System.Drawing.Size(99, 29);
+            this.dtpTartimSaatStart.TabIndex = 27;
+            this.dtpTartimSaatStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
+            this.dtpTartimSaatStart.Visible = false;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Controls.Add(this.rbTartim2, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.rbTartim1, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 25);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            // btnSQLFileSelect
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.btnSQLFileSelect.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSQLFileSelect.Location = new System.Drawing.Point(312, 5);
+            this.btnSQLFileSelect.Name = "btnSQLFileSelect";
+            this.btnSQLFileSelect.Size = new System.Drawing.Size(50, 22);
+            this.btnSQLFileSelect.TabIndex = 3;
+            this.btnSQLFileSelect.Text = "- - -";
+            this.btnSQLFileSelect.UseVisualStyleBackColor = true;
+            this.btnSQLFileSelect.Click += new System.EventHandler(this.BtnSQLFileSelect_Click);
+            this.rbTartim2.Location = new System.Drawing.Point(3, 62);
+            // btnSQLRun
+            this.rbTartim2.Size = new System.Drawing.Size(177, 28);
+            this.tableLayoutPanel15.SetColumnSpan(this.btnSQLRun, 2);
+            this.btnSQLRun.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSQLRun.Location = new System.Drawing.Point(130, 35);
+            this.btnSQLRun.Name = "btnSQLRun";
+            this.btnSQLRun.Size = new System.Drawing.Size(232, 26);
+            this.btnSQLRun.TabIndex = 4;
+            this.btnSQLRun.Text = "SQL Dosyasını Çalıştır";
+            this.btnSQLRun.UseVisualStyleBackColor = true;
+            this.btnSQLRun.Click += new System.EventHandler(this.BtnSQLRun_Click);
+            this.rbTartim1.Location = new System.Drawing.Point(3, 11);
+            this.rbTartim1.Name = "rbTartim1";
+            this.rbTartim1.Size = new System.Drawing.Size(177, 28);
+            this.rbTartim1.TabIndex = 8;
+            this.rbTartim1.Text = "1. Tartım";
+            this.rbTartim1.UseVisualStyleBackColor = true;
+            // 
+            // btnSQLFileSelect
+            // 
+            this.btnSQLFileSelect.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSQLFileSelect.Location = new System.Drawing.Point(312, 5);
+            this.btnSQLFileSelect.Name = "btnSQLFileSelect";
+            this.btnSQLFileSelect.Size = new System.Drawing.Size(50, 22);
+            this.btnSQLFileSelect.TabIndex = 3;
+            this.btnSQLFileSelect.Text = "- - -";
+            this.btnSQLFileSelect.UseVisualStyleBackColor = true;
+            this.btnSQLFileSelect.Click += new System.EventHandler(this.BtnSQLFileSelect_Click);
+            // 
+            // btnSQLRun
+            // 
+            this.tableLayoutPanel15.SetColumnSpan(this.btnSQLRun, 2);
+            this.btnSQLRun.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSQLRun.Location = new System.Drawing.Point(130, 35);
+            this.btnSQLRun.Name = "btnSQLRun";
+            this.btnSQLRun.Size = new System.Drawing.Size(232, 26);
+            this.btnSQLRun.TabIndex = 4;
+            this.btnSQLRun.Text = "SQL Dosyasını Çalıştır";
+            this.btnSQLRun.UseVisualStyleBackColor = true;
+            this.btnSQLRun.Click += new System.EventHandler(this.BtnSQLRun_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.tableLayoutPanel12);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox3.Location = new System.Drawing.Point(100, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(189, 130);
+            this.groupBox3.TabIndex = 30;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tarih Seçiniz";
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.ColumnCount = 1;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Controls.Add(this.rbTartimPeriodDelete, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.rbTartimAllDelete, 0, 0);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 25);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 2;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(183, 102);
+            this.tableLayoutPanel12.TabIndex = 32;
+            // 
+            // rbTartimPeriodDelete
+            // 
+            this.rbTartimPeriodDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbTartimPeriodDelete.AutoSize = true;
+            this.rbTartimPeriodDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartimPeriodDelete.Location = new System.Drawing.Point(2, 62);
+            this.rbTartimPeriodDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.rbTartimPeriodDelete.Name = "rbTartimPeriodDelete";
+            this.rbTartimPeriodDelete.Size = new System.Drawing.Size(179, 28);
+            this.rbTartimPeriodDelete.TabIndex = 20;
+            this.rbTartimPeriodDelete.Text = "Tarih aralığını sil";
+            this.rbTartimPeriodDelete.UseVisualStyleBackColor = true;
+            this.rbTartimPeriodDelete.Click += new System.EventHandler(this.rbTartımPeriodDelete_Click);
+            // 
+            // rbTartimAllDelete
+            // 
+            this.rbTartimAllDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbTartimAllDelete.AutoSize = true;
+            this.rbTartimAllDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbTartimAllDelete.Location = new System.Drawing.Point(2, 11);
+            this.rbTartimAllDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.rbTartimAllDelete.Name = "rbTartimAllDelete";
+            this.rbTartimAllDelete.Size = new System.Drawing.Size(179, 28);
+            this.rbTartimAllDelete.TabIndex = 21;
+            this.rbTartimAllDelete.Text = "Tüm kayıtları sil";
+            this.rbTartimAllDelete.UseVisualStyleBackColor = true;
+            this.rbTartimAllDelete.Click += new System.EventHandler(this.rbTartımAllDelete_Click);
+            // 
+            // dtpTartimDateStart
+            // 
+            this.dtpTartimDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpTartimDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartimDateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTartimDateStart.Location = new System.Drawing.Point(99, 207);
+            this.dtpTartimDateStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartimDateStart.Name = "dtpTartimDateStart";
+            this.dtpTartimDateStart.Size = new System.Drawing.Size(118, 29);
+            this.dtpTartimDateStart.TabIndex = 19;
+            this.dtpTartimDateStart.Value = new System.DateTime(2024, 7, 29, 0, 0, 0, 0);
+            this.dtpTartimDateStart.Visible = false;
+            // 
+            // lbTartımStart
+            // 
+            this.lbTartımStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbTartımStart.AutoSize = true;
+            this.lbTartımStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbTartımStart.Location = new System.Drawing.Point(99, 149);
+            this.lbTartımStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTartımStart.Name = "lbTartımStart";
+            this.lbTartımStart.Size = new System.Drawing.Size(143, 24);
+            this.lbTartımStart.TabIndex = 23;
+            this.lbTartımStart.Text = "Başlangıç Tarihi";
+            this.lbTartımStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbTartımStart.Visible = false;
+            // 
+            // dtpTartimDateEnd
+            // 
+            this.dtpTartimDateEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpTartimDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpTartimDateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTartimDateEnd.Location = new System.Drawing.Point(294, 207);
+            this.dtpTartimDateEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpTartimDateEnd.Name = "dtpTartimDateEnd";
+            this.dtpTartimDateEnd.Size = new System.Drawing.Size(118, 29);
+            this.dtpTartimDateEnd.TabIndex = 22;
+            this.dtpTartimDateEnd.Value = new System.DateTime(2024, 7, 29, 0, 0, 0, 0);
+            this.dtpTartimDateEnd.Visible = false;
+            // 
+            // lbTartımEnd
+            // 
+            this.lbTartımEnd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(651, 340);
             this.lbTartımEnd.Name = "lbTartımEnd";
             this.lbTartımEnd.Size = new System.Drawing.Size(95, 24);
             this.lbTartımEnd.TabIndex = 24;
@@ -756,10 +934,10 @@
             this.tpSPWinDatabasePhotoDelete.Controls.Add(this.tableLayoutPanel9);
             this.tpSPWinDatabasePhotoDelete.Location = new System.Drawing.Point(4, 82);
             this.tpSPWinDatabasePhotoDelete.Name = "tpSPWinDatabasePhotoDelete";
-            this.tpSPWinDatabasePhotoDelete.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSPWinDatabasePhotoDelete.Size = new System.Drawing.Size(657, 346);
-            this.tpSPWinDatabasePhotoDelete.TabIndex = 3;
-            this.tpSPWinDatabasePhotoDelete.Text = "Veritabanından Fotoğraf Silme";
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(651, 321);
             // 
             // tableLayoutPanel9
             // 
@@ -785,9 +963,10 @@
             this.tableLayoutPanel9.RowCount = 4;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(651, 340);
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(651, 321);
             this.tableLayoutPanel9.TabIndex = 33;
             // 
             // tbPicturePath
@@ -875,7 +1054,7 @@
             // 
             this.groupBox8.Controls.Add(this.tableLayoutPanel10);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnWeighPhotoDelete.Location = new System.Drawing.Point(484, 258);
             this.groupBox8.Location = new System.Drawing.Point(146, 3);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(163, 130);
@@ -904,7 +1083,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rdbPeriod.AutoSize = true;
             this.rdbPeriod.Location = new System.Drawing.Point(2, 53);
-            this.rdbPeriod.Margin = new System.Windows.Forms.Padding(2);
+            this.btnWeighPhotoDelete.Location = new System.Drawing.Point(484, 259);
             this.rdbPeriod.Name = "rdbPeriod";
             this.rdbPeriod.Size = new System.Drawing.Size(153, 28);
             this.rdbPeriod.TabIndex = 12;
@@ -931,64 +1110,6 @@
             // btnWeighPhotoDelete
             // 
             this.btnWeighPhotoDelete.BackColor = System.Drawing.Color.Red;
-            this.btnWeighPhotoDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnWeighPhotoDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnWeighPhotoDelete.Location = new System.Drawing.Point(484, 258);
-            this.btnWeighPhotoDelete.Name = "btnWeighPhotoDelete";
-            this.btnWeighPhotoDelete.Size = new System.Drawing.Size(164, 59);
-            this.btnWeighPhotoDelete.TabIndex = 4;
-            this.btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
-            this.btnWeighPhotoDelete.UseVisualStyleBackColor = false;
-            this.btnWeighPhotoDelete.Click += new System.EventHandler(this.BtnWeighPhotoDelete_Click);
-            // 
-            // dtpFinish
-            // 
-            this.dtpFinish.Location = new System.Drawing.Point(314, 206);
-            this.dtpFinish.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpFinish.Name = "dtpFinish";
-            this.dtpFinish.Size = new System.Drawing.Size(128, 22);
-            this.dtpFinish.TabIndex = 15;
-            this.dtpFinish.Value = new System.DateTime(2023, 7, 25, 23, 59, 59, 0);
-            this.dtpFinish.Visible = false;
-            // 
-            // lblDateFinish
-            // 
-            this.lblDateFinish.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblDateFinish.AutoSize = true;
-            this.lblDateFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblDateFinish.Location = new System.Drawing.Point(314, 158);
-            this.lblDateFinish.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDateFinish.Name = "lblDateFinish";
-            this.lblDateFinish.Size = new System.Drawing.Size(95, 24);
-            this.lblDateFinish.TabIndex = 24;
-            this.lblDateFinish.Text = "Bitiş Tarihi";
-            this.lblDateFinish.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblDateFinish.Visible = false;
-            // 
-            // dtpStart
-            // 
-            this.dtpStart.Location = new System.Drawing.Point(145, 206);
-            this.dtpStart.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(127, 22);
-            this.dtpStart.TabIndex = 10;
-            this.dtpStart.Value = new System.DateTime(2023, 7, 25, 0, 1, 0, 0);
-            this.dtpStart.Visible = false;
-            // 
-            // lblDateStart
-            // 
-            this.lblDateStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblDateStart.AutoSize = true;
-            this.lblDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblDateStart.Location = new System.Drawing.Point(145, 158);
-            this.lblDateStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDateStart.Name = "lblDateStart";
-            this.lblDateStart.Size = new System.Drawing.Size(143, 24);
-            this.lblDateStart.TabIndex = 23;
-            this.lblDateStart.Text = "Başlangıç Tarihi";
-            this.lblDateStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblDateStart.Visible = false;
-            // 
             // tableLayoutPanel22
             // 
             this.tableLayoutPanel22.ColumnCount = 1;
@@ -1024,6 +1145,702 @@
             this.btnPicturePath.UseVisualStyleBackColor = true;
             this.btnPicturePath.Visible = false;
             this.btnPicturePath.Click += new System.EventHandler(this.btnPicturePath_Click);
+            // 
+            this.tpDatabaseRepair.Size = new System.Drawing.Size(657, 327);
+            this.tpDatabaseRepair.TabIndex = 7;
+            this.tpDatabaseRepair.Text = "Veritabanı Onarma";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.cbxDbNameRepair);
+            this.groupBox6.Controls.Add(this.textBox4);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.textBox6);
+            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Location = new System.Drawing.Point(155, 86);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(333, 152);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Veritabanı Dosya Boyutunu Küçültme";
+            this.groupBox6.Visible = false;
+            // 
+            // cbxDbNameRepair
+            // 
+            this.cbxDbNameRepair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbxDbNameRepair.FormattingEnabled = true;
+            this.cbxDbNameRepair.Location = new System.Drawing.Point(128, 28);
+            this.cbxDbNameRepair.Name = "cbxDbNameRepair";
+            this.cbxDbNameRepair.Size = new System.Drawing.Size(194, 24);
+            this.cbxDbNameRepair.TabIndex = 10;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(128, 81);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(194, 22);
+            this.textBox4.TabIndex = 8;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(72, 84);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 16);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Boyut :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 31);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 16);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Veritabanı Adı :";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(128, 107);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(194, 31);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Dosya Boyutunu Küçült";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(128, 55);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(194, 22);
+            this.textBox6.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(69, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 16);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Status :";
+            // 
+            // tpSPWinScaleAndDBAConsolidation
+            // 
+            this.tpSPWinScaleAndDBAConsolidation.BackColor = System.Drawing.SystemColors.Control;
+            this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.tableLayoutPanel8);
+            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 82);
+            this.tpSPWinScaleAndDBAConsolidation.Name = "tpSPWinScaleAndDBAConsolidation";
+            this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3);
+            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(657, 327);
+            this.tpSPWinScaleAndDBAConsolidation.TabIndex = 6;
+            this.tpSPWinScaleAndDBAConsolidation.Text = "SPWin Scale ve DBA Birleştirme";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.Controls.Add(this.btnMoveDbaToScale, 1, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbUserAddUserRole.Location = new System.Drawing.Point(198, 205);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 3;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel8.TabIndex = 3;
+            // 
+            // btnMoveDbaToScale
+            // 
+            this.btnMoveDbaToScale.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMoveDbaToScale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMoveDbaToScale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMoveDbaToScale.Location = new System.Drawing.Point(198, 99);
+            this.btnMoveDbaToScale.Name = "btnMoveDbaToScale";
+            this.btnMoveDbaToScale.Size = new System.Drawing.Size(254, 122);
+            this.btnMoveDbaToScale.TabIndex = 0;
+            this.btnMoveDbaToScale.Text = "Eski Versiyondaki DBA Verilerini Yeni Versiyona Taşı";
+            this.btnMoveDbaToScale.UseVisualStyleBackColor = false;
+            this.btnMoveDbaToScale.Click += new System.EventHandler(this.BtnMoveDbaToScale_Click);
+            // 
+            // tpTablolar
+            // 
+            this.tpTablolar.BackColor = System.Drawing.SystemColors.Control;
+            this.tpTablolar.Controls.Add(this.checkedListBox1);
+            this.tpTablolar.Controls.Add(this.CbxtableList);
+            this.tpTablolar.Controls.Add(this.btngoster);
+            this.tpTablolar.Controls.Add(this.dataGV1);
+            this.tpTablolar.Location = new System.Drawing.Point(4, 82);
+            this.tpTablolar.Margin = new System.Windows.Forms.Padding(2);
+            this.tpTablolar.Name = "tpTablolar";
+            this.tpTablolar.Padding = new System.Windows.Forms.Padding(2);
+            this.tpTablolar.Size = new System.Drawing.Size(657, 327);
+            this.tpTablolar.TabIndex = 8;
+            this.tpTablolar.Text = "Tablolar";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.CheckOnClick = true;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(4, 32);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(111, 225);
+            this.checkedListBox1.TabIndex = 20;
+            // 
+            // CbxtableList
+            // 
+            this.CbxtableList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxtableList.FormattingEnabled = true;
+            this.CbxtableList.Location = new System.Drawing.Point(4, 5);
+            this.CbxtableList.Margin = new System.Windows.Forms.Padding(2);
+            this.CbxtableList.Name = "CbxtableList";
+            this.CbxtableList.Size = new System.Drawing.Size(111, 24);
+            this.CbxtableList.TabIndex = 11;
+            this.CbxtableList.SelectedIndexChanged += new System.EventHandler(this.CbxtableList_SelectedIndexChanged);
+            this.CbxtableList.Click += new System.EventHandler(this.CbxtableList_Click);
+            // 
+            // btngoster
+            // 
+            this.btngoster.Enabled = false;
+            this.btngoster.Location = new System.Drawing.Point(4, 275);
+            this.btngoster.Margin = new System.Windows.Forms.Padding(2);
+            this.btngoster.Name = "btngoster";
+            this.btngoster.Size = new System.Drawing.Size(110, 44);
+            this.btngoster.TabIndex = 1;
+            this.btngoster.Text = "göster";
+            this.btngoster.UseVisualStyleBackColor = true;
+            this.btngoster.Click += new System.EventHandler(this.Goster_Click);
+            // 
+            // dataGV1
+            // 
+            this.dataGV1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGV1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGV1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dataGV1.Location = new System.Drawing.Point(122, 2);
+            this.dataGV1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGV1.Name = "dataGV1";
+            this.dataGV1.ReadOnly = true;
+            this.dataGV1.RowHeadersWidth = 51;
+            this.dataGV1.RowTemplate.Height = 24;
+            this.dataGV1.Size = new System.Drawing.Size(533, 323);
+            this.dataGV1.TabIndex = 0;
+            // 
+            // tpQuary
+            // 
+            this.tpQuary.BackColor = System.Drawing.SystemColors.Control;
+            this.tpQuary.Controls.Add(this.label7);
+            this.tpQuary.Controls.Add(this.lblQuaryName);
+            this.tpQuary.Controls.Add(this.tbxQuaryName);
+            this.tpQuary.Controls.Add(this.tbxQuarySaveLoc);
+            this.tpQuary.Controls.Add(this.btnloc);
+            this.tpQuary.Controls.Add(this.btnQuaryClear);
+            this.tpQuary.Controls.Add(this.btnQuarySave);
+            this.tpQuary.Controls.Add(this.tbxQuary);
+            this.tpQuary.Location = new System.Drawing.Point(4, 82);
+            this.tpQuary.Margin = new System.Windows.Forms.Padding(2);
+            this.tpQuary.Name = "tpQuary";
+            this.tpQuary.Padding = new System.Windows.Forms.Padding(2);
+            this.tpQuary.Size = new System.Drawing.Size(657, 327);
+            this.tpQuary.TabIndex = 9;
+            this.tpQuary.Text = "Quary.sql";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(131, 299);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 17);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Kayıt Konumu :";
+            // 
+            // lblQuaryName
+            // 
+            this.lblQuaryName.AutoSize = true;
+            this.lblQuaryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblQuaryName.Location = new System.Drawing.Point(4, 5);
+            this.lblQuaryName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblQuaryName.Name = "lblQuaryName";
+            this.lblQuaryName.Size = new System.Drawing.Size(127, 17);
+            this.lblQuaryName.TabIndex = 7;
+            this.lblQuaryName.Text = "Quary Dosya ismi :";
+            // 
+            // tbxQuaryName
+            // 
+            this.tbxQuaryName.Location = new System.Drawing.Point(135, 5);
+            this.tbxQuaryName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxQuaryName.Name = "tbxQuaryName";
+            this.tbxQuaryName.Size = new System.Drawing.Size(516, 22);
+            this.tbxQuaryName.TabIndex = 6;
+            // 
+            // tbxQuarySaveLoc
+            // 
+            this.tbxQuarySaveLoc.Location = new System.Drawing.Point(235, 297);
+            this.tbxQuarySaveLoc.Name = "tbxQuarySaveLoc";
+            this.tbxQuarySaveLoc.Size = new System.Drawing.Size(225, 22);
+            this.tbxQuarySaveLoc.TabIndex = 5;
+            // 
+            // btnloc
+            // 
+            this.btnloc.Location = new System.Drawing.Point(465, 290);
+            this.btnloc.Name = "btnloc";
+            this.btnloc.Size = new System.Drawing.Size(90, 32);
+            this.btnloc.TabIndex = 4;
+            this.btnloc.Text = "Konum Seçiniz";
+            this.btnloc.UseVisualStyleBackColor = true;
+            this.btnloc.Click += new System.EventHandler(this.btnloc_Click);
+            // 
+            // btnQuaryClear
+            // 
+            this.btnQuaryClear.Location = new System.Drawing.Point(4, 287);
+            this.btnQuaryClear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuaryClear.Name = "btnQuaryClear";
+            this.btnQuaryClear.Size = new System.Drawing.Size(90, 32);
+            this.btnQuaryClear.TabIndex = 3;
+            this.btnQuaryClear.Text = "Temizle";
+            this.btnQuaryClear.UseVisualStyleBackColor = true;
+            this.btnQuaryClear.Click += new System.EventHandler(this.btnQuaryClear_Click);
+            // 
+            // btnQuarySave
+            // 
+            this.btnQuarySave.Location = new System.Drawing.Point(560, 289);
+            this.btnQuarySave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuarySave.Name = "btnQuarySave";
+            this.btnQuarySave.Size = new System.Drawing.Size(90, 32);
+            this.btnQuarySave.TabIndex = 2;
+            this.btnQuarySave.Text = "Quary Kaydet";
+            this.btnQuarySave.UseVisualStyleBackColor = true;
+            this.btnQuarySave.Click += new System.EventHandler(this.btnQuarySave_Click);
+            // 
+            // tbxQuary
+            // 
+            this.tbxQuary.Location = new System.Drawing.Point(4, 28);
+            this.tbxQuary.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxQuary.Name = "tbxQuary";
+            this.tbxQuary.Size = new System.Drawing.Size(647, 258);
+            this.tbxQuary.TabIndex = 1;
+            this.tbxQuary.Text = "";
+            // 
+            // tpSorgu
+            // 
+            this.tpSorgu.BackColor = System.Drawing.SystemColors.Control;
+            this.tpSorgu.Controls.Add(this.panel1);
+            this.tpSorgu.Location = new System.Drawing.Point(4, 82);
+            this.tpSorgu.Margin = new System.Windows.Forms.Padding(2);
+            this.tpSorgu.Name = "tpSorgu";
+            this.tpSorgu.Padding = new System.Windows.Forms.Padding(2);
+            this.tpSorgu.Size = new System.Drawing.Size(657, 327);
+            this.tpSorgu.TabIndex = 10;
+            this.tpSorgu.Text = "Sorgu";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.btnTemizle);
+            this.panel1.Controls.Add(this.btnSorgula);
+            this.panel1.Controls.Add(this.rtbSorgula);
+            this.panel1.Location = new System.Drawing.Point(4, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(646, 339);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            this.cbCamType.Location = new System.Drawing.Point(424, 117);
+            this.panel2.Location = new System.Drawing.Point(2, 65);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(639, 272);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.Location = new System.Drawing.Point(521, 36);
+            this.btnTemizle.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(120, 24);
+            this.btnTemizle.TabIndex = 3;
+            this.btnTemizle.Text = "Temizle";
+            this.btnTemizle.UseVisualStyleBackColor = true;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
+            // 
+            // btnSorgula
+            // 
+            this.btnSorgula.Location = new System.Drawing.Point(521, 0);
+            this.btnSorgula.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSorgula.Name = "btnSorgula";
+            this.btnSorgula.Size = new System.Drawing.Size(120, 24);
+            this.btnSorgula.TabIndex = 2;
+            this.btnSorgula.Text = "Sorgula";
+            this.btnSorgula.UseVisualStyleBackColor = true;
+            this.btnSorgula.Click += new System.EventHandler(this.btnSorgula_Click);
+            // 
+            // rtbSorgula
+            // 
+            this.rtbSorgula.Location = new System.Drawing.Point(0, 0);
+            this.rtbSorgula.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbSorgula.Name = "rtbSorgula";
+            this.rtbSorgula.Size = new System.Drawing.Size(518, 61);
+            this.rtbSorgula.TabIndex = 1;
+            this.rtbSorgula.Text = "";
+            // 
+            this.tpDatabaseRepair.Size = new System.Drawing.Size(657, 327);
+            this.tpDatabaseRepair.TabIndex = 7;
+            this.tpDatabaseRepair.Text = "Veritabanı Onarma";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.cbxDbNameRepair);
+            this.groupBox6.Controls.Add(this.textBox4);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.textBox6);
+            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Location = new System.Drawing.Point(155, 86);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(333, 152);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Veritabanı Dosya Boyutunu Küçültme";
+            this.groupBox6.Visible = false;
+            // 
+            // cbxDbNameRepair
+            // 
+            this.cbxDbNameRepair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbxDbNameRepair.FormattingEnabled = true;
+            this.cbxDbNameRepair.Location = new System.Drawing.Point(128, 28);
+            this.cbxDbNameRepair.Name = "cbxDbNameRepair";
+            this.cbxDbNameRepair.Size = new System.Drawing.Size(194, 24);
+            this.cbxDbNameRepair.TabIndex = 10;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(128, 81);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(194, 22);
+            this.textBox4.TabIndex = 8;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(72, 84);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 16);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Boyut :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 31);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 16);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Veritabanı Adı :";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(128, 107);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(194, 31);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Dosya Boyutunu Küçült";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(128, 55);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(194, 22);
+            this.textBox6.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(69, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 16);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Status :";
+            // 
+            // tpSPWinScaleAndDBAConsolidation
+            // 
+            this.tpSPWinScaleAndDBAConsolidation.BackColor = System.Drawing.SystemColors.Control;
+            this.tpSPWinScaleAndDBAConsolidation.Controls.Add(this.tableLayoutPanel8);
+            this.tpSPWinScaleAndDBAConsolidation.Location = new System.Drawing.Point(4, 82);
+            this.tpSPWinScaleAndDBAConsolidation.Name = "tpSPWinScaleAndDBAConsolidation";
+            this.tpSPWinScaleAndDBAConsolidation.Padding = new System.Windows.Forms.Padding(3);
+            this.tpSPWinScaleAndDBAConsolidation.Size = new System.Drawing.Size(657, 327);
+            this.tpSPWinScaleAndDBAConsolidation.TabIndex = 6;
+            this.tpSPWinScaleAndDBAConsolidation.Text = "SPWin Scale ve DBA Birleştirme";
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.Controls.Add(this.btnMoveDbaToScale, 1, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbUserAddUserRole.Location = new System.Drawing.Point(198, 190);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 3;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(651, 321);
+            this.tableLayoutPanel8.TabIndex = 3;
+            // 
+            // btnMoveDbaToScale
+            // 
+            this.btnMoveDbaToScale.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMoveDbaToScale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMoveDbaToScale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMoveDbaToScale.Location = new System.Drawing.Point(198, 99);
+            this.btnMoveDbaToScale.Name = "btnMoveDbaToScale";
+            this.btnMoveDbaToScale.Size = new System.Drawing.Size(254, 122);
+            this.btnMoveDbaToScale.TabIndex = 0;
+            this.btnMoveDbaToScale.Text = "Eski Versiyondaki DBA Verilerini Yeni Versiyona Taşı";
+            this.btnMoveDbaToScale.UseVisualStyleBackColor = false;
+            this.btnMoveDbaToScale.Click += new System.EventHandler(this.BtnMoveDbaToScale_Click);
+            // 
+            // tpTablolar
+            // 
+            this.tpTablolar.BackColor = System.Drawing.SystemColors.Control;
+            this.tpTablolar.Controls.Add(this.checkedListBox1);
+            this.tpTablolar.Controls.Add(this.CbxtableList);
+            this.tpTablolar.Controls.Add(this.btngoster);
+            this.tpTablolar.Controls.Add(this.dataGV1);
+            this.tpTablolar.Location = new System.Drawing.Point(4, 82);
+            this.tpTablolar.Margin = new System.Windows.Forms.Padding(2);
+            this.tpTablolar.Name = "tpTablolar";
+            this.tpTablolar.Padding = new System.Windows.Forms.Padding(2);
+            this.tpTablolar.Size = new System.Drawing.Size(657, 327);
+            this.tpTablolar.TabIndex = 8;
+            this.tpTablolar.Text = "Tablolar";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.CheckOnClick = true;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(4, 32);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(111, 225);
+            this.checkedListBox1.TabIndex = 20;
+            // 
+            // CbxtableList
+            // 
+            this.CbxtableList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxtableList.FormattingEnabled = true;
+            this.CbxtableList.Location = new System.Drawing.Point(4, 5);
+            this.CbxtableList.Margin = new System.Windows.Forms.Padding(2);
+            this.CbxtableList.Name = "CbxtableList";
+            this.CbxtableList.Size = new System.Drawing.Size(111, 24);
+            this.CbxtableList.TabIndex = 11;
+            this.CbxtableList.SelectedIndexChanged += new System.EventHandler(this.CbxtableList_SelectedIndexChanged);
+            this.CbxtableList.Click += new System.EventHandler(this.CbxtableList_Click);
+            // 
+            // btngoster
+            // 
+            this.btngoster.Enabled = false;
+            this.btngoster.Location = new System.Drawing.Point(4, 275);
+            this.btngoster.Margin = new System.Windows.Forms.Padding(2);
+            this.btngoster.Name = "btngoster";
+            this.btngoster.Size = new System.Drawing.Size(110, 44);
+            this.btngoster.TabIndex = 1;
+            this.btngoster.Text = "göster";
+            this.btngoster.UseVisualStyleBackColor = true;
+            this.btngoster.Click += new System.EventHandler(this.Goster_Click);
+            // 
+            // dataGV1
+            // 
+            this.dataGV1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGV1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGV1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dataGV1.Location = new System.Drawing.Point(122, 2);
+            this.dataGV1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGV1.Name = "dataGV1";
+            this.dataGV1.ReadOnly = true;
+            this.dataGV1.RowHeadersWidth = 51;
+            this.dataGV1.RowTemplate.Height = 24;
+            this.dataGV1.Size = new System.Drawing.Size(533, 323);
+            this.dataGV1.TabIndex = 0;
+            // 
+            // tpQuary
+            // 
+            this.tpQuary.BackColor = System.Drawing.SystemColors.Control;
+            this.tpQuary.Controls.Add(this.label7);
+            this.tpQuary.Controls.Add(this.lblQuaryName);
+            this.tpQuary.Controls.Add(this.tbxQuaryName);
+            this.tpQuary.Controls.Add(this.tbxQuarySaveLoc);
+            this.tpQuary.Controls.Add(this.btnloc);
+            this.tpQuary.Controls.Add(this.btnQuaryClear);
+            this.tpQuary.Controls.Add(this.btnQuarySave);
+            this.tpQuary.Controls.Add(this.tbxQuary);
+            this.tpQuary.Location = new System.Drawing.Point(4, 82);
+            this.tpQuary.Margin = new System.Windows.Forms.Padding(2);
+            this.tpQuary.Name = "tpQuary";
+            this.tpQuary.Padding = new System.Windows.Forms.Padding(2);
+            this.tpQuary.Size = new System.Drawing.Size(657, 327);
+            this.tpQuary.TabIndex = 9;
+            this.tpQuary.Text = "Quary.sql";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(131, 299);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 17);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Kayıt Konumu :";
+            // 
+            // lblQuaryName
+            // 
+            this.lblQuaryName.AutoSize = true;
+            this.lblQuaryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblQuaryName.Location = new System.Drawing.Point(4, 5);
+            this.lblQuaryName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblQuaryName.Name = "lblQuaryName";
+            this.lblQuaryName.Size = new System.Drawing.Size(127, 17);
+            this.lblQuaryName.TabIndex = 7;
+            this.lblQuaryName.Text = "Quary Dosya ismi :";
+            // 
+            // tbxQuaryName
+            // 
+            this.tbxQuaryName.Location = new System.Drawing.Point(135, 5);
+            this.tbxQuaryName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxQuaryName.Name = "tbxQuaryName";
+            this.tbxQuaryName.Size = new System.Drawing.Size(516, 22);
+            this.tbxQuaryName.TabIndex = 6;
+            // 
+            // tbxQuarySaveLoc
+            // 
+            this.tbxQuarySaveLoc.Location = new System.Drawing.Point(235, 297);
+            this.tbxQuarySaveLoc.Name = "tbxQuarySaveLoc";
+            this.tbxQuarySaveLoc.Size = new System.Drawing.Size(225, 22);
+            this.tbxQuarySaveLoc.TabIndex = 5;
+            // 
+            // btnloc
+            // 
+            this.btnloc.Location = new System.Drawing.Point(465, 290);
+            this.btnloc.Name = "btnloc";
+            this.btnloc.Size = new System.Drawing.Size(90, 32);
+            this.btnloc.TabIndex = 4;
+            this.btnloc.Text = "Konum Seçiniz";
+            this.btnloc.UseVisualStyleBackColor = true;
+            this.btnloc.Click += new System.EventHandler(this.btnloc_Click);
+            // 
+            // btnQuaryClear
+            // 
+            this.btnQuaryClear.Location = new System.Drawing.Point(4, 287);
+            this.btnQuaryClear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuaryClear.Name = "btnQuaryClear";
+            this.btnQuaryClear.Size = new System.Drawing.Size(90, 32);
+            this.btnQuaryClear.TabIndex = 3;
+            this.btnQuaryClear.Text = "Temizle";
+            this.btnQuaryClear.UseVisualStyleBackColor = true;
+            this.btnQuaryClear.Click += new System.EventHandler(this.btnQuaryClear_Click);
+            // 
+            // btnQuarySave
+            // 
+            this.btnQuarySave.Location = new System.Drawing.Point(560, 289);
+            this.btnQuarySave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuarySave.Name = "btnQuarySave";
+            this.btnQuarySave.Size = new System.Drawing.Size(90, 32);
+            this.btnQuarySave.TabIndex = 2;
+            this.btnQuarySave.Text = "Quary Kaydet";
+            this.btnQuarySave.UseVisualStyleBackColor = true;
+            this.btnQuarySave.Click += new System.EventHandler(this.btnQuarySave_Click);
+            // 
+            // tbxQuary
+            // 
+            this.tbxQuary.Location = new System.Drawing.Point(4, 28);
+            this.tbxQuary.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxQuary.Name = "tbxQuary";
+            this.tbxQuary.Size = new System.Drawing.Size(647, 258);
+            this.tbxQuary.TabIndex = 1;
+            this.tbxQuary.Text = "";
+            // 
+            // tpSorgu
+            // 
+            this.tpSorgu.BackColor = System.Drawing.SystemColors.Control;
+            this.tpSorgu.Controls.Add(this.panel1);
+            this.tpSorgu.Location = new System.Drawing.Point(4, 82);
+            this.tpSorgu.Margin = new System.Windows.Forms.Padding(2);
+            this.tpSorgu.Name = "tpSorgu";
+            this.tpSorgu.Padding = new System.Windows.Forms.Padding(2);
+            this.tpSorgu.Size = new System.Drawing.Size(657, 327);
+            this.tpSorgu.TabIndex = 10;
+            this.tpSorgu.Text = "Sorgu";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.btnTemizle);
+            this.panel1.Controls.Add(this.btnSorgula);
+            this.panel1.Controls.Add(this.rtbSorgula);
+            this.panel1.Location = new System.Drawing.Point(4, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(646, 339);
+            this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            this.cbCamType.Location = new System.Drawing.Point(424, 108);
+            this.panel2.Location = new System.Drawing.Point(2, 65);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(639, 272);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.Location = new System.Drawing.Point(521, 36);
+            this.btnTemizle.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(120, 24);
+            this.btnTemizle.TabIndex = 3;
+            this.btnTemizle.Text = "Temizle";
+            this.btnTemizle.UseVisualStyleBackColor = true;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
+            // 
+            // btnSorgula
+            // 
+            this.btnSorgula.Location = new System.Drawing.Point(521, 0);
+            this.btnSorgula.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSorgula.Name = "btnSorgula";
+            this.btnSorgula.Size = new System.Drawing.Size(120, 24);
+            this.btnSorgula.TabIndex = 2;
+            this.btnSorgula.Text = "Sorgula";
+            this.btnSorgula.UseVisualStyleBackColor = true;
+            this.btnSorgula.Click += new System.EventHandler(this.btnSorgula_Click);
+            // 
+            // rtbSorgula
+            // 
+            this.rtbSorgula.Location = new System.Drawing.Point(0, 0);
+            this.rtbSorgula.Margin = new System.Windows.Forms.Padding(2);
+            this.rtbSorgula.Name = "rtbSorgula";
+            this.rtbSorgula.Size = new System.Drawing.Size(518, 61);
+            this.rtbSorgula.TabIndex = 1;
+            this.rtbSorgula.Text = "";
             // 
             // tpEsitUserEkle
             // 
@@ -1127,7 +1944,7 @@
             this.cbUserAddUserRole.Items.AddRange(new object[] {
             "Read-Only",
             "Admin"});
-            this.cbUserAddUserRole.Location = new System.Drawing.Point(198, 205);
+            this.cbUserAddUserRole.Location = new System.Drawing.Point(198, 190);
             this.cbUserAddUserRole.Name = "cbUserAddUserRole";
             this.cbUserAddUserRole.Size = new System.Drawing.Size(189, 24);
             this.cbUserAddUserRole.TabIndex = 6;
@@ -1335,7 +2152,7 @@
             "Aver",
             "Dahua",
             "Hikvision"});
-            this.cbCamType.Location = new System.Drawing.Point(424, 117);
+            this.cbCamType.Location = new System.Drawing.Point(424, 108);
             this.cbCamType.Name = "cbCamType";
             this.cbCamType.Size = new System.Drawing.Size(224, 24);
             this.cbCamType.TabIndex = 3;
@@ -1741,6 +2558,13 @@
             this.groupBox6.Text = "Veritabanı Dosya Boyutunu Küçültme";
             this.groupBox6.Visible = false;
             // 
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
+        private System.Windows.Forms.RadioButton rbConfigSQLExpress;
+        private System.Windows.Forms.RadioButton rbConfigSQLServer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
+        private System.Windows.Forms.TextBox tbPicturePath;
+        private System.Windows.Forms.RichTextBox rtbPicture;
+        private System.Windows.Forms.Button btnPicturePath;
             // cbxDbNameRepair
             // 
             this.cbxDbNameRepair.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
@@ -2437,13 +3261,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tbConfigServerName;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
-        private System.Windows.Forms.RadioButton rbConfigSQLExpress;
-        private System.Windows.Forms.RadioButton rbConfigSQLServer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
-        private System.Windows.Forms.TextBox tbPicturePath;
-        private System.Windows.Forms.RichTextBox rtbPicture;
-        private System.Windows.Forms.Button btnPicturePath;
     }
 }
 
