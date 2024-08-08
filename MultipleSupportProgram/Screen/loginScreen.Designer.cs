@@ -33,7 +33,8 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnGirisYap = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.passwordBaseNumber = new System.Windows.Forms.Label();
+            this.lblpasswordBaseNumber = new System.Windows.Forms.Label();
+            this.btnKodKopyala = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +85,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbPassword, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnGirisYap, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.passwordBaseNumber, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblpasswordBaseNumber, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnKodKopyala, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -96,18 +98,29 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(354, 312);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // passwordBaseNumber
+            // lblpasswordBaseNumber
             // 
-            this.passwordBaseNumber.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.passwordBaseNumber, 2);
-            this.passwordBaseNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passwordBaseNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.passwordBaseNumber.Location = new System.Drawing.Point(91, 78);
-            this.passwordBaseNumber.Name = "passwordBaseNumber";
-            this.passwordBaseNumber.Size = new System.Drawing.Size(170, 78);
-            this.passwordBaseNumber.TabIndex = 3;
-            this.passwordBaseNumber.Text = "12345";
-            this.passwordBaseNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblpasswordBaseNumber.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblpasswordBaseNumber, 2);
+            this.lblpasswordBaseNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblpasswordBaseNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblpasswordBaseNumber.Location = new System.Drawing.Point(91, 78);
+            this.lblpasswordBaseNumber.Name = "lblpasswordBaseNumber";
+            this.lblpasswordBaseNumber.Size = new System.Drawing.Size(170, 78);
+            this.lblpasswordBaseNumber.TabIndex = 3;
+            this.lblpasswordBaseNumber.Text = "12345";
+            this.lblpasswordBaseNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnKodKopyala
+            // 
+            this.btnKodKopyala.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKodKopyala.Location = new System.Drawing.Point(267, 81);
+            this.btnKodKopyala.Name = "btnKodKopyala";
+            this.btnKodKopyala.Size = new System.Drawing.Size(84, 72);
+            this.btnKodKopyala.TabIndex = 4;
+            this.btnKodKopyala.Text = "Kodu Kopyala";
+            this.btnKodKopyala.UseVisualStyleBackColor = true;
+            this.btnKodKopyala.Click += new System.EventHandler(this.btnKodKopyala_Click);
             // 
             // loginScreen
             // 
@@ -134,6 +147,7 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btnGirisYap;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label passwordBaseNumber;
+        private System.Windows.Forms.Label lblpasswordBaseNumber;
+        private System.Windows.Forms.Button btnKodKopyala;
     }
 }

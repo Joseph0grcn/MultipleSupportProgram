@@ -44,7 +44,6 @@ namespace MultipleSupportProgram.Model
                         command.CommandTimeout = timeout;
                         command.ExecuteNonQuery();
 
-                        logger.Debug("SQL script başarıyla çalıştırıldı.");
                         return true;
 
                     }
@@ -56,7 +55,7 @@ namespace MultipleSupportProgram.Model
                         }
 
                         MessageBox.Show(ex.Message + ex);
-                        logger.Error(ex);
+                        logger.Error(ex + " hatalı script :" + sqlScript);
                         return false;
                     }
                 }
@@ -77,8 +76,8 @@ namespace MultipleSupportProgram.Model
                     }
                     catch (Exception ex)
                     {
-                        
-                        logger.Error(ex);
+
+                        logger.Error(ex + " hatalı script :" + sqlScript);
                         return null;
                     }
                 }
@@ -101,7 +100,7 @@ namespace MultipleSupportProgram.Model
                     }
                     catch (Exception ex)
                     {
-                        logger.Error(ex);
+                        logger.Error(ex + " hatalı script :" + sqlScript);
                         return null;
                     }
                 }
@@ -132,8 +131,8 @@ namespace MultipleSupportProgram.Model
             {
                 string backupFilePath = $"{backupFileLocation}{databaseName}_{DateTime.Now:MM_dd_yyyy_HH_mm_ss}.bak";
                 string sqlScript = $@"BACKUP DATABASE [{databaseName}] TO DISK = '{backupFilePath}' WITH INIT, STATS = 10";
-                
-                logger.Debug("backup file path hatası :\n"+backupFilePath);
+
+                logger.Debug("backup file path :\n" + backupFilePath);
                 logger.Debug(sqlScript);
                 bool result = ExecuteNonQueryScript(sqlScript, 0);
                 Thread.Sleep(500);
@@ -358,19 +357,20 @@ namespace MultipleSupportProgram.Model
                     MessageBox.Show("Server ismi ve Database ismi boş olamaz  \n", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlConnection con = new SqlConnection(connectionString + " Connect Timeout=10"))
                 {
 
                     con.Open();
                     logger.Debug("Bağlantı başarılı bir şekilde açıldı");
-                    
+
                     logger.Debug("Bağlantı başarılı bir şekilde kapatıldı");
+                    con.Close();
                     return true;
                 }
             }
             catch (Exception ex)
             {
-               
+
                 logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "  \nConnection String = " + connectionString);
                 MessageBox.Show("Bağlantı Oluşturulamadı.\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -484,10 +484,10 @@ namespace MultipleSupportProgram.Model
             string commandStr = "";
             try
             {
-                bool result = false;
+                // bütün veritabanında tüm tarihlerde işlem yapıyor
                 if (time1 == "" && time2 == "")
                 {
-                    // bütün veritabanında tüm tarihlerde işlem yapıyor
+
                     switch (radioButtonTag)
                     {
                         case "TagOneAndTwoPhoto":
@@ -504,44 +504,24 @@ namespace MultipleSupportProgram.Model
                             break;
                     }
                 }
+                //Seçilen tarih aralığında işlem yapıyor
                 else
                 {
-                    //Seçilen tarih aralığında işlem yapıyor
                     switch (radioButtonTag)
                     {
                         case "TagOneAndTwoPhoto":
-                            //commandStr = "DELETE SPWIN_DB.dbo.WeighingImages SET image1 = NULL , image2 = NULL , image3 = NULL , image4 = NULL " +
-                            //    "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
-                            commandStr = "DELETE FROM SPWIN_DB.dbo.WeighingImages " +
-                                         "WHERE seqnum2 IN (SELECT seq FROM Weigh2 WHERE WeighTime2 BETWEEN '" + time1 + "' AND '" + time2 + "')";
+                            OneAndTwoPhotoTimeDelete();
                             break;
 
                         case "TagInTheFolderPhoto":
-                            commandStr = "DELETE SPWIN_DB.dbo.WeighingImages SET imageFile1 = NULL, imageFile2 = NULL, imageFile3 = NULL , imageFile4 = NULL " +
-                                "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            InTheFolderTimeDelete();
                             break;
 
                         case "TagAllPhoto":
-                            commandStr = "UPDATE SPWIN_DB.dbo.WeighingImages SET image1 = NULL , image2 = NULL , image3 = NULL , image4 = NULL , imageFile1 = NULL , imageFile2 = NULL , imageFile3 = NULL , imageFile4 = NULL " +
-                                "where seqnum2 in ( select seq from Weigh2 where WeighTime2 between '" + time1 + "' and '" + time2 + "')";
+                            OneAndTwoPhotoTimeDelete();
+                            InTheFolderTimeDelete();
                             break;
                     }
-                }
-                Console.WriteLine(commandStr);
-
-                 
-
-                if (result)
-                {
-                    Thread.Sleep(100);
-                    Application.DoEvents();
-                    MainForm.waitForm.Close();
-                    Thread.Sleep(100);
-                    Application.DoEvents();
-
-                    MessageBox.Show("Tartım fotoğrafı silme işlemi başarıyla gerçekleşti.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    logger.Debug("Tartım fotoğrafı silme işlemi başarıyla gerçekleşti.");
-
                 }
 
             }
@@ -556,36 +536,185 @@ namespace MultipleSupportProgram.Model
 
             void OneAndTwoPhotoDelete()
             {
-                // veritabanı seçildiğinde imagefile alanlarının hepsinin boş olduğu verileri silmektedir
-                commandStr = "SELECT seq  FROM SPWIN_DB.dbo.WeighingImages \r\nWHERE \r\n((SPWIN_DB.dbo.WeighingImages.seqnum2 IN(SELECT seq FROM Weigh2)\r\nOR (SPWIN_DB.dbo.WeighingImages.seqnum1 IN (SELECT seqnum1 FROM Weigh2 )\r\nAND SPWIN_DB.dbo.WeighingImages.seqnum2 = 0  )) )AND (imageFile1 IS  NULL   AND imageFile2 IS  NULL   AND imageFile3 IS  NULL   AND imageFile4 IS  NULL)";
-                DataTable dataTable = ExecuteReaderScript(commandStr, 0);
-                foreach (DataRow row in dataTable.Rows)
+                try
                 {
-                    string deleteCommand = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
-                    ExecuteNonQueryScript(deleteCommand, 10);
+
+
+                    // veritabanı seçildiğinde imagefile alanlarının hepsinin boş olduğu verileri silmektedir
+                    //commandStr = "SELECT seq  FROM SPWIN_DB.dbo.WeighingImages \r\nWHERE \r\n((SPWIN_DB.dbo.WeighingImages.seqnum2 IN(SELECT seq FROM Weigh2)\r\nOR (SPWIN_DB.dbo.WeighingImages.seqnum1 IN (SELECT seqnum1 FROM Weigh2 )\r\nAND SPWIN_DB.dbo.WeighingImages.seqnum2 = 0  )) )AND (imageFile1 IS  NULL   AND imageFile2 IS  NULL   AND imageFile3 IS  NULL   AND imageFile4 IS  NULL)";
+                    commandStr = @"
+                    SELECT seq
+                    FROM SPWIN_DB.dbo.WeighingImages
+                    WHERE (
+                        seqnum2 IN (
+                            SELECT seq
+                            FROM Weigh2
+                        )
+                        OR (
+                            seqnum1 IN (
+                                SELECT seqnum1
+                                FROM Weigh2
+                            )
+                            AND WeighingImages.seqnum2 = 0
+                        )
+                    )
+                    AND (
+                        imageFile1 IS NULL
+                        AND imageFile2 IS NULL
+                        AND imageFile3 IS NULL
+                        AND imageFile4 IS NULL
+                    );";
+                    DataTable dataTable = ExecuteReaderScript(commandStr, 0);
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        string deleteCommand = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
+                        ExecuteNonQueryScript(deleteCommand, 10);
+                    }
+                    MessageBox.Show("Veritabanından fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Veritabanından fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message + " " + ex.Source);
+
+                    throw;
+                }
+            }
+            void OneAndTwoPhotoTimeDelete()
+            {
+                try
+                {
+                    //int count = 0;
+                    // veritabanı seçildiğinde imagefile alanlarının hepsinin boş olduğu verileri silmektedir
+                    //commandStr = $"SELECT seq  FROM SPWIN_DB.dbo.WeighingImages \r\nWHERE \r\n((SPWIN_DB.dbo.WeighingImages.seqnum2 IN(SELECT seq FROM Weigh2 WHERE WeighTime2 BETWEEN '{time1}' AND '{time2}' ) \r\nOR (SPWIN_DB.dbo.WeighingImages.seqnum1 IN (SELECT seqnum1 FROM Weigh2 WHERE WeighTime2 BETWEEN '{time1}' AND '{time2}'  )\r\nAND SPWIN_DB.dbo.WeighingImages.seqnum2 = 0  )) )AND (imageFile1 IS  NULL   AND imageFile2 IS  NULL   AND imageFile3 IS  NULL   AND imageFile4 IS  NULL)";
+                    commandStr = $@"
+                                        SELECT seq
+                    FROM SPWIN_DB.dbo.WeighingImages
+                    WHERE (
+                        (
+                            seqnum2 IN (
+                                SELECT Weigh2.seq
+                                FROM Weigh2
+                                WHERE Weigh2.WeighTime2 BETWEEN '{time1}' AND '{time2}'
+                            )
+                            OR (
+                                seqnum1 IN (
+                                    SELECT Weigh2.seqnum1
+                                    FROM Weigh2
+                                    WHERE Weigh2.WeighTime2 BETWEEN '{time1}' AND '{time2}'
+                                )
+                                AND WeighingImages.seqnum2 = 0
+                            )
+                        )
+                    )
+                    AND (
+                        imageFile1 IS NULL
+                        AND imageFile2 IS NULL
+                        AND imageFile3 IS NULL
+                        AND imageFile4 IS NULL
+                    )";
+                    DataTable dataTable = ExecuteReaderScript(commandStr, 0);
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        string deleteCommand = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
+                        ExecuteNonQueryScript(deleteCommand, 10);
+                        //count++;
+                    }
+                    MessageBox.Show("Veritabanından fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Console.Write("işlem gören satır sayısı: " +count +"\n");
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message + " " + ex.Source);
+
+                    throw;
+                }
             }
 
             void InTheFolderDelete()
             {
-                commandStr = "SELECT seq , imageFile1 , imageFile2 , imageFile3 , imageFile4  FROM SPWIN_DB.dbo.WeighingImages \r\nWHERE \r\n((SPWIN_DB.dbo.WeighingImages.seqnum2 IN(SELECT seq FROM Weigh2)\r\nOR (SPWIN_DB.dbo.WeighingImages.seqnum1 IN (SELECT seqnum1 FROM Weigh2 )\r\nAND SPWIN_DB.dbo.WeighingImages.seqnum2 = 0  ))) AND (imageFile1 IS NOT NULL   OR imageFile2 IS NOT NULL   OR imageFile3 IS NOT NULL   OR imageFile4 IS NOT NULL)\r\norder by seq";
-                DataTable pictureFileNames = ExecuteReaderScript(commandStr, 0);
-                FileHelper.DeletePictureFile(picturePath, pictureFileNames);
-                MessageBox.Show("Dosya konumundan fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+                try
+                {
+                    //commandStr = "SELECT seq , imageFile1 , imageFile2 , imageFile3 , imageFile4  FROM SPWIN_DB.dbo.WeighingImages \r\nWHERE \r\n((SPWIN_DB.dbo.WeighingImages.seqnum2 IN(SELECT seq FROM Weigh2)\r\nOR (SPWIN_DB.dbo.WeighingImages.seqnum1 IN (SELECT seqnum1 FROM Weigh2 )\r\nAND SPWIN_DB.dbo.WeighingImages.seqnum2 = 0  ))) AND (imageFile1 IS NOT NULL   OR imageFile2 IS NOT NULL   OR imageFile3 IS NOT NULL   OR imageFile4 IS NOT NULL)\r\norder by seq";
+                    commandStr = $@"
+                    SELECT seq, imageFile1, imageFile2, imageFile3, imageFile4
+                    FROM SPWIN_DB.dbo.WeighingImages
+                    WHERE (
+                        seqnum2 IN (
+                            SELECT seq
+                            FROM Weigh2
+                        )
+                        OR (
+                            seqnum1 IN (
+                                SELECT seqnum1
+                                FROM Weigh2
+                            )
+                            AND seqnum2 = 0
+                        )
+                    )
+                    AND (
+                        imageFile1 IS NOT NULL
+                        OR imageFile2 IS NOT NULL
+                        OR imageFile3 IS NOT NULL
+                        OR imageFile4 IS NOT NULL
+                    )
+                    ORDER BY seq;";
+                    DataTable pictureFileNames = ExecuteReaderScript(commandStr, 0);
+                    FileHelper.DeletePictureFile(picturePath, pictureFileNames);
+                    MessageBox.Show($"{picturePath} \nDosya konumundan fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message + " " + ex.Source);
+
+                    throw;
+                }
+            }
+
+            void InTheFolderTimeDelete()
+            {
+                try
+                {
+                    commandStr = $@"
+                    SELECT seq, imageFile1, imageFile2, imageFile3, imageFile4
+                    FROM SPWIN_DB.dbo.WeighingImages
+                    WHERE (
+                        (WeighingImages.seqnum2 IN (
+                            SELECT seq
+                            FROM Weigh2
+                            WHERE WeighTime2 BETWEEN '{time1}' AND '{time2}'
+                        )
+                        OR (WeighingImages.seqnum1 IN (
+                            SELECT seqnum1
+                            FROM Weigh2
+                            WHERE WeighTime2 BETWEEN '{time1}' AND '{time2}'
+                        ) AND seqnum2 = 0))
+                    )
+                    AND (imageFile1 IS NOT NULL
+                    OR imageFile2 IS NOT NULL
+                    OR imageFile3 IS NOT NULL
+                    OR imageFile4 IS NOT NULL)
+                    ORDER BY seq";
+                    DataTable pictureFileNames = ExecuteReaderScript(commandStr, 0);
+                    FileHelper.DeletePictureFile(picturePath, pictureFileNames);
+                    MessageBox.Show("Dosya konumundan fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message + " " + ex.Source);
+
+                    throw;
+                }
             }
         }
         public static void WeighingDelete(string tartim, string time1, string time2)
         {
             string commandStr = "";
             string tabloName = "";
-            if (tartim == "rbTartım1")
+            if (tartim == "rbTartim1")
             {
                 tabloName = "dbo.Weigh1";
             }
-            else if (tartim == "rbTartım2")
+            else if (tartim == "rbTartim2")
             {
                 tabloName = "dbo.Weigh2";
             }
@@ -596,11 +725,11 @@ namespace MultipleSupportProgram.Model
                     //veritabanında tarih kısıtlaması olmadan çalışıyor
                     switch (tartim)
                     {
-                        case "rbTartım1":
+                        case "rbTartim1":
                             commandStr = "select seq from dbo.Weigh1 where WeighTime1 < GETDATE();";
                             break;
 
-                        case "rbTartım2":
+                        case "rbTartim2":
                             commandStr = "select seq from dbo.Weigh2 where WeighTime1 < GETDATE();";
                             break;
                     }
@@ -610,11 +739,11 @@ namespace MultipleSupportProgram.Model
                     //Seçilen tarih aralığında çalışıyor
                     switch (tartim)
                     {
-                        case "rbTartım1":
+                        case "rbTartim1":
                             commandStr = "select seq from Weigh1 where WeighTime1 between '" + time1 + "' and '" + time2 + "';";
                             break;
 
-                        case "rbTartım2":
+                        case "rbTartim2":
                             commandStr = "select seq from Weigh2 where WeighTime1 between '" + time1 + "' and '" + time2 + "';";
                             break;
                     }
@@ -787,10 +916,19 @@ namespace MultipleSupportProgram.Model
                 MessageBox.Show("HATA Veri taşıma işlemi başarısız : " + ex.Message + "", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public static bool AuditStopedScriptRun()
+        public static bool AuditStopedScriptRun(string serverInstance )
         {
             try
             {
+                if (serverInstance == "")
+                {
+                    serverStart("SQLEXPRESS");
+                }
+                else
+                {
+                    serverStart(serverInstance);
+                }
+                
                 string[] sqlCommands = new string[]
                 {
                     "ALTER DATABASE AUDIT_SPWIN SET EMERGENCY;",
@@ -815,10 +953,18 @@ namespace MultipleSupportProgram.Model
                 return false;
             }
         }
-        public static bool SpwinStopedScriptRun()
+        public static bool SpwinStopedScriptRun(string serverInstance)
         {
             try
             {
+                if (serverInstance == "")
+                {
+                    serverStart("SQLEXPRESS");
+                }
+                else
+                {
+                    serverStart(serverInstance);
+                }
                 string[] sqlCommands = new string[]
                 {
                     "ALTER DATABASE SPWIN_DB SET EMERGENCY;",
@@ -844,16 +990,138 @@ namespace MultipleSupportProgram.Model
                 return false;
             }
         }
-        public static void ServerConfigSettingsSetter(String serverName = "SQLEXPRESS")
+        public static void serverStart(string instanceName = "SQLEXPRESS")
+        {
+            string batFileContent = $@"
+            net start SQLBrowser
+            net start MSSQL${instanceName}
+            net start {instanceName}
+            pause
+
+            ";
+
+            string tempBatFilePath = Path.Combine(Path.GetTempPath(), "tempServerStartScript.bat");
+            try
+            {
+                // Geçici dosyaya içeriği yaz
+                File.WriteAllText(tempBatFilePath, batFileContent);
+
+                // ProcessStartInfo ile dosyayı çalıştır
+                ProcessStartInfo processStartInfo = new ProcessStartInfo
+                {
+                    FileName = tempBatFilePath,
+                    UseShellExecute = true,
+                    Verb = "runas"
+                };
+
+                Process process = Process.Start(processStartInfo);
+                process.WaitForExit();
+                if (process.ExitCode != 0)
+                {
+                    throw new Exception("BAT dosyası çalıştırılırken hata oluştu.");
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Server başlatımında hata oluştu. " + ex.Message, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                logger.Error("Server başlatımında hata oluştu " + ex);
+            }
+            finally
+            {
+                // Geçici dosyayı temizle
+                if (File.Exists(tempBatFilePath))
+                {
+                    try
+                    {
+                        File.Delete(tempBatFilePath);
+                    }
+                    catch (Exception deleteEx)
+                    {
+                        // Dosya silinirken hata oluştuysa, bunu loglayabilirsiniz.
+                        logger.Error("Geçici BAT dosyası silinirken hata oluştu: " + deleteEx.Message);
+                    }
+                }
+            }
+
+        }
+        public static void serverKontrol(string instanceName)
+        {
+            string batFileContent = $@"
+            @echo off
+            echo Checking SQL Server services status...
+            
+            wmic service where ""name='MSSQL${instanceName}'"" get name, state
+            wmic service where ""name='{instanceName}'"" get name, state
+            wmic service where ""name='SQLBrowser'"" get name, state
+            pause
+            exit /b 0
+            ";
+
+            string tempBatFilePath = Path.Combine(Path.GetTempPath(), "tempServerStartScript.bat");
+            
+            try
+            {
+                // Geçici dosyaya içeriği yaz
+                File.WriteAllText(tempBatFilePath, batFileContent);
+
+                // ProcessStartInfo ile dosyayı çalıştır
+                ProcessStartInfo processStartInfo = new ProcessStartInfo
+                {
+                    FileName = tempBatFilePath,
+                    UseShellExecute = true,
+                    Verb = "runas"
+                };
+
+                Process process = Process.Start(processStartInfo);
+                process.WaitForExit();
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Server kontrolünde hata oluştu. " + ex.Message, "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                logger.Error("Server kontrolünde hata oluştu " + ex);
+            }
+            finally
+            {
+                // Geçici dosyayı temizle
+                if (File.Exists(tempBatFilePath))
+                {
+                    try
+                    {
+                        File.Delete(tempBatFilePath);
+                    }
+                    catch (Exception deleteEx)
+                    {
+                        // Dosya silinirken hata oluştuysa, bunu loglayabilirsiniz.
+                        logger.Error("Geçici BAT dosyası silinirken hata oluştu: " + deleteEx.Message);
+                    }
+                }
+            }
+        }
+
+
+        public static void ServerConfigSettingsSetter(string instanceName = "SQLEXPRESS")
         {
             // Çalıştırılacak .bat dosyasının adı
             string batFileContent = $@"
+net start SQLBrowser
+
+net start MSSQL${instanceName}
+
+
+
+
+
 netsh advfirewall firewall add rule name=""Open Port 8080"" dir=in action=allow protocol=TCP localport=8080
 netsh http add urlacl url=http://+:8080/ user=Everyone
 netsh advfirewall firewall add rule name=""Open Port 80"" dir=in action=allow protocol=TCP localport=80
 
 @echo =========  SQL Server Start Mode  ===================
-sc config ""{serverName}"" start= auto
+sc config ""{instanceName}"" start= auto
 sc config ""SQLBrowser"" start= auto
 
 
@@ -891,14 +1159,17 @@ cmd.exe /c ""icacls ""%cd%"" /grant Everyone:(OI)(CI)M""
 
 @echo =========  Server Restart  ==============
 
-sc stop ""{serverName}""
-net stop ""SQL Server Browser""
 
-sc start ""{serverName}""
-net start ""SQL Server Browser""
+net stop SQLBrowser
+net stop MSSQL${instanceName}
 
+net start SQLBrowser
+net start MSSQL${instanceName}
+
+pause
 ";
-
+            //sc start MSSQL${serverName}
+            //sc start SQLBrowser
             string tempBatFilePath = Path.Combine(Path.GetTempPath(), "tempServerConfigScript.bat");
             try
             {
@@ -948,7 +1219,8 @@ net start ""SQL Server Browser""
 
 
         }
-        public static void SQLServerConfigTcpIpAccessAndPortSetter(bool enableFlag = true, bool listenAllFlag = true, int portNo = 1433)
+
+        public static void SQLConfigTcpIpAccessAndPortSetter(string serverName, bool enableFlag = true, bool listenAllFlag = true, int portNo = 1433)
         {
 
             try
@@ -966,18 +1238,15 @@ net start ""SQL Server Browser""
                     // SQL Server sürümünü bulmak için kayıt defterini kontrol etme
                     string[] versionPaths = new string[]
                     {
-                "MSSQL16.MSSQLSERVER", // SQL Server 2022
-                "MSSQL15.MSSQLSERVER", // SQL Server 2019
-                "MSSQL14.MSSQLSERVER", // SQL Server 2017
-                "MSSQL13.MSSQLSERVER", // SQL Server 2016
-                "MSSQL12.MSSQLSERVER", // SQL Server 2014
-                "MSSQL11.MSSQLSERVER", // SQL Server 2012
-                "MSSQL10.MSSQLSERVER", // SQL Server 2008 R2
-                "MSSQL09.MSSQLSERVER", // SQL Server 2008
-                "MSSQL08.MSSQLSERVER", // SQL Server 2005
-                "MSSQL07.MSSQLSERVER", // SQL Server 2000
-
-                        // Diğer eski sürümler eklenebilir
+                        "MSSQL16."+serverName, // SQL Server 2022 Express
+                        "MSSQL15."+serverName, // SQL Server 2019 Express
+                        "MSSQL14."+serverName, // SQL Server 2017 Express
+                        "MSSQL13."+serverName, // SQL Server 2016 Express
+                        "MSSQL12."+serverName, // SQL Server 2014 Express
+                        "MSSQL11."+serverName, // SQL Server 2012 Express
+                        "MSSQL10_50."+serverName, // SQL Server 2008 R2 Express
+                        "MSSQL10."+serverName, // SQL Server 2008 Express
+                        "MSSQL.1"  // SQL Server 2005 Express
                     };
                     // SQL Server'ın yüklü olduğu sürümü bulma
                     string keyPath = null;
@@ -994,95 +1263,7 @@ net start ""SQL Server Browser""
                                     break;
                                 }
                             }
-                        }
-                        if (keyPath != null)
-                        {
-                            break;
-                        }
-                    }
-                    if (keyPath != null)
-                    {
-
-                        using (RegistryKey key = hklm.OpenSubKey(keyPath, true))
-                        {
-                            if (key != null)
-                            {
-                                //TCP / IP'yi etkinleştirme
-                                key.SetValue("Enabled", Convert.ToInt32(enableFlag), RegistryValueKind.DWord);
-                                
-                                key.SetValue("ListenOnAllIPs", Convert.ToInt32(listenAllFlag), RegistryValueKind.DWord);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Kayıt defteri anahtarı yazma izniyle açılmadı.");
-                            }
-                        }
-                        using (RegistryKey key = hklm.OpenSubKey(keyPath + "\\IPAll", true))
-                        {
-                            if (key != null)
-                            {
-                                //TCP / IP port numarasını ayarlama
-                                // Değiştirmek istediğiniz port numarası port no olarak metoda geliyor
-                                key.SetValue("TcpPort", portNo, RegistryValueKind.String);
-                                
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("SQL Server kayıt defteri anahtarı bulunamadı.");
-                    }
-                }
-            }
-            catch (System.Security.SecurityException ex)
-            {
-                MessageBox.Show("Uygulama yönetici olarak çalıştırılmadı.\n Bu işlem için lütfen uygulamayı Yönetici olarak başlatın.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error("config düzenleyici hatası :",ex);
-            }
-        }
-        public static void SQLExpressConfigTcpIpAccessAndPortSetter(bool enableFlag = true, bool listenAllFlag = true, int portNo = 1433)
-        {
-
-            try
-            {
-
-                RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
-
-                using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, registryView))
-                {
-                    string[] possiblePaths = new string[]
-                {
-                @"SOFTWARE\Microsoft\Microsoft SQL Server",
-                @"SOFTWARE\Wow6432Node\Microsoft\Microsoft SQL Server" // 32-bit uygulama yoldan
-                };
-                    // SQL Server sürümünü bulmak için kayıt defterini kontrol etme
-                    string[] versionPaths = new string[]
-                    {
-                        "MSSQL16.SQLEXPRESS", // SQL Server 2022 Express
-                        "MSSQL15.SQLEXPRESS", // SQL Server 2019 Express
-                        "MSSQL14.SQLEXPRESS", // SQL Server 2017 Express
-                        "MSSQL13.SQLEXPRESS", // SQL Server 2016 Express
-                        "MSSQL12.SQLEXPRESS", // SQL Server 2014 Express
-                        "MSSQL11.SQLEXPRESS", // SQL Server 2012 Express
-                        "MSSQL10_50.SQLEXPRESS", // SQL Server 2008 R2 Express
-                        "MSSQL10.SQLEXPRESS", // SQL Server 2008 Express
-                        "MSSQL.1" // SQL Server 2005 Express
-                    };
-                    // SQL Server'ın yüklü olduğu sürümü bulma
-                    string keyPath = null;
-                    foreach (var path in possiblePaths)
-                    {
-                        foreach (var versionPath in versionPaths)
-                        {
-                            string fullKeyPath = $"{path}\\{versionPath}\\MSSQLServer\\SuperSocketNetLib\\Tcp";
-                            using (RegistryKey key = hklm.OpenSubKey(fullKeyPath))
-                            {
-                                if (key != null)
-                                {
-                                    keyPath = fullKeyPath;
-                                    break;
-                                }
-                            }
+                            Console.WriteLine(fullKeyPath);
                         }
                         if (keyPath != null)
                         {

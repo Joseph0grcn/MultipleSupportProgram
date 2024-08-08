@@ -202,14 +202,7 @@ namespace MultipleSupportProgram
         private void BtnWeighPhotoDelete_Click(object sender, EventArgs e)
         {
             btnWeighPhotoDelete.Enabled = false;
-           
-            
-
             btnWeighPhotoDelete.Text = "Bekleyiniz...";
-            
-
-            
-            
             conString = SQLHelper.GetConnectionString();
 
             if (rbOneAndTwoPhoto.Checked == true || rbInTheFolderPhoto.Checked == true || rbAllPhoto.Checked == true)
@@ -700,6 +693,10 @@ namespace MultipleSupportProgram
 
             if (result == DialogResult.Yes)
             {
+                
+                btnTartimSilme.Text = "Bekleyiniz";
+                btnTartimSilme.BackColor = Color.Yellow;
+                Application.DoEvents();
                 string rbName = "";
                 string time1 = "";
                 string time2 = "";
@@ -754,7 +751,11 @@ namespace MultipleSupportProgram
                 buttons = MessageBoxButtons.OK;
                 messageBoxIcon = MessageBoxIcon.Information;
                 MessageBox.Show(message, title, buttons, messageBoxIcon);
+                
             }
+            Application.DoEvents();
+            btnTartimSilme.Text = "Tartımları Sil !";
+            btnTartimSilme.BackColor = Color.Red;
         }
 
         private void BtnAuditDBScript_Click(object sender, EventArgs e)
@@ -767,7 +768,7 @@ namespace MultipleSupportProgram
 
             if (result == DialogResult.Yes)
             {
-                if (SQLHelper.AuditStopedScriptRun())
+                if (SQLHelper.AuditStopedScriptRun(tbServerStartScript.Text))
                 {
                     message = "AUDIT_DB Hata giderme işlemi başarılı bir şekilde sonuçlandı";
                     title = "UYARI";
@@ -797,9 +798,9 @@ namespace MultipleSupportProgram
             DialogResult result = MessageBox.Show(message, title, buttons, messageBoxIcon);
             if (result == DialogResult.Yes)
             {
-                if (SQLHelper.SpwinStopedScriptRun()){
+                if (SQLHelper.SpwinStopedScriptRun(tbServerStartScript.Text)){
                     message = "SPWIN_DB Hata giderme işlem başarılı bir şekilde sonuçlandı";
-                    title = "UYARI";
+                    title = "BİLGİ";
                     buttons = MessageBoxButtons.OK;
                     messageBoxIcon = MessageBoxIcon.Information;
                     MessageBox.Show(message, title, buttons, messageBoxIcon);
@@ -871,25 +872,9 @@ namespace MultipleSupportProgram
             if (IsAdministrator())
             {
 
-
-                if (rbConfigSQLExpress.Checked)
-                {
-                    SQLHelper.SQLExpressConfigTcpIpAccessAndPortSetter(true, true, 1433);
-                }
-                else if (rbConfigSQLServer.Checked)
-                {
-                    SQLHelper.SQLServerConfigTcpIpAccessAndPortSetter(true, true, 1433);
-                }
-
-
-                if (tbConfigServerName.Text == "")
-                {
-                    SQLHelper.ServerConfigSettingsSetter("SQLEXPRESS");
-                }
-                else
-                {
+                    SQLHelper.SQLConfigTcpIpAccessAndPortSetter(tbConfigServerName.Text, true, true, 1433);
                     SQLHelper.ServerConfigSettingsSetter(tbConfigServerName.Text);
-                }
+                
             }
             else
             {
@@ -935,6 +920,16 @@ namespace MultipleSupportProgram
             rtbPicture.Visible = true;
             tbPicturePath.Visible = true;
             btnPicturePath.Visible = true;
+        }
+
+        private void kontrolEtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SQLHelper.serverKontrol(tstbServerName.Text);
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SQLHelper.serverStart(tstbServerName.Text);
         }
     }
 }
