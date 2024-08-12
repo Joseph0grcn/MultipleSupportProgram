@@ -1,20 +1,12 @@
-﻿using log4net.Repository.Hierarchy;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Management;
-using System.Security.Cryptography.X509Certificates;
-using System.ServiceProcess;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace MultipleSupportProgram.Model
 {
@@ -45,7 +37,19 @@ namespace MultipleSupportProgram.Model
                         command.ExecuteNonQuery();
 
                         return true;
-
+                    }
+                    catch (System.Data.SqlClient.SqlException ex)
+                    {
+                        if (ex.Number == 15434)
+                        {
+                            MessageBox.Show("Hata Numarası :" + ex.Number + "\nKullanıcı giriş yapmış durumda bulunduğu için silme işlemi gerçekleştirilemedi","Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            logger.Error("Hata tipi :"+ex.GetType()+" Hata Mesajı :"+ ex.Message +" Hata numarası :"+ ex.Number );
+                        }else if (ex.Number == 15023 || ex.Number == 15024)
+                        {
+                            MessageBox.Show("Hata Numarası :" + ex.Number + "\nKullanıcı, grup veya rol veritabanında mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            logger.Error("Hata tipi :" + ex.GetType() + " Hata Mesajı :" + ex.Message + " Hata numarası :" + ex.Number);
+                        }
+                        return false;
                     }
                     catch (Exception ex)
                     {
@@ -53,8 +57,7 @@ namespace MultipleSupportProgram.Model
                         {
                             MessageBox.Show("Kullanıcı ismi kullanılmaktadır.", "BİLGİ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
-                        MessageBox.Show(ex.Message + ex);
+                        MessageBox.Show(ex.Message );
                         logger.Error(ex + " hatalı script :" + sqlScript);
                         return false;
                     }
@@ -263,27 +266,27 @@ namespace MultipleSupportProgram.Model
             string userAddScriptText = "";
             if (role == "Admin") // admin
             {
+                        
                 userAddScriptText = $@"
-                        CREATE LOGIN [{user}] WITH PASSWORD=N'{password}', 
-                        DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], 
-                        CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
+                        CREATE LOGIN[{user}] WITH PASSWORD = N'{password}', 
+                        DEFAULT_DATABASE = [SPWIN_DB], DEFAULT_LANGUAGE = [us_english], 
+                        CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF;
 
-                        USE [SPWIN_DB];
-                        CREATE USER [{user}] FOR LOGIN [{user}];
+                        
 
                         EXEC sp_addsrvrolemember @loginame = N'{user}', @rolename = N'sysadmin';
                     ";
             }
             else if (role == "Read-Only") //read-only
             {
+
                 userAddScriptText = $@"
-                        CREATE LOGIN [{user}] WITH PASSWORD=N'{password}', 
-                        DEFAULT_DATABASE=[SPWIN_DB], DEFAULT_LANGUAGE=[us_english], 
-                        CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
+                        CREATE LOGIN[{user}] WITH PASSWORD = N'{password}', 
+                        DEFAULT_DATABASE = [SPWIN_DB], DEFAULT_LANGUAGE = [us_english], 
+                        CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF;
 
-                        USE [SPWIN_DB];
-                        CREATE USER [{user}] FOR LOGIN [{user}];
-
+                        
+                        
                         EXEC sp_addrolemember N'db_datareader', N'{user}';
                     ";
             }
@@ -305,14 +308,14 @@ namespace MultipleSupportProgram.Model
 
         public static void EsitUserDelete(string username)
         {
-            string[] sqlScripts = { "USE SPWIN_DB;", "DROP USER " + username, "DROP LOGIN " + username };
+            string[] sqlScripts = { " DROP LOGIN " + username  };
             try
             {
                 foreach (string sql in sqlScripts)
                 {
                     if (!ExecuteNonQueryScript(sql))
                     {
-                        throw new Exception("kullanıcı bulunamadı.");
+                        return;
                     }
 
                 }
@@ -322,7 +325,7 @@ namespace MultipleSupportProgram.Model
             {
                 MessageBox.Show("Kullanıcı silme işlemi tamamlanamadı. " + ex.Message, "Bilgilendirme", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                logger.Error(ex);
+                logger.Error("GET TYPE METODU : "+ ex.Message);
             }
 
         }
@@ -368,10 +371,10 @@ namespace MultipleSupportProgram.Model
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
 
-                logger.Error("HATA Bağlantı kurulamadı! : " + ex.Message + "  \nConnection String = " + connectionString);
+                logger.Error(ex.Number + "HATA Bağlantı kurulamadı! : " + ex.Message + "  \nConnection String = " + connectionString);
                 MessageBox.Show("Bağlantı Oluşturulamadı.\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return false;
@@ -479,7 +482,7 @@ namespace MultipleSupportProgram.Model
 
 
 
-        public static void PhotoDelete(string radioButtonTag, string time1, string time2, string picturePath)
+        public static void PhotoDelete(string radioButtonTag, string time1, string time2, string picturePath, ProgressBar progressBar)
         {
             string commandStr = "";
             try
@@ -564,12 +567,27 @@ namespace MultipleSupportProgram.Model
                         AND imageFile3 IS NULL
                         AND imageFile4 IS NULL
                     );";
+
                     DataTable dataTable = ExecuteReaderScript(commandStr, 0);
+                    if (dataTable == null)
+                    {
+                        progressBar.Maximum = 0;
+                    }
+                    else
+                    {
+                        progressBar.Maximum = dataTable.Rows.Count;
+                    }
+                    progressBar.Value = 0;
+                    string deleteCommand = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq IN ( " ;
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        string deleteCommand = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
-                        ExecuteNonQueryScript(deleteCommand, 10);
+
+                        deleteCommand += row["seq"].ToString()+" ,";
+                        progressBar.Value++;
                     }
+                    deleteCommand = deleteCommand.Remove(deleteCommand.LastIndexOf(","),1);
+                    deleteCommand += ");";
+                    ExecuteNonQueryScript(deleteCommand, 0);
                     MessageBox.Show("Veritabanından fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -613,11 +631,13 @@ namespace MultipleSupportProgram.Model
                         AND imageFile4 IS NULL
                     )";
                     DataTable dataTable = ExecuteReaderScript(commandStr, 0);
+                    progressBar.Maximum = dataTable.Rows.Count;
+                    progressBar.Value = 0;
                     foreach (DataRow row in dataTable.Rows)
                     {
                         string deleteCommand = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
-                        ExecuteNonQueryScript(deleteCommand, 10);
-                        //count++;
+                        ExecuteNonQueryScript(deleteCommand, 15);
+                        progressBar.Value++;
                     }
                     MessageBox.Show("Veritabanından fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //Console.Write("işlem gören satır sayısı: " +count +"\n");
@@ -659,7 +679,7 @@ namespace MultipleSupportProgram.Model
                     )
                     ORDER BY seq;";
                     DataTable pictureFileNames = ExecuteReaderScript(commandStr, 0);
-                    FileHelper.DeletePictureFile(picturePath, pictureFileNames);
+                    FileHelper.DeletePictureFile(picturePath, pictureFileNames ,progressBar);
                     MessageBox.Show($"{picturePath} \nDosya konumundan fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -669,7 +689,6 @@ namespace MultipleSupportProgram.Model
                     throw;
                 }
             }
-
             void InTheFolderTimeDelete()
             {
                 try
@@ -695,7 +714,7 @@ namespace MultipleSupportProgram.Model
                     OR imageFile4 IS NOT NULL)
                     ORDER BY seq";
                     DataTable pictureFileNames = ExecuteReaderScript(commandStr, 0);
-                    FileHelper.DeletePictureFile(picturePath, pictureFileNames);
+                    FileHelper.DeletePictureFile(picturePath, pictureFileNames, progressBar);
                     MessageBox.Show("Dosya konumundan fotoğrafları silme işlemi tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -1108,10 +1127,11 @@ namespace MultipleSupportProgram.Model
         {
             // Çalıştırılacak .bat dosyasının adı
             string batFileContent = $@"
+@echo =========  SQL Server Start  ===================
+
 net start SQLBrowser
-
 net start MSSQL${instanceName}
-
+          
 
 
 
@@ -1122,6 +1142,7 @@ netsh advfirewall firewall add rule name=""Open Port 80"" dir=in action=allow pr
 
 @echo =========  SQL Server Start Mode  ===================
 sc config ""{instanceName}"" start= auto
+sc config MSSQL$""{instanceName}"" start= auto
 sc config ""SQLBrowser"" start= auto
 
 
@@ -1159,12 +1180,14 @@ cmd.exe /c ""icacls ""%cd%"" /grant Everyone:(OI)(CI)M""
 
 @echo =========  Server Restart  ==============
 
+net stop     SQLBrowser
+net stop     MSSQL${instanceName}
+net stop     {instanceName}
 
-net stop SQLBrowser
-net stop MSSQL${instanceName}
 
-net start SQLBrowser
-net start MSSQL${instanceName}
+net start    SQLBrowser
+net start    MSSQL${instanceName}
+net start    {instanceName}
 
 pause
 ";

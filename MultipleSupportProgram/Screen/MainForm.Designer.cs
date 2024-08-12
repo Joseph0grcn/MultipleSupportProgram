@@ -274,6 +274,9 @@ namespace MultipleSupportProgram
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAuditDBScript = new System.Windows.Forms.Button();
             this.btnSpwinDBScript = new System.Windows.Forms.Button();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbServerStartScript = new System.Windows.Forms.TextBox();
             this.tpServerConManager = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnServerConManager = new System.Windows.Forms.Button();
@@ -330,15 +333,15 @@ namespace MultipleSupportProgram
             this.btnConnectionTest = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tbServerStartScript = new System.Windows.Forms.TextBox();
             this.serverKontrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tstbServerName = new System.Windows.Forms.ToolStripTextBox();
             this.kontrolEtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabControlProcessHeaders.SuspendLayout();
             this.tpBackup.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -370,6 +373,7 @@ namespace MultipleSupportProgram
             this.tableLayoutPanel3.SuspendLayout();
             this.tpDatabaseStop.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
             this.tpServerConManager.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
@@ -388,7 +392,8 @@ namespace MultipleSupportProgram
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel21.SuspendLayout();
+            this.tableLayoutPanel22.SuspendLayout();
+            this.tableLayoutPanel23.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProcessHeaders
@@ -923,12 +928,11 @@ namespace MultipleSupportProgram
             this.tableLayoutPanel9.Controls.Add(this.groupBox7, 2, 0);
             this.tableLayoutPanel9.Controls.Add(this.groupBox8, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.btnWeighPhotoDelete, 3, 3);
-            this.tableLayoutPanel9.Controls.Add(this.dtpFinish, 2, 2);
-            this.tableLayoutPanel9.Controls.Add(this.dtpStart, 1, 2);
             this.tableLayoutPanel9.Controls.Add(this.rtbPicture, 0, 3);
             this.tableLayoutPanel9.Controls.Add(this.btnPicturePath, 2, 3);
-            this.tableLayoutPanel9.Controls.Add(this.lblDateStart, 1, 1);
-            this.tableLayoutPanel9.Controls.Add(this.lblDateFinish, 2, 1);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel22, 1, 2);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel23, 2, 2);
+            this.tableLayoutPanel9.Controls.Add(this.progressBar1, 1, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -1090,17 +1094,17 @@ namespace MultipleSupportProgram
             // 
             // dtpFinish
             // 
-            this.dtpFinish.Location = new System.Drawing.Point(317, 196);
+            this.dtpFinish.Location = new System.Drawing.Point(3, 30);
             this.dtpFinish.Name = "dtpFinish";
-            this.dtpFinish.Size = new System.Drawing.Size(164, 22);
+            this.dtpFinish.Size = new System.Drawing.Size(158, 22);
             this.dtpFinish.TabIndex = 34;
             this.dtpFinish.Visible = false;
             // 
             // dtpStart
             // 
-            this.dtpStart.Location = new System.Drawing.Point(147, 196);
+            this.dtpStart.Location = new System.Drawing.Point(3, 30);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(164, 22);
+            this.dtpStart.Size = new System.Drawing.Size(158, 22);
             this.dtpStart.TabIndex = 36;
             this.dtpStart.Visible = false;
             // 
@@ -1131,9 +1135,9 @@ namespace MultipleSupportProgram
             // 
             this.lblDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDateStart.AutoSize = true;
-            this.lblDateStart.Location = new System.Drawing.Point(147, 165);
+            this.lblDateStart.Location = new System.Drawing.Point(3, 5);
             this.lblDateStart.Name = "lblDateStart";
-            this.lblDateStart.Size = new System.Drawing.Size(164, 16);
+            this.lblDateStart.Size = new System.Drawing.Size(158, 16);
             this.lblDateStart.TabIndex = 37;
             this.lblDateStart.Text = "Başlangıç Tarihi";
             this.lblDateStart.Visible = false;
@@ -1142,9 +1146,9 @@ namespace MultipleSupportProgram
             // 
             this.lblDateFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDateFinish.AutoSize = true;
-            this.lblDateFinish.Location = new System.Drawing.Point(317, 165);
+            this.lblDateFinish.Location = new System.Drawing.Point(3, 5);
             this.lblDateFinish.Name = "lblDateFinish";
-            this.lblDateFinish.Size = new System.Drawing.Size(164, 16);
+            this.lblDateFinish.Size = new System.Drawing.Size(158, 16);
             this.lblDateFinish.TabIndex = 38;
             this.lblDateFinish.Text = "Bitiş Tarihi";
             this.lblDateFinish.Visible = false;
@@ -1632,6 +1636,43 @@ namespace MultipleSupportProgram
             this.btnSpwinDBScript.UseVisualStyleBackColor = false;
             this.btnSpwinDBScript.Click += new System.EventHandler(this.btnSpwinDBScript_Click);
             // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnCount = 1;
+            this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel21, 2);
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Controls.Add(this.label13, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.tbServerStartScript, 0, 1);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(133, 3);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 2;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(384, 96);
+            this.tableLayoutPanel21.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(378, 16);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Aşağıya server ismini giriniz";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbServerStartScript
+            // 
+            this.tbServerStartScript.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbServerStartScript.Location = new System.Drawing.Point(3, 51);
+            this.tbServerStartScript.Name = "tbServerStartScript";
+            this.tbServerStartScript.Size = new System.Drawing.Size(378, 22);
+            this.tbServerStartScript.TabIndex = 1;
+            this.tbServerStartScript.Text = "SQLEXPRESS";
+            // 
             // tpServerConManager
             // 
             this.tpServerConManager.Controls.Add(this.tableLayoutPanel4);
@@ -1695,6 +1736,7 @@ namespace MultipleSupportProgram
             this.tbConfigServerName.Name = "tbConfigServerName";
             this.tbConfigServerName.Size = new System.Drawing.Size(237, 22);
             this.tbConfigServerName.TabIndex = 1;
+            this.tbConfigServerName.Text = "SQLEXPRESS";
             // 
             // label12
             // 
@@ -2264,10 +2306,45 @@ namespace MultipleSupportProgram
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.aboutToolStripMenuItem.Text = "Hakkında";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            // 
+            // serverKontrolToolStripMenuItem
+            // 
+            this.serverKontrolToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.serverKontrolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tstbServerName,
+            this.kontrolEtToolStripMenuItem,
+            this.startToolStripMenuItem});
+            this.serverKontrolToolStripMenuItem.Name = "serverKontrolToolStripMenuItem";
+            this.serverKontrolToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.serverKontrolToolStripMenuItem.Text = "Server Kontrol";
+            // 
+            // tstbServerName
+            // 
+            this.tstbServerName.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.tstbServerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tstbServerName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tstbServerName.Name = "tstbServerName";
+            this.tstbServerName.Size = new System.Drawing.Size(100, 23);
+            this.tstbServerName.Text = "SQLEXPRESS";
+            // 
+            // kontrolEtToolStripMenuItem
+            // 
+            this.kontrolEtToolStripMenuItem.Name = "kontrolEtToolStripMenuItem";
+            this.kontrolEtToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.kontrolEtToolStripMenuItem.Text = "Kontrol et";
+            this.kontrolEtToolStripMenuItem.Click += new System.EventHandler(this.kontrolEtToolStripMenuItem_Click);
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.startToolStripMenuItem.Text = "Başlat";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
             // panel3
             // 
@@ -2295,71 +2372,44 @@ namespace MultipleSupportProgram
             this.tableLayoutPanel1.Size = new System.Drawing.Size(665, 688);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
-            // tableLayoutPanel21
+            // tableLayoutPanel22
             // 
-            this.tableLayoutPanel21.ColumnCount = 1;
-            this.tableLayoutPanel2.SetColumnSpan(this.tableLayoutPanel21, 2);
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.Controls.Add(this.label13, 0, 0);
-            this.tableLayoutPanel21.Controls.Add(this.tbServerStartScript, 0, 1);
-            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel21.Location = new System.Drawing.Point(133, 3);
-            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
-            this.tableLayoutPanel21.RowCount = 2;
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.Size = new System.Drawing.Size(384, 96);
-            this.tableLayoutPanel21.TabIndex = 2;
+            this.tableLayoutPanel22.ColumnCount = 1;
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.Controls.Add(this.dtpStart, 0, 1);
+            this.tableLayoutPanel22.Controls.Add(this.lblDateStart, 0, 0);
+            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(147, 196);
+            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+            this.tableLayoutPanel22.RowCount = 2;
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(164, 55);
+            this.tableLayoutPanel22.TabIndex = 39;
             // 
-            // label13
+            // tableLayoutPanel23
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(378, 16);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Aşağıya server ismini giriniz";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableLayoutPanel23.ColumnCount = 1;
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Controls.Add(this.lblDateFinish, 0, 0);
+            this.tableLayoutPanel23.Controls.Add(this.dtpFinish, 0, 1);
+            this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel23.Location = new System.Drawing.Point(317, 196);
+            this.tableLayoutPanel23.Name = "tableLayoutPanel23";
+            this.tableLayoutPanel23.RowCount = 2;
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(164, 55);
+            this.tableLayoutPanel23.TabIndex = 40;
             // 
-            // tbServerStartScript
+            // progressBar1
             // 
-            this.tbServerStartScript.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbServerStartScript.Location = new System.Drawing.Point(3, 51);
-            this.tbServerStartScript.Name = "tbServerStartScript";
-            this.tbServerStartScript.Size = new System.Drawing.Size(378, 22);
-            this.tbServerStartScript.TabIndex = 1;
-            // 
-            // serverKontrolToolStripMenuItem
-            // 
-            this.serverKontrolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tstbServerName,
-            this.kontrolEtToolStripMenuItem,
-            this.startToolStripMenuItem});
-            this.serverKontrolToolStripMenuItem.Name = "serverKontrolToolStripMenuItem";
-            this.serverKontrolToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.serverKontrolToolStripMenuItem.Text = "Server Kontrol";
-            // 
-            // tstbServerName
-            // 
-            this.tstbServerName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tstbServerName.Name = "tstbServerName";
-            this.tstbServerName.Size = new System.Drawing.Size(100, 23);
-            // 
-            // kontrolEtToolStripMenuItem
-            // 
-            this.kontrolEtToolStripMenuItem.Name = "kontrolEtToolStripMenuItem";
-            this.kontrolEtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kontrolEtToolStripMenuItem.Text = "Kontrol et";
-            this.kontrolEtToolStripMenuItem.Click += new System.EventHandler(this.kontrolEtToolStripMenuItem_Click);
-            // 
-            // startToolStripMenuItem
-            // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.startToolStripMenuItem.Text = "Başlat";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            this.tableLayoutPanel9.SetColumnSpan(this.progressBar1, 2);
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar1.Location = new System.Drawing.Point(147, 156);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(334, 34);
+            this.progressBar1.TabIndex = 41;
             // 
             // MainForm
             // 
@@ -2416,6 +2466,8 @@ namespace MultipleSupportProgram
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tpDatabaseStop.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel21.ResumeLayout(false);
+            this.tableLayoutPanel21.PerformLayout();
             this.tpServerConManager.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel20.ResumeLayout(false);
@@ -2440,8 +2492,10 @@ namespace MultipleSupportProgram
             this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel21.ResumeLayout(false);
-            this.tableLayoutPanel21.PerformLayout();
+            this.tableLayoutPanel22.ResumeLayout(false);
+            this.tableLayoutPanel22.PerformLayout();
+            this.tableLayoutPanel23.ResumeLayout(false);
+            this.tableLayoutPanel23.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2459,6 +2513,9 @@ namespace MultipleSupportProgram
         private ToolStripTextBox tstbServerName;
         private ToolStripMenuItem kontrolEtToolStripMenuItem;
         private ToolStripMenuItem startToolStripMenuItem;
+        private TableLayoutPanel tableLayoutPanel22;
+        private TableLayoutPanel tableLayoutPanel23;
+        private ProgressBar progressBar1;
     }
 }
 

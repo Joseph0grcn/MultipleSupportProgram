@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Runtime;
 using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MultipleSupportProgram.Model
@@ -98,7 +93,7 @@ namespace MultipleSupportProgram.Model
             return null;
         }
 
-        public static void DeletePictureFile(string pictureFilePath, DataTable pictureFileNames)
+        public static void DeletePictureFile(string pictureFilePath, DataTable pictureFileNames, ProgressBar progressBar)
         {
             string[] fileNames =
                 {
@@ -107,8 +102,11 @@ namespace MultipleSupportProgram.Model
                     "imageFile3",
                     "imageFile4",
                 };
+            progressBar.Maximum = pictureFileNames.Rows.Count;
+            progressBar.Value = 0;
             foreach (DataRow row in pictureFileNames.Rows)
             {
+                
 
                 foreach (string file in fileNames)
                 {
@@ -137,6 +135,7 @@ namespace MultipleSupportProgram.Model
                 }
                 string commandstring = "DELETE FROM SPWIN_DB.dbo.WeighingImages WHERE seq = " + row["seq"];
                 SQLHelper.ExecuteNonQueryScript( commandstring );
+                progressBar.Value++;
             }
         }
     }

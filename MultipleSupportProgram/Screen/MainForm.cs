@@ -1,34 +1,13 @@
-﻿using log4net.Repository.Hierarchy;
-using MultipleSupportProgram.Model;
-using MultipleSupportProgram.Screen;
+﻿using MultipleSupportProgram.Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Net.PeerToPeer;
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Permissions;
 using System.Security.Principal;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-using RadioButton = System.Windows.Forms.RadioButton;
 
 
 namespace MultipleSupportProgram
@@ -52,6 +31,8 @@ namespace MultipleSupportProgram
             tabControlProcessHeaders.TabPages.Remove(tpTablolar);
             tabControlProcessHeaders.TabPages.Remove(tpSorgu);
             tabControlProcessHeaders.TabPages.Remove(tpSQLFile);
+            tabControlProcessHeaders.TabPages.Remove(tpSPWinScaleAndDBAConsolidation);
+
 
 
 
@@ -61,10 +42,7 @@ namespace MultipleSupportProgram
         public string conString;
         public Loggers loggers = new Loggers();
         public static WaitScreenFunc waitForm = new WaitScreenFunc();
-        public enum photoDeleteEnum { 
-
-
-            }
+        
 
 
         private void BtnConnectionTest_Click(object sender, EventArgs e)
@@ -203,6 +181,7 @@ namespace MultipleSupportProgram
         {
             btnWeighPhotoDelete.Enabled = false;
             btnWeighPhotoDelete.Text = "Bekleyiniz...";
+            btnWeighPhotoDelete.BackColor = Color.Yellow;
             conString = SQLHelper.GetConnectionString();
 
             if (rbOneAndTwoPhoto.Checked == true || rbInTheFolderPhoto.Checked == true || rbAllPhoto.Checked == true)
@@ -230,6 +209,7 @@ namespace MultipleSupportProgram
                         MessageBox.Show("İşlem iptal edildi.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnWeighPhotoDelete.Enabled = true;
                         btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
+                        btnWeighPhotoDelete.BackColor = Color.Red;
                         return;
                     }
                     
@@ -239,6 +219,7 @@ namespace MultipleSupportProgram
                     MessageBox.Show("Bu işlemi yapabilmek için zaman ayarlarından birini seçmek zorundasınız.", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnWeighPhotoDelete.Enabled = true;
                     btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
+                    btnWeighPhotoDelete.BackColor = Color.Red;
                     return;
                 }
 
@@ -257,7 +238,7 @@ namespace MultipleSupportProgram
 
                 // silme fonksiyonuna gidiş
                 //************************
-                SQLHelper.PhotoDelete(rbName,time1,time2,tbPicturePath.Text);
+                SQLHelper.PhotoDelete(rbName,time1,time2,tbPicturePath.Text,progressBar1);
 
 
                 
@@ -269,6 +250,7 @@ namespace MultipleSupportProgram
                 
             }
             btnWeighPhotoDelete.Enabled = true;
+            btnWeighPhotoDelete.BackColor = Color.Red;
             btnWeighPhotoDelete.Text = "Tartım Fotoğraflarını Sil";
 
         }
@@ -822,7 +804,15 @@ namespace MultipleSupportProgram
         {
             if (tbUserAddUserPassword.Text == tbUserAddUserPasswordConfirm.Text)
             {
-                SQLHelper.EsitUserAdd(tbUserAddUserName.Text, tbUserAddUserPassword.Text, cbUserAddUserRole.Text);
+                if (cbUserAddUserRole.Text != "")
+                {
+                    SQLHelper.EsitUserAdd(tbUserAddUserName.Text, tbUserAddUserPassword.Text, cbUserAddUserRole.Text);
+
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir Rol seçip tekrar deneyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

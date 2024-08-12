@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MultipleSupportProgram.Screen
@@ -45,7 +37,7 @@ namespace MultipleSupportProgram.Screen
             if (Convert.ToInt32(tbPassword.Text) == passwordNumber
                 //debug esnasında kolay erişim için aşağıdaki satırı etkinleştirin 
                 //debug sonrası pasif duruma çekmeyi unutmayınız
-                // || Convert.ToInt32(tbPassword.Text) == 1  
+                 || Convert.ToInt32(tbPassword.Text) == 1  
                 )
             {   this.Hide();
                 Application.DoEvents();
